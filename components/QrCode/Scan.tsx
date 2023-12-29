@@ -11,6 +11,7 @@ import type { Routes } from './Routes'
 import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useIsFocused } from '@react-navigation/core'
 import {  FlashSlash, Flash, ArrowLeft2 } from 'iconsax-react-native';
+
 const showCodeAlert = (value: string, onDismissed: () => void): void => {
     const buttons: AlertButton[] = [
         {
