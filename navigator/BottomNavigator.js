@@ -5,7 +5,8 @@ import HomeScreen from '../components/Home/Home';
 import OrderScreen from '../components/Order/Index';
 import UserScreen from '../components/User/Index';
 import AddScreen from '../components/Add/Index';
-import ScanScreen from '../components/QrCode/Scan';
+import ScanExpo from '../components/QrCode/ScanExpo';
+
 const Tab = createBottomTabNavigator();
 
 const BottomNavigator = () => {
@@ -38,22 +39,24 @@ const BottomNavigator = () => {
                     ),
                 }}
             />
-              <Tab.Screen
-                name="Scan"
-                component={ScanScreen}
-                options={{
-                    tabBarLabel: 'Scan',
-                    tabBarIcon: ({ color, size }) => (
-                        <DocumentText color="#F78F43" variant="Outline" size={25} />
-                    ),
-                }}
-            />
+
             <Tab.Screen
                 name="User"
                 component={UserScreen}
                 options={{
                     headerShown: false,
                     tabBarLabel: 'Tài khoản',
+                    tabBarIcon: ({ color, size }) => (
+                        <User color="#F78F43" variant="Outline" size={25} />
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="ScanExpo"
+                component={ScanExpo}
+                options={{
+                    headerShown: false,
+                    tabBarLabel: 'qrcode',
                     tabBarIcon: ({ color, size }) => (
                         <User color="#F78F43" variant="Outline" size={25} />
                     ),

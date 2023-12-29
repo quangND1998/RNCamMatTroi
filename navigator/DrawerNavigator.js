@@ -5,12 +5,12 @@ import {
     DrawerContentScrollView,
     DrawerItemList,
 } from '@react-navigation/drawer';
-import { Avatar } from "native-base";
+import { Avatar } from "@gluestack-ui/themed";
 import HomeScreen from '../components/Home/Home';
 import { useLogin } from '../context/LoginProvider';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginAction, logoutAction } from '../store/actions/auth';
-import { useToast } from 'native-base';
+import { useToast } from '@gluestack-ui/themed';
 import { getToken } from '../common/asynStorage';
 const Drawer = createDrawerNavigator();
 

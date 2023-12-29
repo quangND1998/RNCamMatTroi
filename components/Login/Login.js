@@ -1,7 +1,7 @@
 //import liraries
 import React, { Component, useState } from 'react';
 import { View, StyleSheet, ToastAndroid, Keyboard, TextInput, KeyboardAvoidingView } from 'react-native';
-import { Center, Container, Heading, Button, Text, Box, Stack, Icon, ZStack, FormControl, Image, Link, Input, HStack, VStack, Pressable, useToast, AspectRatio, Flex } from 'native-base';
+import { Center, Container, Heading, Button, Text, Box, Stack, Icon, ZStack, FormControl, Image, Link, Input, HStack, VStack, Pressable, useToast, AspectRatio, Flex } from 'native-base'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginAction, logoutAction } from '../../store/actions/auth';
 import { NavigationContainer, DrawerActions } from '@react-navigation/native';
@@ -79,7 +79,7 @@ const Login = ({ navigation }) => {
 
             <Box className=" mt-[60px] absolute top-0 left-0 w-full h-full px-4 py-4 ">
                 <Box className="mb-5 pb-5"  >
-                    <Image source={require('../../assets/images/logo2.png')} className="m-auto h-[35px] w-[251px]" alt="" />
+                    <Image source={require('../../assets/images/logo2.png')} className="m-auto h-[35px] w-[251px]" alt="logo2" />
                 </Box>
 
                 <TextInput onChangeText={changeCode} className="bg-gray-50 border border-[#F78F43] text-gray-900 text-sm rounded-lg p-2.5" placeholder="Mã HĐ/SĐT" />

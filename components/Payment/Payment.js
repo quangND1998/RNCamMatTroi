@@ -42,7 +42,7 @@ const HomeScreen = ({ navigation, route }) => {
         }).catch(error => {
             console.log('error', error)
         });
-       
+
     }
 
     return (
