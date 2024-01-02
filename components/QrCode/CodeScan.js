@@ -8,10 +8,33 @@ import { PressableOpacity } from 'react-native-pressable-opacity'
 import { StatusBarBlurBackground } from '../../views/StatusBarBlurBackgroundImpl'
 import * as RNImagePicker from 'expo-image-picker'
 import { BarCodeScanner } from 'expo-barcode-scanner'
+<<<<<<< HEAD
 import ApiService from '../../common/apiService';
+=======
+>>>>>>> 0f967cb768f232a710bf79b1dba65a1279719d9b
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 const CodeScan = ({ navigation, route }) => {
-
+    const decode = async () => {
+        
+        try {
+          const { status } = await RNImagePicker.requestMediaLibraryPermissionsAsync()
+           if (status === 'granted') {
+             const result = await RNImagePicker.launchImageLibraryAsync({
+      
+                   allowsMultipleSelection: false
+                
+             })
+             console.log('aaaaaaaaaaa/',result.assets[0].uri)
+             if (result && result.assets.length >0 && result.assets[0].uri) {
+                const results = await BarCodeScanner.scanFromURLAsync(result.assets[0].uri)
+                console.log(results) // many information
+                console.log('data',results[0].data) // May be the one you are looking for
+             }
+           }
+        } catch (error) {
+          console.debug(error)
+        }
+      }
     function handleBackButtonClick() {
         navigation.goBack();
     }
@@ -108,6 +131,7 @@ const CodeScan = ({ navigation, route }) => {
 
                         <Box className="w-full flex justify-between">
                             <Box className="w-1/2 item">
+<<<<<<< HEAD
                                 <PressableOpacity onPress={decode} >
                                     <Box className="w-[25px] h-[25px] button_radious  rounded-full" expand="block" >
 
@@ -119,6 +143,18 @@ const CodeScan = ({ navigation, route }) => {
                                     </Box>
                                     <Text style={styles.innerText} className="text-[#AEAEAE]" >Chọn ảnh QR </Text>
                                 </PressableOpacity>
+=======
+                                <Box className="w-[25px] h-[25px] button_radious  rounded-full" expand="block" >
+                                <PressableOpacity onPress={decode} >
+                                    <Image
+                                        size="32"
+                                        color="#ffffff"
+                                        variant="TwoTone"
+                                    />
+                                           </PressableOpacity>
+                                </Box>
+                                <Text>Chọn ảnh QR </Text>
+>>>>>>> 0f967cb768f232a710bf79b1dba65a1279719d9b
                             </Box>
                             <Box className="w-1/2 " style={styles.item}>
                                 <Box className="w-[25px] h-[25px] button_radious  rounded-full" expand="block" >
