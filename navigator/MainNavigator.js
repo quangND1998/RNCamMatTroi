@@ -9,6 +9,9 @@ import { ScanBarcode } from 'iconsax-react-native';
 import { CodeScannerPage } from '../components/QrCode/Scan';
 import CodeScan from '../components/QrCode/CodeScan';
 import { Camera } from 'react-native-vision-camera'
+import PackageBenefits from '../components/Package/PackageBenefits';
+import ScanExpo from '../components/QrCode/ScanExpo';
+import { HeaderBackButton } from '@react-navigation/elements';
 const Stack = createNativeStackNavigator();
 const StackNavigator = () => {
     return (
@@ -44,6 +47,15 @@ const MainNavigator = () => {
             <Stack.Screen name="newDetail" options={{ headerShown: false }} component={FarmDetail} />
             <Stack.Screen name="Scan" options={{ headerShown: false }} component={CodeScannerPage} />
             <Stack.Screen name="CodeScan" options={{ headerShown: false }} component={CodeScan} />
+            <Stack.Screen name="ScanExpo" options={{ title: 'Quét mã ' }} component={ScanExpo} />
+            <Stack.Screen name="PackageBenefits" options={({ navigation, route }) => ({
+                headerLeft: (props) => (
+                    <HeaderBackButton
+                        {...props}
+                        onPress={() => navigation.navigate('CodeScan')}
+                    />
+                ), title: route.params.name
+            })} component={PackageBenefits} />
         </Stack.Navigator> : <StackNavigator />;
 };
 export default MainNavigator;

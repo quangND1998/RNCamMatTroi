@@ -7,7 +7,7 @@ LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 import Payoo from '../../payoo';
 import { PaymentService } from '../../common/payment/paymentService';
 const merchantId = "11931"
-const HomeScreen = ({ navigation, route }) => {
+const Payment = ({ navigation, route }) => {
     const envDevelopment = 0;
     const envProduction = 1;
     const langVietNam = 0;
@@ -17,7 +17,7 @@ const HomeScreen = ({ navigation, route }) => {
 
 
     const _callPayment = () => {
-        PaymentService.payment(30).then(res => {
+        PaymentService.payment(31).then(res => {
             console.log(res.data.OrderInfo);
 
             var orderInfo = res.data.OrderInfo;
@@ -62,4 +62,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default HomeScreen;
+export default Payment;

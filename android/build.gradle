@@ -24,7 +24,9 @@ buildscript {
 }
 allprojects {
     repositories {
-        maven { url 'https://www.jitpack.io' }
+        maven { 
+          url 'https://www.jitpack.io'
+          url "$rootDir/../node_modules/expo-camera/android/maven" }
         flatDir {
             dirs 'libs'
         }

@@ -1,11 +1,12 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { EmojiHappy, Home, User, More, DocumentText } from 'iconsax-react-native';
+import { EmojiHappy, Home, User, More, DocumentText, Card } from 'iconsax-react-native';
 import HomeScreen from '../components/Home/Home';
 import OrderScreen from '../components/Order/Index';
 import UserScreen from '../components/User/Index';
 import AddScreen from '../components/Add/Index';
 import ScanExpo from '../components/QrCode/ScanExpo';
+import Payment from '../components/Payment/Payment';
 
 const Tab = createBottomTabNavigator();
 
@@ -52,13 +53,13 @@ const BottomNavigator = () => {
                 }}
             />
             <Tab.Screen
-                name="ScanExpo"
-                component={ScanExpo}
+                name="Payment"
+                component={Payment}
                 options={{
                     headerShown: false,
                     tabBarLabel: 'qrcode',
                     tabBarIcon: ({ color, size }) => (
-                        <User color="#F78F43" variant="Outline" size={25} />
+                        <Card color="#F78F43" variant="Outline" size={25} />
                     ),
                 }}
             />

@@ -124,7 +124,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   View,
   TouchableOpacity,
@@ -141,8 +141,11 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
 import { GluestackUIProvider } from 'native-base'
 import { config } from "@gluestack-ui/config" // Optional if you want to use default theme
-
+import SplashScreen from 'react-native-splash-screen';
 export default function App() {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
   return (
     <LoginProvider>
       <NativeBaseProvider>
