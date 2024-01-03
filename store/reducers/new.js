@@ -12,6 +12,18 @@ const newsReducer = (state = initialState, action) => {
                 ...state,
                 news: action.payload,
             }
+        case 'getActivity':
+            console.log(action.payload)
+            return {
+                ...state,
+                activitys: action.payload,
+            }
+        case 'getNewDetail':
+            console.log(action.payload)
+            return {
+                ...state,
+                newdetail: action.payload,
+            }
         default:
             return state;
     }

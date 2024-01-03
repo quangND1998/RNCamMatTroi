@@ -3,7 +3,7 @@
     <!-- Base application theme. -->
    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="android:textColor">#F78F43</item>
+     
     </style>
 
     <style name="PayooSdkTheme.Blue" parent="PYAppTheme">
