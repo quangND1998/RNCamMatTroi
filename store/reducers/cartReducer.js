@@ -47,7 +47,11 @@ const cartReducer = (state = initialState, action) => {
 const selectCart = state => state.cart
 
 export const selectTotalPrice = createSelector([selectCart], (cart) => {
-    return cart.cart.items.reduce((total, item) => (item.price * quantity) + total, 0);
+    return cart.cart.items.reduce((sum, i) => {
+
+
+        return sum + (i.price * i.quantity)
+    }, 0)
 })
 
 const selectTotal = createSelector(
