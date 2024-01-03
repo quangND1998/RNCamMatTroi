@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { EmojiHappy, Home, User, More, DocumentText, Card } from 'iconsax-react-native';
-import HomeScreen from '../components/Home/Home';
+import HomeScreen from '../components/Home/HomeScreen';
 import OrderScreen from '../components/Order/Index';
 import UserScreen from '../components/User/Index';
 import AddScreen from '../components/Add/Index';
@@ -30,6 +30,17 @@ const BottomNavigator = () => {
                     ),
                 }}
             />
+            {/* <Tab.Screen
+                name="Products"
+                component={Products}
+                options={{
+                    headerShown: false,
+                    tabBarLabel: 'Sản phẩm',
+                    tabBarIcon: ({ color, size }) => (
+                        <Home color="#F78F43" variant="Outline" size={25} />
+                    ),
+                }}
+            /> */}
             <Tab.Screen
                 name="Order"
                 component={OrderScreen}

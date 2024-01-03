@@ -55,7 +55,11 @@ const ApiService = {
         ] = `application/json`;
 
     },
-
+    queryData(resource, params) {
+        // console.log(jwtToken.getToken())
+        // console.log(params)
+        return axios.get(API_URL + "/" + resource, { params })
+    },
     query(resource) {
         return axios.get(API_URL + "/" + resource)
     },

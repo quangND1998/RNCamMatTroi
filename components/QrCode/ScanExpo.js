@@ -13,13 +13,7 @@ export default function ScanExpo({ navigation }) {
     const [type, setType] = useState(CameraType.back);
     const [hasPermission, setHasPermission] = useState(null);
     const [scanned, setScanned] = useState(false);
-<<<<<<< HEAD
     const [flashMode, setFlashMode] = React.useState(FlashMode.off)
-=======
-
-    
-   
->>>>>>> 0f967cb768f232a710bf79b1dba65a1279719d9b
     useEffect(() => {
 
         const unsubscribe = navigation.addListener('focus', () => {

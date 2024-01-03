@@ -3,7 +3,7 @@ import { setToken, destroyToken, setUser, getToken, getUser } from '../../common
 
 export const loginAction = (code, password, onSuccess = () => {}, onError = () => {}) => (dispatch) => {
     return AuthService.login({ code, password }).then(response => {
-        console.log(response.data)
+        // console.log(response.data)
         setToken(response.data.data.token);
         setUser(response.data.data.user)
         dispatch({
@@ -17,7 +17,7 @@ export const loginAction = (code, password, onSuccess = () => {}, onError = () =
 
         onSuccess();
     }).catch(error => {
-        console.log('aaaaaaaaaa', error.response.data)
+        // console.log('aaaaaaaaaa', error.response.data)
         dispatch({
             type: 'LOGIN_FAIL',
         });
@@ -38,14 +38,14 @@ export const logoutAction = (onSuccess = () => {}, onError = () => {}) => (dispa
 
         },
         (error) => {
-            console.log('error', error)
+            // console.log('error', error)
             const message =
                 (error.response &&
                     error.response.data &&
                     error.response.data.message) ||
                 error.message ||
                 error.toString();
-            console.log('message', message)
+            // console.log('message', message)
             dispatch({
                 type: 'LOGIN_FAIL',
             });

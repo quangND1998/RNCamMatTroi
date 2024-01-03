@@ -7,19 +7,19 @@ const initialState = {
 const newsReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'getNews':
-            console.log(action.payload)
+            // console.log(action.payload)
             return {
                 ...state,
                 news: action.payload,
             }
         case 'getActivity':
-            console.log(action.payload)
+            // console.log(action.payload)
             return {
                 ...state,
                 activitys: action.payload,
             }
         case 'getNewDetail':
-            console.log(action.payload)
+            // console.log(action.payload)
             return {
                 ...state,
                 newdetail: action.payload,
