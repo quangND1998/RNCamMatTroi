@@ -13,11 +13,11 @@ import React from 'react';
 const { width, height } = Dimensions.get('screen');
 
 const SlideItem = ({ item, navigation }) => {
-  console.log(navigation);
+  // console.log(navigation);
   const translateYImage = new Animated.Value(40);
   const handlerDetail = () => {
-    console.log(item.id);
-    console.log(navigation);
+    // console.log(item.id);
+    // console.log(navigation);
     navigation.navigate('newDetail', {
       itemId: item.id,
       // otherParam: 'anything you want here',

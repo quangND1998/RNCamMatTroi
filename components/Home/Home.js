@@ -36,7 +36,7 @@ const Home = ({ navigation, route }) => {
             setRefreshing(false);
         }, 2000);
     }, []);
- 
+
 
     return (
         <SafeAreaView style={styles.container}>

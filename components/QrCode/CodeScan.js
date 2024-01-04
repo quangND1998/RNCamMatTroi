@@ -11,7 +11,7 @@ import { BarCodeScanner } from 'expo-barcode-scanner'
 import ApiService from '../../common/apiService';
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 const CodeScan = ({ navigation, route }) => {
-    
+
     function handleBackButtonClick() {
         navigation.goBack();
     }
@@ -29,16 +29,20 @@ const CodeScan = ({ navigation, route }) => {
                 if (result && result.assets.length > 0 && result.assets[0].uri) {
                     // console.log('pickimage', result.assets[0].uri)
                     const results = await BarCodeScanner.scanFromURLAsync(result.assets[0].uri)
-                    // console.log(results)
+                    console.log('aaaaaa', results[0].data)
+
                     if (results.length > 0) {
-                        const pieces = data.split("/");
+                        const data = results[0].data
+                        const pieces = results[0].data.split("/");
                         const barcodescheck = parseInt(pieces[pieces.length - 1]);
-                        if (results.includes('tree')) {
+
+                        if (data.includes('tree')) {
 
                             ApiService.query(`api/v1/customer/checkProduct/${barcodescheck}`).then(res => {
                                 // console.log('getOrderRetail', res.data)
                                 if (res.data?.success == true) {
                                     // router.push({ name: 'productservice.benefits', params: { id: barcodescheck.value } })
+                                    navigation.navigate('PackageBenefits', { name: `Quyền lợi ${res.data.data.name}`, product_id: barcodescheck, })
                                 } else {
                                     // window.location.href = barcode[0]?.displayValue;
                                     Linking.canOpenURL(barcodescheck).then(supported => {

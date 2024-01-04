@@ -25,7 +25,7 @@ axios.interceptors.request.use(async(request) => {
 });
 
 axios.interceptors.response.use((response) => {
-    console.log(response)
+    // console.log(response)
     if (response.status == 200) {
 
     }

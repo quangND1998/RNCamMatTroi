@@ -57,7 +57,7 @@ export const logoutAction = (onSuccess = () => {}, onError = () => {}) => (dispa
 
 export const loadStorageToken = async(dispatch) => {
     const access_token = await getToken();
-
+    console.log('loadStorageToken', access_token)
     const user = await getUser();
 
     dispatch({

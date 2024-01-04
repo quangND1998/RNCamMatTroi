@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { EmojiHappy } from 'iconsax-react-native';
 import { getProductDetail } from '../../store/actions/productService';
 import { useHelper } from '../../helpers/helper.js'
-
+import QRCode from 'react-native-qrcode-svg';
 const PackageBenefits = ({ navigation, route }) => {
     const dispatch = useDispatch();
     const { product_id } = route.params;
@@ -111,6 +111,16 @@ const PackageBenefits = ({ navigation, route }) => {
 
 
                         </Box>
+                        {productDetail?.trees.length > 0 ? <Box className="rounded-lg px-2 py-4 bg-white my-4 mb-5" >
+                            <Box class="w-full">
+                                <QRCode className="m-auto p-2 justify-center" size={160}
+                                    value={`https://qly.cammattroi.com/tree/qrcode/${productDetail?.id}`}
+                                />
+                                <Text class="text-base text-center mt-2">
+                                    Quét mã QR để truy xuất vị trí cây
+                                </Text>
+                            </Box>
+                        </Box> : null}
 
                     </Box>
                 </Box>
@@ -124,7 +134,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-  
+
 })
 
 

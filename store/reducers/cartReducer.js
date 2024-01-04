@@ -1,4 +1,6 @@
 import { createSlice, createSelector } from "@reduxjs/toolkit";
+import { create } from "react-test-renderer";
+import { setCart, destroyCart, getCart } from "../../common/asynStorage";
 const initialState = {
     cart: {
         items: [],
@@ -20,7 +22,7 @@ const cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'addToCart':
 
-            const index = state.cart.items.findIndex(e => e.id === action.payload.id)
+            var index = state.cart.items.findIndex(e => e.id === action.payload.id)
 
             let item = {
                 id: action.payload.id,
@@ -33,19 +35,51 @@ const cartReducer = (state = initialState, action) => {
             } else {
                 state.cart.items.push(item)
             }
-
+            setCart(state.cart);
             return {
                 ...state,
 
-            }
+            };
+        case 'deleteCart':
+            state.cart.items = [];
+            setCart(state.cart)
+            return {
+                ...state,
 
+            };
+        case 'updateItemInCart':
+            var index = state.cart.items.findIndex(e => e.id === action.payload.id)
+            if (index !== -1) {
+                state.cart.items[index].price = action.payload.price
+                state.cart.items[index].name = action.payload.name
+            }
+            setCart(state.cart)
+            return {
+                ...state,
+
+            };
+        case 'saveCartToStore':
+            state.cart = action.payload
+            return {
+                ...state
+
+            }
+        case 'notFoundProduct':
+            var index = state.cart.items.findIndex(e => e.id === action.payload)
+            state.cart.items.splice(index, 1)
+
+            setCart(state.cart);
+            return {
+                ...state
+
+            }
         default:
             return state;
     }
 };
 
 const selectCart = state => state.cart
-
+const selectVoucher = state => state.cart.voucher
 export const selectTotalPrice = createSelector([selectCart], (cart) => {
     return cart.cart.items.reduce((sum, i) => {
 
@@ -54,21 +88,29 @@ export const selectTotalPrice = createSelector([selectCart], (cart) => {
     }, 0)
 })
 
-const selectTotal = createSelector(
-    selectCart, (cart) => {
-        return cart.items.length
-    }
-);
-const totalQuantity = createSelector(
-    selectCart, (cart) => {
-        return cart.items.reduce((sum, i) => {
+export const selectTotal = createSelector(
+    [selectCart], (cart) => {
+        return cart.cart.items.length
+    })
+export const selectTotalQuantity = createSelector(
+    [selectCart], (cart) => {
+        return cart.cart.items.reduce((sum, i) => {
             return sum + (i.quantity)
         }, 0)
+    })
+export const selectLastPrice = createSelector(
+    [selectCart, selectVoucher], (cart, voucher) => {
+        let discount_mount = 0
+        if (voucher !== null) {
+            discount_mount = voucher.discount_mount
+        } else {
+            discount_mount = 0
+        }
+        return cart.cart.items.reduce((sum, i) => {
+            return sum + (i.price * i.quantity)
+        }, 0) - discount_mount
     }
-);
-// const lastPrice = createSelector(
-
-// )
+)
 
 
 export default cartReducer;

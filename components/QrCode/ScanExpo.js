@@ -120,6 +120,7 @@ export default function ScanExpo({ navigation }) {
                     const results = await BarCodeScanner.scanFromURLAsync(result.assets[0].uri)
                     // console.log(results)
                     if (results.length > 0) {
+                        const data = results[0].data
                         const pieces = data.split("/");
                         const barcodescheck = parseInt(pieces[pieces.length - 1]);
                         if (results.includes('tree')) {
@@ -127,6 +128,7 @@ export default function ScanExpo({ navigation }) {
                             ApiService.query(`api/v1/customer/checkProduct/${barcodescheck}`).then(res => {
                                 // console.log('getOrderRetail', res.data)
                                 if (res.data?.success == true) {
+                                    navigation.navigate('PackageBenefits', { name: `Quyền lợi ${res.data.data.name}`, product_id: barcodescheck, })
                                     // router.push({ name: 'productservice.benefits', params: { id: barcodescheck.value } })
                                 } else {
                                     // window.location.href = barcode[0]?.displayValue;

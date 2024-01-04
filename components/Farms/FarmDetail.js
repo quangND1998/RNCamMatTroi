@@ -22,7 +22,7 @@ const FarmDetail = ({ navigation, route }) => {
     };
     useEffect(() => {
         fetchNewDetail(itemId);
-        console.log(newDetail);
+        // console.log(newDetail);
     }, []);
     const fetchNewDetail = async () => {
         dispatch(getNewDetail(itemId))

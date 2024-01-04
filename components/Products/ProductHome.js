@@ -9,9 +9,11 @@ import { getListProductService, getProductDetail } from '../../store/actions/pro
 import { fetchProductRetails, queryProductRetails } from '../../store/actions/productRetail';
 import PaginationMuti from '../PaginationMuti';
 import {
-    selectTotalPrice
+    selectTotalPrice, selectTotalQuantity, selectTotal
 } from '../../store/reducers/cartReducer';
 import { addToCart } from '../../store/actions/cart';
+import { useHelper } from '../../helpers/helper';
+import NumericInput from 'react-native-numeric-input'
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 const ProductHome = ({ navigation, route }) => {
     const dispatch = useDispatch();
@@ -20,7 +22,9 @@ const ProductHome = ({ navigation, route }) => {
     const products = useSelector(state => state.productRetails.products);
     const [refreshing, setRefreshing] = React.useState(false);
     const totalPrice = useSelector(selectTotalPrice);
-    // const cart = useSelector(selectCart);
+    const totalQuantity = useSelector(selectTotalQuantity)
+    const total = useSelector(selectTotal)
+    const { formatPrice } = useHelper();
     useEffect(() => {
         fetchListProductService();
         fetchProducts();
@@ -81,7 +85,7 @@ const ProductHome = ({ navigation, route }) => {
 
                     {productService ? productService.map((product, key) =>
                         // Wrong! The key should have been specified here:
-                        <Box key={product.id} className="w-1/2  py-1 px-2  hover:rounded-lg hover:shadow-lg hover:shadow-[#2f302f31]"
+                        <Box key={product.id} className="w-1/2 px-1 py-2 hover:rounded-lg hover:shadow-lg hover:shadow-[#2f302f31]"
                         >
                             <Box className=" text-center">
                                 <Box className="relative">
@@ -105,6 +109,10 @@ const ProductHome = ({ navigation, route }) => {
                 {/* <Heading className="font-bold text-xl">I'm a Heading</Heading>; */}
                 <Box className="p-2 bg-white">
                     <Heading className="font-bold text-xl" size="xl">Danh mục nông sản</Heading>
+                    {products && products.data?.data.length > 0 ? <Box class="ion-padding mb-5" >
+                        <PaginationMuti data={products?.meta} changePage={changePageURL} />
+                    </Box> : ''}
+
                     {products ? products.data.data.map((product, key) =>
                         <Box key={product.id}>
                             <HStack space={1} justifyContent="center" className="my-4">
@@ -129,23 +137,28 @@ const ProductHome = ({ navigation, route }) => {
                                             />
                                         </PressableOpacity>
                                     </Box>
-                                    <Text className="text-xs my-3">Giao hàng tận nơi {totalPrice} </Text>
+                                    <Text className="text-xs my-3   hover:bg-gray-800">Giao hàng tận nơi  </Text>
 
                                 </VStack>
                             </HStack>
                         </Box>
                     ) : ''}
+
                     {/* <Text>
                         {products[0].name}
                     </Text> */}
                 </Box>
-                {products && products.data?.data.length > 0 ? <Box class="ion-padding mb-5" >
-                    <PaginationMuti data={products?.meta} changePage={changePageURL} />
-                </Box> : ''}
 
 
 
             </ScrollView >
+            {total > 0 ? <Button
+                className="absolute  w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 text-white bg-[#F78F43] rounded-xl " style={styles.btn_button}>
+                <Box className="w-full flex justify-between">
+                    <Text className="text-white">Giỏ hàng {total} sản phẩm</Text>
+                    <Text className="text-white"> {formatPrice(totalPrice)}đ</Text>
+                </Box>
+            </Button> : null}
         </SafeAreaView >
     );
 }
@@ -169,6 +182,9 @@ const styles = StyleSheet.create({
         objectFit: 'cover',
         height: '100 %',
         width: '100 %',
+    },
+    btn_button: {
+        bottom: '-10px'
     }
 })
 
