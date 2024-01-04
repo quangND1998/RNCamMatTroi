@@ -153,7 +153,7 @@ const ProductHome = ({ navigation, route }) => {
 
             </ScrollView >
             {total > 0 ? <Button
-                className="absolute  w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 text-white bg-[#F78F43] rounded-xl " style={styles.btn_button}>
+                className="absolute top-0 pt-1 w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 text-white bg-[#F78F43] rounded-xl " style={styles.btn_button}>
                 <Box className="w-full flex justify-between">
                     <Text className="text-white">Giỏ hàng {total} sản phẩm</Text>
                     <Text className="text-white"> {formatPrice(totalPrice)}đ</Text>
