@@ -110,7 +110,7 @@ const CodeScan = ({ navigation, route }) => {
 
                     <Box className="  absolute bottom-0  right-0 left-0 ion-no-margin rounded-b-xl" style={styles.action_bottom}>
 
-                        <Box className="w-full flex justify-between">
+                        <Box className="w-full flex-row justify-between">
                             <Box className="w-1/2 item">
                                 <PressableOpacity onPress={decode} >
                                     <Box className="w-[25px] h-[25px] button_radious  rounded-full" expand="block" >
