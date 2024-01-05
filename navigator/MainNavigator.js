@@ -12,6 +12,7 @@ import { Camera } from 'react-native-vision-camera'
 import PackageBenefits from '../components/Package/PackageBenefits';
 import ScanExpo from '../components/QrCode/ScanExpo';
 import { HeaderBackButton } from '@react-navigation/elements';
+import CartConfirmation from '../components/Cart/CartConfirmation';
 const Stack = createNativeStackNavigator();
 const StackNavigator = () => {
     return (
@@ -44,6 +45,7 @@ const MainNavigator = () => {
             <Stack.Screen name="Scan" options={{ headerShown: false }} component={CodeScannerPage} />
             <Stack.Screen name="CodeScan" options={{ headerShown: false }} component={CodeScan} />
             <Stack.Screen name="ScanExpo" options={{ title: 'Quét mã ' }} component={ScanExpo} />
+            <Stack.Screen name="CartConfirmation" options={{ title: 'Xác nhận đơn hàng' }} component={CartConfirmation} />
             <Stack.Screen name="PackageBenefits" options={({ navigation, route }) => ({
                 headerLeft: (props) => (
                     <HeaderBackButton

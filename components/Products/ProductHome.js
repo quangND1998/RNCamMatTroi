@@ -13,7 +13,7 @@ import {
 } from '../../store/reducers/cartReducer';
 import { addToCart } from '../../store/actions/cart';
 import { useHelper } from '../../helpers/helper';
-import NumericInput from 'react-native-numeric-input'
+
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 const ProductHome = ({ navigation, route }) => {
     const dispatch = useDispatch();
@@ -149,14 +149,14 @@ const ProductHome = ({ navigation, route }) => {
 
 
             </ScrollView >
-            {total > 0 ? <Button
-                className="fixed  w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 text-white bg-[#F78F43] rounded-xl " style={styles.btn_button}>
-                <Box className="w-full flex flex-row justify-around " >
+            {total > 0 ? <PressableOpacity onPress={() => navigation.navigate('CartConfirmation')}  ><Box
+                className="fixed  w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 px-4 py-4 text-white bg-[#F78F43] rounded-xl " style={styles.btn_button}>
+                <Box className="w-full flex flex-row  justify-between" >
                     <Text className="mr-0 text-white ">Giỏ hàng {total} sản phẩm</Text>
                     <Text className=" text-white "> {formatPrice(totalPrice)}đ</Text>
 
                 </Box>
-            </Button> : null
+            </Box></PressableOpacity> : null
             }
         </SafeAreaView >
     );
@@ -183,7 +183,10 @@ const styles = StyleSheet.create({
     },
     btn_button: {
         bottom: '-10px'
-    }
+    },
+    spinnerTextStyle: {
+        color: '#F78F43'
+    },
 
 })
 

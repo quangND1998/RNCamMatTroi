@@ -73,6 +73,64 @@ const cartReducer = (state = initialState, action) => {
                 ...state
 
             }
+        case 'changeQuantity':
+
+            var index = state.cart.items.findIndex(e => e.id === action.payload.product.id)
+            if (index !== -1) {
+                state.cart.items[index].quantity = action.payload.quantity
+            } else {
+                state.cart.items.push({
+                    id: action.payload.product.id,
+                    price: action.payload.product.price,
+                    name: action.payload.product.name,
+                    quantity: action.payload.quantity
+                })
+            }
+            setCart(state.cart);
+            return {
+                ...state
+            }
+        case 'removeItemOnCart':
+            var index = state.cart.items.findIndex(e => e.id === action.payload.id)
+            state.cart.items.splice(index, 1)
+
+            setCart(state.cart);
+            return {
+                ...state
+            }
+        case 'getVouchers':
+            state.vouchers = action.payload
+            return {
+                ...state
+            }
+        case 'addVoucher':
+            state.voucher = action.payload
+            return {
+                ...state
+            }
+        case 'saveOrderValidate':
+            state.errors = action.payload
+            return {
+                ...state
+            }
+        case 'saveOrderErrorVoucher':
+            state.voucher = null
+            return {
+                ...state
+            }
+        case 'saveOrderSuccess':
+            state.errors = null
+            state.voucher = null
+            return {
+                ...state
+            }
+        case 'deleteCart':
+
+            state.cart.items = [];
+            setCart(state.cart)
+            return {
+                ...state
+            }
         default:
             return state;
     }
