@@ -7,6 +7,10 @@ import { EmojiHappy } from 'iconsax-react-native';
 import { logoutAction } from '../../store/actions/auth';
 import { getToken } from '../../common/asynStorage';
 import { useLogin } from '../../context/LoginProvider';
+
+// import { useNavigation } from '@react-navigation/native';
+// import Icon from 'react-native-vector-icons/FontAwesome';
+
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 const AddScreen = ({ navigation, route }) => {
     const dispatch = useDispatch();
@@ -48,10 +52,11 @@ const AddScreen = ({ navigation, route }) => {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <TouchableOpacity  >
-                <Text onPress={handlerLogout}>Add</Text>
+                <Text onPress={handlerLogout}>add</Text>
             </TouchableOpacity>
 
         </View>
+        
     );
 }
 

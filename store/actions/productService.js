@@ -11,3 +11,15 @@ export const getProductDetail = (product_id) => (dispatch) => {
 
     });
 };
+
+export const getListProductService = () => (dispatch) => {
+
+    return ApiService.query(`api/v1/product_service`).then(response => {
+        dispatch({
+            type: 'getListProductService',
+            payload: response.data.data,
+        })
+    }).catch(error => {
+
+    });
+};

@@ -7,7 +7,7 @@ const initialState = {
 const loginReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'GET_USER_TOKEN':
-            console.log('GET_USER_TOKEN', action.payload.user);
+            // console.log('GET_USER_TOKEN', action.payload.user);
             return {
                 ...state,
                 user: action.payload.user,
@@ -20,7 +20,7 @@ const loginReducer = (state = initialState, action) => {
                 ...state
             }
         case 'LOGIN_SUCCESS':
-            console.log('LOGIN_SUCCESS', action.payload.token);
+            // console.log('LOGIN_SUCCESS', action.payload.token);
 
             return {
                 ...state,

@@ -39,11 +39,7 @@ const MainNavigator = () => {
                     animationTypeForReplace: 'push',
                 }}
             />
-            {/* <Stack.Screen
-                name="New"
-                component={NewsNavigator}
-                options={{ headerShown: false }}
-            /> */}
+
             <Stack.Screen name="newDetail" options={{ headerShown: false }} component={FarmDetail} />
             <Stack.Screen name="Scan" options={{ headerShown: false }} component={CodeScannerPage} />
             <Stack.Screen name="CodeScan" options={{ headerShown: false }} component={CodeScan} />

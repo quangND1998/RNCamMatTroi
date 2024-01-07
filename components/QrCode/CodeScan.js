@@ -8,9 +8,10 @@ import { PressableOpacity } from 'react-native-pressable-opacity'
 import { StatusBarBlurBackground } from '../../views/StatusBarBlurBackgroundImpl'
 import * as RNImagePicker from 'expo-image-picker'
 import { BarCodeScanner } from 'expo-barcode-scanner'
+import ApiService from '../../common/apiService';
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 const CodeScan = ({ navigation, route }) => {
-  
+    
     function handleBackButtonClick() {
         navigation.goBack();
     }
@@ -107,16 +108,17 @@ const CodeScan = ({ navigation, route }) => {
 
                         <Box className="w-full flex justify-between">
                             <Box className="w-1/2 item">
-                                <Box className="w-[25px] h-[25px] button_radious  rounded-full" expand="block" >
                                 <PressableOpacity onPress={decode} >
-                                    <Image
-                                        size="32"
-                                        color="#ffffff"
-                                        variant="TwoTone"
-                                    />
-                                           </PressableOpacity>
-                                </Box>
-                                <Text>Chọn ảnh QR </Text>
+                                    <Box className="w-[25px] h-[25px] button_radious  rounded-full" expand="block" >
+
+                                        <Image
+                                            size="32"
+                                            color="#ffffff"
+                                            variant="TwoTone"
+                                        />
+                                    </Box>
+                                    <Text style={styles.innerText} className="text-[#AEAEAE]" >Chọn ảnh QR </Text>
+                                </PressableOpacity>
                             </Box>
                             <Box className="w-1/2 " style={styles.item}>
                                 <Box className="w-[25px] h-[25px] button_radious  rounded-full" expand="block" >
