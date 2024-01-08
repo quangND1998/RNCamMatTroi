@@ -13,13 +13,40 @@ import PackageBenefits from '../components/Package/PackageBenefits';
 import ScanExpo from '../components/QrCode/ScanExpo';
 import { HeaderBackButton } from '@react-navigation/elements';
 import CartConfirmation from '../components/Cart/CartConfirmation';
+import LogoLogin from '../components/Login/LogoLogin';
+import LoginOtp from '../components/Login/LoginOtp';
+import { Center } from 'native-base';
+import { getHeaderTitle } from "@react-navigation/elements";
 const Stack = createNativeStackNavigator();
 const StackNavigator = () => {
     return (
         <Stack.Navigator screenOptions={{
-            headerShown: false
+            headerShown: false,
+            headerTitleAlign: 'center',
+
         }}>
-            <Stack.Screen initialRouteName="Login" name="Login" component={Login} />
+            <Stack.Screen initialRouteName="LogoLogin" name="LogoLogin" component={LogoLogin} />
+            <Stack.Screen name="Login" options={{
+                headerShown: true, title: 'Đăng nhập', headerTitleStyle: {
+                    fontWeight: 'bold',
+                    color: '#F78F43',
+
+
+                },
+                headerTitleAlign: 'center'
+            }} component={Login} />
+            <Stack.Screen name="LoginOtp" options={{
+                headerShown: true, title: 'Đăng nhập OTP',
+
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                    color: '#F78F43',
+
+
+                },
+                headerTitleAlign: 'center',
+
+            }} component={LoginOtp} />
         </Stack.Navigator>
     );
 }
@@ -31,13 +58,19 @@ const MainNavigator = () => {
     const showPermissionsPage = cameraPermission !== 'granted' || microphonePermission === 'not-determined'
 
     return isLoggedIn ?
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{
+            headerStyle: {
+                alignContent: 'center',
+            }
+        }}
+        >
             <Stack.Screen
                 name="Root"
                 component={BottomNavigator}
                 options={{
                     headerShown: false,
                     animationTypeForReplace: 'push',
+                    alignContent: 'center',
                 }}
             />
 

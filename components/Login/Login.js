@@ -10,6 +10,7 @@ import { useLogin } from '../../context/LoginProvider';
 import Spinner from 'react-native-loading-spinner-overlay';
 import { Eye, EyeSlash, VideoSlash } from 'iconsax-react-native';
 import Toast from 'react-native-toast-message';
+import { PressableOpacity } from 'react-native-pressable-opacity';
 // create a component
 const Login = ({ navigation }) => {
     const { setIsLoggedIn, profile } = useLogin();
@@ -99,7 +100,12 @@ const Login = ({ navigation }) => {
                         <Text className="text-[#F78F43] ">{show}</Text>
                     </Box>
                 </FormControl>
-
+                <Flex direction='row' className=" justify-end mt-3">
+                    <PressableOpacity onPress={() => navigation.navigate('LoginOtp')}>
+                        <Text className="text-[#F78F43] ">Đăng nhập bằng OTP</Text>
+                    </PressableOpacity>
+                    {/* <router-link to='/otp-phone' class="text-[#F78F43]  ">Đăng nhập bằng OTP</router-link> */}
+                </Flex>
 
 
                 <Button className="w-full mt-6 text-white bg-[#F78F43] focus:text-[#F78F43] rounded-xl" size='md' text="submit" onPress={submitHandler}>Login</Button>
