@@ -146,11 +146,10 @@ const ProductHome = ({ navigation, route }) => {
                     </Text> */}
                 </Box>
 
-
-
             </ScrollView >
-            {total > 0 ? <PressableOpacity onPress={() => navigation.navigate('CartConfirmation')}  ><Box
-                className="fixed  w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 px-4 py-4 text-white bg-[#F78F43] rounded-xl " style={styles.btn_button}>
+
+            {total > 0 ? <PressableOpacity className="bg-white"  ><Box onPress={() => navigation.navigate('CartConfirmation')}
+                className="fixed bottom-0  w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 px-4 py-4 text-white bg-[#F78F43] rounded-xl " style={styles.btn_button}>
                 <Box className="w-full flex flex-row  justify-between" >
                     <Text className="mr-0 text-white ">Giỏ hàng {total} sản phẩm</Text>
                     <Text className=" text-white "> {formatPrice(totalPrice)}đ</Text>
@@ -158,6 +157,7 @@ const ProductHome = ({ navigation, route }) => {
                 </Box>
             </Box></PressableOpacity> : null
             }
+
         </SafeAreaView >
     );
 }

@@ -34,9 +34,10 @@ axios.interceptors.response.use((response) => {
 
     // return Promise.reject(error)
     if (error.response) {
-
+        console.log(error.response.status)
         if (error.response.status == 401) {
             destroyToken();
+
         }
 
         return Promise.reject(error)

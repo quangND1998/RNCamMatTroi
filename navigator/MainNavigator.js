@@ -17,6 +17,7 @@ import LogoLogin from '../components/Login/LogoLogin';
 import LoginOtp from '../components/Login/LoginOtp';
 import { Center } from 'native-base';
 import { getHeaderTitle } from "@react-navigation/elements";
+import OTP from '../components/Login/Otp';
 const Stack = createNativeStackNavigator();
 const StackNavigator = () => {
     return (
@@ -47,6 +48,19 @@ const StackNavigator = () => {
                 headerTitleAlign: 'center',
 
             }} component={LoginOtp} />
+
+            <Stack.Screen name="OTP" options={{
+                headerShown: true, title: '',
+
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                    color: '#F78F43',
+
+
+                },
+                headerTitleAlign: 'center',
+
+            }} component={OTP} />
         </Stack.Navigator>
     );
 }

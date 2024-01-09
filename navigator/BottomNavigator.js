@@ -26,11 +26,10 @@ const BottomNavigator = () => {
                     borderTopRightRadius: 24,
                     borderLeftWidth: 0.2,
                     borderRightWidth: 0.2,
-                    position: 'absolute',
                     overflow: 'hidden',
                     height: 68,
                     bordercolor: 'transparent',
-                    overflow: 'hidden',
+
                 },
                 headerTitleStyle: {
                     fontWeight: 'bold',
@@ -40,7 +39,7 @@ const BottomNavigator = () => {
 
             }}
         >
-            {/* <Tab.Screen
+            <Tab.Screen
                 name="Home"
                 component={HomeScreen}
                 options={{
@@ -50,7 +49,7 @@ const BottomNavigator = () => {
                         <Home color="#F78F43" variant="Outline" size={25} />
                     ),
                 }}
-            /> */}
+            />
 
             <Tab.Screen
                 name="Order"

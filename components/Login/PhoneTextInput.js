@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { TextInput } from 'react-native'
-
+import { Box, FormControl } from 'native-base'
 function PhoneTextInput({
     placeholder,
     autoComplete,
@@ -11,22 +11,23 @@ function PhoneTextInput({
 }, ref) {
     // Instead of `onChangeText` it could use `onChange` and get `value` from `nativeEvent.text`.
     const onChangeText = useCallback((value) => {
-       
-
         onChange({
             preventDefault() { this.defaultPrevented = true },
             target: { value }
         })
     }, [onChange])
     return (
-        <TextInput
-            ref={ref}
-            placeholder={placeholder}
-            autoFocus={autoFocus}
-            autoCompleteType={autoComplete}
-            keyboardType="phone-pad"
-            onChangeText={onChangeText}
-            value={value} />
+        <Box className="my-3 relative flex pr-10">
+            <TextInput
+                className="bg-gray-50 border  border-[#F78F43] text-gray-900 text-sm rounded-lg px-4"
+                ref={ref}
+                placeholder={placeholder}
+                autoFocus={autoFocus}
+                autoCompleteType={autoComplete}
+                keyboardType="phone-pad"
+                onChangeText={onChangeText}
+                value={value} />
+        </Box>
     )
 }
 

@@ -2,7 +2,12 @@ const initialState = {
     user: null,
     token: null,
     isLoggedIn: false,
-    isLoading: false
+    isLoading: false,
+    phone_number: null,
+    otp_flash: null,
+    isOpen: false,
+    isError: false,
+    errors: null,
 };
 const loginReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -49,6 +54,27 @@ const loginReducer = (state = initialState, action) => {
                 token: action.token,
                 isLoggedIn: action.token ? true : false
             };
+        case 'loginOTP':
+            state.phone_number = action.payload
+            return {
+                ...state
+            }
+        case 'loginOTPError':
+            state.otp_flash = action.payload
+            return {
+                ...state
+            }
+        case 'changeIsError':
+            state.isError = action.payload
+            return {
+                ...state
+            }
+        case 'clearOtpError':
+            state.otp_flash = null
+            state.errors = null
+            return {
+                ...state
+            }
         default:
             return state;
     }

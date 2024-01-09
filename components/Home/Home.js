@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { LogBox } from 'react-native';
 import { StyleSheet, TouchableOpacity, Linking, Keyboard, View, ScrollView, RefreshControl, ImageBackground } from 'react-native';
-import { Center, Container, Heading, Button, Text, Box, Stack, Input, SearchBar, Icon, Spacer, ZStack, Image, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
+import { Center, Container, Heading, Button, Text, Box, Flex, Stack, Input, SearchBar, Icon, Spacer, ZStack, Image, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
 import { useDispatch, useSelector } from 'react-redux'
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 import Payoo from '../../payoo';
@@ -45,11 +45,24 @@ const Home = ({ navigation, route }) => {
                 refreshControl={
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                 }>
-                <Box className='relative'>
-                    <Image source={require('../../assets/images/banner.png')} className="m-auto h-24 w-full object-cover" alt='banner'></Image>
+                <Box className='h-28 fixed shadow bg-white'>
+                    {/* <Image source={require('../../assets/images/banner.png')} className="m-auto h-24 w-full object-cover" alt='banner'></Image> */}
                     <Box className="absolute left-0 bottom-5 w-full">
-                        <Box className="flex flex-row justify-between">
-                            <Text className="font-bold text-xl text-white">Xin chào {user?.name}</Text>
+                        <Flex direction='row' className="justify-between">
+                            <Flex direction='row' className="mt-4">
+                                <Avatar bg="green.500" source={{
+                                    uri: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                                }}>
+                                </Avatar>
+                                <Flex>
+                                    <Text className="font-bold text-xl text-gray-800">Xin chào {user?.name}</Text>
+                                    <Text className="text-gray-800 text-sm">CMT:</Text>
+                                </Flex>
+
+                            </Flex>
+
+
+
                             <Box className="flex flex-row">
                                 <PressableOpacity onPress={() => {
                                     navigation.navigate('CodeScan');
@@ -60,8 +73,8 @@ const Home = ({ navigation, route }) => {
 
                                 <Image source={require('../../assets/icon/icon_bell.png')} className="ml-5" alt="icon_bell"></Image>
                             </Box>
-                        </Box>
-                        <Text className="text-white text-sm">CMT:</Text>
+                        </Flex>
+
                     </Box>
                 </Box>
                 <Box className="p-2 bg-white w-full flex flex-row flex-wrap" >

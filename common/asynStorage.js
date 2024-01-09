@@ -69,3 +69,26 @@ export const getCart = async() => {
 export const destroyCart = async() => {
     return await AsyncStorage.removeItem('@cart')
 }
+
+
+export const savePhone = async(value) => {
+    try {
+        const jsonValue = JSON.stringify(value)
+        console.log('phone', jsonValue);
+        await AsyncStorage.setItem('@phone', jsonValue)
+    } catch (e) {
+        // error reading value
+    }
+}
+export const getPhone = async() => {
+    try {
+        const jsonValue = await AsyncStorage.getItem('@phone')
+            // console.log(JSON.parse(jsonValue))
+        return jsonValue != null ? JSON.parse(jsonValue) : null;
+    } catch (e) {
+        // error reading value
+    }
+}
+export const destroyPhone = async() => {
+    return await AsyncStorage.removeItem('@phone')
+}
