@@ -27,6 +27,7 @@ const BottomNavigator = () => {
                     borderLeftWidth: 0.2,
                     borderRightWidth: 0.2,
                     overflow: 'hidden',
+                    position: 'absolute',
                     height: 68,
                     bordercolor: 'transparent',
 
@@ -36,20 +37,20 @@ const BottomNavigator = () => {
                     color: '#F78F43',
                 },
                 headerTitleAlign: 'center',
+                tabBarLabelStyle: {
+                    margin: 0,
+                    padding: 0,
+                    paddingBottom: 5,
+
+                },
+                tabBarItemStyle: {
+                    padding: 0,
+                    paddingTop: 8,
+                }
 
             }}
         >
-            <Tab.Screen
-                name="Home"
-                component={HomeScreen}
-                options={{
-                    headerShown: false,
-                    tabBarLabel: 'Home',
-                    tabBarIcon: ({ color, size }) => (
-                        <Home color="#F78F43" variant="Outline" size={25} />
-                    ),
-                }}
-            />
+
 
             <Tab.Screen
                 name="Order"
@@ -59,7 +60,7 @@ const BottomNavigator = () => {
                     title: 'Đơn hàng',
                     tabBarIcon: ({ color, size }) => (
                         // <DocumentText color="#F78F43" variant="Outline" size={25} />
-                        <Image source={require('../assets/icon/fi-rr-box.png')} className="w-6 h-6 " alt='box' ></Image>
+                        <Image source={require('../assets/icon/fi-rr-box.png')} className="w-8 h-8 " alt='box' ></Image>
                     ),
 
                 }}
@@ -71,14 +72,26 @@ const BottomNavigator = () => {
                 component={Payment}
                 options={{
                     headerShown: false,
+
                     tabBarLabel: 'Thăm vườn',
                     tabBarIcon: ({ color, size }) => (
                         // <Card color="#F78F43" variant="Outline" size={25} />
-                        <Image source={require('../assets/icon/fi-rr-calendar.png')} className="w-6 h-6 " alt='calendar' ></Image>
+                        <Image source={require('../assets/icon/fi-rr-calendar.png')} className="w-8 h-8 " alt='calendar' ></Image>
                     ),
                 }}
             />
-
+            <Tab.Screen
+                name="Home"
+                component={HomeScreen}
+                options={{
+                    headerShown: false,
+                    tabBarLabel: '',
+                    tabBarIcon: ({ color, size }) => (
+                        <Image source={require('../assets/icon/icon_orange.png')} className="w-12 h-12 " alt='box' ></Image>
+                    ),
+                    tabBarLabelStyle: { marginBottom: -16 },
+                }}
+            />
             <Tab.Screen
                 name="User"
                 component={UserScreen}
