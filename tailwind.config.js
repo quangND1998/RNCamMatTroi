@@ -3,7 +3,10 @@ const nativewind = require("nativewind/tailwind/css")
 module.exports = {
     content: ["./App.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}", "./navigator/**/*.{js,ts,jsx,tsx}", ],
     theme: {
+        fontFamily: {
+            roboto: ['Roboto', 'sans-serif'],
+        },
         extend: {},
     },
-    plugins: [nativewind],
+    plugins: [],
 }

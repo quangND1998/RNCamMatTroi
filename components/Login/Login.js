@@ -1,7 +1,7 @@
 //import liraries
 import React, { Component, useState } from 'react';
 import { View, StyleSheet, ToastAndroid, Keyboard, TextInput, KeyboardAvoidingView } from 'react-native';
-import { Center, Container, Heading, Button, Text, Box, Stack, Icon, ZStack, FormControl, Image, Link, Input, HStack, VStack, Pressable, useToast, AspectRatio, Flex } from 'native-base';
+import { Center, Container, Heading, Button, Text, Box, Stack, Icon, ZStack, FormControl, Image, Link, Input, HStack, VStack, Pressable, useToast, AspectRatio, Flex } from 'native-base'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginAction, logoutAction } from '../../store/actions/auth';
 import { NavigationContainer, DrawerActions } from '@react-navigation/native';
@@ -10,6 +10,7 @@ import { useLogin } from '../../context/LoginProvider';
 import Spinner from 'react-native-loading-spinner-overlay';
 import { Eye, EyeSlash, VideoSlash } from 'iconsax-react-native';
 import Toast from 'react-native-toast-message';
+import { PressableOpacity } from 'react-native-pressable-opacity';
 // create a component
 const Login = ({ navigation }) => {
     const { setIsLoggedIn, profile } = useLogin();
@@ -79,7 +80,7 @@ const Login = ({ navigation }) => {
 
             <Box className=" mt-[60px] absolute top-0 left-0 w-full h-full px-4 py-4 ">
                 <Box className="mb-5 pb-5"  >
-                    <Image source={require('../../assets/images/logo2.png')} className="m-auto h-[35px] w-[251px]" alt="" />
+                    <Image source={require('../../assets/images/logo2.png')} className="m-auto h-[35px] w-[251px]" alt="logo2" />
                 </Box>
 
                 <TextInput onChangeText={changeCode} className="bg-gray-50 border border-[#F78F43] text-gray-900 text-sm rounded-lg p-2.5" placeholder="Mã HĐ/SĐT" />
@@ -99,7 +100,12 @@ const Login = ({ navigation }) => {
                         <Text className="text-[#F78F43] ">{show}</Text>
                     </Box>
                 </FormControl>
-
+                <Flex direction='row' className=" justify-end mt-3">
+                    <PressableOpacity onPress={() => navigation.navigate('LoginOtp')}>
+                        <Text className="text-[#F78F43] ">Đăng nhập bằng OTP</Text>
+                    </PressableOpacity>
+                    {/* <router-link to='/otp-phone' class="text-[#F78F43]  ">Đăng nhập bằng OTP</router-link> */}
+                </Flex>
 
 
                 <Button className="w-full mt-6 text-white bg-[#F78F43] focus:text-[#F78F43] rounded-xl" size='md' text="submit" onPress={submitHandler}>Login</Button>

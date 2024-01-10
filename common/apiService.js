@@ -25,7 +25,7 @@ axios.interceptors.request.use(async(request) => {
 });
 
 axios.interceptors.response.use((response) => {
-    console.log(response)
+    // console.log(response)
     if (response.status == 200) {
 
     }
@@ -34,9 +34,10 @@ axios.interceptors.response.use((response) => {
 
     // return Promise.reject(error)
     if (error.response) {
-
+        console.log(error.response.status)
         if (error.response.status == 401) {
             destroyToken();
+
         }
 
         return Promise.reject(error)
@@ -55,7 +56,11 @@ const ApiService = {
         ] = `application/json`;
 
     },
-
+    queryData(resource, params) {
+        // console.log(jwtToken.getToken())
+        // console.log(params)
+        return axios.get(API_URL + "/" + resource, { params })
+    },
     query(resource) {
         return axios.get(API_URL + "/" + resource)
     },

@@ -19,3 +19,13 @@ export const getActivity = () => (dispatch) => {
 
     });
 };
+export const getNewDetail = (new_id) => (dispatch) => {
+    return ApiService.query(`api/landingpage/news/${new_id}/detail`).then(response => {
+        dispatch({
+            type: 'getNewDetail',
+            payload: response.data.data,
+        })
+    }).catch(error => {
+
+    });
+};

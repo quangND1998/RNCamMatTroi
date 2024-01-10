@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { LogBox } from 'react-native';
-import { StyleSheet, TouchableOpacity, Linking, Keyboard, View, ScrollView, RefreshControl } from 'react-native';
-import { Center, Container, Heading, Button, Text, Box, Stack, Input, SearchBar, Icon, Spacer, ZStack, Image, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
+import { StyleSheet, TouchableOpacity, Linking, Keyboard, View, ScrollView, RefreshControl, ImageBackground } from 'react-native';
+import { Center, Container, Heading, Button, Text, Box, Flex, Stack, Input, SearchBar, Icon, Spacer, ZStack, Image, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
 import { useDispatch, useSelector } from 'react-redux'
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 import Payoo from '../../payoo';
@@ -10,8 +10,9 @@ import { getNews } from '../../store/actions/new';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import NewSwiper from '../News/NewSwiper';
 import NewActivity from '../News/NewActivity';
+import { PressableOpacity } from 'react-native-pressable-opacity'
 const merchantId = "11931"
-const HomeScreen = ({ navigation, route }) => {
+const Home = ({ navigation, route }) => {
     const envDevelopment = 0;
     const envProduction = 1;
     const langVietNam = 0;
@@ -19,6 +20,7 @@ const HomeScreen = ({ navigation, route }) => {
     const cashAmount = 2020000;
     const dispatch = useDispatch();
     const news = useSelector(state => state.new.news);
+    const user = useSelector(state => state.auth.user);
     const [refreshing, setRefreshing] = React.useState(false);
     useEffect(() => {
         fetchNews();
@@ -34,68 +36,7 @@ const HomeScreen = ({ navigation, route }) => {
             setRefreshing(false);
         }, 2000);
     }, []);
-    const _callPayment = () => {
-        PaymentService.payment(31).then(res => {
-            console.log(res.data.OrderInfo);
 
-            var orderInfo = res.data.OrderInfo;
-            var checkSum = res.data.CheckSum;
-
-            let sdkConfig = {};
-            sdkConfig.MerchantId = "11931";
-            sdkConfig.MerchantShareKey = "OTE5YTgyYWU5MWYxMTJkM2RkMTlhOGRhZTZiYWQ2Mjc=";
-
-            sdkConfig.Environment = envDevelopment;
-            sdkConfig.Language = langVietNam;
-
-            sdkConfig.PayooCashAmount = cashAmount;
-            // sdkConfig.SupportedMethods = 2;
-            // sdkConfig.BankCode = "ABB";
-            sdkConfig.AppCode = "Payoo";
-
-            // sdkConfig.CustomerEmail = "email@email.com";
-            // sdkConfig.CustomerPhone = "0911223344";
-
-            Payoo.pay(sdkConfig, orderInfo, checkSum, (data) => console.log('PayooResponse', data));
-        }).catch(error => {
-            console.log('error', error)
-        });
-        // var myHeaders = new Headers();
-        // myHeaders.append("Content-Type", "application/json");
-        // var raw = JSON.stringify({ "CyberCash": cashAmount, "ShopID": merchantId, "Token": "", "UserID": "" });
-        // var requestOptions = {
-        //     method: 'POST',
-        //     headers: myHeaders,
-        //     body: raw,
-        //     redirect: 'follow'
-        // };
-        // fetch("https://sdk-sbb.payoo.vn/api/v2/Order", requestOptions)
-        //     .then(response => response.text())
-        //     .then(result => {
-
-        //         var jsonResult = JSON.parse(result);
-        //         var orderInfo = jsonResult.OrderInfo;
-        //         var checkSum = jsonResult.CheckSum;
-
-        //         let sdkConfig = {};
-        //         sdkConfig.MerchantId = "11931";
-        //         sdkConfig.MerchantShareKey = "OTE5YTgyYWU5MWYxMTJkM2RkMTlhOGRhZTZiYWQ2Mjc=";
-
-        //         sdkConfig.Environment = envDevelopment;
-        //         sdkConfig.Language = langVietNam;
-
-        //         sdkConfig.PayooCashAmount = cashAmount;
-        //         // sdkConfig.SupportedMethods = 2;
-        //         // sdkConfig.BankCode = "ABB";
-        //         sdkConfig.AppCode = "Payoo";
-
-        //         // sdkConfig.CustomerEmail = "email@email.com";
-        //         // sdkConfig.CustomerPhone = "0911223344";
-
-        //         Payoo.pay(sdkConfig, orderInfo, checkSum, (data) => console.log('PayooResponse', data));
-        //     })
-        //     .catch(error => console.log('error', error));
-    }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -104,87 +45,36 @@ const HomeScreen = ({ navigation, route }) => {
                 refreshControl={
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                 }>
-                <Box className='relative'>
-                    <Image source={require('../../assets/images/banner.png')} className="m-auto h-36 w-full object-cover"></Image>
-                </Box>
-                <TouchableOpacity onPress={_callPayment} style={{ padding: 20, borderColor: "gray", borderWidth: 1 }}>
-                    <Text>Start PayooPaymentSDK</Text>
-                </TouchableOpacity>
-                <Box className='relative'>
-                    <Image source={require('../../assets/images/banner.png')} className="m-auto h-24 w-full object-cover"></Image>
-                    <Box className="absolute left-0 bottom-5 w-full">
-                        <Box className="flex flex-row justify-between">
-                            <Text className="font-bold text-xl text-white">Xin chào Nguyen Thi Nga</Text>
+                <Box className=' fixed shadow bg-white rounded-b-2xl'>
+                    {/* <Image source={require('../../assets/images/banner.png')} className="m-auto h-24 w-full object-cover" alt='banner'></Image> */}
+                    <Box className="px-2 py-6 w-full  ">
+                        <Flex direction='row' className="flex items-center justify-between">
+                            <Flex direction='row' className="">
+                                <Avatar bg="green.500" source={{
+                                    uri: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                                }}>
+                                </Avatar>
+                                <Flex className="ml-2">
+                                    <Text className="font-bold text-xl text-gray-800">Xin chào {user?.name}</Text>
+                                    <Text className="text-gray-800 text-sm">CMT:</Text>
+                                </Flex>
+
+                            </Flex>
+
+
+
                             <Box className="flex flex-row">
-                                <Image source={require('../../assets/icon/scan.png')} ></Image>
-                                <Image source={require('../../assets/icon/icon_bell.png')} className="ml-5"></Image>
-                            </Box>
-                        </Box>
-                        <Text className="text-white text-sm">CMT:</Text>
-                    </Box>
-                </Box>
-                <Box className="p-2 bg-white w-full flex flex-row flex-wrap">
-                    <Box className="w-1/2  py-1 px-2  hover:rounded-lg hover:shadow-lg hover:shadow-[#2f302f31]">
-                        <Box to="/user" className="relative"  >
-                            <Box className="relative">
-                                <Image source={require('../../assets/images/banner_item.png')}  className="m-auto w-full rounded-lg" alt=""></Image>
-                                <Box className="absolute mx-auto w-full ">
-                                    <Box className="p-[16px]">
-                                        <Image source={require('../../assets/images/product.png')}  className=" m-auto object-contain" alt=""></Image>
-                                    </Box>
-                                    <Text className="text-center mt-3">Sản phẩm</Text>
-                                </Box>
-                            </Box>
-                        </Box>
-                    </Box>
+                                <PressableOpacity onPress={() => {
+                                    navigation.navigate('CodeScan');
 
-                    <Box className="w-1/2  py-1 px-2  hover:rounded-lg hover:shadow-lg hover:shadow-[#2f302f31]">
-                        <Box to="/user" className="relative"  >
-                            <Box className="relative">
-                                <Image source={require('../../assets/images/banner_item.png')}  className="m-auto w-full rounded-lg" alt=""></Image>
-                                <Box className="absolute mx-auto w-full ">
-                                    <Box className="p-[16px]">
-                                        <Image source={require('../../assets/images/icon_dv.png')}  className=" m-auto object-contain" alt=""></Image>
-                                    </Box>
-                                    <Text className="text-center mt-3">Dịch vụ</Text>
-                                </Box>
-                            </Box>
-                        </Box>
-                    </Box>
+                                }} >
+                                    <Image source={require('../../assets/icon/scan.png')} alt="scan"  ></Image>
+                                </PressableOpacity>
 
-                    <Box className="w-1/2  py-1 px-2 hover:rounded-lg hover:shadow-lg hover:shadow-[#2f302f31]">
-                        <Box to="/order" className="relative">
-                            <Box className="relative">
-                                <Image  source={require('../../assets/images/banner_item.png')} className="m-auto w-full rounded-lg" alt=""></Image>
-                                <Box className="absolute mx-auto w-full ">
-                                    <Box className="p-[16px]">
-                                        <Image source={require('../../assets/images/icon_dathang.png')}  className=" m-auto object-contain" alt=""></Image>
-                                    </Box>
-                                    <Text className="text-center mt-3">Đơn hàng</Text>
-                                </Box>
+                                <Image source={require('../../assets/icon/icon_bell.png')} className="ml-5" alt="icon_bell"></Image>
                             </Box>
-                        </Box>
-                    </Box>
-                    <Box className="w-1/2  py-1 px-2 hover:rounded-lg hover:shadow-lg hover:shadow-[#2f302f31]">
-                        <Box to="/farm" className="relative">
-                            <Box className="relative">
-                                <Image  source={require('../../assets/images/banner_item.png')} className="m-auto w-full rounded-lg" alt=""></Image>
-                                <Box className="absolute mx-auto w-full ">
-                                    <Box className="p-[10px]">
-                                        <Image source={require('../../assets/images/icon_trangtrai.png')}  className=" m-auto object-contain" alt=""></Image>
-                                    </Box>
-                                    <Text className="text-center mt-3">Trang trại</Text>
-                                </Box>
-                            </Box>
-                        </Box>
-                    </Box>
-                    <Box className="my-5 px-2">
-                        <Text className="font-bold text-xl">Tin tức chung</Text>
-                        <NewSwiper />
-                    </Box>
-                    <Box className="my-5 px-2">
-                        <Text className="font-bold text-xl">Hoạt động trang trại</Text>
-                        <NewActivity />
+                        </Flex>
+
                     </Box>
                 </Box>
             </ScrollView>
@@ -192,16 +82,24 @@ const HomeScreen = ({ navigation, route }) => {
     );
 }
 
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
     scrollView: {
-        flex: 1,
+
 
     },
+    image_bg: {
+        flex: 1,
+        justifyContent: 'center',
+    },
+    containt_service: {
+        margin: 20
+
+
+    }
 })
 
 
-export default HomeScreen;
+export default Home;
