@@ -28,7 +28,7 @@ const BottomNavigator = () => {
                     borderRightWidth: 0.2,
                     overflow: 'hidden',
                     position: 'absolute',
-                    height: 68,
+                    height: 78,
                     bordercolor: 'transparent',
 
                 },
@@ -40,12 +40,12 @@ const BottomNavigator = () => {
                 tabBarLabelStyle: {
                     margin: 0,
                     padding: 0,
-                    paddingBottom: 5,
+                    paddingBottom: 12,
 
                 },
                 tabBarItemStyle: {
                     padding: 0,
-                    paddingTop: 8,
+                    paddingTop: 12,
                 }
 
             }}
@@ -87,9 +87,9 @@ const BottomNavigator = () => {
                     headerShown: false,
                     tabBarLabel: '',
                     tabBarIcon: ({ color, size }) => (
-                        <Image source={require('../assets/icon/icon_orange.png')} className="w-12 h-12 " alt='box' ></Image>
+                        <Image source={require('../assets/icon/icon_orange.png')} className="w-14 h-14 " alt='box' ></Image>
                     ),
-                    tabBarLabelStyle: { marginBottom: -16 },
+                    tabBarLabelStyle: { marginBottom: -10 },
                 }}
             />
             <Tab.Screen

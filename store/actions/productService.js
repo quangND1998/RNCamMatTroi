@@ -24,3 +24,27 @@ export const getListProductService = () => (dispatch) => {
         console.log(error)
     });
 };
+export const getProductOwner = () => (dispatch) => {
+
+    return ApiService.query(`api/v1/customer/product_service`).then(response => {
+
+        dispatch({
+            type: 'getProductOwner',
+            payload: response.data.data,
+        })
+    }).catch(error => {
+        console.log(error)
+    });
+};
+export const getProductnotOwnersDetail = (product_id) => (dispatch) => {
+
+    return ApiService.query(`api/v1/customer/productService/${product_id}`).then(response => {
+
+        dispatch({
+            type: 'getProductnotOwnersDetail',
+            payload: response.data.data,
+        })
+    }).catch(error => {
+        console.log(error)
+    });
+};

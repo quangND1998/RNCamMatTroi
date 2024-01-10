@@ -6,10 +6,12 @@ import { useDispatch, useSelector } from 'react-redux'
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 import Payoo from '../../payoo';
 import { PaymentService } from '../../common/payment/paymentService';
-import { getNews } from '../../store/actions/new';
+import { getProductOwner } from '../../store/actions/productService';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import NewSwiper from '../News/NewSwiper';
 import NewActivity from '../News/NewActivity';
+import ProductItem from './ProductItem';
+import SlideBG from './SlideBG';
 import { PressableOpacity } from 'react-native-pressable-opacity'
 const merchantId = "11931"
 const Home = ({ navigation, route }) => {
@@ -19,22 +21,23 @@ const Home = ({ navigation, route }) => {
     const langEnglish = 1;
     const cashAmount = 2020000;
     const dispatch = useDispatch();
-    const news = useSelector(state => state.new.news);
+    const productOwner = useSelector(state => state.productService.productOwners);
     const user = useSelector(state => state.auth.user);
     const [refreshing, setRefreshing] = React.useState(false);
     useEffect(() => {
-        fetchNews();
+        fetchProductOwner();
     }, []);
-    const fetchNews = async () => {
-        dispatch(getNews())
+    const fetchProductOwner = async () => {
+        dispatch(getProductOwner())
     }
 
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
         setTimeout(() => {
-            fetchNews();
+            fetchProductOwner();
             setRefreshing(false);
         }, 2000);
+        console.log(productOwner);
     }, []);
 
 
@@ -45,23 +48,21 @@ const Home = ({ navigation, route }) => {
                 refreshControl={
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                 }>
-                <Box className=' fixed shadow bg-white rounded-b-2xl'>
+                <Box className='shadow bg-white rounded-b-[28px]'>
                     {/* <Image source={require('../../assets/images/banner.png')} className="m-auto h-24 w-full object-cover" alt='banner'></Image> */}
-                    <Box className="px-2 py-6 w-full  ">
+                    <Box className="px-4 py-6 w-full  ">
                         <Flex direction='row' className="flex items-center justify-between">
                             <Flex direction='row' className="">
                                 <Avatar bg="green.500" source={{
-                                    uri: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                                    uri: user?.profile_photo_url
                                 }}>
                                 </Avatar>
-                                <Flex className="ml-2">
-                                    <Text className="font-bold text-xl text-gray-800">Xin chào {user?.name}</Text>
-                                    <Text className="text-gray-800 text-sm">CMT:</Text>
+                                <Flex className="ml-4">
+                                    <Text className="font-bold text-xl text-gray-800">{user?.name} </Text>
+                                    <Text className="text-[#FF6100] text-sm">#{user?.cic_number}</Text>
                                 </Flex>
 
                             </Flex>
-
-
 
                             <Box className="flex flex-row">
                                 <PressableOpacity onPress={() => {
@@ -76,6 +77,18 @@ const Home = ({ navigation, route }) => {
                         </Flex>
 
                     </Box>
+                </Box>
+                <Box className="bg">
+                    <SlideBG></SlideBG>
+                </Box>
+                <Box className="absolute bottom-[30%]">
+                    <View >
+                        {productOwner ?
+                            <FlatList
+                                data={productOwner}
+                                renderItem={({ item }) => <ProductItem item={item}  />}
+                            /> : <View></View>}
+                    </View>
                 </Box>
             </ScrollView>
         </SafeAreaView>
@@ -96,8 +109,6 @@ const styles = StyleSheet.create({
     },
     containt_service: {
         margin: 20
-
-
     }
 })
 
