@@ -24,3 +24,16 @@ export const getListProductService = () => (dispatch) => {
         console.log(error)
     });
 };
+
+export const fetchProductOwners = () => (dispatch) => {
+    console.log('fetchProductOwners')
+    ApiService.query('api/v1/customer/product_service').then(res => {
+
+        dispatch({
+            type: 'fetchProductOwners',
+            payload: res.data.data
+        })
+    }).catch(err => {
+        console.log(err)
+    })
+}

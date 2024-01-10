@@ -1,3 +1,4 @@
+import { createSlice, createSelector } from "@reduxjs/toolkit";
 const initialState = {
     productOwners: null,
     productOwnersId: null,
@@ -26,9 +27,26 @@ const productServiceReducer = (state = initialState, action) => {
                 ...state,
                 productService: action.payload.product_service,
             }
+        case 'fetchProductOwners':
+            return {
+
+                ...state,
+                productOwners: action.payload.product_owner,
+                productnotOwners: action.payload.not_owner,
+            }
         default:
             return state;
     }
 };
 
+
+const selectProductOwners = state => state.productService.productOwners
+
+export const selectProductOwnersActive = createSelector(
+    [selectProductOwners], (productOwners) => {
+        if (productOwners) {
+            return productOwners.filter(product => product.state == 'active')
+        }
+        return null
+    })
 export default productServiceReducer;

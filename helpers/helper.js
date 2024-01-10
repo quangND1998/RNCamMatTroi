@@ -3,7 +3,11 @@ import { format } from 'date-fns';
 
 
 export const useHelper = () => {
-
+    const formatOnlyDate = (value) => {
+        if (value) {
+            return Moment(String(value)).format('DD/MM/YYYY')
+        }
+    }
 
     const formatDate = (value) => {
         if (value) {
@@ -13,6 +17,12 @@ export const useHelper = () => {
     const formatDateTime = (value) => {
         if (value) {
             return Moment(String(value)).format('LLLL');
+        }
+
+    }
+    const formatTime = (value) => {
+        if (value) {
+            return Moment(String(value)).format('HH:mm');
         }
 
     }
@@ -88,7 +98,9 @@ export const useHelper = () => {
         formatUpdatedAt,
         formatCurrency,
         bytesToHuman,
-        convertToText
+        convertToText,
+        formatTime,
+        formatOnlyDate
     }
 
 };

@@ -51,12 +51,12 @@ const Home = ({ navigation, route }) => {
                         <Flex direction='row' className="justify-between">
                             <Flex direction='row' className="mt-4">
                                 <Avatar bg="green.500" source={{
-                                    uri: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                                    uri: 'https://ui-avatars.com/api/?name=n&color=7F9CF5&background=EBF4FF'
                                 }}>
                                 </Avatar>
                                 <Flex>
-                                    <Text className="font-bold text-xl text-gray-800">Xin chào {user?.name}</Text>
-                                    <Text className="text-gray-800 text-sm">CMT:</Text>
+                                    <Text onPress={() => navigation.navigate('Schedule')} className="font-bold text-xl text-gray-800">Xin chào {user?.name}</Text>
+                                    <Text className="text-gray-800 text-sm">CMT:{user?.cic_number}</Text>
                                 </Flex>
 
                             </Flex>
@@ -77,76 +77,7 @@ const Home = ({ navigation, route }) => {
 
                     </Box>
                 </Box>
-                <Box className="p-2 bg-white w-full flex flex-row flex-wrap" >
 
-                    <Box className="w-1/2  py-1 px-2  hover:rounded-lg hover:shadow-lg hover:shadow-[#2f302f31]"  >
-                        <PressableOpacity onPress={() => {
-                            navigation.navigate('ProductHome');
-
-                        }} >
-                            <Box className="relative"  >
-                                <Box className="relative">
-                                    <Image source={require('../../assets/images/banner_item.png')} className="m-auto w-full rounded-lg" alt="banner_item"></Image>
-                                    <Box className="absolute mx-auto w-full ">
-                                        <Box className="p-[16px]">
-                                            <Image source={require('../../assets/images/product.png')} className=" m-auto object-contain" alt="product"></Image>
-                                        </Box>
-                                        <Text className="text-center mt-3">Sản phẩm</Text>
-                                    </Box>
-                                </Box>
-                            </Box>
-                        </PressableOpacity>
-                    </Box>
-
-                    <Box className="w-1/2  py-1 px-2  hover:rounded-lg hover:shadow-lg hover:shadow-[#2f302f31]">
-                        <Box to="/user" className="relative"  >
-                            <Box className="relative">
-                                <Image source={require('../../assets/images/banner_item.png')} className="m-auto w-full rounded-lg" alt="banner_item"></Image>
-                                <Box className="absolute mx-auto w-full ">
-                                    <Box className="p-[16px]">
-                                        <Image source={require('../../assets/images/icon_dv.png')} className=" m-auto object-contain" alt="icon_dv"></Image>
-                                    </Box>
-                                    <Text className="text-center mt-3">Dịch vụ</Text>
-                                </Box>
-                            </Box>
-                        </Box>
-                    </Box>
-
-                    <Box className="w-1/2  py-1 px-2 hover:rounded-lg hover:shadow-lg hover:shadow-[#2f302f31]">
-                        <Box to="/order" className="relative">
-                            <Box className="relative">
-                                <Image source={require('../../assets/images/banner_item.png')} className="m-auto w-full rounded-lg" alt="banner_item"></Image>
-                                <Box className="absolute mx-auto w-full ">
-                                    <Box className="p-[16px]">
-                                        <Image source={require('../../assets/images/icon_dathang.png')} className=" m-auto object-contain" alt="icon_dathang"></Image>
-                                    </Box>
-                                    <Text className="text-center mt-3">Đơn hàng</Text>
-                                </Box>
-                            </Box>
-                        </Box>
-                    </Box>
-                    <Box className="w-1/2  py-1 px-2 hover:rounded-lg hover:shadow-lg hover:shadow-[#2f302f31]">
-                        <Box to="/farm" className="relative">
-                            <Box className="relative">
-                                <Image source={require('../../assets/images/banner_item.png')} className="m-auto w-full rounded-lg" alt="banner_item"></Image>
-                                <Box className="absolute mx-auto w-full ">
-                                    <Box className="p-[10px]">
-                                        <Image source={require('../../assets/images/icon_trangtrai.png')} className=" m-auto object-contain" alt="icon_trangtrai"></Image>
-                                    </Box>
-                                    <Text className="text-center mt-3">Trang trại</Text>
-                                </Box>
-                            </Box>
-                        </Box>
-                    </Box>
-                    <Box className="my-5 px-2">
-                        <Text className="font-bold text-xl">Tin tức chung</Text>
-                        <NewSwiper navigation={navigation} />
-                    </Box>
-                    <Box className="my-5 px-2">
-                        <Text className="font-bold text-xl">Hoạt động trang trại</Text>
-                        <NewActivity navigation={navigation} />
-                    </Box>
-                </Box>
 
             </ScrollView>
         </SafeAreaView>

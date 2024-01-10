@@ -18,6 +18,7 @@ import LoginOtp from '../components/Login/LoginOtp';
 import { Center } from 'native-base';
 import { getHeaderTitle } from "@react-navigation/elements";
 import OTP from '../components/Login/Otp';
+import ScheduleTour from '../components/Schedule/ScheduleTour';
 const Stack = createNativeStackNavigator();
 const StackNavigator = () => {
     return (
@@ -61,6 +62,7 @@ const StackNavigator = () => {
                 headerTitleAlign: 'center',
 
             }} component={OTP} />
+
         </Stack.Navigator>
     );
 }
@@ -101,6 +103,7 @@ const MainNavigator = () => {
                     />
                 ), title: route.params.name
             })} component={PackageBenefits} />
+
         </Stack.Navigator> : <StackNavigator />;
 };
 export default MainNavigator;
