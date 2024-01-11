@@ -4,7 +4,7 @@ import { EmojiHappy, Home, User, More, DocumentText, Card } from 'iconsax-react-
 import HomeScreen from '../components/Home/HomeScreen';
 import OrderScreen from '../components/Order/Index';
 import UserScreen from '../components/User/Index';
-import AddScreen from '../components/Add/Index';
+import AddScreen from '../components/Add/AddScreen';
 import ScanExpo from '../components/QrCode/ScanExpo';
 import Payment from '../components/Payment/Payment';
 import { Button, Image } from 'native-base';
@@ -124,6 +124,7 @@ const BottomNavigator = () => {
                 options={{
                     headerShown: false,
                     tabBarLabel: 'Thêm',
+                    title: 'Dịch vụ khách hàng',
                     tabBarIcon: ({ color, size }) => (
                         <More color="#184E17" variant="Outline" size={24} />
                     ),

@@ -111,7 +111,7 @@ export default function ScanExpo({ navigation }) {
             if (status === 'granted') {
                 const result = await RNImagePicker.launchImageLibraryAsync({
                     options: {
-                        allowsMultipleSelection: false
+                        allowsMultipleSelection: true
                     }
                 })
                 // console.log('result', result.assets);
@@ -124,9 +124,9 @@ export default function ScanExpo({ navigation }) {
                         const pieces = results[0].data.split("/");
                         const barcodescheck = parseInt(pieces[pieces.length - 1]);
                         if (data.includes('tree')) {
-                           
+
                             ApiService.query(`api/v1/customer/checkProduct/${barcodescheck}`).then(res => {
-                              
+
                                 if (res.data?.success == true) {
                                     navigation.navigate('PackageBenefits', { name: `Quyền lợi ${res.data.data.name}`, product_id: barcodescheck, })
                                     // router.push({ name: 'productservice.benefits', params: { id: barcodescheck.value } })

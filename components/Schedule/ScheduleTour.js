@@ -129,6 +129,7 @@ const ScheduleTour = ({ navigation, route }) => {
             },
         ));
     }
+
     return (
 
         <SafeAreaView style={styles.container}>
@@ -285,8 +286,7 @@ const ScheduleTour = ({ navigation, route }) => {
                         <Button onPress={() => saveSchedule()} className="w-full  text-white bg-[#F78F43] rounded-xl btn_button"
                         >Xác nhận đặt chỗ</Button>
 
-                        <Button onPress={() => navigation.navigate('ScheduleSuccess')} className="w-full  text-white bg-[#F78F43] rounded-xl btn_button"
-                        >ScheduleSuccess</Button>
+
                     </Box >
                 </Box >
             </ScrollView>

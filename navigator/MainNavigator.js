@@ -11,22 +11,23 @@ import CodeScan from '../components/QrCode/CodeScan';
 import { Camera } from 'react-native-vision-camera'
 import PackageBenefits from '../components/Package/PackageBenefits';
 import ScanExpo from '../components/QrCode/ScanExpo';
-import { HeaderBackButton } from '@react-navigation/elements';
+import { HeaderBackButton, HeaderTitle } from '@react-navigation/elements';
 import CartConfirmation from '../components/Cart/CartConfirmation';
 import LogoLogin from '../components/Login/LogoLogin';
 import LoginOtp from '../components/Login/LoginOtp';
-import { Center } from 'native-base';
-import { getHeaderTitle } from "@react-navigation/elements";
+import { Box, Center, Flex, Text, View } from 'native-base';
+import { getHeaderTitle, HeaderBackground } from "@react-navigation/elements";
 import OTP from '../components/Login/Otp';
 import ScheduleTour from '../components/Schedule/ScheduleTour';
 import ScheduleSuccess from '../components/Schedule/ScheduleSuccess';
+import { StyleSheet } from 'react-native';
 const Stack = createNativeStackNavigator();
 const StackNavigator = () => {
     return (
         <Stack.Navigator screenOptions={{
             headerShown: false,
             headerTitleAlign: 'center',
-          
+
 
         }}>
             <Stack.Screen initialRouteName="LogoLogin" name="LogoLogin" component={LogoLogin} />
@@ -78,14 +79,6 @@ const MainNavigator = () => {
     return isLoggedIn ?
         <Stack.Navigator screenOptions={{
 
-            headerStyle: {
-                alignContent: 'center',
-                borderBottomLeftRadius: 24,
-                borderBottomRightRadius: 24,
-                borderLeftWidth: 0.1,
-                borderRightWidth: 0.1,
-                height: 68,
-            },
             headerTitleStyle: {
                 fontWeight: 'bold',
                 color: '#F78F43',
@@ -117,8 +110,31 @@ const MainNavigator = () => {
                     />
                 ), title: route.params.name
             })} component={PackageBenefits} />
-            <Stack.Screen name="ScheduleSuccess" component={ScheduleSuccess} />
+            <Stack.Screen name="ScheduleSuccess" options={({ navigation, route }) => ({
+                headerShown: false,
+            })} component={ScheduleSuccess} />
+
+            {/* <Stack.Screen name="ScheduleSuccess" options={({ navigation, route }) => ({
+                headerTransparent: true,
+                headerShown: false,
+                headerBackground: () => (
+                    <HeaderBackground style={styles.background}  >
+                    </HeaderBackground>
+                ),
+
+            })} component={ScheduleSuccess} /> */}
 
         </Stack.Navigator> : <StackNavigator />;
 };
 export default MainNavigator;
+const styles = StyleSheet.create({
+    background: {
+        borderBottomLeftRadius: 24,
+        borderBottomRightRadius: 24,
+        borderLeftWidth: 0.1,
+        borderRightWidth: 0.1,
+        height: 100,
+        paddingBottom: 0
+    }
+})
+
