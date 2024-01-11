@@ -1,14 +1,15 @@
 import ApiService from "../../common/apiService";
-export const getProductDetail = (product_id) => (dispatch) => {
+export const getProductDetail = (product_id, onSuccess = () => {}, onError = () => {}) => (dispatch) => {
 
     return ApiService.query(`api/v1/customer/productWithID/${product_id}`).then(response => {
-        console.log(response.data.data)
+
         dispatch({
             type: 'getProductDetail',
             payload: response.data.data,
         })
+        onSuccess(response.data.data)
     }).catch(error => {
-
+        onError()
     });
 };
 
@@ -24,6 +25,19 @@ export const getListProductService = () => (dispatch) => {
         console.log(error)
     });
 };
+
+export const fetchProductOwners = () => (dispatch) => {
+    console.log('fetchProductOwners')
+    ApiService.query('api/v1/customer/product_service').then(res => {
+
+        dispatch({
+            type: 'fetchProductOwners',
+            payload: res.data.data
+        })
+    }).catch(err => {
+        console.log(err)
+    })
+}
 export const getProductOwner = () => (dispatch) => {
 
     return ApiService.query(`api/v1/customer/product_service`).then(response => {

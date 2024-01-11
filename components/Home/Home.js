@@ -66,7 +66,7 @@ const Home = ({ navigation, route }) => {
 
                             <Box className="flex flex-row">
                                 <PressableOpacity onPress={() => {
-                                    navigation.navigate('CodeScan');
+                                    navigation.navigate('ScanExpo');
 
                                 }} >
                                     <Image source={require('../../assets/icon/scan.png')} alt="scan"  ></Image>
@@ -86,7 +86,7 @@ const Home = ({ navigation, route }) => {
                         {productOwner ?
                             <FlatList
                                 data={productOwner}
-                                renderItem={({ item }) => <ProductItem item={item}  />}
+                                renderItem={({ item }) => <ProductItem item={item} navigation={navigation} />}
                             /> : <View></View>}
                     </View>
                 </Box>

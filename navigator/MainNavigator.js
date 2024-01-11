@@ -19,12 +19,15 @@ import OrderDetail from '../components/Order/detail';
 import { Center } from 'native-base';
 import { getHeaderTitle } from "@react-navigation/elements";
 import OTP from '../components/Login/Otp';
+import ScheduleTour from '../components/Schedule/ScheduleTour';
+import ScheduleSuccess from '../components/Schedule/ScheduleSuccess';
 const Stack = createNativeStackNavigator();
 const StackNavigator = () => {
     return (
         <Stack.Navigator screenOptions={{
             headerShown: false,
             headerTitleAlign: 'center',
+          
 
         }}>
             <Stack.Screen initialRouteName="LogoLogin" name="LogoLogin" component={LogoLogin} />
@@ -62,6 +65,7 @@ const StackNavigator = () => {
                 headerTitleAlign: 'center',
 
             }} component={OTP} />
+
         </Stack.Navigator>
     );
 }
@@ -74,10 +78,12 @@ const MainNavigator = () => {
 
     return isLoggedIn ?
         <Stack.Navigator screenOptions={{
+
             headerStyle: {
+                // backgroundColor: '#F78F43',
                 alignContent: 'center',
-                borderBottomLeftRadius: 24,
-                borderBottomRightRadius: 24,
+                borderBottomLeftRadius: 300,
+                borderBottomRightRadius: 300,
                 borderLeftWidth: 0.1,
                 borderRightWidth: 0.1,
                 height: 68,
@@ -85,8 +91,10 @@ const MainNavigator = () => {
             headerTitleStyle: {
                 fontWeight: 'bold',
                 color: '#F78F43',
+                
             },
-            headerTitleAlign:'center'
+            headerTitleAlign: 'center',
+
         }}
         >
             <Stack.Screen
@@ -102,7 +110,7 @@ const MainNavigator = () => {
             <Stack.Screen name="newDetail" options={{ headerShown: false }} component={FarmDetail} />
             <Stack.Screen name="Scan" options={{ headerShown: false }} component={CodeScannerPage} />
             <Stack.Screen name="CodeScan" options={{ headerShown: false }} component={CodeScan} />
-            <Stack.Screen name="ScanExpo" options={{ title: 'Quét mã ' }} component={ScanExpo} />
+            <Stack.Screen name="ScanExpo" options={{ title: 'Scan ' }} component={ScanExpo} />
             <Stack.Screen name="CartConfirmation" options={{ title: 'Xác nhận đơn hàng' }} component={CartConfirmation} />
             <Stack.Screen name="PackageBenefits" options={({ navigation, route }) => ({
                 headerLeft: (props) => (
@@ -112,8 +120,10 @@ const MainNavigator = () => {
                     />
                 ), title: route.params.name
             })} component={PackageBenefits} />
-            <Stack.Screen name="OrderDetail" 
-            options={{ title: 'Mã đơn hàng' }} component={OrderDetail} />
+            {/* <Stack.Screen name="OrderDetail" 
+            options={{ title: 'Mã đơn hàng' }} component={OrderDetail} /> */}
+            <Stack.Screen name="ScheduleSuccess" component={ScheduleSuccess} />
+
         </Stack.Navigator> : <StackNavigator />;
 };
 export default MainNavigator;

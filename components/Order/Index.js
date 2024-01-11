@@ -8,7 +8,7 @@ import { getListProductService } from '../../store/actions/productService';
 import { getListOrderGift } from '../../store/actions/history';
 import { useHelper } from '../../helpers/helper';
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
-const OrderScreen = ({ navigation, route }) => {
+const OrderItem = ({ navigation, route }) => {
     const dispatch = useDispatch();
     const [refreshing, setRefreshing] = React.useState(false);
     const productService = useSelector(state => state.productService.productService);
@@ -39,18 +39,18 @@ const OrderScreen = ({ navigation, route }) => {
         console.log('ngant');
     };
     return (
-        <SafeAreaView style={styles.container} className="mb-[80px]">
+        <SafeAreaView style={styles.container}>
             <ScrollView
                     contentContainerStyle={styles.scrollView}
                     refreshControl={
                         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                     }>
 
-            <Box className="mx-3 mt-3 ">
+            <Box style={styles.container} className="mx-3 mt-3 ">
             {productService ? productService.map((product,index) => 
                 <Box key={index} className="mb-3">
                     <Box className=" flex flex-row ">
-                        <Image source={require('../../assets/images/icon_package.png')} className="h-8 w-8 mr-3" ></Image> 
+                        <Image source={require('../../assets/images/icon_package.png')} alt={`anh${index}`} className="h-8 w-8 mr-3" ></Image> 
                         <Text className="font-bold text-xl text-[#FF6100]">{product.name}</Text>
                     </Box>
                     <Box className="ml-1 mt-2 flex flex-row items-center">
@@ -73,7 +73,7 @@ const OrderScreen = ({ navigation, route }) => {
             ) : null}
             </Box>
             <Button
-                className="rounded-2xl bg-[#FF6100] text-white m-3 p-4 font-bold"
+                className="rounded-2xl bg-[#FF6100] text-white mx-3 my-3 p-3 font-bold"
                 onPress={onPressLearnMore}
                 >
                      <Text className="font-base text-[18px] text-white ">Liên hệ đặt nông sản</Text>
@@ -82,13 +82,14 @@ const OrderScreen = ({ navigation, route }) => {
                 <Text className="text-center font-bold my-6 text-[22px] text-[#FF6100] ">Lịch sử nhận quà nông sản</Text>
                 <Box >
                 {orderGilfs ? orderGilfs.map((order,index) => 
-                    <TouchableOpacity  key={index} className="mb-3 w-full " onPress={() => {
-                        navigation.navigate('OrderDetail');
-
-                    }}>
+                    <TouchableOpacity  key={index} className="mb-3 w-full " onPress={
+                        () => navigation.navigate('OrderDetail', {
+                            itemId: order.id
+                        })}
+                    >
                         <Box className=" flex flex-row items-center justify-between">
                             <Box className="flex flex-row">
-                                <Image source={require('../../assets/images/cam.jpg')} className="h-12 w-12 " ></Image>
+                                <Image source={require('../../assets/images/cam.jpg')} className="h-12 w-12 " alt={`anh1${index}`} ></Image>
                                 <Box className="flex">
                                     { order?.order_items ? order?.order_items.map((item,index2) =>
                                         <Box className="flex flex-row">
@@ -128,4 +129,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default OrderScreen;
+export default OrderItem;

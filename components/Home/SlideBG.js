@@ -62,15 +62,15 @@ const NewSwiper = ({ navigation, route }) => {
     };
     const images = [
         {
-            banner:require('../../assets/images/anhcam.png')
+            banner: require('../../assets/images/anhcam.png')
         },
         {
-            banner:require('../../assets/images/anhcam2.png')
+            banner: require('../../assets/images/anhcam2.png')
         },
         {
-            banner:require('../../assets/images/anhcam3.png')
+            banner: require('../../assets/images/anhcam3.png')
         },
-       ]
+    ]
     const viewabilityConfig = useRef({
         itemVisiblePercentThreshold: 50,
     }).current;
@@ -79,7 +79,7 @@ const NewSwiper = ({ navigation, route }) => {
             {images ?
                 <FlatList
                     data={images}
-                    renderItem={({ item }) => <ChildItem item={item}  />}
+                    renderItem={({ item }) => <ChildItem item={item} />}
                     horizontal
                     pagingEnabled
                     snapToAlignment="center"

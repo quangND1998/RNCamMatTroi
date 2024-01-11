@@ -2,13 +2,14 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { EmojiHappy, Home, User, More, DocumentText, Card } from 'iconsax-react-native';
 import HomeScreen from '../components/Home/HomeScreen';
-import OrderScreen from '../components/Order/Index';
+import OrderScreen from '../components/Order/OrderScreen';
 import UserScreen from '../components/User/Index';
 import AddScreen from '../components/Add/Index';
 import ScanExpo from '../components/QrCode/ScanExpo';
 import Payment from '../components/Payment/Payment';
-import { Image } from 'native-base';
-
+import { Button, Image } from 'native-base';
+import ScheduleTour from '../components/Schedule/ScheduleTour';
+import { HeaderBackButton } from '@react-navigation/elements';
 
 const Tab = createBottomTabNavigator();
 
@@ -18,7 +19,7 @@ const BottomNavigator = () => {
 
             initialRouteName="Home"
             backBehavior="history"
-            screenOptions={{
+            screenOptions={({ navigation, route }) => ({
                 tabBarActiveTintColor: '#F78F43',
                 tabBarInactiveTintColor: "#184E17",
                 tabBarStyle: {
@@ -27,7 +28,6 @@ const BottomNavigator = () => {
                     borderLeftWidth: 0.2,
                     borderRightWidth: 0.2,
                     overflow: 'hidden',
-                    position: 'absolute',
                     height: 78,
                     bordercolor: 'transparent',
 
@@ -45,15 +45,30 @@ const BottomNavigator = () => {
                 },
                 tabBarItemStyle: {
                     padding: 0,
-                    paddingTop: 12,
-                }
+                    paddingTop: 8,
+                },
+                headerStyle: {
+                    borderBottomLeftRadius: 24,
+                    borderBottomRightRadius: 24,
+                    borderLeftWidth: 0.1,
+                    borderRightWidth: 0.1,
+                    height: 68,
+                },
+                paddingTop: 12,
+                headerLeft: (props) => (
+                    <HeaderBackButton
+                        {...props}
+                        onPress={() => navigation.goBack()}
+                    />
+                )
+            })}
 
-            }}
         >
 
 
             <Tab.Screen
                 name="Order"
+                
                 component={OrderScreen}
                 options={{
                     tabBarLabel: 'Đơn hàng',
@@ -68,11 +83,11 @@ const BottomNavigator = () => {
 
 
             <Tab.Screen
-                name="Payment"
-                component={Payment}
+                name="Schedule"
+                component={ScheduleTour}
                 options={{
-                    headerShown: false,
-
+                    headerShown: true,
+                    title: 'Đặt lịch thăm vườn',
                     tabBarLabel: 'Thăm vườn',
                     tabBarIcon: ({ color, size }) => (
                         // <Card color="#F78F43" variant="Outline" size={25} />

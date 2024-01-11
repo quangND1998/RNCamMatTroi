@@ -1,5 +1,6 @@
 const initialState = {
-    orderGilfs : null
+    orderGilfs : null,
+    orderDetail: null
 }
 const historyReducer = (state = initialState, action) => {
 
@@ -8,7 +9,12 @@ const historyReducer = (state = initialState, action) => {
             // console.log(action.payload)
             return {
                 ...state,
-                orderGilfs: action.payload.orders,
+                orderGilfs: action.payload.orders.data,
+            }
+        case 'getOrderDetail':
+            return {
+                ...state,
+                orderDetail: action.payload,
             }
         default:
             return state;
