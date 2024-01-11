@@ -14,6 +14,20 @@ export const useHelper = () => {
             return Moment(String(value)).format('DD/MM/YYYY HH:mm:ss')
         }
     }
+    const formatDateShort = (value) => {
+        if (value) {
+            return Moment(String(value)).format('DD/MM/YYYY')
+        }
+    }
+    const formatDateUse = (value) => {
+        const previousDate = new Date(value);
+        const currentDate = new Date();
+        const millisecondsDiff = currentDate - previousDate;
+
+        // Số ngày (làm tròn xuống)
+        const daysDiff = Math.floor(millisecondsDiff / (1000 * 60 * 60 * 24));
+        return daysDiff;
+    }
     const formatDateTime = (value) => {
         if (value) {
             return Moment(String(value)).format('LLLL');
@@ -100,7 +114,9 @@ export const useHelper = () => {
         bytesToHuman,
         convertToText,
         formatTime,
-        formatOnlyDate
+        formatOnlyDate,
+        formatDateShort,
+        formatDateUse
     }
 
 };

@@ -63,8 +63,6 @@ const CustomDrawer = props => {
                         marginBottom: 20,
                     }}
                 >
-
-
                     <View>
                         {/* <Text>{profile.fullname}</Text>
                         <Text>{profile.email}</Text> */}
@@ -73,8 +71,6 @@ const CustomDrawer = props => {
                     {/* <Avatar size="48px" source={{
                         uri: user.profile_photo_url
                     }} /> */}
-
-
 
                 </View>
                 <DrawerItemList {...props} />

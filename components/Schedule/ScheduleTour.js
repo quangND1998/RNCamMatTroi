@@ -10,12 +10,13 @@ import DatePicker from 'react-native-date-picker'
 import NumericInput from 'react-native-numeric-input';
 import { useHelper } from '../../helpers/helper';
 import { PressableOpacity } from 'react-native-pressable-opacity';
-import { fetchProductOwners } from '../../store/actions/productService';
+import { fetchProductOwners, getProductDetail } from '../../store/actions/productService';
 import { selectProductOwnersActive } from '../../store/reducers/productService';
 import Spinner from 'react-native-loading-spinner-overlay';
 import { createSchedule } from '../../store/actions/schedule';
 import Toast from 'react-native-toast-message';
 import ErorrValidator from '../ErorrValidator';
+import { fetchProductDetail } from '../../store/actions/productRetail';
 const ScheduleTour = ({ navigation, route }) => {
     const [quantity, setQuantity] = useState(1)
     const [quantityChildren, setQuantityChildren] = useState(1)
@@ -31,19 +32,18 @@ const ScheduleTour = ({ navigation, route }) => {
     const productOwners = useSelector(state => state.productService.productOwners)
     const [spinner, setSpinner] = useState(false)
     const errors = useSelector(state => state.schedule.errors)
-    useEffect(() => {
-
-
-    }, [navigation])
+    const itemId = route.params?.itemId ? route.params?.itemId : null;
+    const productDetail = useSelector(state => state.productService.productDetail)
 
 
     useEffect(() => {
 
         const unsubscribe = navigation.addListener('focus', () => {
-            // do something - for example: reset states, ask for camera permission
-
             (async () => {
                 getProductOwner();
+                if (itemId !== undefined) {
+                    getProductOwnerDetail(itemId);
+                }
                 if (productOwnersActive && productOwnersActive.length > 0) {
                     setProductOwner(productOwnersActive[0].id)
                 }
@@ -56,8 +56,21 @@ const ScheduleTour = ({ navigation, route }) => {
         // Return the function to unsubscribe from the event so it gets removed on unmount
         return unsubscribe;
     }, [navigation]);
+
+
     const getProductOwner = () => {
         dispatch(fetchProductOwners());
+    }
+
+    const getProductOwnerDetail = () => {
+        dispatch(getProductDetail(itemId,
+            (data) => {
+                if (data?.product_detail && data?.product_detail.state == 'active' && itemId) {
+                    setProductOwner(data?.product_detail.id)
+                }
+            },
+            () => {
+            }));
     }
 
     const onRefresh = React.useCallback(() => {
@@ -79,6 +92,7 @@ const ScheduleTour = ({ navigation, route }) => {
     };
 
     const showDatepicker = () => {
+        console.log('date')
         showMode('date');
     };
 
@@ -101,6 +115,7 @@ const ScheduleTour = ({ navigation, route }) => {
                     position: 'bottom'
                 });
                 setSpinner(false);
+                navigation.navigate('ScheduleSuccess')
             },
             (error) => {
                 Toast.show({
@@ -163,7 +178,7 @@ const ScheduleTour = ({ navigation, route }) => {
 
 
 
-                                        {/* {show && (
+                                        {show && (
                                             <DateTimePicker
                                                 testID="dateTimePicker"
                                                 value={date}
@@ -172,7 +187,7 @@ const ScheduleTour = ({ navigation, route }) => {
                                                 is24Hour={true}
                                                 onChange={onChange}
                                             />
-                                        )} */}
+                                        )}
 
                                         <ErorrValidator errors={errors} key_error={'date_time'} />
                                         <Box className="absolute bottom-0 px-2.5 py-1.5 right-0">
@@ -183,7 +198,7 @@ const ScheduleTour = ({ navigation, route }) => {
 
                                 </Box>
                                 {productOwnersActive ? <Box className="my-5" >
-                                    <Heading size="sm" className="color-[#F78F43]">Hoạt động theo gói</Heading>
+                                    <Heading size="sm" className="color-[#F78F43]">Hoạt động theo gói </Heading>
                                     <Box maxW="500">
                                         <Select selectedValue={productOwner} minWidth="100" accessibilityLabel="Chọn gói dịch vụ" placeholder="Chọn gói dịch vụ " _selectedItem={{
                                             bg: "teal.600",
@@ -192,10 +207,9 @@ const ScheduleTour = ({ navigation, route }) => {
 
                                             {productOwnersActive.map((item, key) =>
                                                 <Select.Item key={item.id} label={item?.product?.name} value={item.id} />)}
-
                                         </Select>
-
                                     </Box>
+
                                     <ErorrValidator errors={errors} key_error={'product_service_owner_id'} />
                                 </Box> : null}
 
@@ -270,6 +284,9 @@ const ScheduleTour = ({ navigation, route }) => {
                         </Box>
                         <Button onPress={() => saveSchedule()} className="w-full  text-white bg-[#F78F43] rounded-xl btn_button"
                         >Xác nhận đặt chỗ</Button>
+
+                        <Button onPress={() => navigation.navigate('ScheduleSuccess')} className="w-full  text-white bg-[#F78F43] rounded-xl btn_button"
+                        >ScheduleSuccess</Button>
                     </Box >
                 </Box >
             </ScrollView>

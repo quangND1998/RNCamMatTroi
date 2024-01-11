@@ -22,7 +22,7 @@ const productServiceReducer = (state = initialState, action) => {
                 productDetail: action.payload.product_detail,
             }
         case 'getListProductService':
-            // console.log('action.payload', action.payload.product_service)
+            //  console.log('action.payload', action.payload.product_service)
             return {
                 ...state,
                 productService: action.payload.product_service,
@@ -33,6 +33,19 @@ const productServiceReducer = (state = initialState, action) => {
                 ...state,
                 productOwners: action.payload.product_owner,
                 productnotOwners: action.payload.not_owner,
+            }
+        case 'getProductOwner':
+            // console.log('action.payload', action.payload.product_service)
+            return {
+                ...state,
+                productOwners: action.payload.product_owner,
+                productnotOwners: action.payload.not_owner
+            }
+        case 'getProductnotOwnersDetail':
+            // console.log('action.payload', action.payload.product_service)
+            return {
+                ...state,
+                productnotOwnersDetail: action.payload.product_detail,
             }
         default:
             return state;

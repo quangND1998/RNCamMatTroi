@@ -12,17 +12,10 @@ import {
 import React from 'react';
 const { width, height } = Dimensions.get('screen');
 
-const SlideItem = ({ item, navigation }) => {
+const ChildItem = ({ item }) => {
   // console.log(navigation);
   const translateYImage = new Animated.Value(40);
-  const handlerDetail = () => {
-    // console.log(item.id);
-    // console.log(navigation);
-    navigation.navigate('newDetail', {
-      itemId: item.id,
-      // otherParam: 'anything you want here',
-    });
-  }
+
   Animated.timing(translateYImage, {
     toValue: 0,
     duration: 1000,
@@ -30,35 +23,31 @@ const SlideItem = ({ item, navigation }) => {
     easing: Easing.bounce,
   }).start();
   return (
-    <TouchableOpacity onPress={handlerDetail} >
+    <TouchableOpacity>
       <View style={styles.container}  >
-        <Animated.Image
-          className=" w-full object-cover rounded-lg"
-          source={{ uri: item.images[0]?.original_url }}
+        <Image
+          className=" w-full object-cover"
+          source={item.banner}
 
           style={[
             styles.image
           ]}
-        />
-        <View style={styles.content}>
-          <Text numberOfLines={3} className="text-sm text-gray-700 px-1 my-1 font-base clamp three-lines"
-            style={styles.description}>{item.short_description}</Text>
-        </View>
+        ></Image>
       </View>
     </TouchableOpacity>
   );
 };
-export default SlideItem;
+export default ChildItem;
 
 const styles = StyleSheet.create({
   container: {
-    width: width / 2.5,
-    height: 260,
+    width: width,
+    height: height,
     alignItems: 'center',
-    margin: 5
+    margin: 0
   },
   image: {
-    flex: 0.6,
+    flex: 1,
     width: '100%',
   },
   content: {

@@ -6,26 +6,24 @@ import {
     Animated,
     Easing,
 } from 'react-native';
-import {
-    Center, Container, Heading, Button, Text, Box, Stack, Input, SearchBar, Icon, Spacer, ZStack, Image, HStack,
-    VStack, Pressable, FlatList, Avatar, useToast, TouchableWithoutFeedback
-} from 'native-base';
+import { Center, Container, Heading, Button, Text, Box, Stack, Input, SearchBar, Icon, Spacer, ZStack, Image, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
 import { useDispatch, useSelector } from 'react-redux'
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
-import Payoo from '../../payoo.js';
-import { PaymentService } from '../../common/payment/paymentService.js';
-import { getNews } from '../../store/actions/new.js';
-import { getActivity } from '../../store/actions/new.js';
+import Payoo from '../../payoo';
+import { PaymentService } from '../../common/payment/paymentService';
+import { getNews } from '../../store/actions/new';
+import { getActivity } from '../../store/actions/new';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import SlideItem from './SlideItem.js';
+import ChildItem from './ChildItem.js';
 const merchantId = "11931"
-const NewActivity = ({ navigation, route }) => {
+const NewSwiper = ({ navigation, route }) => {
     const envDevelopment = 0;
     const envProduction = 1;
     const langVietNam = 0;
     const langEnglish = 1;
     const cashAmount = 2020000;
     const dispatch = useDispatch();
+    const news = useSelector(state => state.new.news);
     const activity = useSelector(state => state.new.activitys);
     const [refreshing, setRefreshing] = React.useState(false);
     const [index, setIndex] = useState(0);
@@ -35,7 +33,7 @@ const NewActivity = ({ navigation, route }) => {
         fetchNews();
     }, []);
     const fetchNews = async () => {
-        dispatch(getActivity())
+        dispatch(getNews())
     }
 
     const onRefresh = React.useCallback(() => {
@@ -62,16 +60,26 @@ const NewActivity = ({ navigation, route }) => {
             },
         )(event);
     };
-
+    const images = [
+        {
+            banner: require('../../assets/images/anhcam.png')
+        },
+        {
+            banner: require('../../assets/images/anhcam2.png')
+        },
+        {
+            banner: require('../../assets/images/anhcam3.png')
+        },
+    ]
     const viewabilityConfig = useRef({
         itemVisiblePercentThreshold: 50,
     }).current;
     return (
         <View >
-            {activity ?
+            {images ?
                 <FlatList
-                    data={activity.data}
-                    renderItem={({ item }) => <SlideItem item={item} navigation={navigation} />}
+                    data={images}
+                    renderItem={({ item }) => <ChildItem item={item} />}
                     horizontal
                     pagingEnabled
                     snapToAlignment="center"
@@ -87,4 +95,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default NewActivity;
+export default NewSwiper;
