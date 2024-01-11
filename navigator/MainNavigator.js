@@ -15,6 +15,7 @@ import { HeaderBackButton } from '@react-navigation/elements';
 import CartConfirmation from '../components/Cart/CartConfirmation';
 import LogoLogin from '../components/Login/LogoLogin';
 import LoginOtp from '../components/Login/LoginOtp';
+import OrderDetail from '../components/Order/detail';
 import { Center } from 'native-base';
 import { getHeaderTitle } from "@react-navigation/elements";
 import OTP from '../components/Login/Otp';
@@ -75,7 +76,17 @@ const MainNavigator = () => {
         <Stack.Navigator screenOptions={{
             headerStyle: {
                 alignContent: 'center',
-            }
+                borderBottomLeftRadius: 24,
+                borderBottomRightRadius: 24,
+                borderLeftWidth: 0.1,
+                borderRightWidth: 0.1,
+                height: 68,
+            },
+            headerTitleStyle: {
+                fontWeight: 'bold',
+                color: '#F78F43',
+            },
+            headerTitleAlign:'center'
         }}
         >
             <Stack.Screen
@@ -101,6 +112,8 @@ const MainNavigator = () => {
                     />
                 ), title: route.params.name
             })} component={PackageBenefits} />
+            <Stack.Screen name="OrderDetail" 
+            options={{ title: 'Mã đơn hàng' }} component={OrderDetail} />
         </Stack.Navigator> : <StackNavigator />;
 };
 export default MainNavigator;
