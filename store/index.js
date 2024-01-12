@@ -5,6 +5,7 @@ import newsReducer from './reducers/new';
 import productServiceReducer from './reducers/productService';
 import productRetailReducer from './reducers/productRetail';
 import cartReducer from './reducers/cartReducer';
+import historyReducer from './reducers/history';
 import scheduleReducer from './reducers/schedule';
 import addReducer from './reducers/add';
 const rootReducer = combineReducers({
@@ -13,8 +14,9 @@ const rootReducer = combineReducers({
     productService: productServiceReducer,
     productRetails: productRetailReducer,
     cart: cartReducer,
-    schedule: scheduleReducer,
-    add: addReducer
+    add: addReducer,
+    history: historyReducer,
+    schedule: scheduleReducer
 });
 const middleWares = [thunk]
 const store = createStore(rootReducer, applyMiddleware(...middleWares));

@@ -7,7 +7,9 @@ import { EmojiHappy, Logout } from 'iconsax-react-native';
 import { logoutAction } from '../../store/actions/auth';
 import { getToken } from '../../common/asynStorage';
 import { useLogin } from '../../context/LoginProvider';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
+import HrTag from '../HrTag';
 const CustomerService = ({ navigation, route }) => {
     const dispatch = useDispatch();
     const { setIsLoggedIn } = useLogin();
@@ -51,22 +53,27 @@ const CustomerService = ({ navigation, route }) => {
                 <Box className="mb-5 pb-5">
                     <Box className=" h-full px-3 pt-5 bg-[#F0F0F0]">
                         <TouchableOpacity onPress={() => navigation.navigate('Schedule')}  >
-                            <Flex className="w-full py-2 border-b-0.5">
+                            <Flex className="w-full py-2 ">
                                 <Flex direction='row' >
-                                    <Image source={require('../../assets/icon/calender.png')} className="w-6 h-6" alt="calendar"></Image>
+                                    {/* <Image source={require('../../assets/icon/calender.png')} className="w-6 h-6" alt="calendar"></Image> */}
+                                    <MaterialCommunityIcons name='calendar-range-outline' size={24} className="text-[#070707]" color="#070707" />
                                     <Text className=" text-[#686868] ml-3 text-[12px]">Đặt lịch thăm vườn</Text>
                                 </Flex>
                             </Flex>
                         </TouchableOpacity>
+
+                        <HrTag mr="1" ml="1" opacity={0.3}> </HrTag>
                         <TouchableOpacity onPress={() => navigation.navigate('Complaint')}  >
-                            <Flex className="w-full py-2 border-b-0.5">
+                            <Flex className="w-full py-2 ">
                                 <Flex direction='row' className="mt-4">
                                     <Image source={require('../../assets/icon/message.png')} className="w-6 h-6" alt="message"></Image>
+
                                     <Text className=" text-[#686868] ml-3 text-[12px]">Khiếu nại, phản hồi</Text>
                                 </Flex>
                             </Flex>
                         </TouchableOpacity>
-                        <Flex className="w-full py-2 border-b border-b-0.5">
+                        <HrTag mr="1" ml="1" opacity={0.3}> </HrTag>
+                        <Flex className="w-full py-2  ">
                             <TouchableOpacity onPress={handlerLogout}  >
                                 <Flex direction='row' className="mt-4">
                                     <Logout
@@ -78,7 +85,7 @@ const CustomerService = ({ navigation, route }) => {
                                 </Flex>
                             </TouchableOpacity>
                         </Flex>
-
+                        <HrTag mr="1" ml="1" opacity={0.3}> </HrTag>
 
 
                     </Box>

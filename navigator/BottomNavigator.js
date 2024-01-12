@@ -2,7 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { EmojiHappy, Home, User, More, DocumentText, Card } from 'iconsax-react-native';
 import HomeScreen from '../components/Home/HomeScreen';
-import OrderScreen from '../components/Order/Index';
+import OrderScreen from '../components/Order/OrderScreen';
 import UserScreen from '../components/User/Index';
 import AddScreen from '../components/Add/AddScreen';
 import ScanExpo from '../components/QrCode/ScanExpo';
@@ -68,13 +68,16 @@ const BottomNavigator = () => {
 
             <Tab.Screen
                 name="Order"
+
                 component={OrderScreen}
                 options={{
+                    headerShown: false,
                     tabBarLabel: 'Đơn hàng',
                     title: 'Đơn hàng',
+
                     tabBarIcon: ({ color, size }) => (
                         // <DocumentText color="#F78F43" variant="Outline" size={25} />
-                        <Image source={require('../assets/icon/fi-rr-box.png')} className="w-8 h-8 " alt='box' ></Image>
+                        <Image source={require('../assets/icon/fi-rr-box.png')} className="w-6 h-6 " alt='box' ></Image>
                     ),
 
                 }}
@@ -90,7 +93,7 @@ const BottomNavigator = () => {
                     tabBarLabel: 'Thăm vườn',
                     tabBarIcon: ({ color, size }) => (
                         // <Card color="#F78F43" variant="Outline" size={25} />
-                        <Image source={require('../assets/icon/fi-rr-calendar.png')} className="w-8 h-8 " alt='calendar' ></Image>
+                        <Image source={require('../assets/icon/fi-rr-calendar.png')} className="w-6 h-6 " alt='calendar' ></Image>
                     ),
                 }}
             />

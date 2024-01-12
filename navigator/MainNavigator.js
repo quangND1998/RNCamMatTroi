@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from '../components/Login/Login';
 import { useLogin } from '../context/LoginProvider';
@@ -17,10 +17,12 @@ import LogoLogin from '../components/Login/LogoLogin';
 import LoginOtp from '../components/Login/LoginOtp';
 import { Box, Center, Flex, Text, View } from 'native-base';
 import { getHeaderTitle, HeaderBackground } from "@react-navigation/elements";
+import OrderDetail from '../components/Order/detail';
 import OTP from '../components/Login/Otp';
 import ScheduleTour from '../components/Schedule/ScheduleTour';
 import ScheduleSuccess from '../components/Schedule/ScheduleSuccess';
 import { StyleSheet } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 const Stack = createNativeStackNavigator();
 const StackNavigator = () => {
     return (
@@ -75,13 +77,14 @@ const MainNavigator = () => {
     const { isLoggedIn } = useLogin();
     const cameraPermission = Camera.getCameraPermissionStatus()
     const showPermissionsPage = cameraPermission !== 'granted' || microphonePermission === 'not-determined'
-
+   
     return isLoggedIn ?
         <Stack.Navigator screenOptions={{
 
             headerTitleStyle: {
                 fontWeight: 'bold',
                 color: '#F78F43',
+
             },
             headerTitleAlign: 'center',
 
@@ -100,15 +103,18 @@ const MainNavigator = () => {
             <Stack.Screen name="newDetail" options={{ headerShown: false }} component={FarmDetail} />
             <Stack.Screen name="Scan" options={{ headerShown: false }} component={CodeScannerPage} />
             <Stack.Screen name="CodeScan" options={{ headerShown: false }} component={CodeScan} />
-            <Stack.Screen name="ScanExpo" options={{ title: 'Scan ' }} component={ScanExpo} />
+            <Stack.Screen name="ScanExpo" options={({ navigation, route }) => ({
+                headerTransparent: true,
+                title: 'Scan',
+                headerBackground: () => (
+                    <HeaderBackground style={styles.background}  >
+                    </HeaderBackground>
+                ),
+
+            })} component={ScanExpo} />
             <Stack.Screen name="CartConfirmation" options={{ title: 'Xác nhận đơn hàng' }} component={CartConfirmation} />
             <Stack.Screen name="PackageBenefits" options={({ navigation, route }) => ({
-                headerLeft: (props) => (
-                    <HeaderBackButton
-                        {...props}
-                        onPress={() => navigation.navigate('CodeScan')}
-                    />
-                ), title: route.params.name
+                title: route.params.name
             })} component={PackageBenefits} />
             <Stack.Screen name="ScheduleSuccess" options={({ navigation, route }) => ({
                 headerShown: false,
@@ -123,6 +129,9 @@ const MainNavigator = () => {
                 ),
 
             })} component={ScheduleSuccess} /> */}
+            {/* <Stack.Screen name="OrderDetail" 
+            options={{ title: 'Mã đơn hàng' }} component={OrderDetail} /> */}
+            {/* <Stack.Screen name="ScheduleSuccess" component={ScheduleSuccess} /> */}
 
         </Stack.Navigator> : <StackNavigator />;
 };

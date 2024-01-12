@@ -26,6 +26,11 @@ const addReducer = (state = initialState, action) => {
             return {
                 ...state
             }
+        case 'saveReviewOrderError':
+            state.errors = action.payload
+            return {
+                ...state
+            }
         default:
             return state;
     }

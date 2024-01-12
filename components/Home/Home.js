@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LogBox } from 'react-native';
-import { StyleSheet, TouchableOpacity, Linking, Keyboard, View, ScrollView, RefreshControl, ImageBackground } from 'react-native';
+import { StyleSheet, TouchableOpacity, Linking, Keyboard, View, ScrollView, RefreshControl, ImageBackground, SectionList, YellowBox } from 'react-native';
 import { Center, Container, Heading, Button, Text, Box, Flex, Stack, Input, SearchBar, Icon, Spacer, ZStack, Image, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
 import { useDispatch, useSelector } from 'react-redux'
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
@@ -12,7 +12,11 @@ import NewSwiper from '../News/NewSwiper';
 import NewActivity from '../News/NewActivity';
 import ProductItem from './ProductItem';
 import SlideBG from './SlideBG';
-import { PressableOpacity } from 'react-native-pressable-opacity'
+import { PressableOpacity } from 'react-native-pressable-opacity';
+
+LogBox.ignoreLogs([
+    'VirtualizedLists should never be nested', // TODO: Remove when fixed
+])
 const merchantId = "11931"
 const Home = ({ navigation, route }) => {
     const envDevelopment = 0;
@@ -53,12 +57,13 @@ const Home = ({ navigation, route }) => {
                     <Box className="px-4 py-6 w-full  ">
                         <Flex direction='row' className="flex items-center justify-between">
                             <Flex direction='row' className="">
-                                <Avatar bg="green.500" source={{
+                                <Avatar source={{
                                     uri: user?.profile_photo_url
                                 }}>
                                 </Avatar>
+
                                 <Flex className="ml-4">
-                                    <Text className="font-bold text-xl text-gray-800">{user?.name} </Text>
+                                    <Text className="font-bold text-xl text-gray-800">{user?.name}</Text>
                                     <Text className="text-[#FF6100] text-sm">#{user?.cic_number}</Text>
                                 </Flex>
 
@@ -66,7 +71,7 @@ const Home = ({ navigation, route }) => {
 
                             <Box className="flex flex-row">
                                 <PressableOpacity onPress={() => {
-                                    navigation.navigate('CodeScan');
+                                    navigation.navigate('ScanExpo');
 
                                 }} >
                                     <Image source={require('../../assets/icon/scan.png')} alt="scan"  ></Image>
@@ -87,6 +92,7 @@ const Home = ({ navigation, route }) => {
                             <FlatList
                                 data={productOwner}
                                 renderItem={({ item }) => <ProductItem item={item} navigation={navigation} />}
+
                             /> : <View></View>}
                     </View>
                 </Box>

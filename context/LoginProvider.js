@@ -9,7 +9,7 @@ const LoginProvider = ({ children }) => {
     const dispatch = useDispatch();
     useEffect(() => {
         fetchUser();
-      
+
     }, []);
     const fetchUser = async () => {
         dispatch(loadStorageToken)

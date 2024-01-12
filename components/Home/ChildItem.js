@@ -28,7 +28,7 @@ const ChildItem = ({ item }) => {
         <Image
           className=" w-full object-cover"
           source={item.banner}
-
+          alt={`imageslide${item.banner}`}
           style={[
             styles.image
           ]}
