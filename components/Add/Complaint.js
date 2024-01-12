@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LogBox, Dimensions } from 'react-native';
-import { StyleSheet, TouchableOpacity, Linking, Keyboard, View, Alert, SafeAreaView, ScrollView, } from 'react-native';
+import { StyleSheet, TouchableOpacity, Linking, Keyboard, View, Alert, SafeAreaView, ScrollView, Platform } from 'react-native';
 import { Center, Container, Heading, Button, Text, Flex, Box, TextArea, Stack, Input, SearchBar, Image, Icon, Spacer, ZStack, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base'
 import { useDispatch, useSelector } from 'react-redux'
 import { EmojiHappy, Logout } from 'iconsax-react-native';
@@ -12,10 +12,14 @@ LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 import _ from "lodash";
 import { PressableOpacity } from 'react-native-pressable-opacity';
 import * as RNImagePicker from 'expo-image-picker'
+import { appReview } from '../../store/actions/add';
+import Toast from 'react-native-toast-message';
+import Spinner from 'react-native-loading-spinner-overlay';
 const Complaint = ({ navigation, route }) => {
     const dispatch = useDispatch();
     var { width, height } = Dimensions.get("window");
-    const star = useSelector(state => state.star.star)
+    const star = useSelector(state => state.add.star)
+    const [spinner, setSpinner] = useState(false)
     const [form, setForm] = useState({
         star: null,
         evaluate: null,
@@ -101,13 +105,37 @@ const Complaint = ({ navigation, route }) => {
             console.log(localUri)
             // Infer the type of the image
             let match = /\.(\w+)$/.exec(filename);
+            console.log(match[1])
             let type = match ? `image/${match[1]}` : `image`;
             formData.append('images[' + i + ']', { uri: localUri, name: filename, type });
         }
         formData.append('star', star);
-        formData.append('data', form.data);
+        formData.append('data', JSON.stringify(form.data));
         formData.append('description', form.description);
-        console.log(formData)
+        setSpinner(true)
+        dispatch(appReview(formData,
+            (message) => {
+                Toast.show({
+                    type: 'success',
+                    text1: message,
+                    position: 'bottom'
+                });
+                setSpinner(false)
+                navigation.navigate('Home')
+            },
+            (error) => {
+                // console.log(error)
+                setSpinner(false)
+                Toast.show({
+                    type: 'error',
+                    text1: 'Lỗi!',
+                    text2: error,
+                    position: 'bottom',
+                    visibilityTime: 3000
+                });
+
+            },
+        ));
 
     }
     const DeleteImage = (data) => {
@@ -119,8 +147,29 @@ const Complaint = ({ navigation, route }) => {
         setImages([...newImages])
 
     }
+
+    const alertsaveComplaint = () =>
+        Alert.alert('Bạn muốn đặt sản phẩm!', 'Cam Mặt Trời sẽ liên hệ với quý khách và gửi nông sản đến tay bạn', [
+            {
+                text: 'Cancel',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel',
+            },
+            {
+                text: 'OK', onPress: () => {
+                    save();
+                    saveComplaint()
+                }
+
+            },
+        ]);
     return (
         <SafeAreaView style={styles.container} >
+            <Spinner
+                visible={spinner}
+                textContent={'Loading...'}
+                textStyle={styles.spinnerTextStyle}
+            />
             <ScrollView>
 
                 <Center>
@@ -265,10 +314,10 @@ const Complaint = ({ navigation, route }) => {
 
                             )}
                         </Flex>
-
+                        <Button onPress={() => saveComplaint()} className=" bottom-0 w-full  text-white bg-[#F78F43] rounded-xl btn_button"
+                        >Gửi</Button>
                     </Box >
-                    <Button onPress={() => saveComplaint()} className="w-full  text-white bg-[#F78F43] rounded-xl btn_button"
-                    >Xác nhận đặt chỗ</Button>
+
                 </Box>
 
 
@@ -276,6 +325,8 @@ const Complaint = ({ navigation, route }) => {
 
 
             </ScrollView >
+
+
         </SafeAreaView >
     );
 }

@@ -7,7 +7,7 @@ axios.defaults.headers[
 axios.interceptors.request.use(async(request) => {
 
     const access_token = await getToken();
-    // console.log(access_token)
+
     const newHeaders = {
         ...request.headers,
         Authorization: `Bearer ${access_token}`,
@@ -34,7 +34,7 @@ axios.interceptors.response.use((response) => {
 
     // return Promise.reject(error)
     if (error.response) {
-        console.log(error.response.status)
+
         if (error.response.status == 401) {
             destroyToken();
 
@@ -72,6 +72,13 @@ const ApiService = {
     post(resource, params) {
         console.log('apiservice', API_URL + "/" + resource);
         return axios.post(API_URL + "/" + resource, params)
+    },
+
+    postFormData(resource, params, headers) {
+
+        return axios.post(API_URL + "/" + resource, params, {
+            headers
+        })
     },
 
     update(resource, params, slug) {

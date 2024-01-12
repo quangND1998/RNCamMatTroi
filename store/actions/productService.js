@@ -1,6 +1,6 @@
 import ApiService from "../../common/apiService";
 export const getProductDetail = (product_id, onSuccess = () => {}, onError = () => {}) => (dispatch) => {
-
+    console.log('getProductDetail', product_id)
     return ApiService.query(`api/v1/customer/productWithID/${product_id}`).then(response => {
 
         dispatch({
@@ -9,6 +9,7 @@ export const getProductDetail = (product_id, onSuccess = () => {}, onError = () 
         })
         onSuccess(response.data.data)
     }).catch(error => {
+
         onError()
     });
 };

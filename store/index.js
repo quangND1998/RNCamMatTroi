@@ -6,7 +6,7 @@ import productServiceReducer from './reducers/productService';
 import productRetailReducer from './reducers/productRetail';
 import cartReducer from './reducers/cartReducer';
 import scheduleReducer from './reducers/schedule';
-import starReducer from './reducers/star';
+import addReducer from './reducers/add';
 const rootReducer = combineReducers({
     auth: authReducer,
     new: newsReducer,
@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
     productRetails: productRetailReducer,
     cart: cartReducer,
     schedule: scheduleReducer,
-    star: starReducer
+    add: addReducer
 });
 const middleWares = [thunk]
 const store = createStore(rootReducer, applyMiddleware(...middleWares));

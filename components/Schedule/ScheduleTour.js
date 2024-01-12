@@ -41,7 +41,7 @@ const ScheduleTour = ({ navigation, route }) => {
         const unsubscribe = navigation.addListener('focus', () => {
             (async () => {
                 getProductOwner();
-                if (itemId !== undefined) {
+                if (itemId && itemId !== undefined) {
                     getProductOwnerDetail(itemId);
                 }
                 if (productOwnersActive && productOwnersActive.length > 0) {

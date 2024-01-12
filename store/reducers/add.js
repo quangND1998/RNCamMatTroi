@@ -12,12 +12,17 @@ const initialState = {
     order_review: null
 }
 
-const starReducer = (state = initialState, action) => {
+const addReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
         case 'chooseStar':
             state.star = action.payload;
+            return {
+                ...state
+            }
+        case 'saveReviewValidate':
+            state.errors = action.payload
             return {
                 ...state
             }
@@ -28,4 +33,4 @@ const starReducer = (state = initialState, action) => {
 
 
 
-export default starReducer;
+export default addReducer;
