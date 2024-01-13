@@ -239,7 +239,7 @@ const UpdateUser = ({ navigation, route }) => {
                         </Box>
 
                         <Text className="text-[20px] font-bold text-center">{user.name}</Text>
-                        <Text className="text-[13px] text-[#686868] text-center my-1">{user.email}</Text>
+                        <Text className="text-[13px] text-[#184E17] text-center my-1">{user.email}</Text>
 
                         {user.infor?.status == 0 ? <Text className="text-xs text-[#CB9200] text-center my-1">Đang chờ xét duyệt</Text> : null}
 
@@ -337,7 +337,7 @@ const UpdateUser = ({ navigation, route }) => {
                         </Box>
                         <Box className="my-2">
                             {provinces ? <Box >
-                                <Text className="text-[#686868] my-2 text-sm">Tỉnh/ Thành phố</Text>
+                                <Text className="text-[#184E17] my-2 text-sm">Tỉnh/ Thành phố</Text>
                                 <Box maxW="500">
                                     <Select selectedValue={form.city} minWidth="100" accessibilityLabel="Chọn Tính/ Thành phố" placeholder="Chọn Tính/ Thành phố" _selectedItem={{
                                         bg: "teal.600",
@@ -365,7 +365,7 @@ const UpdateUser = ({ navigation, route }) => {
                         </Box>
                         <Box className="my-2">
                             <Box >
-                                <Text className="text-[#686868] my-2 text-sm">Quận/ Huyện</Text>
+                                <Text className="text-[#184E17] my-2 text-sm">Quận/ Huyện</Text>
                                 <Box maxW="500">
                                     <Select selectedValue={form.district} minWidth="100" accessibilityLabel="Chọn Quận/ Huyện" placeholder="Chọn Quận/ Huyện" _selectedItem={{
                                         bg: "teal.600",
@@ -385,7 +385,7 @@ const UpdateUser = ({ navigation, route }) => {
                         </Box>
                         <Box className="my-2">
                             <Box >
-                                <Text className="text-[#686868] my-2 text-sm">Xã/ Phường</Text>
+                                <Text className="text-[#184E17] my-2 text-sm">Xã/ Phường</Text>
                                 <Box maxW="500">
                                     <Select selectedValue={form.wards} minWidth="100" accessibilityLabel="Chọn Xã/ Phường" placeholder="Chọn Xã/ Phường" _selectedItem={{
                                         bg: "teal.600",
