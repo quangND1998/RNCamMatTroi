@@ -238,7 +238,7 @@ const UpdateUser = ({ navigation, route }) => {
                             <Box className="bg-white w-12 h-12  absolute z-10 rounded-full m-auto"></Box>
                         </Box>
 
-                        <Text className="text-[20px] font-bold text-center">{user.name}</Text>
+                        <Text className="text-[20px] font-bold text-center mt-5">{user.name}</Text>
                         <Text className="text-[13px] text-[#184E17] text-center my-1">{user.email}</Text>
 
                         {user.infor?.status == 0 ? <Text className="text-xs text-[#CB9200] text-center my-1">Đang chờ xét duyệt</Text> : null}
