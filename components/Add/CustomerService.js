@@ -55,8 +55,8 @@ const CustomerService = ({ navigation, route }) => {
                         <TouchableOpacity onPress={() => navigation.navigate('Schedule')}  >
                             <Flex className="w-full py-2 ">
                                 <Flex direction='row' >
-                                    {/* <Image source={require('../../assets/icon/calender.png')} className="w-6 h-6" alt="calendar"></Image> */}
-                                    <MaterialCommunityIcons name='calendar-range-outline' size={24} className="text-[#070707]" color="#070707" />
+                                    <Image source={require('../../assets/icon/calender.png')} className="w-6 h-6" alt="calendar"></Image>
+                                    {/* <MaterialCommunityIcons name='calendar-range-outline' size={24} className="text-[#070707]" color="#070707" /> */}
                                     <Text className=" text-[#686868] ml-3 text-[12px]">Đặt lịch thăm vườn</Text>
                                 </Flex>
                             </Flex>

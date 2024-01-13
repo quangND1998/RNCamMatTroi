@@ -10,6 +10,7 @@ import Payment from '../components/Payment/Payment';
 import { Button, Image } from 'native-base';
 import ScheduleTour from '../components/Schedule/ScheduleTour';
 import { HeaderBackButton } from '@react-navigation/elements';
+import UpdateUser from '../components/User/UpdateUser';
 
 const Tab = createBottomTabNavigator();
 
@@ -111,7 +112,7 @@ const BottomNavigator = () => {
             />
             <Tab.Screen
                 name="User"
-                component={UserScreen}
+                component={UpdateUser}
                 options={{
                     headerShown: false,
                     tabBarLabel: 'Tài khoản',

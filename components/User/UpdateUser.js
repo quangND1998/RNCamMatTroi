@@ -1,0 +1,544 @@
+import React, { useState, useEffect, useMemo } from 'react';
+import { LogBox, Dimensions } from 'react-native';
+import { StyleSheet, TouchableOpacity, Linking, Keyboard, View, Alert, SafeAreaView, ScrollView, Platform, RefreshControl } from 'react-native';
+import { Center, Container, Heading, Button, Text, Flex, Box, Radio, TextArea, Stack, Select, CheckIcon, Input, SearchBar, Image, Icon, Spacer, ZStack, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchUserData, logoutAction, saveInforChange } from '../../store/actions/auth';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+LogBox.ignoreLogs(["EventEmitter.removeListener"]);
+import _ from "lodash";
+import { PressableOpacity } from 'react-native-pressable-opacity';
+import * as RNImagePicker from 'expo-image-picker'
+import Toast from 'react-native-toast-message';
+import Spinner from 'react-native-loading-spinner-overlay';
+import HrTag from '../HrTag';
+import ErorrValidator from '../ErorrValidator';
+import { formatPhoneNumberIntl, isValidPhoneNumber, parsePhoneNumber } from 'react-phone-number-input'
+import PhoneInput from 'react-phone-number-input/input'
+import PhoneTextInput from './PhoneTextInput';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import { useHelper } from '../../helpers/helper';
+const UpdateUser = ({ navigation, route }) => {
+    const dispatch = useDispatch();
+
+    var { width, height } = Dimensions.get("window");
+    const user = useSelector(state => state.auth.user)
+    const [spinner, setSpinner] = useState(false)
+    const [refreshing, setRefreshing] = React.useState(false);
+    const [provinces, setProvinces] = useState(null)
+    const [value, setPhoneNumber] = useState(user ? user.phone_number : '')
+    const [show, setShow] = useState(false);
+    const [showCicDate, setShowCicDate] = useState(false);
+    const [showCicDateExpried, setshowCicDateExpried] = useState(false);
+    const { formatOnlyDate, checkInValid } = useHelper();
+    const errors = useSelector(state => state.auth.errors)
+    const [form, setForm] = useState({
+        name: user ? user.name : null,
+        phone_number: user ? user.phone_number : null,
+        email: user ? user.email : null,
+        address: user ? user.address : null,
+        sex: 'male',
+        wards: user ? user.wards : null,
+        district: user ? user.district : null,
+        city: user ? user.city : null,
+        cic_number: user ? user.cic_number : null,
+        cic_date: user ? user.date_of_birth ? user.cic_date : new Date() : null,
+        cic_date_expried: user ? user.date_of_birth ? user.cic_date_expried : new Date() : null,
+        date_of_birth: user ? user.date_of_birth ? user.date_of_birth : new Date() : null
+    })
+    const getProvinces = async () => {
+        const response = await fetch('https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json');
+        const jsonData = await response.json();
+        setProvinces(jsonData)
+    };
+    useEffect(() => {
+        getProvinces();
+    }, [])
+    useEffect(() => {
+
+        const unsubscribe = navigation.addListener('focus', () => {
+            (async () => {
+                fetchUser();
+
+            })();
+        });
+
+        // Return the function to unsubscribe from the event so it gets removed on unmount
+        return unsubscribe;
+    }, [navigation]);
+    const districts = useMemo(() => {
+        if (form.city == null) {
+            return [];
+        } else {
+            if (provinces) {
+                return provinces.find(pro => {
+                    return pro.Name == form.city;
+                });
+            }
+            return []
+
+        }
+    })
+
+    const wards = useMemo(() => {
+        if (form.city == null && form.district == null) {
+            return [];
+        } else if (form.city !== null && form.district == null) {
+            return [];
+        } else {
+            if (provinces) {
+                let array = provinces.find(pro => {
+                    return pro.Name == form.city;
+                });
+                if (array.Districts) {
+                    return array.Districts.find(district => {
+                        return district.Name == form.district;
+                    });
+                }
+                return []
+
+            }
+            return []
+        }
+    }, [form.city, form.district])
+    const fetchUser = async () => {
+        dispatch({
+            type: 'clearOtpError'
+        })
+        dispatch(fetchUserData(
+            (user) => {
+                console.log(user)
+                setForm(prevState => {
+                    return {
+                        ...prevState,
+                        name: user ? user.name : null,
+                        phone_number: user ? user.phone_number : null,
+                        email: user ? user.email : null,
+                        address: user ? user.address : null,
+                        sex: 'male',
+                        wards: user ? user.wards : null,
+                        district: user ? user.district : null,
+                        city: user ? user.city : null,
+                        cic_number: user ? user.cic_number : null,
+                        cic_date: user ? user.date_of_birth ? user.cic_date : new Date() : null,
+                        cic_date_expried: user ? user.date_of_birth ? user.cic_date_expried : new Date() : null,
+                        date_of_birth: user ? user.date_of_birth ? user.date_of_birth : new Date() : null
+                    }
+                })
+            },
+            () => {
+
+            }
+        ))
+    }
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        setTimeout(() => {
+            fetchUser();
+
+            setRefreshing(false);
+        }, 2000);
+
+
+    }, []);
+    const updateUserInfo = () => {
+
+        const phone = parsePhoneNumber(form.phone_number, "VN").formatNational();
+
+        const formData = new FormData();
+
+        // for (var i = 0; i < images.length; i++) {
+        //     let localUri = images[i].uri;
+        //     let filename = localUri.split('/').pop();
+        //     console.log(localUri)
+        //     // Infer the type of the image
+        //     let match = /\.(\w+)$/.exec(filename);
+        //     console.log(match[1])
+        //     let type = match ? `image/${match[1]}` : `image`;
+        //     formData.append('images[' + i + ']', { uri: localUri, name: filename, type });
+        // }
+        formData.append('name', form.name);
+        formData.append('cic_number', form.cic_number);
+        formData.append('email', form.email);
+        formData.append('phone_number', phone);
+        formData.append('sex', form.sex);
+        formData.append('address', form.address);
+        formData.append('city', form.city);
+        formData.append('wards', form.wards);
+        formData.append('district', form.district);
+        formData.append('date_of_birth', (new Date(form.date_of_birth)).toISOString());
+        formData.append('cic_date', (new Date(form.cic_date)).toISOString());
+        formData.append('cic_date_expried', (new Date(form.cic_date_expried)).toISOString());
+        console.log(formData)
+        if (form.phone_number && isValidPhoneNumber(form.phone_number, "VN")) {
+            setSpinner(true)
+            dispatch(saveInforChange(formData, (message) => {
+                Toast.show({
+                    type: 'success',
+                    text1: message,
+                    position: 'bottom'
+                });
+                setSpinner(false)
+
+            }, (error) => {
+                setSpinner(false)
+                Toast.show({
+                    type: 'error',
+                    text1: 'Lỗi!',
+                    text2: error,
+                    position: 'bottom',
+                    visibilityTime: 3000
+                });
+            }))
+        }
+
+    }
+
+
+    const DeleteImage = (data) => {
+        let newImages = images
+        let index = newImages.indexOf(data);
+        console.log(index)
+        newImages.splice(index, 1)
+        setImages([...newImages])
+
+    }
+
+    const alertsaveUserInfor = () =>
+        Alert.alert('Cập nhật thông tin tài khoản!', 'Thông tin tài khoản sẽ được lưu lại và thay đổi khi được duyệt', [
+            {
+                text: 'Cancel',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel',
+            },
+            {
+                text: 'OK', onPress: () => {
+
+                    updateUserInfo()
+                }
+
+            },
+        ]);
+    return (
+        <SafeAreaView style={styles.container} >
+            <Spinner
+                visible={spinner}
+                textContent={'Loading...'}
+                textStyle={styles.spinnerTextStyle}
+            />
+            <ScrollView
+                contentContainerStyle={styles.scrollView}
+                refreshControl={
+                    <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+                }>
+                <Box>
+                    <Box className="my-10 w-full ">
+                        <Box className="relative">
+                            <Image source={require("../../assets/images/avt.png")} className="rounded-full m-auto h-28 w-28 " alt="avt"></Image>
+                            <Box className="bg-white w-12 h-12  absolute z-10 rounded-full m-auto"></Box>
+                        </Box>
+
+                        <Text className="text-[20px] font-bold text-center">{user.name}</Text>
+                        <Text className="text-[13px] text-[#686868] text-center my-1">{user.email}</Text>
+
+                        {user.infor?.status == 0 ? <Text className="text-xs text-[#CB9200] text-center my-1">Đang chờ xét duyệt</Text> : null}
+
+                    </Box>
+                </Box>
+                <Box className="mx-4 my-2">
+                    <Box className="w-full">
+                        <Text bold className="text-[17px]  ">Thông tin liên hệ </Text>
+
+                        <Box class="my-5 ">
+                            <Text className="block mb-2 text-sm  text-[#184E17] ">Họ và
+                                tên </Text>
+                            <Input type="text" isInvalid={checkInValid(errors, 'name') ? true : false} value={form.name} onChangeText={(value) => setForm(prevState => {
+                                return { ...prevState, name: value }
+                            })}
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                placeholder="" required></Input>
+                            <Box className="text-red-500 text-[11px]" >
+                                <ErorrValidator errors={errors} key_error={'name'} />
+                            </Box>
+                        </Box>
+
+                        <Flex direction='column' className="my-2">
+                            <Text className="text-[#184E17] text-sm mt-">Giới tính</Text>
+                            <Box className="my-1">
+                                <Radio.Group name="myRadioGroup" accessibilityLabel="favorite number" value={form.sex} onChange={nextValue => {
+                                    setForm(prevState => {
+                                        return { ...prevState, sex: nextValue }
+                                    })
+                                }}>
+                                    <Stack direction={{
+                                        base: "row",
+                                        md: "row"
+                                    }} alignItems={{
+                                        base: "flex-wrap",
+                                        md: "center"
+                                    }} space={4} w="75%" maxW="300px">
+                                        <Radio value="male" colorScheme="yellow" my={1} size="sm">
+                                            Nam
+                                        </Radio>
+                                        <Radio value="female" colorScheme="yellow" my={1} size="sm">
+                                            Nữ
+                                        </Radio>
+                                        <Radio value="khác" colorScheme="yellow" my={1} size="sm">
+                                            Khác
+                                        </Radio>
+
+                                    </Stack>
+
+                                </Radio.Group>
+                                <ErorrValidator errors={errors} key_error={'sex'} />
+                            </Box>
+                        </Flex>
+                        <Box className="my-2">
+                            <Text className="block mb-2 text-sm  text-[#184E17] ">Email</Text>
+                            <Input type="text" value={form.email} onChangeText={(value) => setForm(prevState => {
+                                return { ...prevState, email: value }
+                            })}
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                placeholder="" required></Input>
+                            <ErorrValidator errors={errors} key_error={'email'} />
+                        </Box>
+                        <Box className="my-2">
+                            <Text className="my-1 text-[#184E17] text-sm">Số điện thoại </Text>
+
+
+                            <Input keyboardType="phone-pad" value={form.phone_number} onChangeText={(value) => setForm(prevState => {
+                                return { ...prevState, phone_number: value }
+                            })}
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                placeholder="" required></Input>
+                            {form.phone_number == null ?
+                                <Box>
+
+                                </Box>
+                                : <Box>
+
+                                    {isValidPhoneNumber(form.phone_number, 'VN') ? null : <Text className="text-red-500 ml-12 mt-2 text-xs" >Số điện thoại không hợp lệ </Text>}
+                                </Box>
+
+                            }
+                            <ErorrValidator errors={errors} key_error={'phone_number'} />
+                        </Box>
+                        <Box className="my-2">
+                            <Text className="my-1 text-[#184E17] text-sm">Địa chỉ</Text>
+                            <Input type="text" value={form.address} onChangeText={(value) => {
+                                setForm(prevState => {
+                                    return { ...prevState, address: value }
+                                });
+
+                            }}
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                placeholder="" required></Input>
+                            <ErorrValidator errors={errors} key_error={'address'} />
+                        </Box>
+                        <Box className="my-2">
+                            {provinces ? <Box >
+                                <Text className="text-[#686868] my-2 text-sm">Tỉnh/ Thành phố</Text>
+                                <Box maxW="500">
+                                    <Select selectedValue={form.city} minWidth="100" accessibilityLabel="Chọn Tính/ Thành phố" placeholder="Chọn Tính/ Thành phố" _selectedItem={{
+                                        bg: "teal.600",
+                                        endIcon: <CheckIcon size="1" />
+                                    }} mt={1} onValueChange={itemValue => {
+                                        setForm(prevState => {
+                                            return { ...prevState, city: itemValue }
+                                        });
+                                        setForm(prevState => {
+                                            return { ...prevState, district: null }
+                                        });
+                                        setForm(prevState => {
+                                            return { ...prevState, wards: null }
+                                        })
+                                    }}>
+
+                                        {provinces.map((item, index) =>
+                                            <Select.Item key={index} label={item.Name} value={item.Name} />)}
+                                    </Select>
+                                </Box>
+
+                                {/* <ErorrValidator errors={errors} key_error={'product_service_owner_id'} /> */}
+                            </Box> : null}
+                            <ErorrValidator errors={errors} key_error={'city'} />
+                        </Box>
+                        <Box className="my-2">
+                            <Box >
+                                <Text className="text-[#686868] my-2 text-sm">Quận/ Huyện</Text>
+                                <Box maxW="500">
+                                    <Select selectedValue={form.district} minWidth="100" accessibilityLabel="Chọn Quận/ Huyện" placeholder="Chọn Quận/ Huyện" _selectedItem={{
+                                        bg: "teal.600",
+                                        endIcon: <CheckIcon size="1" />
+                                    }} mt={1} onValueChange={itemValue => setForm(prevState => {
+                                        return { ...prevState, district: itemValue }
+                                    })}>
+                                        {districts.Districts ? districts.Districts.map((item, index) =>
+                                            <Select.Item key={index} label={item.Name} value={item.Name} />)
+                                            : null}
+                                    </Select>
+                                </Box>
+
+                                {/* <ErorrValidator errors={errors} key_error={'product_service_owner_id'} /> */}
+                            </Box>
+                            <ErorrValidator errors={errors} key_error={'district'} />
+                        </Box>
+                        <Box className="my-2">
+                            <Box >
+                                <Text className="text-[#686868] my-2 text-sm">Xã/ Phường</Text>
+                                <Box maxW="500">
+                                    <Select selectedValue={form.wards} minWidth="100" accessibilityLabel="Chọn Xã/ Phường" placeholder="Chọn Xã/ Phường" _selectedItem={{
+                                        bg: "teal.600",
+                                        endIcon: <CheckIcon size="1" />
+                                    }} mt={1} onValueChange={itemValue => setForm(prevState => {
+                                        return { ...prevState, wards: itemValue }
+                                    })}>
+                                        {wards.Wards ? wards.Wards.map((item, index) =>
+                                            <Select.Item key={index} label={item.Name} value={item.Name} />)
+                                            : null}
+                                    </Select>
+                                </Box>
+
+                                {/* <ErorrValidator errors={errors} key_error={'product_service_owner_id'} /> */}
+                            </Box>
+                            <ErorrValidator errors={errors} key_error={'wards'} />
+                        </Box>
+                    </Box>
+                </Box>
+                <Box className="mx-4 my-2 ">
+                    <Box className="w-full">
+                        <Text bold className="text-[17px]  ">Thông tin giấy tờ</Text>
+
+                        <Box class="my-5 ">
+                            <Text className="block mb-2 text-sm  text-[#184E17] ">Giấy tờ tùy thân (CMT/CCCD)</Text>
+                            <Input type="text" value={form.cic_number} onChangeText={(value) => setForm(prevState => {
+                                return { ...prevState, cic_number: value }
+                            })}
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                placeholder="" required></Input>
+                            <Box class="text-red-500 text-[11px]" >
+                                <ErorrValidator errors={errors} key_error={'cic_number'} />
+                            </Box>
+                        </Box>
+
+
+                        <Box className="my-2">
+                            <Text className="block mb-2 text-sm  text-[#184E17] ">Ngày sinh</Text>
+                            <PressableOpacity onPress={() => setShow(true)}>
+                                <Flex direction='row' className="justify-between bg-white px-2 py-3 rounded-xl mb-2" >
+                                    <Text className="text-[#184E17]"> {formatOnlyDate(form.date_of_birth)}</Text>
+                                    {/* <Calendar
+                                                    size="24"
+                                                    color="#FF8A65"
+                                                /> */}
+                                </Flex>
+
+                            </PressableOpacity>
+                            {show && (
+                                <DateTimePicker
+                                    testID="date_of_birthPicker"
+                                    value={form.date_of_birth}
+                                    textColor="red"
+                                    mode='date'
+                                    is24Hour={true}
+                                    onChange={(event, selectedDate) => {
+                                        setShow(false);
+                                        setForm(prevState => {
+                                            return { ...prevState, date_of_birth: selectedDate }
+                                        })
+
+                                    }}
+                                />
+                            )}
+                            <ErorrValidator errors={errors} key_error={'date_of_birth'} />
+                        </Box>
+                        <Box className="my-2">
+                            <Text className="my-1 text-[#184E17] text-sm">Ngày cấp</Text>
+                            <PressableOpacity onPress={() => setShowCicDate(true)}>
+                                <Flex direction='row' className="justify-between bg-white px-2 py-3 rounded-xl mb-2" >
+                                    <Text className="text-[#184E17]"> {formatOnlyDate(form.cic_date)}</Text>
+                                    {/* <Calendar
+                                                    size="24"
+                                                    color="#FF8A65"
+                                                /> */}
+                                </Flex>
+
+                            </PressableOpacity>
+                            {showCicDate && (
+                                <DateTimePicker
+                                    testID="date_cicPicker"
+                                    value={form.cic_date}
+                                    textColor="red"
+                                    mode='date'
+                                    is24Hour={true}
+                                    onChange={(event, selectedDate) => {
+                                        setShowCicDate(false);
+                                        setForm(prevState => {
+                                            return { ...prevState, cic_date: selectedDate }
+                                        })
+
+                                    }}
+                                />
+                            )}
+                            <ErorrValidator errors={errors} key_error={'cic_date'} />
+                        </Box>
+                        <Box className="my-2">
+                            <Text className="my-1 text-[#184E17] text-sm">Có giá trị đến</Text>
+                            <PressableOpacity onPress={() => setshowCicDateExpried(true)}>
+                                <Flex direction='row' className="justify-between bg-white px-2 py-3 rounded-xl mb-2" >
+                                    <Text className="text-[#184E17]"> {formatOnlyDate(form.cic_date_expried)}</Text>
+                                    {/* <Calendar
+                                                    size="24"
+                                                    color="#FF8A65"
+                                                /> */}
+                                </Flex>
+
+                            </PressableOpacity>
+                            {showCicDateExpried && (
+                                <DateTimePicker
+                                    testID="date_cic_expriedPicker"
+                                    value={form.cic_date_expried}
+                                    textColor="red"
+                                    mode='date'
+                                    is24Hour={true}
+                                    onChange={(event, selectedDate) => {
+                                        setshowCicDateExpried(false);
+                                        setForm(prevState => {
+                                            return { ...prevState, cic_date_expried: selectedDate }
+                                        })
+
+                                    }}
+                                />
+                            )}
+                            <ErorrValidator errors={errors} key_error={'cic_date_expried'} />
+                        </Box>
+
+                    </Box>
+                </Box>
+                {form.phone_number && isValidPhoneNumber(form.phone_number, "VN") ? <Button onPress={alertsaveUserInfor}
+                    className=" bottom-0  w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 px-4 py-4 text-white bg-[#F78F43] rounded-xl " style={styles.btn_button}>
+                    <Text className="text-white items-center text-center">Lưu</Text>
+                </Button> : null
+                }
+
+            </ScrollView >
+
+
+        </SafeAreaView >
+    );
+}
+
+
+const styles = StyleSheet.create({
+    cardcontainer: {
+        flex: 1
+    },
+    lineStyle: {
+        borderWidth: 0.5,
+        borderColor: 'black',
+        margin: 10,
+    }
+})
+
+
+export default UpdateUser;

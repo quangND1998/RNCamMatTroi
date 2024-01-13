@@ -136,3 +136,46 @@ export const verifyOtp = (data, onSuccess = () => {}, onError = () => {}) => (di
 
     });
 };
+
+export const fetchUserData = (onSuccess = () => {}, onError = () => {}) => (dispatch) => {
+    return ApiService.query('api/v1/user/getUser').then(res => {
+
+        setUser(res.data.data.user);
+        dispatch({
+            type: 'getUserSuccess',
+            payload: res.data.data.user
+        })
+        onSuccess(res.data.data.user)
+    })
+}
+
+export const saveInforChange = (formData, onSuccess = () => {}, onError = () => {}) => (dispatch) => {
+    console.log(formData)
+    ApiService.postFormData("api/v1/user/updateUserInfor", formData, {
+        accept: 'application/json',
+        'content-type': 'multipart/form-data'
+    }).then(response => {
+
+        onSuccess(response.data.message)
+        dispatch({
+            type: 'updateInfoSuccess',
+            payload: response.data.data.user
+        })
+        setUser(response.data.data.user)
+    }).catch(error => {
+        // console.log(error)
+        // onError(error)
+        if (error.response.status == 422) {
+            var errors = ''
+            Object.keys(error.response.data.data).map(key =>
+                errors += error.response.data.data[key]
+            );
+            onError(errors)
+            dispatch({
+                type: 'updateInforError',
+                payload: error.response.data.data,
+            })
+
+        }
+    });
+}

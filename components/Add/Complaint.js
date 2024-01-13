@@ -303,12 +303,14 @@ const Complaint = ({ navigation, route }) => {
 
                         <Flex direction='row' className="flex flex-wrap" >
                             {images.length > 0 && images.map((image, index) =>
-                                <Flex key={`image${index}`} direction='row' className="flex flex-wrap mx-1 my-1" >
-                                    <Flex direction='row' className="flex flex-wrap relative ">
-                                        <MaterialCommunityIcons onPress={() => DeleteImage(image)} name='trash-can-outline' size={16} color='#fc5050' className="absolute bottom-auto left-auto right-0 top-0" />
+                                <Flex key={`image${index}`} direction='row' className=" flex flex-wrap mx-1 my-1" >
+                                    <Box className="relative ">
+                                        <Box className="absolute right-0 top-0 z-10 ">
+                                            <MaterialCommunityIcons onPress={() => DeleteImage(image)} name='trash-can-outline' size={16} color='#fc5050' />
+                                        </Box>
                                         <Image source={{ uri: image.uri }} alt={`image${index}`} size="md" className="rounded-md" />
 
-                                    </Flex>
+                                    </Box>
 
                                 </Flex>
 

@@ -75,6 +75,21 @@ const loginReducer = (state = initialState, action) => {
             return {
                 ...state
             }
+        case 'getUserSuccess':
+            state.user = action.payload
+            return {
+                ...state
+            }
+        case 'updateInfoSuccess':
+            state.user = action.payload
+            return {
+                ...state
+            }
+        case 'updateInforError':
+            state.errors = action.payload;
+            return {
+                ...state
+            }
         default:
             return state;
     }

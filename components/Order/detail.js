@@ -61,7 +61,7 @@ const OrderDetail = ({ navigation, route }) => {
                 style: 'cancel',
             },
             {
-                text: 'OK', onPress: () => {
+                text: 'Đã nhận được', onPress: () => {
 
                     onPressConfirm()
                 }

@@ -104,6 +104,15 @@ export const useHelper = () => {
         return result.trim() + ' triệu đồng';
     }
 
+    const checkInValid = (errors, key) => {
+        if (errors && Object.hasOwn(errors, key)) {
+            return true
+        } else {
+            return false
+        }
+
+    }
+
     return {
         formatDate,
         formatDateTime,
@@ -116,7 +125,8 @@ export const useHelper = () => {
         formatTime,
         formatOnlyDate,
         formatDateShort,
-        formatDateUse
+        formatDateUse,
+        checkInValid
     }
 
 };
