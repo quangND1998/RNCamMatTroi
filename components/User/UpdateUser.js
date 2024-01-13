@@ -174,6 +174,14 @@ const UpdateUser = ({ navigation, route }) => {
         formData.append('date_of_birth', (new Date(form.date_of_birth)).toISOString());
         formData.append('cic_date', (new Date(form.cic_date)).toISOString());
         formData.append('cic_date_expried', (new Date(form.cic_date_expried)).toISOString());
+        if (photo) {
+            let localUri = photo;
+            let filename = localUri.split('/').pop();
+            let match = /\.(\w+)$/.exec(filename);
+            console.log(match[1])
+            let type = match ? `image/${match[1]}` : `image`;
+            formData.append('image', { uri: localUri, name: filename, type });
+        }
         console.log(formData)
         if (form.phone_number && isValidPhoneNumber(form.phone_number, "VN")) {
             setSpinner(true)
