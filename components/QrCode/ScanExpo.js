@@ -181,20 +181,7 @@ export default function ScanExpo({ navigation }) {
     return (
 
         <View style={styles.container}>
-            {/* <Box className="relative">
-                <PressableOpacity onPress={handleBackButtonClick} className="absolute mt-10 ml-3">
-                    <ArrowLeft2
-                        size="32"
-                        color="#FF8A65"
-                    />
-                </PressableOpacity>
-
-            </Box> */}
-            {/* <BarCodeScanner
-                onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-                style={[StyleSheet.absoluteFillObject, styles.cameraContainer]}
-            /> */}
-            {/* {scanned && <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />} */}
+           
             <Camera
                 style={styles.camera}
                 type={type}

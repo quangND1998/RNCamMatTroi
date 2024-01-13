@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { LogBox, Dimensions } from 'react-native';
 import { StyleSheet, TouchableOpacity, Linking, Keyboard, View, Alert, SafeAreaView, ScrollView, Platform, RefreshControl } from 'react-native';
 import { Center, Container, Heading, Button, Text, Flex, Box, Radio, TextArea, Stack, Select, CheckIcon, Input, SearchBar, Image, Icon, Spacer, ZStack, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base'
@@ -11,17 +11,16 @@ import { PressableOpacity } from 'react-native-pressable-opacity';
 import * as RNImagePicker from 'expo-image-picker'
 import Toast from 'react-native-toast-message';
 import Spinner from 'react-native-loading-spinner-overlay';
-import HrTag from '../HrTag';
 import ErorrValidator from '../ErorrValidator';
 import { formatPhoneNumberIntl, isValidPhoneNumber, parsePhoneNumber } from 'react-phone-number-input'
-import PhoneInput from 'react-phone-number-input/input'
-import PhoneTextInput from './PhoneTextInput';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useHelper } from '../../helpers/helper';
+import { Camera, CameraType, Constants, FlashMode, } from 'expo-camera';
+import { CONTENT_SPACING, CONTROL_BUTTON_SIZE, SAFE_AREA_PADDING } from '../QrCode/Constants'
+import { LampOn, LampSlash, Image as ImageIcon, ArrowLeft2, Camera as CameraIcon } from 'iconsax-react-native';
 const UpdateUser = ({ navigation, route }) => {
     const dispatch = useDispatch();
-
-    var { width, height } = Dimensions.get("window");
+    const [type, setType] = useState(CameraType.front);
     const user = useSelector(state => state.auth.user)
     const [spinner, setSpinner] = useState(false)
     const [refreshing, setRefreshing] = React.useState(false);
@@ -31,7 +30,13 @@ const UpdateUser = ({ navigation, route }) => {
     const [showCicDate, setShowCicDate] = useState(false);
     const [showCicDateExpried, setshowCicDateExpried] = useState(false);
     const { formatOnlyDate, checkInValid } = useHelper();
-    const errors = useSelector(state => state.auth.errors)
+    const errors = useSelector(state => state.auth.errors);
+    const [isCamera, setCamera] = useState(false);
+    const [flashMode, setFlashMode] = React.useState(FlashMode.off)
+    const [permission, requestPermission] = Camera.useCameraPermissions();
+    const [photo, setPhoto] = useState(null);
+    const cameraRef = useRef(null);
+
     const [form, setForm] = useState({
         name: user ? user.name : null,
         phone_number: user ? user.phone_number : null,
@@ -195,12 +200,14 @@ const UpdateUser = ({ navigation, route }) => {
     }
 
 
-    const DeleteImage = (data) => {
-        let newImages = images
-        let index = newImages.indexOf(data);
-        console.log(index)
-        newImages.splice(index, 1)
-        setImages([...newImages])
+    const __handleFlashMode = () => {
+        if (flashMode === 'torch') {
+            setFlashMode(FlashMode.off)
+        } else if (flashMode === 'off') {
+            setFlashMode(FlashMode.torch)
+        } else {
+            setFlashMode(FlashMode.torch)
+        }
 
     }
 
@@ -219,8 +226,80 @@ const UpdateUser = ({ navigation, route }) => {
 
             },
         ]);
+    if (!permission) {
+
+        return <View />;
+    }
+
+    if (!permission.granted) {
+        return (
+            <View style={styles.container}>
+                <Text style={{ textAlign: 'center' }}>We need your permission to show the camera</Text>
+                <Button onPress={requestPermission} title="grant permission" />
+            </View>
+        );
+    }
+    const takePhoto = async () => {
+        if (cameraRef.current) {
+            let photo = await cameraRef.current.takePictureAsync();
+            setPhoto(photo.uri)
+            setCamera(false)
+
+        }
+    }
     return (
-        <SafeAreaView style={styles.container} >
+        isCamera ? <View style={styles.container} >
+            <Camera
+                ref={cameraRef}
+                style={styles.camera}
+                type={type}
+                flashMode={flashMode}
+            >
+                <Center style={styles.centerButtonRow} className="items-center" >
+                    <PressableOpacity style={styles.button} disabledOpacity={0.4} onPress={takePhoto}>
+
+                        <CameraIcon
+                            size="28"
+                            color="#FF8A65"
+                        />
+
+                    </PressableOpacity>
+                </Center>
+                <View style={styles.topButtonRow}>
+                    <PressableOpacity style={styles.button} onPress={() => setCamera(false)} disabledOpacity={0.4}>
+
+                        <ArrowLeft2
+                            size="28"
+                            color="#FF8A65"
+                        />
+
+                    </PressableOpacity>
+                </View>
+                <View style={styles.rightTopButtonRow}>
+                    <PressableOpacity style={styles.button} onPress={() => __handleFlashMode()} disabledOpacity={0.4}>
+
+                        {flashMode === 'torch' ? <LampOn
+                            size="28"
+                            color="#FF8A65"
+                        /> : <LampSlash
+                            size="28"
+                            color="#FF8A65"
+                        />}
+
+                    </PressableOpacity>
+                </View>
+                <View style={styles.leftButtonRow}>
+                    <PressableOpacity style={styles.button} disabledOpacity={0.4}  >
+                        <Box className="w-[25px] h-[25px] button_radious  rounded-full" expand="block" >
+                            <ImageIcon
+                                size="28"
+                                color="#FF8A65"
+                            />
+                        </Box>
+                    </PressableOpacity>
+                </View>
+            </Camera>
+        </View > : <SafeAreaView  >
             <Spinner
                 visible={spinner}
                 textContent={'Loading...'}
@@ -234,21 +313,22 @@ const UpdateUser = ({ navigation, route }) => {
                 <Box>
                     <Box className="my-10 w-full ">
                         <Box className="relative">
-                            <Image source={require("../../assets/images/avt.png")} className="rounded-full m-auto h-28 w-28 " alt="avt"></Image>
+                            {photo ? <Image source={{ uri: photo }} className="rounded-full m-auto h-28 w-28 " alt="avt"></Image> : <Image source={{ uri: user?.profile_photo_url }} className="rounded-full m-auto h-28 w-28 " alt="avt"></Image>}
+
                             <Box className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                                 <Box className="m-[12px]">
-                                    <Box className="bg-white w-12 h-12  absolute z-10 rounded-full shadow">
-                                        <Image source={require("../../assets/icon/camera.png")} className="rounded-full m-auto h-6 w-6 " alt="avt"></Image>
-                                    </Box>
+
+                                    <PressableOpacity onPress={() => setCamera(true)} className="bg-white w-12 h-12  absolute  rounded-full shadow-md">
+                                        <Image source={require("../../assets/icon/camera.png")} className="rounded-full m-auto w-[17.07] h-[15.89] " alt="avt"></Image>
+                                    </PressableOpacity>
+
+
                                 </Box>
                             </Box>
                         </Box>
-
                         <Text className="text-[20px] font-bold text-center mt-5">{user.name}</Text>
                         <Text className="text-[13px] text-[#184E17] text-center my-1">{user.email}</Text>
-
                         {user.infor?.status == 0 ? <Text className="text-xs text-[#CB9200] text-center my-1">Đang chờ xét duyệt</Text> : null}
-
                     </Box>
                 </Box>
                 <Box className="mx-4 my-2">
@@ -531,6 +611,9 @@ const UpdateUser = ({ navigation, route }) => {
 
 
         </SafeAreaView >
+
+
+
     );
 }
 
@@ -543,7 +626,71 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
         borderColor: 'black',
         margin: 10,
-    }
+    },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: '#000000' // the rock-solid workaround
+    },
+    cameraContainer: {
+        marginHorizontal: 0, marginLeft: 0, marginStart: 0,
+        paddingHorizontal: 0, paddingLeft: 0, paddingStart: 0,
+        height: '115%',
+        padding: 0
+    },
+    camera: {
+        flex: 1,
+    },
+    buttonContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        backgroundColor: 'transparent',
+        margin: 64,
+    },
+    button: {
+        flex: 1,
+        alignSelf: 'flex-end',
+        alignItems: 'center',
+    },
+    text: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: 'white',
+    },
+    button: {
+        marginBottom: CONTENT_SPACING,
+        width: CONTROL_BUTTON_SIZE,
+        height: CONTROL_BUTTON_SIZE,
+        borderRadius: CONTROL_BUTTON_SIZE / 2,
+        backgroundColor: 'rgba(140, 140, 140, 0.3)',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    rightButtonRow: {
+        position: 'absolute',
+        right: SAFE_AREA_PADDING.paddingRight,
+        bottom: SAFE_AREA_PADDING.paddingTop,
+    },
+    topButtonRow: {
+        position: 'absolute',
+        top: SAFE_AREA_PADDING.paddingTop,
+        left: SAFE_AREA_PADDING.paddingLeft,
+    },
+    rightTopButtonRow: {
+        position: 'absolute',
+        top: SAFE_AREA_PADDING.paddingTop,
+        right: SAFE_AREA_PADDING.paddingRight,
+    },
+    centerButtonRow: {
+        position: 'absolute',
+        right: SAFE_AREA_PADDING.paddingRight,
+        bottom: SAFE_AREA_PADDING.paddingTop,
+    },
+    leftButtonRow: {
+        position: 'absolute',
+        left: SAFE_AREA_PADDING.paddingLeft,
+        bottom: SAFE_AREA_PADDING.paddingBottom,
+    },
 })
 
 
