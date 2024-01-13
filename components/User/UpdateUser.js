@@ -235,7 +235,13 @@ const UpdateUser = ({ navigation, route }) => {
                     <Box className="my-10 w-full ">
                         <Box className="relative">
                             <Image source={require("../../assets/images/avt.png")} className="rounded-full m-auto h-28 w-28 " alt="avt"></Image>
-                            <Box className="bg-white w-12 h-12  absolute z-10 rounded-full m-auto"></Box>
+                            <Box className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                                <Box className="m-[12px]">
+                                    <Box className="bg-white w-12 h-12  absolute z-10 rounded-full shadow">
+                                        <Image source={require("../../assets/icon/camera.png")} className="rounded-full m-auto h-6 w-6 " alt="avt"></Image>
+                                    </Box>
+                                </Box>
+                            </Box>
                         </Box>
 
                         <Text className="text-[20px] font-bold text-center mt-5">{user.name}</Text>
