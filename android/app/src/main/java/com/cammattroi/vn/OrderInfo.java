@@ -1,4 +1,4 @@
-package com.cammattroi;
+package com.cammattroi.vn;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

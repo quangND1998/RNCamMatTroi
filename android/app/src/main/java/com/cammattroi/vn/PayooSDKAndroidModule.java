@@ -1,4 +1,4 @@
-package com.cammattroi;
+package com.cammattroi.vn;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
@@ -27,7 +27,6 @@ import vn.payoo.paymentsdk.data.model.PaymentMethod;
 import vn.payoo.paymentsdk.data.model.PaymentOption;
 import vn.payoo.paymentsdk.data.model.ResponseObject;
 
-
 public class PayooSDKAndroidModule extends ReactContextBaseJavaModule implements OnPayooPaymentCompleteListener {
 
     private static final String KEY_AUTH_TOKEN = "app_auth_token";
@@ -40,7 +39,7 @@ public class PayooSDKAndroidModule extends ReactContextBaseJavaModule implements
     public PayooSDKAndroidModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
-        //reactContext.addActivityEventListener(this);
+        // reactContext.addActivityEventListener(this);
     }
 
     public static Order order;
@@ -63,16 +62,16 @@ public class PayooSDKAndroidModule extends ReactContextBaseJavaModule implements
     public void pay(ReadableMap input, Promise promise) throws JSONException {
         this.promise = promise;
 
-        //Merchant info
+        // Merchant info
         String merchantId = getStringParams(input, "MerchantID");
         String merchantShareKey = getStringParams(input, "MerchantShareKey");
 
-        //Order info
+        // Order info
         String orderXML = getStringParams(input, "PayooOrderXML");
         String checksum = getStringParams(input, "PayooOrderChecksum");
         double cashAmount = getDoubleParams(input, "PayooCashAmount", 0.0);
 
-        //Configuration info
+        // Configuration info
         int lang = getIntParams(input, "Language", 0);
         int environment = getIntParams(input, "Environment", 0);
         int supportMethods = getIntParams(input, "SupportedMethods", 0);
@@ -93,7 +92,6 @@ public class PayooSDKAndroidModule extends ReactContextBaseJavaModule implements
                 .withBankCode(bankCode)
                 .withAppCode(appCode)
                 .build();
-
 
         PayooMerchant payooMerchant = PayooMerchant.newBuilder()
                 .merchantId(merchantId)

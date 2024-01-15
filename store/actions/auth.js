@@ -163,8 +163,8 @@ export const saveInforChange = (formData, onSuccess = () => {}, onError = () => 
         })
         setUser(response.data.data.user)
     }).catch(error => {
-        // console.log(error)
-        // onError(error)
+        console.log(error.response.data)
+        onError(error)
         if (error.response.status == 422) {
             var errors = ''
             Object.keys(error.response.data.data).map(key =>
@@ -177,5 +177,15 @@ export const saveInforChange = (formData, onSuccess = () => {}, onError = () => 
             })
 
         }
+    });
+}
+
+export const getTokenFirebase = (token) => (dispatch) => {
+
+    return ApiService.post("api/v1/getFireBaseToken", { token }).then(response => {
+        console.log(response);
+
+    }).catch(error => {
+        console.log(error)
     });
 }

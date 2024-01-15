@@ -1,4 +1,4 @@
-package com.cammattroi;
+package com.cammattroi.vn;
 
 import expo.modules.ReactActivityDelegateWrapper;
 import android.os.Bundle;

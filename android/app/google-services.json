@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "953020654814",
+    "project_id": "cammattroi-851c0",
+    "storage_bucket": "cammattroi-851c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:953020654814:android:f4e4fc50f1f8bdb5d30e4f",
+        "android_client_info": {
+          "package_name": "com.cammattroi.vn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCby57kyniiLHiPYeKLef1Zqw4JijcjTLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

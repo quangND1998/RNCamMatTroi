@@ -1,4 +1,4 @@
-package com.cammattroi;
+package com.cammattroi.vn;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;

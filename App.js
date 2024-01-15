@@ -137,10 +137,36 @@ import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
 import SplashScreen from 'react-native-splash-screen';
+import { useDispatch, useSelector } from 'react-redux';
+import { PermissionsAndroid } from 'react-native';
 LogBox.ignoreLogs(['In React 18, SSRProvider is not necessary and is a noop. You can remove it from your app.']);
+import {
+  getFcmToken,
+  getFcmTokenFromLocalStorage,
+  requestUserPermission,
+  notificationListener,
+} from './notification'
+import { getTokenFirebase } from './store/actions/auth';
 export default function App() {
+  const dispatch = useDispatch();
+  const [generatedToken, setGeneratedToken] = useState();
   useEffect(() => {
     SplashScreen.hide();
+    const fetchToken = async () => {
+      const token = await getFcmToken();
+      console.log('fetchToken', token)
+      if (token) {
+        setGeneratedToken(token);
+        dispatch(getTokenFirebase(token))
+      }
+    };
+    const fetchTokenByLocal = async () => {
+      await getFcmTokenFromLocalStorage();
+    };
+    fetchToken();
+    fetchTokenByLocal();
+    requestUserPermission();
+    notificationListener();
   }, []);
   return (
     <LoginProvider>

@@ -1,5 +1,6 @@
 apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
+apply plugin: 'com.google.gms.google-services'
 import com.android.build.OutputFile
 /**
  * This is the configuration block to customize your React Native Android app.
@@ -78,9 +79,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.cammattroi"
+    namespace "com.cammattroi.vn"
     defaultConfig {
-        applicationId "com.cammattroi"
+        applicationId "com.cammattroi.vn"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

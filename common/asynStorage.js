@@ -92,3 +92,26 @@ export const getPhone = async() => {
 export const destroyPhone = async() => {
     return await AsyncStorage.removeItem('@phone')
 }
+
+
+export const saveFCMToken = async(value) => {
+    try {
+        const jsonValue = JSON.stringify(value)
+        console.log('phone', jsonValue);
+        await AsyncStorage.setItem('@fcmtoken', jsonValue)
+    } catch (e) {
+        // error reading value
+    }
+}
+export const getFCMToken = async() => {
+    try {
+        const jsonValue = await AsyncStorage.getItem('@fcmtoken')
+            // console.log(JSON.parse(jsonValue))
+        return jsonValue != null ? JSON.parse(jsonValue) : null;
+    } catch (e) {
+        // error reading value
+    }
+}
+export const destroyFCMToken = async() => {
+    return await AsyncStorage.removeItem('@fcmtoken')
+}
