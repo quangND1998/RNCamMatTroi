@@ -8,6 +8,8 @@ const initialState = {
     isOpen: false,
     isError: false,
     errors: null,
+    photo: null,
+    isCamera: false
 };
 const loginReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -89,6 +91,16 @@ const loginReducer = (state = initialState, action) => {
             state.errors = action.payload;
             return {
                 ...state
+            }
+        case 'openCamera':
+            return {
+                ...state,
+                isCamera: action.payload
+            }
+        case 'setPhoto':
+            return {
+                ...state,
+                photo: action.payload
             }
         default:
             return state;

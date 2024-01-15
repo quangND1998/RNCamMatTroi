@@ -112,7 +112,9 @@ export const useHelper = () => {
         }
 
     }
-
+    const checkIsImage = (value) => {
+        return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(value);
+    }
     return {
         formatDate,
         formatDateTime,
@@ -126,7 +128,8 @@ export const useHelper = () => {
         formatOnlyDate,
         formatDateShort,
         formatDateUse,
-        checkInValid
+        checkInValid,
+        checkIsImage
     }
 
 };

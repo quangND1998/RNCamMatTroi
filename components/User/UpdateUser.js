@@ -18,6 +18,7 @@ import { useHelper } from '../../helpers/helper';
 import { Camera, CameraType, Constants, FlashMode, } from 'expo-camera';
 import { CONTENT_SPACING, CONTROL_BUTTON_SIZE, SAFE_AREA_PADDING } from '../QrCode/Constants'
 import { LampOn, LampSlash, Image as ImageIcon, ArrowLeft2, Camera as CameraIcon } from 'iconsax-react-native';
+import UploadAvatar from './UploadAvatar';
 const UpdateUser = ({ navigation, route }) => {
     const dispatch = useDispatch();
     const [type, setType] = useState(CameraType.front);
@@ -29,12 +30,11 @@ const UpdateUser = ({ navigation, route }) => {
     const [show, setShow] = useState(false);
     const [showCicDate, setShowCicDate] = useState(false);
     const [showCicDateExpried, setshowCicDateExpried] = useState(false);
-    const { formatOnlyDate, checkInValid } = useHelper();
+    const { formatOnlyDate, checkInValid, checkIsImage } = useHelper();
     const errors = useSelector(state => state.auth.errors);
-    const [isCamera, setCamera] = useState(false);
-    const [flashMode, setFlashMode] = React.useState(FlashMode.off)
+    const isCamera = useSelector(state => state.auth.isCamera);
     const [permission, requestPermission] = Camera.useCameraPermissions();
-    const [photo, setPhoto] = useState(null);
+    const photo = useSelector(state => state.auth.photo)
     const cameraRef = useRef(null);
 
     const [form, setForm] = useState({
@@ -64,7 +64,10 @@ const UpdateUser = ({ navigation, route }) => {
         const unsubscribe = navigation.addListener('focus', () => {
             (async () => {
                 fetchUser();
-
+                dispatch({
+                    type: 'setPhoto',
+                    payload: null
+                })
             })();
         });
 
@@ -208,16 +211,7 @@ const UpdateUser = ({ navigation, route }) => {
     }
 
 
-    const __handleFlashMode = () => {
-        if (flashMode === 'torch') {
-            setFlashMode(FlashMode.off)
-        } else if (flashMode === 'off') {
-            setFlashMode(FlashMode.torch)
-        } else {
-            setFlashMode(FlashMode.torch)
-        }
 
-    }
 
     const alertsaveUserInfor = () =>
         Alert.alert('Cập nhật thông tin tài khoản!', 'Thông tin tài khoản sẽ được lưu lại và thay đổi khi được duyệt', [
@@ -234,80 +228,9 @@ const UpdateUser = ({ navigation, route }) => {
 
             },
         ]);
-    if (!permission) {
 
-        return <View />;
-    }
-
-    if (!permission.granted) {
-        return (
-            <View style={styles.container}>
-                <Text style={{ textAlign: 'center' }}>We need your permission to show the camera</Text>
-                <Button onPress={requestPermission} title="grant permission" />
-            </View>
-        );
-    }
-    const takePhoto = async () => {
-        if (cameraRef.current) {
-            let photo = await cameraRef.current.takePictureAsync();
-            setPhoto(photo.uri)
-            setCamera(false)
-
-        }
-    }
     return (
-        isCamera ? <View style={styles.container} >
-            <Camera
-                ref={cameraRef}
-                style={styles.camera}
-                type={type}
-                flashMode={flashMode}
-            >
-                <Center style={styles.centerButtonRow} className="items-center" >
-                    <PressableOpacity style={styles.button} disabledOpacity={0.4} onPress={takePhoto}>
-
-                        <CameraIcon
-                            size="28"
-                            color="#FF8A65"
-                        />
-
-                    </PressableOpacity>
-                </Center>
-                <View style={styles.topButtonRow}>
-                    <PressableOpacity style={styles.button} onPress={() => setCamera(false)} disabledOpacity={0.4}>
-
-                        <ArrowLeft2
-                            size="28"
-                            color="#FF8A65"
-                        />
-
-                    </PressableOpacity>
-                </View>
-                <View style={styles.rightTopButtonRow}>
-                    <PressableOpacity style={styles.button} onPress={() => __handleFlashMode()} disabledOpacity={0.4}>
-
-                        {flashMode === 'torch' ? <LampOn
-                            size="28"
-                            color="#FF8A65"
-                        /> : <LampSlash
-                            size="28"
-                            color="#FF8A65"
-                        />}
-
-                    </PressableOpacity>
-                </View>
-                <View style={styles.leftButtonRow}>
-                    <PressableOpacity style={styles.button} disabledOpacity={0.4}  >
-                        <Box className="w-[25px] h-[25px] button_radious  rounded-full" expand="block" >
-                            <ImageIcon
-                                size="28"
-                                color="#FF8A65"
-                            />
-                        </Box>
-                    </PressableOpacity>
-                </View>
-            </Camera>
-        </View > : <SafeAreaView  >
+        isCamera ? <UploadAvatar /> : <SafeAreaView  >
             <Spinner
                 visible={spinner}
                 textContent={'Loading...'}
@@ -321,12 +244,14 @@ const UpdateUser = ({ navigation, route }) => {
                 <Box>
                     <Box className="my-10 w-full ">
                         <Box className="relative">
-                            {photo ? <Image source={{ uri: photo }} className="rounded-full m-auto h-28 w-28 " alt="avt"></Image> : <Image source={{ uri: user?.profile_photo_url }} className="rounded-full m-auto h-28 w-28 " alt="avt"></Image>}
+
+                            {photo ? <Image source={{ uri: photo }} className="rounded-full m-auto h-28 w-28 " alt="avt"></Image>
+                                : checkIsImage(user?.profile_photo_url) == true ? <Image source={{ uri: user?.profile_photo_url }} className="rounded-full m-auto h-28 w-28 " alt="avt"></Image> : <Image source={require("../../assets/images/avt.png")} className="rounded-full m-auto h-28 w-28 " alt="avt"></Image>}
 
                             <Box className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                                 <Box className="m-[12px]">
 
-                                    <PressableOpacity onPress={() => setCamera(true)} className="bg-white w-12 h-12  absolute  rounded-full shadow-md">
+                                    <PressableOpacity onPress={() => dispatch({ type: 'openCamera', payload: true })} className="bg-white w-12 h-12  absolute  rounded-full shadow-md">
                                         <Image source={require("../../assets/icon/camera.png")} className="rounded-full m-auto w-[17.07] h-[15.89] " alt="avt"></Image>
                                     </PressableOpacity>
 
