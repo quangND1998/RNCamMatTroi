@@ -126,11 +126,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import {
-  View,
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-  TextInput, KeyboardAvoidingView
+
+  LogBox
 } from 'react-native';
 import Payoo from './payoo'
 import LoginProvider from './context/LoginProvider';
@@ -139,9 +136,8 @@ import { NativeBaseProvider, Box, Center, useToast } from 'native-base';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
-import { GluestackUIProvider } from 'native-base'
-import { config } from "@gluestack-ui/config" // Optional if you want to use default theme
 import SplashScreen from 'react-native-splash-screen';
+LogBox.ignoreLogs(['In React 18, SSRProvider is not necessary and is a noop. You can remove it from your app.']);
 export default function App() {
   useEffect(() => {
     SplashScreen.hide();
@@ -150,7 +146,7 @@ export default function App() {
     <LoginProvider>
       <NativeBaseProvider>
         <SafeAreaProvider>
-          <NavigationContainer>
+          <NavigationContainer >
             <MainNavigator />
             <Toast />
           </NavigationContainer>

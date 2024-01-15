@@ -24,7 +24,14 @@ const OrderScreen = () => {
                 headerLeft: (props) => (
                     <HeaderBackButton labelStyle={{ marginLeft: 0 }}
                         {...props}
-                        onPress={() => navigation.goBack()}
+                        onPress={() => {
+                            if (navigation.canGoBack()) {
+                                navigation.goBack();
+                            }
+                            else {
+                                navigation.navigate('Home')
+                            }
+                        }}
                     />
                 ),
                 headerTransparent: false,

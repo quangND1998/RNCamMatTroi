@@ -59,7 +59,14 @@ const BottomNavigator = () => {
                 headerLeft: (props) => (
                     <HeaderBackButton
                         {...props}
-                        onPress={() => navigation.goBack()}
+                        onPress={() => {
+                            if (navigation.canGoBack()) {
+                                navigation.goBack();
+                            }
+                            else {
+                                navigation.navigate('Home')
+                            }
+                        }}
                     />
                 )
             })}

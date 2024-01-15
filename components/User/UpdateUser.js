@@ -42,14 +42,14 @@ const UpdateUser = ({ navigation, route }) => {
         phone_number: user ? user.phone_number : null,
         email: user ? user.email : null,
         address: user ? user.address : null,
-        sex: 'male',
+        sex: user ? user.sex : 'male',
         wards: user ? user.wards : null,
         district: user ? user.district : null,
         city: user ? user.city : null,
         cic_number: user ? user.cic_number : null,
-        cic_date: user ? user.date_of_birth ? user.cic_date : new Date() : null,
-        cic_date_expried: user ? user.date_of_birth ? user.cic_date_expried : new Date() : null,
-        date_of_birth: user ? user.date_of_birth ? user.date_of_birth : new Date() : null
+        cic_date: user ? user.date_of_birth ? (new Date(user.cic_date)) : new Date() : null,
+        cic_date_expried: user ? user.date_of_birth ? (new Date(user.cic_date_expried)) : new Date() : null,
+        date_of_birth: user ? user.date_of_birth ? (new Date(user.date_of_birth)) : new Date() : null
     })
     const getProvinces = async () => {
         const response = await fetch('https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json');
@@ -123,14 +123,14 @@ const UpdateUser = ({ navigation, route }) => {
                         phone_number: user ? user.phone_number : null,
                         email: user ? user.email : null,
                         address: user ? user.address : null,
-                        sex: 'male',
+                        sex: user ? user.sex : 'male',
                         wards: user ? user.wards : null,
                         district: user ? user.district : null,
                         city: user ? user.city : null,
                         cic_number: user ? user.cic_number : null,
-                        cic_date: user ? user.date_of_birth ? user.cic_date : new Date() : null,
-                        cic_date_expried: user ? user.date_of_birth ? user.cic_date_expried : new Date() : null,
-                        date_of_birth: user ? user.date_of_birth ? user.date_of_birth : new Date() : null
+                        cic_date: user ? user.date_of_birth ? (new Date(user.cic_date)) : new Date() : null,
+                        cic_date_expried: user ? user.date_of_birth ? (new Date(user.cic_date_expried)) : new Date() : null,
+                        date_of_birth: user ? user.date_of_birth ? (new Date(user.date_of_birth)) : new Date() : null
                     }
                 })
             },
@@ -314,7 +314,7 @@ const UpdateUser = ({ navigation, route }) => {
                         </Flex>
                         <Box className="my-2">
                             <Text className="block mb-2 text-sm  text-[#184E17] ">Email</Text>
-                            <Input type="text" value={form.email} onChangeText={(value) => setForm(prevState => {
+                            <Input type="text" isInvalid={checkInValid(errors, 'email') ? true : false} value={form.email} onChangeText={(value) => setForm(prevState => {
                                 return { ...prevState, email: value }
                             })}
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
@@ -325,7 +325,7 @@ const UpdateUser = ({ navigation, route }) => {
                             <Text className="my-1 text-[#184E17] text-sm">Số điện thoại </Text>
 
 
-                            <Input keyboardType="phone-pad" value={form.phone_number} onChangeText={(value) => setForm(prevState => {
+                            <Input keyboardType="phone-pad" value={form.phone_number} isInvalid={checkInValid(errors, 'phone_number') ? true : false} onChangeText={(value) => setForm(prevState => {
                                 return { ...prevState, phone_number: value }
                             })}
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
@@ -344,7 +344,7 @@ const UpdateUser = ({ navigation, route }) => {
                         </Box>
                         <Box className="my-2">
                             <Text className="my-1 text-[#184E17] text-sm">Địa chỉ</Text>
-                            <Input type="text" value={form.address} onChangeText={(value) => {
+                            <Input type="text" isInvalid={checkInValid(errors, 'address') ? true : false} value={form.address} onChangeText={(value) => {
                                 setForm(prevState => {
                                     return { ...prevState, address: value }
                                 });
@@ -358,7 +358,7 @@ const UpdateUser = ({ navigation, route }) => {
                             {provinces ? <Box >
                                 <Text className="text-[#184E17] my-2 text-sm">Tỉnh/ Thành phố</Text>
                                 <Box maxW="500">
-                                    <Select selectedValue={form.city} minWidth="100" accessibilityLabel="Chọn Tính/ Thành phố" placeholder="Chọn Tính/ Thành phố" _selectedItem={{
+                                    <Select isInvalid={checkInValid(errors, 'city') ? true : false} selectedValue={form.city} minWidth="100" accessibilityLabel="Chọn Tính/ Thành phố" placeholder="Chọn Tính/ Thành phố" _selectedItem={{
                                         bg: "teal.600",
                                         endIcon: <CheckIcon size="1" />
                                     }} mt={1} onValueChange={itemValue => {
@@ -386,7 +386,7 @@ const UpdateUser = ({ navigation, route }) => {
                             <Box >
                                 <Text className="text-[#184E17] my-2 text-sm">Quận/ Huyện</Text>
                                 <Box maxW="500">
-                                    <Select selectedValue={form.district} minWidth="100" accessibilityLabel="Chọn Quận/ Huyện" placeholder="Chọn Quận/ Huyện" _selectedItem={{
+                                    <Select isInvalid={checkInValid(errors, 'district') ? true : false} selectedValue={form.district} minWidth="100" accessibilityLabel="Chọn Quận/ Huyện" placeholder="Chọn Quận/ Huyện" _selectedItem={{
                                         bg: "teal.600",
                                         endIcon: <CheckIcon size="1" />
                                     }} mt={1} onValueChange={itemValue => setForm(prevState => {
@@ -406,7 +406,7 @@ const UpdateUser = ({ navigation, route }) => {
                             <Box >
                                 <Text className="text-[#184E17] my-2 text-sm">Xã/ Phường</Text>
                                 <Box maxW="500">
-                                    <Select selectedValue={form.wards} minWidth="100" accessibilityLabel="Chọn Xã/ Phường" placeholder="Chọn Xã/ Phường" _selectedItem={{
+                                    <Select isInvalid={checkInValid(errors, 'wards') ? true : false} selectedValue={form.wards} minWidth="100" accessibilityLabel="Chọn Xã/ Phường" placeholder="Chọn Xã/ Phường" _selectedItem={{
                                         bg: "teal.600",
                                         endIcon: <CheckIcon size="1" />
                                     }} mt={1} onValueChange={itemValue => setForm(prevState => {
@@ -430,7 +430,7 @@ const UpdateUser = ({ navigation, route }) => {
 
                         <Box class="my-5 ">
                             <Text className="block mb-2 text-sm  text-[#184E17] ">Giấy tờ tùy thân (CMT/CCCD)</Text>
-                            <Input type="text" value={form.cic_number} onChangeText={(value) => setForm(prevState => {
+                            <Input type="text" isInvalid={checkInValid(errors, 'cic_number') ? true : false} value={form.cic_number} onChangeText={(value) => setForm(prevState => {
                                 return { ...prevState, cic_number: value }
                             })}
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
@@ -444,7 +444,7 @@ const UpdateUser = ({ navigation, route }) => {
                         <Box className="my-2">
                             <Text className="block mb-2 text-sm  text-[#184E17] ">Ngày sinh</Text>
                             <PressableOpacity onPress={() => setShow(true)}>
-                                <Flex direction='row' className="justify-between bg-white px-2 py-3 rounded-xl mb-2" >
+                                <Flex direction='row' className={`justify-between bg-white px-2 py-3 rounded-xl mb-2 ${checkInValid(errors, 'date_of_birth') ? 'border border-red-500' : ''}`} >
                                     <Text className="text-[#184E17]"> {formatOnlyDate(form.date_of_birth)}</Text>
                                     {/* <Calendar
                                                     size="24"
@@ -474,7 +474,7 @@ const UpdateUser = ({ navigation, route }) => {
                         <Box className="my-2">
                             <Text className="my-1 text-[#184E17] text-sm">Ngày cấp</Text>
                             <PressableOpacity onPress={() => setShowCicDate(true)}>
-                                <Flex direction='row' className="justify-between bg-white px-2 py-3 rounded-xl mb-2" >
+                                <Flex direction='row' className={`justify-between bg-white px-2 py-3 rounded-xl mb-2 ${checkInValid(errors, 'cic_date') ? 'border border-red-500' : ''}`} >
                                     <Text className="text-[#184E17]"> {formatOnlyDate(form.cic_date)}</Text>
                                     {/* <Calendar
                                                     size="24"
@@ -504,7 +504,7 @@ const UpdateUser = ({ navigation, route }) => {
                         <Box className="my-2">
                             <Text className="my-1 text-[#184E17] text-sm">Có giá trị đến</Text>
                             <PressableOpacity onPress={() => setshowCicDateExpried(true)}>
-                                <Flex direction='row' className="justify-between bg-white px-2 py-3 rounded-xl mb-2" >
+                                <Flex direction='row' className={`justify-between bg-white px-2 py-3 rounded-xl mb-2 ${checkInValid(errors, 'cic_date_expried') ? 'border border-red-500' : ''}`} >
                                     <Text className="text-[#184E17]"> {formatOnlyDate(form.cic_date_expried)}</Text>
                                     {/* <Calendar
                                                     size="24"
