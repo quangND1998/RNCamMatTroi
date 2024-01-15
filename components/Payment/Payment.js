@@ -17,7 +17,7 @@ const Payment = ({ navigation, route }) => {
 
 
     const _callPayment = () => {
-        PaymentService.payment(31).then(res => {
+        PaymentService.payment(32).then(res => {
             console.log(res.data.OrderInfo);
 
             var orderInfo = res.data.OrderInfo;
