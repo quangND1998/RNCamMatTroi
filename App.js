@@ -154,7 +154,7 @@ export default function App() {
     SplashScreen.hide();
     const fetchToken = async () => {
       const token = await getFcmToken();
-      console.log('fetchToken', token)
+      // console.log('fetchToken', token)
       if (token) {
         setGeneratedToken(token);
         dispatch(getTokenFirebase(token))

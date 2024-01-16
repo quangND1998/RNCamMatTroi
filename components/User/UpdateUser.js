@@ -116,23 +116,26 @@ const UpdateUser = ({ navigation, route }) => {
         dispatch(fetchUserData(
             (user) => {
                 console.log(user)
-                setForm(prevState => {
-                    return {
-                        ...prevState,
-                        name: user ? user.name : null,
-                        phone_number: user ? user.phone_number : null,
-                        email: user ? user.email : null,
-                        address: user ? user.address : null,
-                        sex: user ? user.sex : 'male',
-                        wards: user ? user.wards : null,
-                        district: user ? user.district : null,
-                        city: user ? user.city : null,
-                        cic_number: user ? user.cic_number : null,
-                        cic_date: user ? user.date_of_birth ? (new Date(user.cic_date)) : new Date() : null,
-                        cic_date_expried: user ? user.date_of_birth ? (new Date(user.cic_date_expried)) : new Date() : null,
-                        date_of_birth: user ? user.date_of_birth ? (new Date(user.date_of_birth)) : new Date() : null
-                    }
-                })
+                if (user) {
+                    setForm(prevState => {
+                        return {
+                            ...prevState,
+                            name: user ? user.name : null,
+                            phone_number: user ? user.phone_number : null,
+                            email: user ? user.email : null,
+                            address: user ? user.address : null,
+                            sex: user ? user.sex : 'male',
+                            wards: user ? user.wards : null,
+                            district: user ? user.district : null,
+                            city: user ? user.city : null,
+                            cic_number: user ? user.cic_number : null,
+                            cic_date: user ? user.date_of_birth ? (new Date(user.cic_date)) : new Date() : null,
+                            cic_date_expried: user ? user.date_of_birth ? (new Date(user.cic_date_expried)) : new Date() : null,
+                            date_of_birth: user ? user.date_of_birth ? (new Date(user.date_of_birth)) : new Date() : null
+                        }
+                    })
+                }
+
             },
             () => {
 
@@ -259,9 +262,9 @@ const UpdateUser = ({ navigation, route }) => {
                                 </Box>
                             </Box>
                         </Box>
-                        <Text className="text-[20px] font-bold text-center mt-5">{user.name}</Text>
-                        <Text className="text-[13px] text-[#184E17] text-center my-1">{user.email}</Text>
-                        {user.infor?.status == 0 ? <Text className="text-xs text-[#CB9200] text-center my-1">Đang chờ xét duyệt</Text> : null}
+                        <Text className="text-[20px] font-bold text-center mt-5">{user?.name}</Text>
+                        <Text className="text-[13px] text-[#184E17] text-center my-1">{user?.email}</Text>
+                        {user?.infor?.status == 0 ? <Text className="text-xs text-[#CB9200] text-center my-1">Đang chờ xét duyệt</Text> : null}
                     </Box>
                 </Box>
                 <Box className="mx-4 my-2">

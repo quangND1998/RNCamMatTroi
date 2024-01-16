@@ -1,6 +1,7 @@
 import { API_URL } from "@env"
 import axios from "axios";
 import { getToken, destroyToken } from "./asynStorage";
+import { destroyTokenStorage } from "./managerStorage";
 axios.defaults.headers[
     "Accept"
 ] = `application/json`;
@@ -37,6 +38,8 @@ axios.interceptors.response.use((response) => {
 
         if (error.response.status == 401) {
             destroyToken();
+            destroyTokenStorage();
+
 
         }
 

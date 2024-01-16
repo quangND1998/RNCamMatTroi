@@ -23,6 +23,9 @@ import ScheduleTour from '../components/Schedule/ScheduleTour';
 import ScheduleSuccess from '../components/Schedule/ScheduleSuccess';
 import { StyleSheet } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
+import Nofification from '../components/Notification/Index';
+import { useHelper } from '../helpers/helper';
+import ShipperNavigator from './ShipperNavigator';
 const Stack = createNativeStackNavigator();
 const StackNavigator = () => {
     return (
@@ -74,66 +77,64 @@ const StackNavigator = () => {
 
 
 const MainNavigator = () => {
+    const { hasAnyPermission } = useHelper()
     const { isLoggedIn } = useLogin();
     const cameraPermission = Camera.getCameraPermissionStatus()
     const showPermissionsPage = cameraPermission !== 'granted' || microphonePermission === 'not-determined'
-   
-    return isLoggedIn ?
-        <Stack.Navigator screenOptions={{
 
-            headerTitleStyle: {
-                fontWeight: 'bold',
-                color: '#F78F43',
+    if (isLoggedIn) {
+        return (
+            hasAnyPermission(['customer', 'super-admin']) ?
+                <Stack.Navigator screenOptions={{
 
-            },
-            headerTitleAlign: 'center',
+                    headerTitleStyle: {
+                        fontWeight: 'bold',
+                        color: '#F78F43',
 
-        }}
-        >
-            <Stack.Screen
-                name="Root"
-                component={BottomNavigator}
-                options={{
-                    headerShown: false,
-                    animationTypeForReplace: 'push',
-                    alignContent: 'center',
-                }}
-            />
+                    },
+                    headerTitleAlign: 'center',
 
-            <Stack.Screen name="newDetail" options={{ headerShown: false }} component={FarmDetail} />
-            <Stack.Screen name="Scan" options={{ headerShown: false }} component={CodeScannerPage} />
-            <Stack.Screen name="CodeScan" options={{ headerShown: false }} component={CodeScan} />
-            <Stack.Screen name="ScanExpo" options={({ navigation, route }) => ({
-                headerTransparent: true,
-                title: 'Scan',
-                headerBackground: () => (
-                    <HeaderBackground style={styles.background}  >
-                    </HeaderBackground>
-                ),
+                }
+                }
+                >
+                    <Stack.Screen
+                        name="Root"
+                        component={BottomNavigator}
+                        options={{
+                            headerShown: false,
+                            animationTypeForReplace: 'push',
+                            alignContent: 'center',
+                        }}
+                    />
 
-            })} component={ScanExpo} />
-            <Stack.Screen name="CartConfirmation" options={{ title: 'Xác nhận đơn hàng' }} component={CartConfirmation} />
-            <Stack.Screen name="PackageBenefits" options={({ navigation, route }) => ({
-                title: route.params.name
-            })} component={PackageBenefits} />
-            <Stack.Screen name="ScheduleSuccess" options={({ navigation, route }) => ({
-                headerShown: false,
-            })} component={ScheduleSuccess} />
+                    <Stack.Screen name="newDetail" options={{ headerShown: false }} component={FarmDetail} />
+                    <Stack.Screen name="Scan" options={{ headerShown: false }} component={CodeScannerPage} />
+                    <Stack.Screen name="CodeScan" options={{ headerShown: false }} component={CodeScan} />
+                    <Stack.Screen name="ScanExpo" options={({ navigation, route }) => ({
+                        headerTransparent: true,
+                        title: 'Scan',
+                        headerBackground: () => (
+                            <HeaderBackground style={styles.background}  >
+                            </HeaderBackground>
+                        ),
 
-            {/* <Stack.Screen name="ScheduleSuccess" options={({ navigation, route }) => ({
-                headerTransparent: true,
-                headerShown: false,
-                headerBackground: () => (
-                    <HeaderBackground style={styles.background}  >
-                    </HeaderBackground>
-                ),
+                    })} component={ScanExpo} />
+                    <Stack.Screen name="CartConfirmation" options={{ title: 'Xác nhận đơn hàng' }} component={CartConfirmation} />
+                    <Stack.Screen name="PackageBenefits" options={({ navigation, route }) => ({
+                        title: route.params.name
+                    })} component={PackageBenefits} />
+                    <Stack.Screen name="ScheduleSuccess" options={({ navigation, route }) => ({
+                        headerShown: false,
+                    })} component={ScheduleSuccess} />
 
-            })} component={ScheduleSuccess} /> */}
-            {/* <Stack.Screen name="OrderDetail" 
-            options={{ title: 'Mã đơn hàng' }} component={OrderDetail} /> */}
-            {/* <Stack.Screen name="ScheduleSuccess" component={ScheduleSuccess} /> */}
+                </Stack.Navigator> : <ShipperNavigator /> 
+        )
+    }
+    if (!isLoggedIn) {
+        return <StackNavigator />
+    }
 
-        </Stack.Navigator> : <StackNavigator />;
+
 };
 export default MainNavigator;
 const styles = StyleSheet.create({

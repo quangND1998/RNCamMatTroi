@@ -123,8 +123,11 @@ const OrderReview = ({ navigation, route }) => {
         console.log(star)
         let evaluate = null;
         if (star) {
-            if (star <= 2) {
-                evaluate = 'Quá tệ'
+            if (star < 2) {
+                evaluate = 'Rất tệ'
+            }
+            if (star == 2) {
+                evaluate = 'Kém'
             }
             if (star == 3) {
                 evaluate = 'Trung Bình'
@@ -135,7 +138,7 @@ const OrderReview = ({ navigation, route }) => {
                 evaluate = 'Tốt'
             }
             if (star > 4) {
-                evaluate = 'Tuyệt vời'
+                evaluate = 'Hoàn hảo'
 
             }
         }
@@ -219,10 +222,11 @@ const OrderReview = ({ navigation, route }) => {
 
                 <Box>
                     <Flex direction='row' className="justify-between items-center w-full mb-3  my-4  px-5 ">
-                        {star && star <= 2 ? <Text className="font-bold text-[17px] text-[#F78F43]" > Quá tệ</Text> : null}
+                        {star && star < 2 ? <Text className="font-bold text-[17px] text-[#F78F43]" > Rất tệ</Text> : null}
+                        {star && star == 2 ? <Text className="font-bold text-[17px] text-[#F78F43]" > Kém</Text> : null}
                         {star && star == 3 ? <Text className="font-bold text-[17px] text-[#F78F43]" >Trung Bình</Text> : null}
                         {star && star == 4 ? <Text className="font-bold text-[17px] text-[#F78F43]" >Tốt</Text> : null}
-                        {star && star == 5 ? <Text className="font-bold text-[17px] text-[#F78F43]" >Tuyệt vời</Text> : null}
+                        {star && star == 5 ? <Text className="font-bold text-[17px] text-[#F78F43]" >Hoàn hảo</Text> : null}
 
 
                         <Flex direction='row' className=" items-center ">
@@ -255,8 +259,7 @@ const OrderReview = ({ navigation, route }) => {
                     </Box>
                     <Box className="my-5 mx-5">
 
-
-                        {star && star <= 2 ? <Flex direction='row' className="flex flex-wrap" >
+                        {star && star < 2 ? <Flex direction='row' className="flex flex-wrap" >
                             <PressableOpacity onPress={() => Add('Sản phẩm lỗi')}>
                                 <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Sản phẩm lỗi') ? 'border border-amber-600' : ''}`}
                                 >Sản phẩm lỗi</Box>
@@ -278,6 +281,29 @@ const OrderReview = ({ navigation, route }) => {
 
                         </Flex >
                             : null}
+                        {star && star == 2 ? <Flex direction='row' className="flex flex-wrap" >
+                            <PressableOpacity onPress={() => Add('Sản phẩm lỗi')}>
+                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Sản phẩm lỗi') ? 'border border-amber-600' : ''}`}
+                                >Sản phẩm lỗi</Box>
+                            </PressableOpacity>
+
+                            <PressableOpacity onPress={() => Add('Đội Giá')}>
+                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Đội Giá') ? 'border border-amber-600' : ''}`}
+                                >Đội Giá</Box>
+                            </PressableOpacity>
+                            <PressableOpacity onPress={() => Add('Thái độ nhận viên')}>
+                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Thái độ nhận viên') ? 'border border-amber-600' : ''}`}
+                                >Thái độ nhận viên</Box>
+                            </PressableOpacity>
+                            <PressableOpacity onPress={() => Add('Giao hàng lâu')}>
+                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Giao hàng lâu') ? 'border border-amber-600' : ''}`}
+                                >Giao hàng lâu</Box>
+                            </PressableOpacity>
+
+
+                        </Flex >
+                            : null}
+
 
                         {star && star == 3 ? <Flex direction='row' className="flex flex-wrap" >
 

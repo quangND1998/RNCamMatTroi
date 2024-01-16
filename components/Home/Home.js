@@ -13,6 +13,7 @@ import NewActivity from '../News/NewActivity';
 import ProductItem from './ProductItem';
 import SlideBG from './SlideBG';
 import { PressableOpacity } from 'react-native-pressable-opacity';
+import { getUnReadNotification } from '../../store/actions/notification';
 
 LogBox.ignoreLogs([
     'VirtualizedLists should never be nested', // TODO: Remove when fixed
@@ -28,11 +29,15 @@ const Home = ({ navigation, route }) => {
     const productOwner = useSelector(state => state.productService.productOwners);
     const user = useSelector(state => state.auth.user);
     const [refreshing, setRefreshing] = React.useState(false);
+    const totalUnRead = useSelector(state => state.notification.totalUnRead);
     useEffect(() => {
         fetchProductOwner();
+        dispatch(getUnReadNotification())
+        
     }, []);
     const fetchProductOwner = async () => {
         dispatch(getProductOwner())
+
     }
 
     const onRefresh = React.useCallback(() => {
@@ -76,8 +81,18 @@ const Home = ({ navigation, route }) => {
                                 }} >
                                     <Image source={require('../../assets/icon/scan.png')} alt="scan"  ></Image>
                                 </PressableOpacity>
+                                <PressableOpacity onPress={() => {
+                                    navigation.navigate('Notification');
 
-                                <Image source={require('../../assets/icon/icon_bell.png')} className="ml-5" alt="icon_bell"></Image>
+                                }} >
+                                    <Image source={require('../../assets/icon/icon_bell.png')} className="ml-5" alt="icon_bell"></Image>
+                                    <Box className="absolute left-8 top-[-8] shadow ">
+                                        <Text className="py-0.5 px-1.5 text-white bg-[#F78F43] text-[10px] rounded-full">{
+                                            totalUnRead
+                                        }
+                                        </Text>
+                                    </Box>
+                                </PressableOpacity>
                             </Box>
                         </Flex>
 

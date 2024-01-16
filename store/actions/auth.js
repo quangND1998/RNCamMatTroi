@@ -1,12 +1,16 @@
 import { AuthService } from '../../common/auth/authService';
 import { setToken, destroyToken, setUser, getToken, getUser, savePhone } from '../../common/asynStorage';
 import ApiService from '../../common/apiService';
-
+import { setTokenStorage, setUserStorage, savePhoneStorage, destroyTokenStorage, destroyUserStorage } from '../../common/managerStorage';
 export const loginAction = (code, password, onSuccess = () => {}, onError = () => {}) => (dispatch) => {
     return AuthService.login({ code, password }).then(response => {
         // console.log(response.data)
         setToken(response.data.data.token);
         setUser(response.data.data.user)
+
+        // storage
+        setTokenStorage(response.data.data.token)
+        setUserStorage(response.data.data.user)
         dispatch({
             type: 'LOGIN_SUCCESS',
             payload: { user: response.data.data.user, token: response.data.data.token },
@@ -34,6 +38,8 @@ export const logoutAction = (onSuccess = () => {}, onError = () => {}) => (dispa
             });
             onSuccess();
             destroyToken();
+            destroyTokenStorage();
+            destroyUserStorage();
             // destroyRole();
 
 
@@ -50,7 +56,8 @@ export const logoutAction = (onSuccess = () => {}, onError = () => {}) => (dispa
             dispatch({
                 type: 'LOGIN_FAIL',
             });
-
+            destroyTokenStorage();
+            destroyUserStorage();
             onError()
         }
     );
@@ -76,6 +83,8 @@ export const loginOtp = (phone, onSuccess = () => {}, onError = () => {}) => (di
             payload: phone
         })
         savePhone(phone);
+        // storage
+        savePhoneStorage(phone)
         onSuccess(response.data);
     }).catch(error => {
         console.log(error.response.data.data)
@@ -107,6 +116,9 @@ export const verifyOtp = (data, onSuccess = () => {}, onError = () => {}) => (di
         console.log('loginOtp', response.data)
         setToken(response.data.data.token);
         setUser(response.data.data.user)
+            // storage
+        setTokenStorage(response.data.data.token)
+        setUserStorage(response.data.data.user)
         dispatch({
             type: 'LOGIN_SUCCESS',
             payload: { user: response.data.data.user, token: response.data.data.token },
@@ -141,6 +153,8 @@ export const fetchUserData = (onSuccess = () => {}, onError = () => {}) => (disp
     return ApiService.query('api/v1/user/getUser').then(res => {
 
         setUser(res.data.data.user);
+        // storage
+        setUserStorage(res.data.data.user)
         dispatch({
             type: 'getUserSuccess',
             payload: res.data.data.user
@@ -162,6 +176,9 @@ export const saveInforChange = (formData, onSuccess = () => {}, onError = () => 
             payload: response.data.data.user
         })
         setUser(response.data.data.user)
+
+        // storage
+        setUserStorage(response.data.data.user)
     }).catch(error => {
         console.log(error.response.data)
         onError(error)
@@ -183,9 +200,9 @@ export const saveInforChange = (formData, onSuccess = () => {}, onError = () => 
 export const getTokenFirebase = (token) => (dispatch) => {
 
     return ApiService.post("api/v1/getFireBaseToken", { token }).then(response => {
-        console.log(response);
+        // console.log(response);
 
     }).catch(error => {
-        console.log(error)
+        // console.log(error)
     });
 }

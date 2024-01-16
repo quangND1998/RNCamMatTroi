@@ -8,6 +8,7 @@ import cartReducer from './reducers/cartReducer';
 import historyReducer from './reducers/history';
 import scheduleReducer from './reducers/schedule';
 import addReducer from './reducers/add';
+import notificationReducer from './reducers/notification';
 const rootReducer = combineReducers({
     auth: authReducer,
     new: newsReducer,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
     cart: cartReducer,
     add: addReducer,
     history: historyReducer,
-    schedule: scheduleReducer
+    schedule: scheduleReducer,
+    notification: notificationReducer
 });
 const middleWares = [thunk]
 const store = createStore(rootReducer, applyMiddleware(...middleWares));

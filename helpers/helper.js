@@ -1,5 +1,7 @@
 import Moment from 'moment';
 import { format } from 'date-fns';
+import { localStorage } from '../common/storage';
+import { getUserStorage } from '../common/managerStorage';
 
 
 export const useHelper = () => {
@@ -115,6 +117,16 @@ export const useHelper = () => {
     const checkIsImage = (value) => {
         return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(value);
     }
+    const hasAnyPermission = (permissions) => {
+        let user = getUserStorage();
+        var allPermissions = user.can;
+        var hasPermission = false;
+        permissions.forEach(function(item) {
+            if (allPermissions[item]) hasPermission = true;
+        });
+        return hasPermission;
+
+    }
     return {
         formatDate,
         formatDateTime,
@@ -129,7 +141,8 @@ export const useHelper = () => {
         formatDateShort,
         formatDateUse,
         checkInValid,
-        checkIsImage
+        checkIsImage,
+        hasAnyPermission
     }
 
 };

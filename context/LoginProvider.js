@@ -4,19 +4,20 @@ const LoginContext = createContext();
 import { loadStorageToken } from '../store/actions/auth';
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCart } from '../store/actions/cart';
+import { getTokenStorage, getUserStorage, existsToken } from '../common/managerStorage';
 const LoginProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const dispatch = useDispatch();
+    const token = getTokenStorage();
     useEffect(() => {
         fetchUser();
-
+        console.log('aaaaaaaa', token)
     }, []);
     const fetchUser = async () => {
         dispatch(loadStorageToken)
         dispatch(fetchCart)
-        const token = await getToken();
 
-        if (token !== null) {
+        if (existsToken()) {
             console.log('fetchUser', token);
 
             setIsLoggedIn(true);
