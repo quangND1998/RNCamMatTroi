@@ -43,8 +43,8 @@ const UpdateUser = ({ navigation, route }) => {
         email: user ? user.email : null,
         address: user ? user.address : null,
         sex: user ? user.sex : 'male',
-        wards: user ? user.wards : null,
         district: user ? user.district : null,
+        wards: user ? user.wards : null,
         city: user ? user.city : null,
         cic_number: user ? user.cic_number : null,
         cic_date: user ? user.date_of_birth ? (new Date(user.cic_date)) : new Date() : null,
@@ -58,6 +58,7 @@ const UpdateUser = ({ navigation, route }) => {
     };
     useEffect(() => {
         getProvinces();
+        console.log(form)
     }, [])
     useEffect(() => {
 
@@ -89,33 +90,33 @@ const UpdateUser = ({ navigation, route }) => {
     })
 
     const wards = useMemo(() => {
+
         if (form.city == null && form.district == null) {
-            return [];
+            return null;
         } else if (form.city !== null && form.district == null) {
-            return [];
-        } else {
+            return null;
+        } else if (form.city && form.district) {
             if (provinces) {
-                let array = provinces.find(pro => {
-                    return pro.Name == form.city;
-                });
-                if (array.Districts) {
-                    return array.Districts.find(district => {
+
+                if (districts) {
+                    console.log('districts', districts)
+                    return districts.Districts.find(district => {
                         return district.Name == form.district;
                     });
                 }
-                return []
+                return null
 
             }
-            return []
+            return null
         }
-    }, [form.city, form.district])
+    }, [form.city, form.district, districts])
     const fetchUser = async () => {
         dispatch({
             type: 'clearOtpError'
         })
         dispatch(fetchUserData(
             (user) => {
-                console.log(user)
+                // console.log(user)
                 if (user) {
                     setForm(prevState => {
                         return {
@@ -125,8 +126,8 @@ const UpdateUser = ({ navigation, route }) => {
                             email: user ? user.email : null,
                             address: user ? user.address : null,
                             sex: user ? user.sex : 'male',
-                            wards: user ? user.wards : null,
                             district: user ? user.district : null,
+                            wards: user ? user.wards : null,
                             city: user ? user.city : null,
                             cic_number: user ? user.cic_number : null,
                             cic_date: user ? user.date_of_birth ? (new Date(user.cic_date)) : new Date() : null,
@@ -415,7 +416,7 @@ const UpdateUser = ({ navigation, route }) => {
                                     }} mt={1} onValueChange={itemValue => setForm(prevState => {
                                         return { ...prevState, wards: itemValue }
                                     })}>
-                                        {wards.Wards ? wards.Wards.map((item, index) =>
+                                        {wards?.Wards ? wards.Wards.map((item, index) =>
                                             <Select.Item key={index} label={item.Name} value={item.Name} />)
                                             : null}
                                     </Select>
