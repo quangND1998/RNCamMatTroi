@@ -29,7 +29,7 @@ const OTP = ({ navigation }) => {
     const timerRef = React.useRef(time);
 
     const [counter, setCounter] = React.useState(10);
-    const [startCountdown, setStartCountdown] = React.useState(false);
+    const [startCountdown, setStartCountdown] = React.useState(true);
 
 
     React.useEffect(() => {

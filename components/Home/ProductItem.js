@@ -46,14 +46,19 @@ const ProductItem = ({ item, navigation }) => {
           <Text numberOfLines={3} className="text-sm text-gray-700 px-1 my-1 font-base clamp three-lines"
             style={styles.description}>Số ngày nhận nuôi: <Text className="text-[#184E17]">{formatDateUse(item.time_approve)} </Text></Text>
         </Box>
-        <Box className="p-1 ">
-          <QRCode
-            value={`https://qly.cammattroi.com/tree/qrcode/${item?.id}`}
-            logo={require('../../assets/images/product.png')}
-            logoSize={20}
-            logoBackgroundColor='white'
-          />
-        </Box>
+        <TouchableOpacity onPress={() => navigation.navigate('HistoryCare', {
+          treeId: item.tree.id
+        })}>
+
+          <Box className="p-1 " >
+            <QRCode
+              value={`https://qly.cammattroi.com/tree/qrcode/${item?.id}`}
+              logo={require('../../assets/images/product.png')}
+              logoSize={20}
+              logoBackgroundColor='white'
+            />
+          </Box>
+        </TouchableOpacity>
       </Box>
       <TouchableOpacity onPress={handlerDetail} className="bg-[#FF6100]  flex flex-row rounded-b-2xl items-center justify-center text-white" >
         <Text numberOfLines={3} className="text-sm text-white uppercase px-1 py-3 font-bold"

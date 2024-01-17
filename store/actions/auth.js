@@ -103,6 +103,7 @@ export const loginOtp = (phone, onSuccess = () => {}, onError = () => {}) => (di
             onError(error.response.data)
         }
         if (error.response.status == 500) {
+            console.log(error.response.data)
             onError('Lỗi xảy ra!')
         }
 
