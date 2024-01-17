@@ -107,9 +107,9 @@ const ProductItem = ({ item, index, navigation }) => {
           <Text className="text-2xl text-[#FF6100]  px-1 py-3 font-bold" >Lịch sử chăm sóc cây</Text>
           <Box className="" >
             {item.tree?.history_care ? Object.keys(item.tree?.history_care).map((history, key) =>
-              <Box>
+              <Box key={key} >
                 {key < 2 ?
-                  <Box key={key} className="flex mx-3">
+                  <Box className="flex mx-3">
                     <Text className="font-base text-sm text-[#184E17] ">{formatDateShort(history)}</Text>
                     <Box className="flex w-full my-2 items-center">
                       {item.tree?.history_care[history].map((history_care, index) =>
