@@ -33,7 +33,7 @@ const Home = ({ navigation, route }) => {
     useEffect(() => {
         fetchProductOwner();
         dispatch(getUnReadNotification())
-        
+
     }, []);
     const fetchProductOwner = async () => {
         dispatch(getProductOwner())
