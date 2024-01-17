@@ -10,15 +10,15 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity
 } from 'react-native';
-import {  Linking, Keyboard, ScrollView, RefreshControl, ImageBackground, SectionList, YellowBox } from 'react-native';
-import { Center, Container, Heading, Button,Box, Flex, Stack, Input, SearchBar, Icon, Spacer, ZStack, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
+import { Linking, Keyboard, ScrollView, RefreshControl, ImageBackground, SectionList, YellowBox } from 'react-native';
+import { Center, Container, Heading, Button, Box, Flex, Stack, Input, SearchBar, Icon, Spacer, ZStack, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
 import { useHelper } from '../../helpers/helper';
 const { width, height } = Dimensions.get('screen');
 const imageHeight = height - 240;
 import QRCode from 'react-native-qrcode-svg';
 import { ArrowRight } from 'iconsax-react-native';
 import Video from 'react-native-video';
-const ProductItem = ({ item,index , navigation }) => {
+const ProductItem = ({ item, index, navigation }) => {
   // console.log(navigation);
   const [isOpen, setIsOpen] = useState(false);
   const openGallery = () => setIsOpen(true);
@@ -35,7 +35,7 @@ const ProductItem = ({ item,index , navigation }) => {
   const onLoadStart = (data) => setIsLoading(true);
   const handlerDetail = () => {
     console.log(index);
-    
+
     // console.log(navigation);
     // navigation.navigate('Schedule', {
     //   itemId: item.id,
@@ -43,15 +43,15 @@ const ProductItem = ({ item,index , navigation }) => {
     // });
   }
   const images = [
-      {
-        url: require('../../assets/images/anhcam.png')
-      },
-      {
-        url: require('../../assets/images/anhcam2.png')
-      },
-      {
-        url: require('../../assets/images/anhcam3.png')
-      },
+    {
+      url: require('../../assets/images/anhcam.png')
+    },
+    {
+      url: require('../../assets/images/anhcam2.png')
+    },
+    {
+      url: require('../../assets/images/anhcam3.png')
+    },
   ];
   Animated.timing(translateYImage, {
     toValue: 0,
@@ -63,13 +63,13 @@ const ProductItem = ({ item,index , navigation }) => {
     <View style={styles.container}>
       <View style={styles.content} className="relative">
         <Image
-              className=" w-full object-cover"
-              source={images[index].url}
-              alt={`imageslide`}
-              style={[
-                styles.image
-              ]}
-            >
+          className=" w-full object-cover"
+          source={images[index].url}
+          alt={`imageslide`}
+          style={[
+            styles.image
+          ]}
+        >
         </Image>
         <Box className=" mt-[-220px] bg-white rounded-2xl  mx-4  border-solid border-2 border-[#2C5524]">
           <Box className="flex flex-row p-4 w-full justify-between">
@@ -104,63 +104,63 @@ const ProductItem = ({ item,index , navigation }) => {
       </View>
       <Box className="bg-white rounded-2xl">
         <Box className="mx-4">
-          <Text  className="text-2xl text-[#FF6100]  px-1 py-3 font-bold" >Lịch sử chăm sóc cây</Text>
-            <Box className="" >
-                  {item.tree?.history_care ?  Object.keys(item.tree?.history_care).map((history, key) =>
-                  <Box>
-                  {  key < 2 ?
-                    <Box className="flex mx-3">
-                      <Text className="font-base text-sm text-[#184E17] ">{formatDateShort(history)}</Text>
-                      <Box className="flex w-full my-2 items-center">
-                        {item.tree?.history_care[history].map((history_care, index) =>
-                          // <Text className="font-inter font-normal text-base text-[#080808] ">{activity.name} ,</Text>
-                          <Box className=" flex w-full flex-row flex-wrap">
-                            <Text className="font-bold  text-[#184E17] px-3">.</Text>
-                            {history_care.activity_care.map((activity, index) =>
-                                <Box className="flex flex-row">
-                                    {history_care.activity_care.length - 1 == index ? 
-                                    <Text className="font-inter text-[13px] text-[#080808] " >{activity.name}</Text> :
-                                    <Text className="font-inter  text-[13px] text-[#080808] " >{activity.name},</Text>}
+          <Text className="text-2xl text-[#FF6100]  px-1 py-3 font-bold" >Lịch sử chăm sóc cây</Text>
+          <Box className="" >
+            {item.tree?.history_care ? Object.keys(item.tree?.history_care).map((history, key) =>
+              <Box>
+                {key < 2 ?
+                  <Box key={key} className="flex mx-3">
+                    <Text className="font-base text-sm text-[#184E17] ">{formatDateShort(history)}</Text>
+                    <Box className="flex w-full my-2 items-center">
+                      {item.tree?.history_care[history].map((history_care, index) =>
+                        // <Text className="font-inter font-normal text-base text-[#080808] ">{activity.name} ,</Text>
+                        <Box key={index} className=" flex w-full flex-row flex-wrap">
+                          <Text className="font-bold  text-[#184E17] px-3">.</Text>
+                          {history_care.activity_care.map((activity, index) =>
+                            <Box key={index} className="flex flex-row">
+                              {history_care.activity_care.length - 1 == index ?
+                                <Text className="font-inter text-[13px] text-[#080808] " >{activity.name}</Text> :
+                                <Text className="font-inter  text-[13px] text-[#080808] " >{activity.name},</Text>}
 
-                                </Box>
-                            )}
-                          </Box>
-                        )}
-                      </Box>
+                            </Box>
+                          )}
+                        </Box>
+                      )}
                     </Box>
-                    : 
-                    <Text className="font-base text-center text-sm text-[#184E17] ">Xem tất cả</Text>
-                  }
                   </Box>
-                  ) : null}
-            </Box>
-          <Text  className="text-2xl text-[#FF6100]  px-1 py-3 font-bold" >Hình ảnh và video</Text>
-          <Box className="px-3 py-3 bg-[#F9EDD5] w-full flex flex-row flex-wrap"> 
-            {item?.tree ? item.tree?.images.map((image, index_m) => 
+                  :
+                  <Text className="font-base text-center text-sm text-[#184E17] ">Xem tất cả</Text>
+                }
+              </Box>
+            ) : null}
+          </Box>
+          <Text className="text-2xl text-[#FF6100]  px-1 py-3 font-bold" >Hình ảnh và video</Text>
+          <Box className="px-3 py-3 bg-[#F9EDD5] w-full flex flex-row flex-wrap">
+            {item?.tree ? item.tree?.images.map((image, index_m) =>
               <Box key={index_m} className="w-1/3 border border-[#F9EDD5]" >
                 {image.mime_type == "image/jpeg" ?
-                  <Image className="w-full object-cover" source={{ uri: image.original_url }} alt={`imageslide`} style={[ styles.imageGallary ]}></Image>
+                  <Image className="w-full object-cover" source={{ uri: image.original_url }} alt={`imageslide`} style={[styles.imageGallary]}></Image>
                   :
                   <Box className="w-full h-[100px]">
-                    <Video source={{uri: image.original_url }}
-    
+                    <Video source={{ uri: image.original_url }}
+                      paused={paused}
                       onLoad={onLoad}
                       className="w-full h-[100px]"
                       ref={videoPlayer}
                     />
                     <Box className="absolute flex items-center justify-center w-full h-full">
-                      <Image  className=" mx-auto object-cover w-[25px] h-[25px]" source={require('../../assets/icon/play.png')}></Image>
+                      <Image className=" mx-auto object-cover w-[25px] h-[25px]" source={require('../../assets/icon/play.png')}></Image>
                     </Box>
                   </Box>
                 }
               </Box>
-            ) : null }
+            ) : null}
 
           </Box>
         </Box>
-        
+
       </Box>
-    
+
     </View>
   );
 };
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
     height: imageHeight,
     width: '100%',
   },
-  imagelist:{
+  imagelist: {
     width: '100%',
     display: 'flex',
   },
