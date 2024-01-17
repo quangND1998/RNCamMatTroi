@@ -67,7 +67,7 @@ const NewSwiper = ({ navigation, route }) => {
     };
     const images = [
         {
-            banner: require('../../assets/images/anhcam.png')
+            banner: require('../../assets/images/anhcam2.png')
         },
         {
             banner: require('../../assets/images/anhcam2.png')
@@ -76,29 +76,6 @@ const NewSwiper = ({ navigation, route }) => {
             banner: require('../../assets/images/anhcam3.png')
         },
     ];
-    const slides = [
-        {
-          key: 'one',
-          title: 'Title 1',
-          text: 'Description.\nSay something cool',
-          image: require('../../assets/images/anhcam.png'),
-          backgroundColor: '#59b2ab',
-        },
-        {
-          key: 'two',
-          title: 'Title 2',
-          text: 'Other cool stuff',
-          image: require('../../assets/images/anhcam2.png'),
-          backgroundColor: '#febe29',
-        },
-        {
-          key: 'three',
-          title: 'Rocket guy',
-          text: 'I\'m already out of descriptions\n\nLorem ipsum bla bla bla',
-          image: require('../../assets/images/anhcam3.png'),
-          backgroundColor: '#22bcb5',
-        }
-      ];
     const viewabilityConfig = useRef({
         itemVisiblePercentThreshold: 50,
     }).current;

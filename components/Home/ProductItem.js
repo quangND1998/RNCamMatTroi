@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Image,
   StyleSheet,
@@ -9,17 +10,29 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity
 } from 'react-native';
+import {  Linking, Keyboard, ScrollView, RefreshControl, ImageBackground, SectionList, YellowBox } from 'react-native';
+import { Center, Container, Heading, Button,Box, Flex, Stack, Input, SearchBar, Icon, Spacer, ZStack, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
 import { useHelper } from '../../helpers/helper';
-import React from 'react';
 const { width, height } = Dimensions.get('screen');
 const imageHeight = height - 240;
 import QRCode from 'react-native-qrcode-svg';
-import { Box, Flex } from 'native-base';
 import { ArrowRight } from 'iconsax-react-native';
+import Video from 'react-native-video';
 const ProductItem = ({ item,index , navigation }) => {
   // console.log(navigation);
+  const [isOpen, setIsOpen] = useState(false);
+  const openGallery = () => setIsOpen(true);
+  const closeGallery = () => setIsOpen(false);
   const translateYImage = new Animated.Value(40);
   const { formatDateShort, formatDateUse } = useHelper();
+  const videoPlayer = useRef(null);
+  const [paused, setPaused] = useState(true);
+  const [duration, setDuration] = useState(0);
+  const onLoad = (data) => {
+    setDuration(data.duration);
+  };
+
+  const onLoadStart = (data) => setIsLoading(true);
   const handlerDetail = () => {
     console.log(index);
     
@@ -30,16 +43,16 @@ const ProductItem = ({ item,index , navigation }) => {
     // });
   }
   const images = [
-    {
-        banner: require('../../assets/images/anhcam.png')
-    },
-    {
-        banner: require('../../assets/images/anhcam2.png')
-    },
-    {
-        banner: require('../../assets/images/anhcam3.png')
-    },
-];
+      {
+        url: require('../../assets/images/anhcam.png')
+      },
+      {
+        url: require('../../assets/images/anhcam2.png')
+      },
+      {
+        url: require('../../assets/images/anhcam3.png')
+      },
+  ];
   Animated.timing(translateYImage, {
     toValue: 0,
     duration: 1000,
@@ -51,14 +64,14 @@ const ProductItem = ({ item,index , navigation }) => {
       <View style={styles.content} className="relative">
         <Image
               className=" w-full object-cover"
-              source={images[index].banner}
+              source={images[index].url}
               alt={`imageslide`}
               style={[
                 styles.image
               ]}
             >
         </Image>
-        <Box className="mt-[-220px] bg-white rounded-2xl  mx-4  border-solid border-2 border-[#2C5524]">
+        <Box className=" mt-[-220px] bg-white rounded-2xl  mx-4  border-solid border-2 border-[#2C5524]">
           <Box className="flex flex-row p-4 w-full justify-between">
             <Box style={styles.content} className="text-left mr-2 ">
               <Text numberOfLines={3} className="text-sm text-gray-700 px-1 my-1 font-base clamp three-lines"
@@ -92,21 +105,49 @@ const ProductItem = ({ item,index , navigation }) => {
       <Box className="bg-white rounded-2xl">
         <Box className="mx-4">
           <Text  className="text-2xl text-[#FF6100]  px-1 py-3 font-bold" >Lịch sử chăm sóc cây</Text>
-          <Box className="" >
-              {item?.tree.history_care ? item.tree?.history_care.map((history, index_h) =>
-                <Box className="flex mx-3">
-                   <Text className="font-base text-sm text-[#184E17] ">{history.date}</Text>
-                   <Box className="flex flex-row my-2 items-center">
-                   <Text className="font-bold text-2xl text-[#184E17] px-3">.</Text>
-                    {history.activity_care ? history.activity_care.map((activity,index_a) => 
-                      <Text className="font-inter font-normal text-base text-[#080808] ">{activity.name} ,</Text>
-                    ) : null}
-                   </Box>
+            {/* <Box className="" >
+                {item?.tree.history_care ? item.tree?.history_care.map((history, index_h) =>
+                <Box>
+                { index_h < 2 ?
+                  <Box className="flex mx-3">
+                    <Text className="font-base text-sm text-[#184E17] ">{history.date}</Text>
+                    <Box className="flex flex-row my-2 items-center">
+                    <Text className="font-bold text-2xl text-[#184E17] px-3">.</Text>
+                      {history.activity_care ? history.activity_care.map((activity,index_a) => 
+                        <Text className="font-inter font-normal text-base text-[#080808] ">{activity.name} ,</Text>
+                      ) : null}
+                    </Box>
+                  </Box>
+                  : 
+                  <Text className="font-base text-center text-sm text-[#184E17] ">Xem tất cả</Text>
+                }
                 </Box>
-              ) : null}
-          </Box>
+                ) : null}
+                
+            </Box> */}
           <Text  className="text-2xl text-[#FF6100]  px-1 py-3 font-bold" >Hình ảnh và video</Text>
+          <Box className="px-3 py-3 bg-[#F9EDD5] w-full flex flex-row flex-wrap"> 
+            {item?.tree ? item.tree?.images.map((image, index_m) => 
+              <Box key={index_m} className="w-1/3 border border-[#F9EDD5]" >
+                {image.mime_type == "image/jpeg" ?
+                  <Image className="w-full object-cover" source={{ uri: image.original_url }} alt={`imageslide`} style={[ styles.imageGallary ]}></Image>
+                  :
+                  <Box className="w-full h-[100px]">
+                    <Video source={{uri: image.original_url }}
+    
+                      onLoad={onLoad}
+                      className="w-full h-[100px]"
+                      ref={videoPlayer}
+                    />
+                    <Box className="absolute flex items-center justify-center w-full h-full">
+                      <Image  className=" mx-auto object-cover w-[25px] h-[25px]" source={require('../../assets/icon/play.png')}></Image>
+                    </Box>
+                  </Box>
+                }
+              </Box>
+            ) : null }
 
+          </Box>
         </Box>
         
       </Box>
@@ -121,7 +162,7 @@ const styles = StyleSheet.create({
     width: width,
   },
   content: {
-    flex: 1,
+    // flex: 1,
   },
   title: {
     fontSize: 24,
@@ -141,6 +182,20 @@ const styles = StyleSheet.create({
     flex: 1,
     height: imageHeight,
     width: '100%',
-
+  },
+  imagelist:{
+    width: '100%',
+    display: 'flex',
+  },
+  imageGallary: {
+    // width: "30%",
+    height: 100,
+  },
+  backgroundVideo: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
   },
 });
