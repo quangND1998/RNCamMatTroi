@@ -9,6 +9,8 @@ const initialState = {
     productDetail: null,
     time_remaining: null,
     extendDetail: null,
+    tree: null,
+    history_care: null
 }
 
 const productServiceReducer = (state = initialState, action) => {
@@ -46,6 +48,12 @@ const productServiceReducer = (state = initialState, action) => {
             return {
                 ...state,
                 productnotOwnersDetail: action.payload.product_detail,
+            }
+        case 'fetchTreeDetail':
+            return {
+                ...state,
+                tree: action.payload.tree,
+                history_care: action.payload.history_care
             }
         default:
             return state;

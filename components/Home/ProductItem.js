@@ -105,26 +105,35 @@ const ProductItem = ({ item,index , navigation }) => {
       <Box className="bg-white rounded-2xl">
         <Box className="mx-4">
           <Text  className="text-2xl text-[#FF6100]  px-1 py-3 font-bold" >Lịch sử chăm sóc cây</Text>
-            {/* <Box className="" >
-                {item?.tree.history_care ? item.tree?.history_care.map((history, index_h) =>
-                <Box>
-                { index_h < 2 ?
-                  <Box className="flex mx-3">
-                    <Text className="font-base text-sm text-[#184E17] ">{history.date}</Text>
-                    <Box className="flex flex-row my-2 items-center">
-                    <Text className="font-bold text-2xl text-[#184E17] px-3">.</Text>
-                      {history.activity_care ? history.activity_care.map((activity,index_a) => 
-                        <Text className="font-inter font-normal text-base text-[#080808] ">{activity.name} ,</Text>
-                      ) : null}
+            <Box className="" >
+                  {item.tree?.history_care ?  Object.keys(item.tree?.history_care).map((history, key) =>
+                  <Box>
+                  {  key < 2 ?
+                    <Box className="flex mx-3">
+                      <Text className="font-base text-sm text-[#184E17] ">{formatDateShort(history)}</Text>
+                      <Box className="flex w-full my-2 items-center">
+                        {item.tree?.history_care[history].map((history_care, index) =>
+                          // <Text className="font-inter font-normal text-base text-[#080808] ">{activity.name} ,</Text>
+                          <Box className=" flex w-full flex-row flex-wrap">
+                            <Text className="font-bold  text-[#184E17] px-3">.</Text>
+                            {history_care.activity_care.map((activity, index) =>
+                                <Box className="flex flex-row">
+                                    {history_care.activity_care.length - 1 == index ? 
+                                    <Text className="font-inter text-[13px] text-[#080808] " >{activity.name}</Text> :
+                                    <Text className="font-inter  text-[13px] text-[#080808] " >{activity.name},</Text>}
+
+                                </Box>
+                            )}
+                          </Box>
+                        )}
+                      </Box>
                     </Box>
+                    : 
+                    <Text className="font-base text-center text-sm text-[#184E17] ">Xem tất cả</Text>
+                  }
                   </Box>
-                  : 
-                  <Text className="font-base text-center text-sm text-[#184E17] ">Xem tất cả</Text>
-                }
-                </Box>
-                ) : null}
-                
-            </Box> */}
+                  ) : null}
+            </Box>
           <Text  className="text-2xl text-[#FF6100]  px-1 py-3 font-bold" >Hình ảnh và video</Text>
           <Box className="px-3 py-3 bg-[#F9EDD5] w-full flex flex-row flex-wrap"> 
             {item?.tree ? item.tree?.images.map((image, index_m) => 

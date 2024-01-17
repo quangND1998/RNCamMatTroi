@@ -10,6 +10,7 @@ import { Text } from 'react-native-svg';
 import { useDispatch } from 'react-redux';
 import { PressableOpacity } from 'react-native-pressable-opacity';
 import { deleteAllNotification } from '../../store/actions/notification';
+import HistoryCare from './HistoryCare';
 const Stack = createNativeStackNavigator();
 const HomeScreen = () => {
     const dispatch = useDispatch();
@@ -36,6 +37,18 @@ const HomeScreen = () => {
                     </PressableOpacity>
                 ),
             }} component={Notification} />
+
+            <Stack.Screen name="HistoryCare" options={{
+                headerShown: true, title: 'Lịch sử chăm sóc cây', tabBarActiveTintColor: '#F78F43',
+                tabBarInactiveTintColor: "#184E17",
+
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                    color: '#F78F43',
+                },
+                headerTitleAlign: 'center',
+
+            }} component={HistoryCare} />
         </Stack.Navigator>
     );
 

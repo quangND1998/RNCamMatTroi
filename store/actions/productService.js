@@ -63,3 +63,18 @@ export const getProductnotOwnersDetail = (product_id) => (dispatch) => {
         console.log(error)
     });
 };
+
+
+export const getTreeDetail = (tree_id) => (dispatch) => {
+
+    return ApiService.query(`api/v1/tree/${tree_id}/detail`).then(response => {
+
+        dispatch({
+            type: 'fetchTreeDetail',
+            payload: response.data
+        })
+
+    }).catch(error => {
+        console.log(error)
+    });
+};

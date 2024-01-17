@@ -101,7 +101,7 @@ const Login = ({ navigation }) => {
                     </Box>
                 </FormControl>
                 <Flex direction='row' className=" justify-end mt-3">
-                    <PressableOpacity onPress={() => navigation.navigate('LoginOtp')}>
+                    <PressableOpacity onPress={() => navigation.navigate('Otp')}>
                         <Text className="text-[#F78F43] ">Đăng nhập bằng OTP</Text>
                     </PressableOpacity>
                     {/* <router-link to='/otp-phone' class="text-[#F78F43]  ">Đăng nhập bằng OTP</router-link> */}
