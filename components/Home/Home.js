@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { LogBox } from 'react-native';
-import { StyleSheet, TouchableOpacity, Linking, Keyboard, View, ScrollView, RefreshControl, ImageBackground, SectionList, YellowBox } from 'react-native';
+import { StyleSheet,Animated, TouchableOpacity, Linking, Keyboard, View, ScrollView, RefreshControl, ImageBackground, SectionList, YellowBox } from 'react-native';
 import { Center, Container, Heading, Button, Text, Box, Flex, Stack, Input, SearchBar, Icon, Spacer, ZStack, Image, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
 import { useDispatch, useSelector } from 'react-redux'
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
@@ -30,6 +30,7 @@ const Home = ({ navigation, route }) => {
     const user = useSelector(state => state.auth.user);
     const [refreshing, setRefreshing] = React.useState(false);
     const totalUnRead = useSelector(state => state.notification.totalUnRead);
+    const scrollX = useRef(new Animated.Value(0)).current;
     useEffect(() => {
         fetchProductOwner();
         dispatch(getUnReadNotification())
@@ -49,7 +50,22 @@ const Home = ({ navigation, route }) => {
         console.log(productOwner);
     }, []);
 
-
+    const handleOnScroll = event => {
+        Animated.event(
+            [
+                {
+                    nativeEvent: {
+                        contentOffset: {
+                            x: scrollX,
+                        },
+                    },
+                },
+            ],
+            {
+                useNativeDriver: false,
+            },
+        )(event);
+    };
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView
@@ -98,16 +114,16 @@ const Home = ({ navigation, route }) => {
 
                     </Box>
                 </Box>
-                <Box className="bg">
+                {/* <Box className="bg">
                     <SlideBG></SlideBG>
-                </Box>
-                <Box className="absolute bottom-[30%]">
+                </Box> */}
+                <Box className="">
                     <View >
                         {productOwner ?
                             <FlatList
                                 data={productOwner}
-                                renderItem={({ item }) => <ProductItem item={item} navigation={navigation} />}
-
+                                renderItem={({ item,index }) => <ProductItem item={item} index={index} navigation={navigation} />}
+                                horizontal
                             /> : <View></View>}
                     </View>
                 </Box>
