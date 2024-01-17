@@ -43,7 +43,7 @@ const HistoryCare = ({ navigation, route }) => {
                 refreshControl={
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                 }>
-                <Box className="bg-white rounded-2xl my-2 mx-4 ">
+                <Box className="bg-white mt-1 rounded-b-3xl  ">
                     <Flex direction='row' className="justify-between ">
                         <Box className="p-4 text-left mr-2  ">
 
@@ -54,7 +54,7 @@ const HistoryCare = ({ navigation, route }) => {
                         </Box>
                         <Box className="p-1 ">
                             <QRCode
-                                value={`https://qly.cammattroi.com/tree/qrcode/${tree?.id}`}
+                                value={`https://qly2.cammattroi.com/tree/qrcode/${tree?.product_service_owner?.id}`}
                                 logo={require('../../assets/images/product.png')}
                                 logoSize={16}
                                 logoBackgroundColor='white'
@@ -70,33 +70,18 @@ const HistoryCare = ({ navigation, route }) => {
                                 {formatDateShort(history)}
                             </Text>
                             {history_care[history].map((item, index) =>
-                                <Flex key={index} direction='row' className="flex-wrap mr-1 bg-white px-1 py-1 rounded-md mb-2 border border-[#FF6100] " >
+                                <Flex key={index} direction='row' className="flex-wrap mx-1 object-fill bg-white px-2 py-2 rounded-md mb-2  border border-[#FF6100] " >
                                     {item.activity_care.map((activity, index) =>
                                         <Box>
-                                            {item.activity_care.length - 1 == index ? <Text className='text-[13px] mr-2' >{activity.name}</Text> :
-                                                <Text className='text-[13px] mr-2' >{activity.name},</Text>}
-
+                                            {item.activity_care.length - 1 == index ? <Text className='text-[13px] mr-1  items-center' >{activity.name}.</Text> :
+                                                <Text className='text-[13px]  mr-1  items-center ' >{activity.name},</Text>}
                                         </Box>
-
-
-
-
-
-                                        // <Flex key={index} direction='row' className="flex-wrap bg-white px-2 py-2 rounded-md mr-1 mb-2" >
-
-                                        // </Flex>
                                     )}
-
                                 </Flex>
                             )}
-
                         </Box>
                     )
-
                     : null}
-
-
-
             </ScrollView>
         </SafeAreaView>
     );
