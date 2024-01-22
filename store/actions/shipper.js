@@ -3,22 +3,33 @@ import ApiService from "../../common/apiService";
 import { on } from "stream";
 export const fetchOrders = (params) => (dispatch) => {
     console.log('fetchOrders', params)
+    dispatch({
+        type: 'changeLoading',
+        payload: true,
+    })
     return ApiService.queryData('api/v1/fetchOrders', params).then(response => {
 
         dispatch({
             type: 'fetchOrders',
             payload: response.data,
         })
-        console.log(response.data)
+        dispatch({
+            type: 'changeLoading',
+            payload: false,
+        })
 
     }).catch(error => {
-
+            dispatch({
+                type: 'changeLoading',
+                payload: false,
+            })
             console.log(error)
         }
 
     );
 };
 export const orderStatus = (params) => (dispatch) => {
+
     return ApiService.queryData('api/v1/orderStatus', params).then(response => {
         console.log(response.data)
         dispatch({
@@ -29,24 +40,36 @@ export const orderStatus = (params) => (dispatch) => {
 
     }).catch(error => {
 
+
             console.log(error)
         }
+
 
     );
 };
 
 
 export const getOrderShipperDetail = (id) => (dispatch) => {
+    dispatch({
+        type: 'changeLoading',
+        payload: true,
+    })
     return ApiService.query(`api/v1/shipper/${id}/orderDetail`).then(response => {
         console.log(response.data)
         dispatch({
             type: 'orderShipperDetail',
             payload: response.data,
         })
-
+        dispatch({
+            type: 'changeLoading',
+            payload: false,
+        })
 
     }).catch(error => {
-
+            dispatch({
+                type: 'changeLoading',
+                payload: false,
+            })
             console.log(error)
         }
 
@@ -71,19 +94,73 @@ export const confirmShipping = (id, onSuccess = () => {}, onError = () => {}) =>
     );
 };
 
+export const confirmNotShipping = (id, onSuccess = () => {}, onError = () => {}) => (dispatch) => {
+    return ApiService.put(`api/v1/shipper/${id}/confirm-not-shipping`).then(response => {
+        console.log('confirmShipping', response.data)
+        dispatch({
+            type: 'confirm-not-shipping',
+            payload: response.data,
+        })
+        onSuccess()
+
+    }).catch(error => {
+            onError()
+            console.log(error)
+        }
+
+    );
+};
 
 
 export const confirmCustomerRecive = (data, onSuccess = () => {}, onError = () => {}) => (dispatch) => {
-
-    ApiService.postFormData(`api/v1/shipper/${data.id}/confirm-shipping`, data.formData, {
+    const formdata = data.formData._parts.length > 0 ? data.formData : null
+    ApiService.postFormData(`api/v1/shipper/${data.id}/confirm-recive`, formdata, {
         accept: 'application/json',
         'content-type': 'multipart/form-data'
     }).then(response => {
-
+        dispatch({
+            type: 'confirm-recive',
+            payload: response.data,
+        })
         onSuccess(response.data)
 
     }).catch(error => {
         console.log(error)
         onError()
+    });
+};
+
+
+export const UploadOrder = (data, onSuccess = () => {}, onError = () => {}) => (dispatch) => {
+
+    ApiService.postFormData(`api/v1/shipper/${data.id}/upload-order`, data.formData, {
+        accept: 'application/json',
+        'content-type': 'multipart/form-data'
+    }).then(response => {
+        dispatch({
+            type: 'confirm-recive',
+            payload: response.data,
+        })
+        onSuccess(response.data)
+
+    }).catch(error => {
+        console.log(error)
+        onError()
+    });
+};
+
+
+export const deleteImage = (id, media_id, onSuccess = () => {}, onError = () => {}) => (dispatch) => {
+
+    ApiService.delete(`api/v1/shipper/${id}/order/${media_id}/deleteImage`).then(response => {
+        dispatch({
+            type: 'confirm-recive',
+            payload: response.data,
+        })
+        onSuccess(response.data)
+
+    }).catch(error => {
+        console.log(error)
+        onError(error.response.data)
     });
 };

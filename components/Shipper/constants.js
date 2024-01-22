@@ -5,5 +5,6 @@ export const SHIPPER_STATUS = {
     refund: "Hoàn đơn",
     decline: "Hủy giao",
     decline: "Hủy giao",
-    addition_document: "Bổ sung hồ sơ"
+    addition_document: "Bổ sung hồ sơ",
+    not_shipper_receive: 'Không nhận đơn'
 }

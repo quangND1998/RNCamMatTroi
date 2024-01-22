@@ -7,21 +7,24 @@ LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 import { SafeAreaView } from 'react-native-safe-area-context';
 import HrTag from '../HrTag';
 import { PressableOpacity } from 'react-native-pressable-opacity';
-import { confirmShipping, fetchOrders, orderStatus } from '../../store/actions/shipper';
+import { UploadOrder, confirmCustomerRecive, confirmNotShipping, confirmShipping, deleteImage, fetchOrders, orderStatus } from '../../store/actions/shipper';
 import Icon from 'react-native-vector-icons/Ionicons';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import OrderAddress from './OrderAddress';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 LogBox.ignoreLogs([
     'VirtualizedLists should never be nested', // TODO: Remove when fixed
 ])
 import { SHIPPER_STATUS } from './constants';
 import { useHelper } from '../../helpers/helper';
-import PaginationMuti from '../PaginationMuti';
 import { getOrderShipperDetail } from '../../store/actions/shipper';
 import Point from '../Svg/Point';
 import CopyOutline from '../Svg/CopyOutline';
 import * as RNImagePicker from 'expo-image-picker'
 import Spinner from 'react-native-loading-spinner-overlay';
+import Toast from 'react-native-toast-message';
+import OrderItems from './OrderItems';
+import OrderPrice from './OrderPrice';
+import Pending from '../Pending';
 
 const OrderShipperDetail = ({ navigation, route }) => {
 
@@ -30,7 +33,7 @@ const OrderShipperDetail = ({ navigation, route }) => {
     const [refreshing, setRefreshing] = React.useState(false);
     const [spinner, setSpinner] = useState(false)
     const order_detail = useSelector(state => state.shipper.order_detail)
-    const [collapseProduct, setCollapseProduct] = React.useState(false);
+    const isLoading = useSelector(state => state.shipper.isLoading)
     const { formatOnlyDate, formatPrice } = useHelper();
     const [images, setImages] = useState([]);
     const fetchOrderDetail = () => {
@@ -44,6 +47,18 @@ const OrderShipperDetail = ({ navigation, route }) => {
 
     }, []);
     const pickImages = async () => {
+        if (order_detail.state_document == 'approved') {
+
+
+            Toast.show({
+                type: 'error',
+                text1: 'Lỗi!',
+                text2: 'Đơn hàng đã duyệt hồ sơ, vui lòng không upload thêm ảnh!',
+                position: 'bottom',
+                visibilityTime: 3000
+            });
+            return;
+        }
         try {
             const { status } = await RNImagePicker.requestMediaLibraryPermissionsAsync()
             if (status === 'granted') {
@@ -136,7 +151,208 @@ const OrderShipperDetail = ({ navigation, route }) => {
 
             },
         ]);
+    const alertNotShipping = () =>
+        Alert.alert('Xác nhận không nhận đơn hàng này!', '', [
+            {
+                text: 'Cancel',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel',
+            },
+            {
+                text: 'OK', onPress: () => {
+                    setSpinner(true)
+                    if (order_detail) {
+                        dispatch(confirmNotShipping(order_detail.id, () => {
+                            Toast.show({
+                                type: 'success',
+                                text1: 'Đã xác nhận không nhận đơn hàng',
+                                position: 'bottom'
+                            });
+                            setSpinner(false)
+                            navigation.navigate('HomeShipper')
+                        },
+                            () => {
+                                setSpinner(false)
+                                Toast.show({
+                                    type: 'error',
+                                    text1: 'Lỗi!',
+                                    position: 'bottom',
+                                    visibilityTime: 3000
+                                });
 
+                            }))
+                    }
+                }
+
+            },
+        ]);
+    const alertCustomerRecive = () => {
+        const formData = new FormData();
+
+        for (var i = 0; i < images.length; i++) {
+            let localUri = images[i].uri;
+            let filename = localUri.split('/').pop();
+            console.log(localUri)
+            // Infer the type of the image
+            let match = /\.(\w+)$/.exec(filename);
+            console.log(match[1])
+            let type = match ? `image/${match[1]}` : `image`;
+            formData.append('images[' + i + ']', { uri: localUri, name: filename, type });
+        }
+
+        Alert.alert('Xác nhận khách hàng đã lấy đơn!', '', [
+            {
+                text: 'Cancel',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel',
+            },
+            {
+                text: 'OK', onPress: () => {
+                    setSpinner(true)
+
+
+                    if (order_detail) {
+                        dispatch(confirmCustomerRecive({ id: order_detail.id, formData: formData },
+                            () => {
+                                Toast.show({
+                                    type: 'success',
+                                    text1: 'Đã xác khách đã nhận đơn hàng',
+                                    position: 'bottom'
+                                });
+                                setSpinner(false)
+                                setImages([])
+                            },
+                            () => {
+                                setSpinner(false)
+                                Toast.show({
+                                    type: 'error',
+                                    text1: 'Lỗi!',
+                                    position: 'bottom',
+                                    visibilityTime: 3000
+                                });
+
+                            }))
+                    }
+                }
+
+            },
+        ]);
+    }
+    const alertUpload = () => {
+        if (images.length == 0) {
+            Toast.show({
+                type: 'error',
+                text1: 'Lỗi!',
+                text2: 'Chưa up ảnh hồ sơ',
+                position: 'bottom',
+                visibilityTime: 3000
+            });
+            return
+
+        }
+        const formData = new FormData();
+
+        for (var i = 0; i < images.length; i++) {
+            let localUri = images[i].uri;
+            let filename = localUri.split('/').pop();
+            console.log(localUri)
+            // Infer the type of the image
+            let match = /\.(\w+)$/.exec(filename);
+            console.log(match[1])
+            let type = match ? `image/${match[1]}` : `image`;
+            formData.append('images[' + i + ']', { uri: localUri, name: filename, type });
+        }
+
+        Alert.alert('Xác nhận Upload ảnh hồ sơ !', '', [
+            {
+                text: 'Cancel',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel',
+            },
+            {
+                text: 'OK', onPress: () => {
+                    setSpinner(true)
+
+
+                    if (order_detail) {
+                        dispatch(UploadOrder({ id: order_detail.id, formData: formData },
+                            () => {
+                                Toast.show({
+                                    type: 'success',
+                                    text1: 'Đã tải hồ sơ',
+                                    position: 'bottom'
+                                });
+                                setSpinner(false)
+                                setImages([])
+                            },
+                            () => {
+                                setSpinner(false)
+                                Toast.show({
+                                    type: 'error',
+                                    text1: 'Lỗi!',
+                                    position: 'bottom',
+                                    visibilityTime: 3000
+                                });
+
+                            }))
+                    }
+                }
+
+            },
+        ]);
+    }
+    const alertDeleteImage = (media_id) => {
+        if (order_detail.state_document !== 'approved') {
+
+
+            Alert.alert('Bạn muốn xóa ảnh khỏi hồ sơ!', '', [
+                {
+                    text: 'Cancel',
+                    onPress: () => console.log('Cancel Pressed'),
+                    style: 'cancel',
+                },
+                {
+                    text: 'OK', onPress: () => {
+
+
+
+                        if (order_detail) {
+                            dispatch(deleteImage(order_detail.id, media_id,
+                                () => {
+                                    Toast.show({
+                                        type: 'success',
+                                        text1: 'Đã xóa ảnh',
+                                        position: 'bottom'
+                                    });
+
+                                },
+                                (error) => {
+
+                                    Toast.show({
+                                        type: 'error',
+                                        text1: 'Lỗi!',
+                                        text2: error,
+                                        position: 'bottom',
+                                        visibilityTime: 3000
+                                    });
+
+                                }))
+                        }
+                    }
+
+                },
+            ]);
+        }
+        else {
+            Toast.show({
+                type: 'error',
+                text1: 'Lỗi!',
+                text2: 'Đơn hàng đã duyệt hồ sơ, vui lòng không xóa ảnh!',
+                position: 'bottom',
+                visibilityTime: 3000
+            });
+        }
+    }
     return (
         <SafeAreaView style={styles.container}>
             <Spinner
@@ -149,209 +365,181 @@ const OrderShipperDetail = ({ navigation, route }) => {
                 refreshControl={
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                 }>
-                <Box className="">
-                    {order_detail ? <Box className=" w-full bg-white px-5 py-5 rounded-sm">
-                        <Flex direction='row' className=" justify-between">
-                            <Text bold className="font-inter">Mã đặt hàng</Text>
 
-                            <Flex direction='row' className=" items-center">
-                                <Text className=" font-inter mr-3 text-[13px] text-[#686868]">{order_detail.order_number}</Text>
-                                <CopyOutline size={16} color="#686868" />
-                                {/* <Icon name="copy-outline" size={16} color="#686868" /> */}
+                {isLoading == true ?
+                    <Pending /> : <Box className="">
+                        {order_detail ? <Box className=" w-full bg-white px-5 py-5 rounded-sm">
+                            <Flex direction='row' className=" justify-between">
+                                <Text bold className="font-inter">Mã đặt hàng</Text>
+
+                                <Flex direction='row' className=" items-center">
+                                    <Text className=" font-inter mr-3 text-[13px] text-[#686868]">{order_detail.order_number}</Text>
+                                    <CopyOutline size={16} color="#686868" />
+                                    {/* <Icon name="copy-outline" size={16} color="#686868" /> */}
+                                </Flex>
                             </Flex>
-                        </Flex>
-                        <Flex direction='row' className=" w-full items-center mt-1 ml-2">
-                            <Box className="mt-2">
-                                {/* <Image src="/public/assets/images/goi1.png" class="w-12 h-12 " alt=""> */}
-                                <Image source={require('../../assets/images/goi1.png')} class="w-12 h-12 " alt=""></Image>
-                            </Box>
-
-                            <Box className="ml-4">
-                                {order_detail.type == 'retail' ? <Text bold className="font-inter">Đơn mua lẻ
-                                </Text> : null}
-                                {order_detail.type == 'gift_delivery' ? <Text bold className="font-inter">Giao
-                                    quà
-                                </Text> : null}
-
-                                {order_detail.shipper_status == 'pending' ?
-                                    <Text className="text-xs text-[#e94949] mt-1">Chưa lấy
-                                    </Text>
-                                    : order_detail.shipper_status == 'shipping' ?
-                                        <Text className="text-xs text-[#FF6100] mt-1">Đang vận chuyển
-                                        </Text>
-                                        : (order_detail.shipper_status == 'delivered' && order_detail.shipper_status == null) ?
-                                            <Text className="text-xs text-[#4F8D06] mt-1">Đã giao, chưa up hồ sơ
-                                            </Text> : (order_detail.shipper_status == 'delivered' && order_detail.shipper_status == 'pending') ?
-                                                <Text className="text-xs text-[#4F8D06] mt-1">Đã giao, đã up hồ sơ
-                                                </Text> : (order_detail.shipper_status == 'delivered' && order_detail.shipper_status == 'approved') ?
-                                                    <Text className="text-xs text-[#4F8D06] mt-1">Đã giao, đủ hồ sơ
-                                                    </Text> : null
-                                }
-
-
-                            </Box>
-
-
-                        </Flex>
-                        <Flex direction='row' className="mt-5  ">
-                            {order_detail?.shipper_status == 'pending' ? <PressableOpacity onPress={alertShipping}>
-                                <Box className="bg-white rounded-md  px-8 py-2 border border-0.5 ml-2" variant={'unstyled'}>
-                                    Y
+                            <Flex direction='row' className=" w-full items-center mt-1 ml-2">
+                                <Box className="mt-2">
+                                    {/* <Image src="/public/assets/images/goi1.png" class="w-12 h-12 " alt=""> */}
+                                    <Image source={require('../../assets/images/goi1.png')} class="w-12 h-12 " alt=""></Image>
                                 </Box>
-                            </PressableOpacity> : null}
+                                <Box className="ml-4">
+                                    {order_detail.type == 'retail' ? <Text bold className="font-inter">Đơn mua lẻ
+                                    </Text> : null}
+                                    {order_detail.type == 'gift_delivery' ? <Text bold className="font-inter">Giao
+                                        quà
+                                    </Text> : null}
 
-                            {order_detail?.shipper_status == 'shipping' ? <PressableOpacity >
-                                <Button className="bg-white rounded-md  px-8 py-2 border border-0.5 ml-2" variant={'unstyled'}>
-                                    Y
-                                </Button>
-                            </PressableOpacity> : null}
-                            {order_detail.shipper_status == 'pending' ?
-                                <Button className=" text-white w-4/6 px-3s bg-[#FF0000] rounded-md ml-3  mr-1 items-center" >
-                                    Lấy hàng
-                                </Button>
-                                : order_detail.shipper_status == 'shipping' ? <Button className=" text-white bg-[#4F8D06] rounded-md ml-3  mr-2 items-center" >
-                                    Khách đã nhận
-                                </Button> : null}
-                        </Flex>
-                    </Box> : null}
-                    <Box className="w-full bg-white px-5 py-2 mt-2 rounded-sm">
-                        <Flex direction='row' className=" items-center">
-                            <Point size={24} />
-                            <Text bold className="font-inter text-[12px] text-[#686868] ">Trang trại Cam Mặt Trời </Text>
-                        </Flex>
-                        <Box className="mx-1 ">
-                            <Image source={require('../../assets/icon/location.png')} className="h-1 w-1 " alt="location1" ></Image>
-                        </Box>
-                        <Box className="mx-1 mt-1">
-                            <Image source={require('../../assets/icon/location.png')} className="h-1 w-1 " alt="location2"></Image>
-                        </Box>
-
-                        <Flex direction='row' className="items-center ">
-                            <Image source={require('../../assets/icon/end.png')} className="h-4 w-4 " alt="end"></Image>
-                            <Text bold className="font-inter text-[12px] text-[#686868] ">{order_detail?.address}, {order_detail?.wards}, {order_detail?.district}, {order_detail?.city}  </Text>
-                        </Flex>
-                    </Box>
-
-                    <Box className="mt-2 bg-white px-5 py-5">
-                        <Flex direction='row' >
-                            <Text bold className="font-roboto">Tóm tắt đơn hàng</Text>
-                        </Flex>
-                        {order_detail?.order_items.length > 0 ? order_detail?.order_items.slice(0, 3).map((item, index) =>
+                                    {(order_detail.shipper_status == 'pending' && order_detail.status_transport == 'not_shipper_receive') ?
+                                        <Text className="text-xs text-[#e94949] mt-1">Không nhận đơn
+                                        </Text>
+                                        : (order_detail.shipper_status == 'pending' && order_detail.status_transport !== 'not_shipper_receive') ?
+                                            <Text className="text-xs text-[#e94949] mt-1">Chưa lấy
+                                            </Text>
+                                            : order_detail.shipper_status == 'shipping' ?
+                                                <Text className="text-xs text-[#FF6100] mt-1">Đang vận chuyển
+                                                </Text>
+                                                : (order_detail.shipper_status == 'delivered' && order_detail.state_document == 'not_push') ?
+                                                    <Text className="text-xs text-[#4F8D06] mt-1">Đã giao, chưa up hồ sơ
+                                                    </Text> : (order_detail.shipper_status == 'delivered' && order_detail.state_document == 'pending') ?
+                                                        <Text className="text-xs text-[#4F8D06] mt-1">Đã giao, đã up hồ sơ
+                                                        </Text> : (order_detail.shipper_status == 'delivered' && order_detail.state_document == 'approved') ?
+                                                            <Text className="text-xs text-[#4F8D06] mt-1">Đã giao, đủ hồ sơ
+                                                            </Text> : null
+                                    }
 
 
-                            <Flex key={index} direction='row' className=" justify-between  py-2 w-full">
-                                <Flex direction='row' className=" items-center">
-                                    <Text className="py-0.5 px-1 border border-0.5 rounded-lg text-[#F78F43]">{item.quantity}x</Text>
-                                    <Box className="ml-3">
-                                        <Text className="text-[12px] ">{item.product?.name}</Text>
-                                    </Box>
-                                </Flex>
-                                <Text className="text-[#FF6100] font-roboto font-bold text-[12px]">{formatPrice(item.total_price)} đ
-                                </Text>
+                                </Box>
+
+
+
                             </Flex>
+                            <Flex direction='row' className="mt-5 flex-wrap items-center ">
 
-
-                        ) : null}
-
-                        {(collapseProduct && order_detail?.order_items.length > 0) ? order_detail?.order_items.slice(3, order_detail?.order_items.length).map((item, index) =>
-
-
-                            <Flex key="index" direction='row' className=" justify-between  py-2 w-full">
-                                <Flex direction='row' className=" items-center">
-                                    <Text className="py-0.5 px-1 border border-0.5 rounded-lg text-[#F78F43]">{item.quantity}x</Text>
-                                    <Box className="ml-3">
-                                        <Text className="text-[12px] ">{item.product?.name}</Text>
+                                {order_detail?.shipper_status == 'pending' ? <PressableOpacity onPress={alertNotShipping}>
+                                    <Box className="bg-white rounded-md  px-8 py-2.5 border border-0.5 ml-2" variant={'unstyled'}>
+                                        Không nhận đơn
                                     </Box>
-                                </Flex>
-                                <Text className="text-[#FF6100] font-roboto font-bold text-[12px]">{formatPrice(item.total_price)} đ
-                                </Text>
+                                </PressableOpacity> : null}
+
+                                {order_detail?.shipper_status == 'pending' ? <PressableOpacity onPress={alertShipping}>
+                                    <Box className="bg-white rounded-md  px-8 py-2.5 border border-0.5 ml-2" variant={'unstyled'}>
+                                        Y
+                                    </Box>
+                                </PressableOpacity> : null}
+
+                                {order_detail?.shipper_status == 'shipping' ? <PressableOpacity onPress={alertCustomerRecive} >
+                                    <Box className="bg-white rounded-md  px-8 py-2.5 border border-0.5 ml-2" variant={'unstyled'}>
+                                        Y
+                                    </Box>
+                                </PressableOpacity> : null}
+                                {order_detail.shipper_status == 'pending' ?
+                                    <Button className=" text-white w-4/6 px-3s bg-[#FF0000] rounded-md ml-3  mt-2 mr-1 items-center" >
+                                        Lấy hàng
+                                    </Button>
+                                    : order_detail.shipper_status == 'shipping' ? <Button className=" text-white bg-[#4F8D06] rounded-md ml-3  mt-2  mr-2 items-center" >
+                                        Khách đã nhận
+                                    </Button> : null}
                             </Flex>
+                        </Box> : null}
+
+                        <OrderAddress order_detail={order_detail} />
+                        <OrderItems order_detail={order_detail} />
+                        <OrderPrice order_detail={order_detail} />
+                        {order_detail ?
+                            <Box className="mt-2 bg-white px-5 py-5">
+                                <Flex direction='row'  >
+                                    {
+                                        order_detail.shipper_status == 'pending' ? <Text bold className="text-[16px]  ml-4">Tải ảnh</Text>
+                                            : order_detail.state_document == 'shipping' ? <Text bold className="text-[16px]  ml-4">Tải ảnh</Text>
+                                                : <Text bold className="text-[16px]">Hồ sơ nhận hàng</Text>}
+
+                                    {
+                                        order_detail.state_document == 'not_push' ? <Text bold className="text-[16px] text-[#FF6100] ml-4">Chưa up</Text>
+                                            : order_detail.state_document == 'pending' ? <Text bold className="text-[16px] text-[#FF6100] ml-4">Chưa duyệt</Text>
+                                                : order_detail.state_document == 'approved' ? <Text bold className="text-[16px] text-[#27AE60] ml-4">Đã duyệt</Text> : null}
 
 
-                        ) : null}
-                        <Center >
-                            {order_detail?.order_items.length >= 4 ? <PressableOpacity onPress={() => setCollapseProduct(!collapseProduct)}>
-                                <Text class="text-[12px]  mt-3 flex items-center" >{collapseProduct ? 'Thu gọn'
-                                    : 'Xem thêm'} <Icon name={collapseProduct ? 'chevron-up-outline'
-                                        : 'chevron-down-outline'} size={16} color="#686868" /></Text>
-                            </PressableOpacity> : null}
+                                </Flex>
+                                <Flex className="flex-wrap my-3">
+                                    <Flex direction='row' className="flex flex-wrap" >
+                                        {order_detail?.order_shipper_images.length > 0 && order_detail?.order_shipper_images.map((image, index) =>
+                                            <Flex key={`image${index}`} direction='row' className=" flex flex-wrap mx-1 my-1" >
+                                                <Box className="absolute right-0 top-0 z-10 ">
+                                                    <PressableOpacity onPress={() => alertDeleteImage(image.id)}>
+                                                        <MaterialCommunityIcons name='trash-can-outline' size={16} color='#fc5050' />
+                                                    </PressableOpacity>
+                                                </Box>
+                                                <Box className="relative ">
+                                                    <Image source={{ uri: image.original_url }} alt={`image${index}`} size="md" className="rounded-md" />
+                                                </Box>
 
+                                            </Flex>
 
+                                        )}
+                                    </Flex>
+                                </Flex>
+                                <Flex className="flex-wrap my-3">
+                                    <Flex direction='row' className="flex flex-wrap" >
+                                        {images.length > 0 && images.map((image, index) =>
+                                            <Flex key={`image${index}`} direction='row' className=" flex flex-wrap mx-1 my-1" >
+                                                <Box className="relative ">
 
-                        </Center>
-                    </Box>
-                    {order_detail ? <Box className="mt-2 bg-white px-5 py-5">
-                        <Flex direction='row' className="justify-between" >
-                            <Text className="text-[13px] font-[400]">Tổng tạm tính</Text>
-                            <Text className="text-[13px] font-[400]">{formatPrice(order_detail.grand_total)} vnđ</Text>
-                        </Flex>
-                        <Flex direction='row' className="justify-between" >
-                            <Text className="text-[13px] font-[400]">Phí áp dụng</Text>
+                                                    <Box className="absolute right-0 top-0 z-10 ">
+                                                        <PressableOpacity onPress={() => DeleteImage(image)}>
+                                                            <MaterialCommunityIcons name='trash-can-outline' size={16} color='#fc5050' />
+                                                        </PressableOpacity>
+                                                    </Box>
 
-                            <Text className="text-[13px] font-[400]">  {order_detail.shipping_fee > 0 ? formatPrice(order_detail.shipping_fee) : 'Miễn phí'}</Text>
-                        </Flex>
-                        <Flex direction='row' className="justify-between" >
-                            <Text className="text-[13px] font-[400] text-[#686868]"><Icon name='pricetag-outline' className="mr-2" size={16} color="#F78F43" />Ưu đãi</Text>
-                            {order_detail.discount ? <Text className="text-[13px] font-[400]">-{formatPrice(order_detail.discount.discount_mount)}</Text> : null}
+                                                    <Image source={{ uri: image.uri }} alt={`image${index}`} size="md" className="rounded-md" />
 
-                        </Flex>
-                    </Box> : null}
+                                                </Box>
 
-                    <Box className="mt-2 bg-white px-5 py-5">
-                        <Flex direction='row' className="justify-between" >
-                            <Text bold className="text-[16px]">Tải ảnh</Text>
+                                            </Flex>
 
-                        </Flex>
-                        <Flex className="flex-wrap my-3">
-                            <Flex direction='row' className="flex flex-wrap" >
-                                {images.length > 0 && images.map((image, index) =>
-                                    <Flex key={`image${index}`} direction='row' className=" flex flex-wrap mx-1 my-1" >
-                                        <Box className="relative ">
-
-                                            <Box className="absolute right-0 top-0 z-10 ">
-                                                <PressableOpacity onPress={() => DeleteImage(image)}>
-                                                    <MaterialCommunityIcons name='trash-can-outline' size={16} color='#fc5050' />
-                                                </PressableOpacity>
+                                        )}
+                                        <PressableOpacity onPress={() => pickImages()}>
+                                            <Box className="w-16 h-16  items-center justify-center flex  rounded-lg" style={{
+                                                borderRadius: 1,
+                                                borderWidth: 1,
+                                                borderStyle: 'dashed',
+                                                borderColor: 'gray',
+                                                borderTopColor: 'white'
+                                            }}>
+                                                {/* className="w-16 h-16 border items-center border-gray-500 mx-1 justify-center flex  rounded-lg"> */}
+                                                <Icon name="add-outline" size={16} color="#686868" />
                                             </Box>
-
-                                            <Image source={{ uri: image.uri }} alt={`image${index}`} size="md" className="rounded-md" />
-
-                                        </Box>
-
+                                        </PressableOpacity>
                                     </Flex>
 
-                                )}
+
+
+
+                                </Flex>
+                                {order_detail?.state_document == 'not_push' ? <PressableOpacity onPress={alertUpload}>
+                                    <Center className="text-white px-1 py-2  px-3s bg-[#FF0000] rounded-md ml-3  mt-2 mr-1 items-center">
+                                        <Text className='text-white'> Up hồ sơ</Text>
+                                    </Center>
+                                </PressableOpacity> : null}
+
+                            </Box>
+                            : null}
+                        <Box className="mt-2 bg-white px-5 py-5">
+                            <Flex direction='row' className="justify-between" >
+                                <Text bold className="text-[16px]">Tổng thu</Text>
+                                <Text className="text-[13px] font-[400]">{formatPrice(order_detail?.last_price)} vnđ</Text>
                             </Flex>
-                            <PressableOpacity onPress={() => pickImages()}>
-                                <Box className="w-16 h-16  items-center justify-center flex  rounded-lg" style={{
-                                    borderRadius: 1,
-                                    borderWidth: 1,
-                                    borderStyle: 'dashed',
-                                    borderColor: 'gray',
-                                    borderTopColor: 'white'
-                                }}>
-                                    {/* className="w-16 h-16 border items-center border-gray-500 mx-1 justify-center flex  rounded-lg"> */}
-                                    <Icon name="add-outline" size={16} color="#686868" />
-                                </Box>
-                            </PressableOpacity>
-                        </Flex>
 
-                    </Box>
-                    <Box className="mt-2 bg-white px-5 py-5">
-                        <Flex direction='row' className="justify-between" >
-                            <Text bold className="text-[16px]">Tổng thu</Text>
-                            <Text className="text-[13px] font-[400]">{formatPrice(order_detail?.last_price)} vnđ</Text>
-                        </Flex>
+                        </Box>
+                        <Box className="mt-2 bg-white px-5 py-5">
+                            <Flex direction='column'  >
+                                <Text bold className="text-[16px]">Ghi chú </Text>
+                                <Text className="text-[14px] font-[400]">{order_detail?.note}</Text>
+                            </Flex>
 
-                    </Box>
-                    <Box className="mt-2 bg-white px-5 py-5">
-                        <Flex direction='column'  >
-                            <Text bold className="text-[16px]">Ghi chú </Text>
-                            <Text className="text-[14px] font-[400]">{order_detail?.note}</Text>
-                        </Flex>
+                        </Box>
+                    </Box>}
 
-                    </Box>
-                </Box>
 
 
             </ScrollView >

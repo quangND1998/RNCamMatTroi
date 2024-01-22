@@ -7,7 +7,8 @@ const initialState = {
     date: null,
     day: null,
     search: null,
-    shipper_status: null
+    shipper_status: null,
+    isLoading: false
 
 
 }
@@ -66,6 +67,16 @@ const shipperReducer = (state = initialState, action) => {
             state.order_detail = action.payload
             return {
                 ...state
+            }
+        case 'confirm-not-shipping':
+            state.order_detail = action.payload
+            return {
+                ...state
+            }
+        case 'changeLoading':
+            return {
+                ...state,
+                isLoading: action.payload
             }
         default:
             return state;

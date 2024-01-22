@@ -3,7 +3,7 @@ import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Text } from 'react-native-svg';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { PressableOpacity } from 'react-native-pressable-opacity';
 import HomeShipper from './HomeShipper';
 import { Modal, Button, Select, Input, FormControl, Flex, CheckIcon, HStack, Center, Box, Radio } from "native-base";
@@ -17,6 +17,7 @@ const ShipperScreen = () => {
     const [modalVisible, setModalVisible] = React.useState(false);
     const [date, setDate] = React.useState('now');
     const [day, setDay] = React.useState(null);
+ 
     useEffect(() => {
         getOrders();
     }, [])
@@ -74,7 +75,7 @@ const ShipperScreen = () => {
                             <Modal.Content>
                                 <Modal.CloseButton />
                                 {/* className="mr-9 left-0  py-3 " */}
-                                <Modal.Header className="bg-[#D9D9D9] items-center py-6">Bộ lọc thời gian</Modal.Header>
+                                <Modal.Header className="bg-[#D9D9D9] items-center py-6">Bộ lọc thời gian </Modal.Header>
                                 <Modal.Body>
                                     <Radio.Group name="dateRadio" accessibilityLabel="favorite number" value={date} onChange={nextValue => {
                                         setDate(nextValue);
