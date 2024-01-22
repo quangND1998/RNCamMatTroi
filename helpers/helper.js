@@ -2,7 +2,7 @@ import Moment from 'moment';
 import { format } from 'date-fns';
 import { localStorage } from '../common/storage';
 import { getUserStorage } from '../common/managerStorage';
-
+import 'moment/locale/vi';
 
 export const useHelper = () => {
     const formatOnlyDate = (value) => {
@@ -66,8 +66,7 @@ export const useHelper = () => {
     }
     const formatUpdatedAt = (updatedAt) => {
         if (updatedAt) {
-            const date = new Date(updatedAt);
-            return format(date, "dd/MM/yyyy, h:mm a");
+            return Moment(String(updatedAt)).locale('vi').format(' h:mm A,DD ,MMMM ,YYYY,')
         }
 
     }

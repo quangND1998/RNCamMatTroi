@@ -6,4 +6,5 @@
               },
           },
       },
+      assets: ['./assets/fonts'],
   };

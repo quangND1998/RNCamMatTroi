@@ -3,7 +3,7 @@ const initialState = {
     orders_status: null,
     orders: null,
     errors: null,
-
+    order_detail: null,
     date: null,
     day: null,
     search: null,
@@ -50,6 +50,22 @@ const shipperReducer = (state = initialState, action) => {
             return {
                 ...state,
 
+            }
+        case 'orderShipperDetail':
+            state.order_detail = action.payload
+            return {
+                ...state,
+
+            }
+        case 'confirm-shipping':
+            state.order_detail = action.payload
+            return {
+                ...state
+            }
+        case 'confirm-recive':
+            state.order_detail = action.payload
+            return {
+                ...state
             }
         default:
             return state;

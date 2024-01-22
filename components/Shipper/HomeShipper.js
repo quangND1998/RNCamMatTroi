@@ -29,7 +29,7 @@ const HomeShipper = ({ navigation, route }) => {
     const day = useSelector(state => state.shipper.day)
     const shipper_status = useSelector(state => state.shipper.shipper_status)
 
-    const { formatOnlyDate } = useHelper();
+    const { formatOnlyDate, formatUpdatedAt } = useHelper();
     useEffect(() => {
         fetchOrderStatus()
 
@@ -132,31 +132,33 @@ const HomeShipper = ({ navigation, route }) => {
                         {orders && orders?.data.length > 0 ? <Box class="ion-padding mb-5" >
                             <PaginationMuti data={orders} changePage={changePageURL} />
                         </Box> : ''}
-                        {orders ? orders.data.map((order, index) => <Box key={index} className=" bg-white  rounded-md px-1 mt-1 py-2">
-                            <Flex direction='row' className="justify-between px-2">
-                                <Text className="text-[14px]  font-bold">{index + 1}.{order.type == 'retail' ? 'Đơn lẻ' : 'Đơn quà'}<Text className="font-inter">({order.order_number})</Text></Text>
-                                <Text className={`${order.shipper_status == 'pending' ? 'text-[#4F8D06]' : order.shipper_status == 'shipping' ? 'text-[#FF6100]' : order.shipper_status == 'delivered' ? 'text-[#4F8D06]' : order.shipper_status == 'refund' ? 'text-[#1D75FA]' : order.shipper_status == 'decline' ? 'text-[#F00]' : order.shipper_status == 'addition_document' ? 'text-[#4F8D06]' : null}`}>
-                                    {order.shipper_status == 'pending' ? SHIPPER_STATUS.pending :
-                                        order.shipper_status == 'shipping' ? SHIPPER_STATUS.shipping :
-                                            order.shipper_status == 'delivered' ? SHIPPER_STATUS.delivered :
-                                                order.shipper_status == 'refund' ? SHIPPER_STATUS.refund :
-                                                    order.shipper_status == 'decline' ? SHIPPER_STATUS.decline :
-                                                        order.state_document == 'not_push' ? SHIPPER_STATUS.addition_document : null}
-                                </Text>
-                            </Flex>
-                            <Flex direction='row' className="px-4">
-                                <Text className="mr-2 font-[650]">{order.customer.name}</Text>
-                                <FontAwesome5 name={'phone-alt'} solid size={16} color="#4F8D06" />
-                            </Flex>
-                            <Flex direction='row' className="px-4 ">
-                                <Text className="mr-2 text-[#686868]">Hẹn giao:</Text>
-                                <Text className="mr-2 text-[#686868]">{formatOnlyDate(order.delivery_appointment)}</Text>
-                            </Flex>
-                            <Flex direction='row' className="px-4 flex-wrap">
-                                <Text className="mr-2 text-[#686868]">Địa chỉ: {order.customer?.address}({order.customer?.wards}, {order.customer?.district} , {order.customer?.city})</Text>
-                            </Flex>
+                        {orders ? orders.data.map((order, index) =>
+                            <PressableOpacity key={index} onPress={() => navigation.navigate('OrderShipperDetail', { title: formatUpdatedAt(order.updated_at), orderId: order.id, })}>
+                                <Box className=" bg-white  rounded-md px-1 mt-1 py-2">
+                                    <Flex direction='row' className="justify-between px-2">
+                                        <Text className="text-[14px]  font-bold">{index + 1}.{order.type == 'retail' ? 'Đơn lẻ' : 'Đơn quà'}<Text className="font-inter">({order.order_number})</Text></Text>
+                                        <Text className={`${order.shipper_status == 'pending' ? 'text-[#4F8D06]' : order.shipper_status == 'shipping' ? 'text-[#FF6100]' : order.shipper_status == 'delivered' ? 'text-[#4F8D06]' : order.shipper_status == 'refund' ? 'text-[#1D75FA]' : order.shipper_status == 'decline' ? 'text-[#F00]' : order.shipper_status == 'addition_document' ? 'text-[#4F8D06]' : null}`}>
+                                            {order.shipper_status == 'pending' ? SHIPPER_STATUS.pending :
+                                                order.shipper_status == 'shipping' ? SHIPPER_STATUS.shipping :
+                                                    order.shipper_status == 'delivered' ? SHIPPER_STATUS.delivered :
+                                                        order.shipper_status == 'refund' ? SHIPPER_STATUS.refund :
+                                                            order.shipper_status == 'decline' ? SHIPPER_STATUS.decline :
+                                                                order.state_document == 'not_push' ? SHIPPER_STATUS.addition_document : null}
+                                        </Text>
+                                    </Flex>
+                                    <Flex direction='row' className="px-4">
+                                        <Text className="mr-2 font-[650]">{order.customer.name}</Text>
+                                        <FontAwesome5 name={'phone-alt'} solid size={16} color="#4F8D06" />
+                                    </Flex>
+                                    <Flex direction='row' className="px-4 ">
+                                        <Text className="mr-2 text-[#686868]">Hẹn giao:</Text>
+                                        <Text className="mr-2 text-[#686868]">{formatOnlyDate(order.delivery_appointment)}</Text>
+                                    </Flex>
+                                    <Flex direction='row' className="px-4 flex-wrap">
+                                        <Text className="mr-2 text-[#686868]">Địa chỉ: {order.customer?.address}({order.customer?.wards}, {order.customer?.district} , {order.customer?.city})</Text>
+                                    </Flex>
 
-                        </Box>) : null}
+                                </Box></PressableOpacity>) : null}
 
                     </Box>
                 </Box>

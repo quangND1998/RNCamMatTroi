@@ -9,6 +9,8 @@ import HomeShipper from './HomeShipper';
 import { Modal, Button, Select, Input, FormControl, Flex, CheckIcon, HStack, Center, Box, Radio } from "native-base";
 import { fetchOrders } from '../../store/actions/shipper';
 import Icon from 'react-native-vector-icons/Ionicons';
+import OrderShipperDetail from './OrderShipperDetail';
+import { HeaderBackButton, HeaderTitle, HeaderBackground } from '@react-navigation/elements';
 const Stack = createNativeStackNavigator();
 const ShipperScreen = () => {
     const dispatch = useDispatch();
@@ -120,6 +122,53 @@ const ShipperScreen = () => {
 
                 ),
             }} component={HomeShipper} />
+            <Stack.Screen name="OrderShipperDetail" options={({ navigation, route }) => ({
+                title: route.params.title,
+                tabBarActiveTintColor: '#F78F43',
+                tabBarInactiveTintColor: "#184E17",
+
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                    color: '#FFFFFF',
+                },
+                headerStyle: {
+                    backgroundColor: '#F78F43',
+
+                },
+
+
+                headerTitleAlign: 'left',
+                headerLeft: (props) => (
+                    <HeaderBackButton labelStyle={{ marginLeft: 0, color: 'white' }}
+                        {...props}
+                        onPress={() => {
+                            if (navigation.canGoBack()) {
+                                navigation.goBack();
+                            }
+                            else {
+                                navigation.navigate('HomeShipper')
+                            }
+                        }}
+                    />
+                ),
+            })} component={OrderShipperDetail} />
+            {/* <Stack.Screen name="HomeShipper" options={{
+                headerShown: true, title: 'Quản lý vận đơn', tabBarActiveTintColor: '#F78F43',
+                tabBarInactiveTintColor: "#184E17",
+
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                    color: '#FFFFFF',
+                },
+                headerStyle: {
+                    backgroundColor: '#F78F43',
+
+                },
+
+
+                headerTitleAlign: 'left',
+              
+            }} component={HomeShipper} /> */}
 
 
 
