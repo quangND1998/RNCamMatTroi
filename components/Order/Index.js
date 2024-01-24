@@ -7,6 +7,7 @@ import { EmojiHappy } from 'iconsax-react-native';
 import { getListProductService } from '../../store/actions/productService';
 import { getListOrderGift } from '../../store/actions/history';
 import { useHelper } from '../../helpers/helper';
+import { PressableOpacity } from 'react-native-pressable-opacity';
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 const OrderItem = ({ navigation, route }) => {
     const dispatch = useDispatch();
@@ -76,7 +77,27 @@ const OrderItem = ({ navigation, route }) => {
                     className="rounded-2xl bg-[#FF6100] text-white mx-3 my-3 p-3 font-bold"
                     onPress={onPressLearnMore}
                 >
-                    <Text className="font-base text-[18px] text-white ">Liên hệ đặt nông sản</Text>
+                    <PressableOpacity onPress={() => {
+                        let phoneNumber = null;
+                        if (Platform.OS !== 'android') {
+                            phoneNumber = `telprompt:0825105999`;
+                        }
+                        else {
+                            phoneNumber = `tel:0825105999`;
+                        }
+                        Linking.canOpenURL(phoneNumber)
+                            .then(supported => {
+                                if (!supported) {
+                                    Alert.alert('Phone number is not available');
+                                } else {
+                                    return Linking.openURL(phoneNumber);
+                                }
+                            })
+                            .catch(err => console.log(err));
+                    }
+                    }>
+                        <Text className="font-base text-[18px] text-white ">Liên hệ đặt nông sản</Text>
+                    </PressableOpacity>
                 </Button>
                 <Box className="bg-white rounded-t-[30px] mt-3 px-3">
                     <Text className="text-center font-bold my-6 text-[22px] text-[#FF6100] ">Lịch sử nhận quà nông sản</Text>
