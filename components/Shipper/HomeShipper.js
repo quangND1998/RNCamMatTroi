@@ -181,7 +181,7 @@ const HomeShipper = ({ navigation, route }) => {
                                         <Text className="mr-2 text-[#686868]">Địa chỉ: {order.customer?.address}({order.customer?.wards}, {order.customer?.district} , {order.customer?.city})</Text>
                                     </Flex>
                                     {order.state_document !== null ? <Flex direction='row' className="px-4 flex-wrap">
-                                        <Text className="mr-2 text-[#fd6459]">Trạng thái hồ sơ: {order.state_document == 'not_push' ? 'Chưa up' : order.state_document == 'pending' ? 'Chưa duyệt' : order.state_document == 'approved' ? 'Đã duyệt' : null}</Text>
+                                        <Text className="mr-2 text-[#fd6459]">Trạng thái hồ sơ: {order.state_document == 'not_push' ? 'Chưa up' : order.state_document == 'not_approved' ? 'Chưa duyệt' : order.state_document == 'approved' ? 'Đã duyệt' : null}</Text>
                                     </Flex> : null}
 
                                 </Box></PressableOpacity>) : null}
