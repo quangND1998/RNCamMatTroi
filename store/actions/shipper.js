@@ -2,17 +2,17 @@ import { err } from "react-native-svg";
 import ApiService from "../../common/apiService";
 import { on } from "stream";
 export const fetchOrders = (params) => (dispatch) => {
-    console.log('fetchOrders', params)
+    console.log('fetchOrders', params);
     dispatch({
         type: 'changeLoading',
         payload: true,
     })
     return ApiService.queryData('api/v1/fetchOrders', params).then(response => {
-
+        console.log('fetchOrders', response.data);
         dispatch({
             type: 'fetchOrders',
             payload: response.data,
-        })
+        });
         dispatch({
             type: 'changeLoading',
             payload: false,
@@ -31,7 +31,7 @@ export const fetchOrders = (params) => (dispatch) => {
 export const orderStatus = (params) => (dispatch) => {
 
     return ApiService.queryData('api/v1/orderStatus', params).then(response => {
-        console.log(response.data)
+
         dispatch({
             type: 'orderStatus',
             payload: response.data,
@@ -114,6 +114,8 @@ export const confirmNotShipping = (id, onSuccess = () => {}, onError = () => {})
 
 export const confirmCustomerRecive = (data, onSuccess = () => {}, onError = () => {}) => (dispatch) => {
     const formdata = data.formData._parts.length > 0 ? data.formData : null
+    console.log(data.formData._parts.length)
+
     ApiService.postFormData(`api/v1/shipper/${data.id}/confirm-recive`, formdata, {
         accept: 'application/json',
         'content-type': 'multipart/form-data'

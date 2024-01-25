@@ -401,7 +401,7 @@ const OrderShipperDetail = ({ navigation, route }) => {
                                                 </Text>
                                                 : (order_detail.shipper_status == 'delivered' && order_detail.state_document == 'not_push') ?
                                                     <Text className="text-xs text-[#4F8D06] mt-1">Đã giao, chưa up hồ sơ
-                                                    </Text> : (order_detail.shipper_status == 'delivered' && order_detail.state_document == 'pending') ?
+                                                    </Text> : (order_detail.shipper_status == 'delivered' && order_detail.state_document == 'not_approved') ?
                                                         <Text className="text-xs text-[#4F8D06] mt-1">Đã giao, đã up hồ sơ
                                                         </Text> : (order_detail.shipper_status == 'delivered' && order_detail.state_document == 'approved') ?
                                                             <Text className="text-xs text-[#4F8D06] mt-1">Đã giao, đủ hồ sơ
@@ -451,19 +451,19 @@ const OrderShipperDetail = ({ navigation, route }) => {
                                 <Flex direction='row'  >
                                     {
                                         order_detail.shipper_status == 'pending' ? <Text bold className="text-[16px]  ml-4">Tải ảnh</Text>
-                                            : order_detail.state_document == 'shipping' ? <Text bold className="text-[16px]  ml-4">Tải ảnh</Text>
+                                            : order_detail.shipper_status == 'shipping' ? <Text bold className="text-[16px]  ml-4">Tải ảnh</Text>
                                                 : <Text bold className="text-[16px]">Hồ sơ nhận hàng</Text>}
 
                                     {
                                         order_detail.state_document == 'not_push' ? <Text bold className="text-[16px] text-[#FF6100] ml-4">Chưa up</Text>
-                                            : order_detail.state_document == 'pending' ? <Text bold className="text-[16px] text-[#FF6100] ml-4">Chưa duyệt</Text>
+                                            : order_detail.state_document == 'not_approved' ? <Text bold className="text-[16px] text-[#FF6100] ml-4">Chưa duyệt</Text>
                                                 : order_detail.state_document == 'approved' ? <Text bold className="text-[16px] text-[#27AE60] ml-4">Đã duyệt</Text> : null}
 
 
                                 </Flex>
                                 <Flex className="flex-wrap my-3">
                                     <Flex direction='row' className="flex flex-wrap" >
-                                        {order_detail?.order_shipper_images.length > 0 && order_detail?.order_shipper_images.map((image, index) =>
+                                        {order_detail?.order_shipper_images?.length > 0 && order_detail?.order_shipper_images.map((image, index) =>
                                             <Flex key={`image${index}`} direction='row' className=" flex flex-wrap mx-1 my-1" >
                                                 <Box className="absolute right-0 top-0 z-10 ">
                                                     <PressableOpacity onPress={() => alertDeleteImage(image.id)}>

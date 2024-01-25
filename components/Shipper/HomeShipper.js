@@ -66,6 +66,7 @@ const HomeShipper = ({ navigation, route }) => {
             shipper_status: shipper_status,
 
         }
+        console.log('getOrders', params)
         dispatch(fetchOrders(params))
     }
     const changePageURL = (page) => {

@@ -4,7 +4,7 @@ const initialState = {
     orders: null,
     errors: null,
     order_detail: null,
-    date: null,
+    date: 'now',
     day: null,
     search: null,
     shipper_status: null,
@@ -24,7 +24,6 @@ const shipperReducer = (state = initialState, action) => {
         case 'fetchOrders':
             return {
                 ...state,
-
                 orders: action.payload
             }
         case 'setDate':

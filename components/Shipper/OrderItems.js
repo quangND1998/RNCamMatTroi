@@ -21,7 +21,7 @@ const OrderItems = ({ order_detail }) => {
                 <Flex direction='row' >
                     <Text bold className="font-roboto">Tóm tắt đơn hàng</Text>
                 </Flex>
-                {order_detail?.order_items.length > 0 ? order_detail?.order_items.slice(0, 3).map((item, index) =>
+                {order_detail?.order_items?.length > 0 ? order_detail?.order_items.slice(0, 3).map((item, index) =>
 
 
                     <Flex key={index} direction='row' className=" justify-between  py-2 w-full">
@@ -38,7 +38,7 @@ const OrderItems = ({ order_detail }) => {
 
                 ) : null}
 
-                {(collapseProduct && order_detail?.order_items.length > 0) ? order_detail?.order_items.slice(3, order_detail?.order_items.length).map((item, index) =>
+                {(collapseProduct && order_detail?.order_items?.length > 0) ? order_detail?.order_items.slice(3, order_detail?.order_items.length).map((item, index) =>
 
 
                     <Flex key="index" direction='row' className=" justify-between  py-2 w-full">
@@ -55,7 +55,7 @@ const OrderItems = ({ order_detail }) => {
 
                 ) : null}
                 <Center >
-                    {order_detail?.order_items.length >= 4 ? <PressableOpacity onPress={() => setCollapseProduct(!collapseProduct)}>
+                    {order_detail?.order_items?.length >= 4 ? <PressableOpacity onPress={() => setCollapseProduct(!collapseProduct)}>
                         <Text class="text-[12px]  mt-3 flex items-center" >{collapseProduct ? 'Thu gọn'
                             : 'Xem thêm'} <Icon name={collapseProduct ? 'chevron-up-outline'
                                 : 'chevron-down-outline'} size={16} color="#686868" /></Text>

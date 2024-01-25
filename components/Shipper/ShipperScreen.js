@@ -17,9 +17,9 @@ const ShipperScreen = () => {
     const [modalVisible, setModalVisible] = React.useState(false);
     const [date, setDate] = React.useState('now');
     const [day, setDay] = React.useState(null);
- 
+
     useEffect(() => {
-        getOrders();
+      
     }, [])
 
     const getOrders = () => {
@@ -32,11 +32,12 @@ const ShipperScreen = () => {
             payload: date
         })
         dispatch({
-            type: 'setDat',
-            payload: date
+            type: 'setDay',
+            payload: day
         })
 
         dispatch(fetchOrders(params))
+        setModalVisible(false)
     }
     return (
         <Stack.Navigator>
@@ -109,10 +110,7 @@ const ShipperScreen = () => {
                                     </Radio.Group>
                                 </Modal.Body>
                                 <Modal.Footer>
-                                    <Button flex="1" onPress={() => {
-                                        getOrders();
-                                        setModalVisible(false)
-                                    }} className="bg-[#FF0000]" >
+                                    <Button flex="1" onPress={getOrders} className="bg-[#FF0000]" >
                                         Áp dụng bộ lọc
                                     </Button>
 
