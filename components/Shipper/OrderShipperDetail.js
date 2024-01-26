@@ -405,7 +405,11 @@ const OrderShipperDetail = ({ navigation, route }) => {
                                                         <Text className="text-xs text-[#4F8D06] mt-1">Đã giao, đã up hồ sơ
                                                         </Text> : (order_detail.shipper_status == 'delivered' && order_detail.state_document == 'approved') ?
                                                             <Text className="text-xs text-[#4F8D06] mt-1">Đã giao, đủ hồ sơ
-                                                            </Text> : null
+                                                            </Text> : (order_detail.shipper_status == 'refunding' && order_detail.status == 'refunding') ?
+                                                                <Text className="text-xs text-[#1D75FA] mt-1">Yêu cầu chờ hoàn
+                                                                </Text> : (order_detail.shipper_status == 'refund') ?
+                                                                    <Text className="text-xs text-[#1D75FA] mt-1">Đã hoàn
+                                                                    </Text> : null
                                     }
 
 

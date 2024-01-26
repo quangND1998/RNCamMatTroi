@@ -109,8 +109,9 @@ const HomeShipper = ({ navigation, route }) => {
                                                     order_status.shipper_status == 'shipping' ? SHIPPER_STATUS.shipping :
                                                         order_status.shipper_status == 'delivered' ? SHIPPER_STATUS.delivered :
                                                             order_status.shipper_status == 'refund' ? SHIPPER_STATUS.refund :
-                                                                order_status.shipper_status == 'decline' ? SHIPPER_STATUS.decline :
-                                                                    order_status.shipper_status == 'addition_document' ? SHIPPER_STATUS.addition_document : null}
+                                                                order_status.shipper_status == 'refunding' ? SHIPPER_STATUS.refunding :
+                                                                    order_status.shipper_status == 'decline' ? SHIPPER_STATUS.decline :
+                                                                        order_status.shipper_status == 'addition_document' ? SHIPPER_STATUS.addition_document : null}
                                             </Text>
 
 
