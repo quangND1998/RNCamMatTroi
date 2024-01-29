@@ -31,7 +31,7 @@ export const fetchOrders = (params) => (dispatch) => {
 export const orderStatus = (params) => (dispatch) => {
 
     return ApiService.queryData('api/v1/orderStatus', params).then(response => {
-
+        console.log(response.data)
         dispatch({
             type: 'orderStatus',
             payload: response.data,
@@ -54,7 +54,7 @@ export const getOrderShipperDetail = (id) => (dispatch) => {
         type: 'changeLoading',
         payload: true,
     })
-    return ApiService.query(`api/v1/shipper/${id}/orderDetail`).then(response => {
+    return ApiService.query(`api/v1/shipper/${id}/orderTransportDetail`).then(response => {
         console.log(response.data)
         dispatch({
             type: 'orderShipperDetail',
@@ -118,8 +118,10 @@ export const confirmCustomerRecive = (data, onSuccess = () => {}, onError = () =
 
     ApiService.postFormData(`api/v1/shipper/${data.id}/confirm-recive`, formdata, {
         accept: 'application/json',
-        'content-type': 'multipart/form-data'
+        'content-type': `multipart/form-data; boundary=${Math.random().toString().substr(2)}`,
+
     }).then(response => {
+        console.log('confirmCustomerRecive', response.data)
         dispatch({
             type: 'confirm-recive',
             payload: response.data,
@@ -137,7 +139,8 @@ export const UploadOrder = (data, onSuccess = () => {}, onError = () => {}) => (
 
     ApiService.postFormData(`api/v1/shipper/${data.id}/upload-order`, data.formData, {
         accept: 'application/json',
-        'content-type': 'multipart/form-data'
+        'content-type': 'multipart/form-data',
+
     }).then(response => {
         dispatch({
             type: 'confirm-recive',

@@ -1,13 +1,13 @@
 import { createSlice, createSelector } from "@reduxjs/toolkit";
 const initialState = {
-    orders_status: null,
-    orders: null,
+    orders_transport_status: null,
+    order_transports: null,
     errors: null,
-    order_detail: null,
+    order_transport_detail: null,
     date: 'now',
     day: null,
     search: null,
-    shipper_status: null,
+    status: null,
     isLoading: false
 
 
@@ -19,12 +19,12 @@ const shipperReducer = (state = initialState, action) => {
         case 'orderStatus':
             return {
                 ...state,
-                orders_status: action.payload
+                orders_transport_status: action.payload
             }
         case 'fetchOrders':
             return {
                 ...state,
-                orders: action.payload
+                order_transports: action.payload
             }
         case 'setDate':
 
@@ -46,29 +46,29 @@ const shipperReducer = (state = initialState, action) => {
             }
 
         case 'changeShipperStatus':
-            state.shipper_status = action.payload
+            state.status = action.payload
             return {
                 ...state,
 
             }
         case 'orderShipperDetail':
-            state.order_detail = action.payload
+            state.order_transport_detail = action.payload
             return {
                 ...state,
 
             }
         case 'confirm-shipping':
-            state.order_detail = action.payload
+            state.order_transport_detail = action.payload
             return {
                 ...state
             }
         case 'confirm-recive':
-            state.order_detail = action.payload
+            state.order_transport_detail = action.payload
             return {
                 ...state
             }
         case 'confirm-not-shipping':
-            state.order_detail = action.payload
+            state.order_transport_detail = action.payload
             return {
                 ...state
             }
