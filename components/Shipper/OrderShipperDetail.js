@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { LogBox } from 'react-native';
-import { StyleSheet, Animated, TouchableOpacity, Linking, Keyboard, View, ScrollView, RefreshControl, ImageBackground, SectionList, Alert } from 'react-native';
-import { Center, Container, Heading, Button, Text, Box, Flex, Stack, Input, SearchBar, Spacer, ZStack, Image, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
+import { StyleSheet, Animated, TouchableOpacity, Linking, Keyboard, View, TextInput, ScrollView, RefreshControl, ImageBackground, SectionList, Alert } from 'react-native';
+import { Center, Container, Heading, Button, Text, Box, Flex, Stack, SearchBar, Spacer, ZStack, Image, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
 import { useDispatch, useSelector } from 'react-redux'
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -25,6 +25,8 @@ import Toast from 'react-native-toast-message';
 import OrderItems from './OrderItems';
 import OrderPrice from './OrderPrice';
 import Pending from '../Pending';
+import StatusDetail from '../Shipper/Components/StatusDetail'
+import Clipboard from '@react-native-community/clipboard';
 
 const OrderShipperDetail = ({ navigation, route }) => {
 
@@ -32,6 +34,7 @@ const OrderShipperDetail = ({ navigation, route }) => {
     const { orderId } = route.params;
     const [refreshing, setRefreshing] = React.useState(false);
     const [spinner, setSpinner] = useState(false)
+    const [text, setText] = useState()
     const order_transport_detail = useSelector(state => state.shipper.order_transport_detail)
     const isLoading = useSelector(state => state.shipper.isLoading)
     const { formatOnlyDate, formatPrice } = useHelper();
@@ -46,6 +49,17 @@ const OrderShipperDetail = ({ navigation, route }) => {
         fetchOrderDetail();
 
     }, []);
+
+    const copyToClipboard = (value) => {
+        Clipboard.setString(value);
+        Toast.show({
+            type: 'info',
+            text1: 'Đã lưu vào bộ nhớ tạm!',
+            position: 'bottom',
+            visibilityTime: 3000
+
+        });
+    };
     const pickImages = async () => {
         if (order_transport_detail.order.state_document == 'approved') {
 
@@ -370,13 +384,16 @@ const OrderShipperDetail = ({ navigation, route }) => {
                 {isLoading == true ?
                     <Pending /> : <Box className="">
                         {order_transport_detail ?
-                            <Box className=" w-full bg-white px-5 py-5 rounded-sm">
+                            <Box className=" w-full bg-white px-5 py-4 rounded-sm">
                                 <Flex direction='row' className=" justify-between">
                                     <Text bold className="font-inter">Mã đặt hàng</Text>
 
                                     <Flex direction='row' className=" items-center">
                                         <Text className=" font-inter mr-3 text-[13px] text-[#686868]">{order_transport_detail.order?.order_number}</Text>
-                                        <CopyOutline size={16} color="#686868" />
+                                        <PressableOpacity onPress={() => copyToClipboard(order_transport_detail.order?.order_number)}>
+                                            <CopyOutline size={16} color="#686868" />
+                                        </PressableOpacity>
+
                                         {/* <Icon name="copy-outline" size={16} color="#686868" /> */}
                                     </Flex>
                                 </Flex>
@@ -391,59 +408,42 @@ const OrderShipperDetail = ({ navigation, route }) => {
                                         {order_transport_detail.order?.type == 'gift_delivery' ? <Text bold className="font-inter">Giao
                                             quà
                                         </Text> : null}
-
-                                        {(order_transport_detail.status == 'not_shipping') ?
-                                            <Text className="text-xs text-[#e94949] mt-1">Chưa lấy
-                                            </Text>
-                                            : order_transport_detail.status == 'not_delivered' ?
-                                                <Text className="text-xs text-[#FF6100] mt-1">Đang vận chuyển
-                                                </Text>
-                                                : (order_transport_detail.status == 'delivered' && order_transport_detail.order?.state_document == 'not_push') ?
-                                                    <Text className="text-xs text-[#4F8D06] mt-1">Đã giao, chưa up hồ sơ
-                                                    </Text> : (order_transport_detail.status == 'delivered' && order_transport_detail.order?.state_document == 'not_approved') ?
-                                                        <Text className="text-xs text-[#4F8D06] mt-1">Đã giao, đã up hồ sơ
-                                                        </Text> : (order_transport_detail.status == 'delivered' && order_transport_detail.order?.state_document == 'approved') ?
-                                                            <Text className="text-xs text-[#4F8D06] mt-1">Đã giao, đủ hồ sơ
-                                                            </Text> : (order_transport_detail.status == 'wait_refund' && order_transport_detail.state == 'refunding') ?
-                                                                <Text className="text-xs text-[#1D75FA] mt-1">Yêu cầu chờ hoàn
-                                                                </Text> : (order_transport_detail.status == 'refund') ?
-                                                                    <Text className="text-xs text-[#1D75FA] mt-1">Đã hoàn
-                                                                    </Text> : (order_transport_detail.status == 'wait_decline' && order_transport_detail.state == 'refunding') ?
-                                                                        <Text className="text-xs text-[#1D75FA] mt-1">Yêu cầu chờ hủy
-                                                                        </Text> : (order_transport_detail.status == 'decline') ?
-                                                                            <Text className="text-xs text-[#1D75FA] mt-1">Hủy giao
-                                                                            </Text> : null
-                                        }
-
+                                        <StatusDetail order_transport={order_transport_detail} />
 
                                     </Box>
 
-
-
                                 </Flex>
-
-                                <Flex direction='row' className="mt-5 flex-wrap items-center ">
-
-
-
-                                    {order_transport_detail?.status == 'not_shipping' ? <PressableOpacity onPress={alertShipping}>
-                                        <Box className="bg-white rounded-md  px-8 py-2.5 border border-0.5 ml-2" variant={'unstyled'}>
+                                {(order_transport_detail.state == 'refunding' || order_transport_detail.state == 'refund' || order_transport_detail.state == 'decline') ? <Text className="font-inter ml-3 mt-1">Lý do: {order_transport_detail.order.reason}
+                                </Text> : null}
+                                <Flex direction='row' className="mt-5  items-center ">
+                                    {/* {order_transport_detail?.status == 'not_shipping' ? <PressableOpacity onPress={alertShipping}>
+                                        <Box className="bg-white rounded-md  px-8 py-2.5 border border-0.5 ml-2" >
                                             Y
                                         </Box>
-                                    </PressableOpacity> : null}
+                                    </PressableOpacity> : null} */}
 
-                                    {order_transport_detail?.status == 'not_delivered' ? <PressableOpacity onPress={alertCustomerRecive} >
-                                        <Box className="bg-white rounded-md  px-8 py-2.5 border border-0.5 ml-2" variant={'unstyled'}>
-                                            Y
-                                        </Box>
-                                    </PressableOpacity> : null}
+                                    {order_transport_detail?.status == 'not_shipping' ?
+
+                                        <TextInput className=" px-8 py-2.5 border border-0.5 mt-2 ml-2 rounded-md " value={text} maxLength={1} onChangeText={text => setText(text)} />
+
+                                        : null}
+
+                                    {order_transport_detail?.status == 'not_delivered' ?
+
+                                        <TextInput className=" px-8 py-2 border border-0.5 ml-2 mt-2 rounded-md " value={text} maxLength={1} onChangeText={text => setText(text)} />
+
+                                        : null}
                                     {order_transport_detail.status == 'not_shipping' ?
-                                        <Button className=" text-white w-4/6 px-3s bg-[#FF0000] rounded-md ml-3  mt-2 mr-1 items-center" >
-                                            Lấy hàng
-                                        </Button>
-                                        : order_transport_detail.status == 'not_delivered' ? <Button className=" text-white bg-[#4F8D06] rounded-md ml-3  mt-2  mr-2 items-center" >
-                                            Khách đã nhận
-                                        </Button> : null}
+                                        <PressableOpacity onPress={alertShipping} disabled={(text && text.toUpperCase() == 'Y') ? false : true} className="flex-grow px-8 py-3 bg-[#FF0000] rounded-md ml-3  mt-2 mr-1 items-center text-white" >
+
+                                            <Text className="text-white">Lấy hàng</Text>
+
+                                        </PressableOpacity>
+                                        : order_transport_detail.status == 'not_delivered' ?
+                                            <PressableOpacity onPress={alertCustomerRecive} disabled={(text && text.toUpperCase() == 'Y') ? false : true} className="flex-grow px-8 py-3 bg-[#4F8D06] rounded-md ml-3  mt-2 mr-1 items-center text-white" >
+                                                <Text className="text-white" >
+                                                    Khách đã nhận
+                                                </Text></PressableOpacity> : null}
                                 </Flex>
                             </Box> : null}
 

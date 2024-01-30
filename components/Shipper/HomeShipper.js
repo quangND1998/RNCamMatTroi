@@ -10,7 +10,6 @@ import { PressableOpacity } from 'react-native-pressable-opacity';
 import { fetchOrders, orderStatus } from '../../store/actions/shipper';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-
 LogBox.ignoreLogs([
     'VirtualizedLists should never be nested', // TODO: Remove when fixed
 ])
@@ -18,6 +17,7 @@ import { SHIPPER_STATUS } from './constants';
 import { useHelper } from '../../helpers/helper';
 import PaginationMuti from '../PaginationMuti';
 import Pending from '../Pending';
+import Status from '../Shipper/Components/Status'
 const merchantId = "11931"
 const HomeShipper = ({ navigation, route }) => {
 
@@ -108,9 +108,11 @@ const HomeShipper = ({ navigation, route }) => {
                                                 {order_transport_status.status == 'not_shipping' ? SHIPPER_STATUS.not_shipping :
                                                     order_transport_status.status == 'not_delivered' ? SHIPPER_STATUS.not_delivered :
                                                         order_transport_status.status == 'delivered' ? SHIPPER_STATUS.delivered :
-                                                            order_transport_status.status == 'refund' ? SHIPPER_STATUS.refund :
-                                                                order_transport_status.status == 'decline' ? SHIPPER_STATUS.decline :
-                                                                    order_transport_status.status == 'addition_document' ? SHIPPER_STATUS.addition_document : null}
+                                                            order_transport_status.status == 'wait_refund' ? SHIPPER_STATUS.wait_refund :
+                                                                order_transport_status.status == 'refund' ? SHIPPER_STATUS.refund :
+                                                                    order_transport_status.status == 'wait_decline' ? SHIPPER_STATUS.wait_decline :
+                                                                        order_transport_status.status == 'decline' ? SHIPPER_STATUS.decline :
+                                                                            order_transport_status.status == 'addition_document' ? SHIPPER_STATUS.addition_document : null}
                                             </Text>
 
 
@@ -139,14 +141,9 @@ const HomeShipper = ({ navigation, route }) => {
                                 <Box className=" bg-white  rounded-md px-1 mt-1 py-2">
                                     <Flex direction='row' className="justify-between px-2">
                                         <Text className="text-[14px]  font-bold">{index + 1}.{order_transport.order.type == 'retail' ? 'Đơn lẻ' : 'Đơn quà'}<Text className="font-inter">({order_transport.order.order_number})</Text></Text>
-                                        <Text className={`${order_transport.status == 'not_shipping' ? 'text-[#4F8D06]' : order_transport.status == 'not_delivered' ? 'text-[#FF6100]' : order_transport.status == 'delivered' ? 'text-[#4F8D06]' : order_transport.status == 'refund' ? 'text-[#1D75FA]' : order_transport.status == 'decline' ? 'text-[#F00]' : order_transport.status == 'addition_document' ? 'text-[#4F8D06]' : null}`}>
-                                            {order_transport.status == 'not_shipping' ? SHIPPER_STATUS.not_shipping :
-                                                order_transport.status == 'not_delivered' ? SHIPPER_STATUS.not_delivered :
-                                                    order_transport.status == 'delivered' ? SHIPPER_STATUS.delivered :
-                                                        order_transport.status == 'refund' ? SHIPPER_STATUS.refund :
-                                                            order_transport.status == 'decline' ? SHIPPER_STATUS.decline :
-                                                                (order_transport.order.state_document == 'not_push' && order_transport.status == 'delivered') ? SHIPPER_STATUS.addition_document : null}
-                                        </Text>
+
+                                        {order_transport ? <Status order_transport={order_transport} /> : null}
+
                                     </Flex>
                                     <Flex direction='row' className="px-4">
                                         <Text className="mr-2 font-[650]">{order_transport.order.customer.name}</Text>
@@ -180,9 +177,9 @@ const HomeShipper = ({ navigation, route }) => {
                                     <Flex direction='row' className="px-4 flex-wrap">
                                         <Text className="mr-2 text-[#686868]">Địa chỉ: {order_transport.order.customer?.address}({order_transport.order.customer?.wards}, {order_transport.order.customer?.district} , {order_transport.order.customer?.city})</Text>
                                     </Flex>
-                                    {/* {order_transport.order.state_document !== null ? <Flex direction='row' className="px-4 flex-wrap">
-                                        <Text className="mr-2 text-[#fd6459]">Trạng thái hồ sơ: {order_transport.order.state_document == 'not_push' ? 'Chưa up' : order.state_document == 'not_approved' ? 'Chưa duyệt' : order.state_document == 'approved' ? 'Đã duyệt' : null}</Text>
-                                    </Flex> : null} */}
+                                    {order_transport.order.state_document ? <Flex direction='row' className="px-4 flex-wrap">
+                                        <Text className="mr-2 text-[#fd6459]">Trạng thái hồ sơ: {order_transport.order.state_document == 'not_push' ? 'Chưa up' : order_transport.order.state_document == 'not_approved' ? 'Chưa duyệt' : order_transport.order.state_document == 'approved' ? 'Đã duyệt' : null}</Text>
+                                    </Flex> : null}
 
                                 </Box></PressableOpacity>) : null}
 

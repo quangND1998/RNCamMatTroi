@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { LogBox } from 'react-native';
-import { StyleSheet, Animated, TouchableOpacity, Linking, Keyboard, View, ScrollView, RefreshControl, ImageBackground, SectionList, YellowBox } from 'react-native';
-import { Center, Container, Heading, Button, Text, Box, Flex, Stack, Input, SearchBar, Spacer, ZStack, Image, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
+import { StyleSheet, Animated, TouchableOpacity, Linking, Keyboard, View, TextInput, ScrollView, RefreshControl, ImageBackground, SectionList, YellowBox } from 'react-native';
+import { Center, Container, Heading, Button, Text, Box, Flex, Stack, SearchBar, Spacer, ZStack, Image, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
 import { useDispatch, useSelector } from 'react-redux'
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -17,27 +17,24 @@ LogBox.ignoreLogs([
 import { SHIPPER_STATUS } from '../constants';
 import { useHelper } from '../../../helpers/helper';
 import PaginationMuti from '../../PaginationMuti';
+import Pending from '../../Pending';
 const merchantId = "11931"
 const CheckOrder = ({ navigation, route }) => {
 
     const dispatch = useDispatch();
 
     const [refreshing, setRefreshing] = React.useState(false);
-    const orders_status = useSelector(state => state.shipper.orders_status)
-    const orders = useSelector(state => state.shipper.orders)
-    const date = useSelector(state => state.shipper.date)
-    const day = useSelector(state => state.shipper.day)
-    const shipper_status = useSelector(state => state.shipper.shipper_status)
+
 
     const { formatOnlyDate } = useHelper();
- 
 
-   
+
+
 
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
         setTimeout(() => {
-          
+
             setRefreshing(false);
         }, 2000);
 
@@ -52,7 +49,21 @@ const CheckOrder = ({ navigation, route }) => {
                 refreshControl={
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                 }>
-      
+                <Box className=" mx-3 my-3 ">
+                    <Box className={`  bg-white  rounded-md  `} >
+                        <Box className=" mx-3 my-3 ">
+                            <Text>Nhập đơn hàng</Text>
+                            <Flex direction='row' className="mt-3 items-center justify-between">
+                                <TextInput className="py-1.5 border border-0.5 ml-2 rounded-md  w-2/3  border-0.5"></TextInput>
+                                <Box className="  px-5 py-2.5 bg-[#FF6100] rounded-md items-center">
+                                    <Text className="text-white">Check</Text>
+                                </Box>
+                            </Flex>
+                        </Box>
+
+                    </Box>
+                </Box>
+
 
 
             </ScrollView>
