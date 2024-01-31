@@ -20,7 +20,7 @@ const StatusDetail = ({ order_transport }) => {
         refund: 'text-[#1D75FA]',
         wait_decline: 'text-[#FF0000]',
         decline: 'text-[#FF0000]',
-
+        wait_warehouse: "text-[#1D75FA]",
 
     }
 
@@ -32,7 +32,7 @@ const StatusDetail = ({ order_transport }) => {
         refund: 'Đã hoàn',
         wait_decline: 'Yêu cầu chờ hủy',
         decline: 'Hủy giao',
-
+        wait_warehouse: "Kho đang xác nhận hàng hoàn",
 
     }
 
@@ -52,7 +52,7 @@ const StatusDetail = ({ order_transport }) => {
         if (order_transport.order.state_document && order_transport.status == 'delivered') {
             return `${status_text[order_transport.status]}, ${docuemnt_text[order_transport.order.state_document]}`
         }
-        return SHIPPER_STATUS[order_transport.status]
+        return status_text[order_transport.status]
     })
 
     return (

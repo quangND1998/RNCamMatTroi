@@ -413,7 +413,7 @@ const OrderShipperDetail = ({ navigation, route }) => {
                                     </Box>
 
                                 </Flex>
-                                {(order_transport_detail.state == 'refunding' || order_transport_detail.state == 'refund' || order_transport_detail.state == 'decline') ? <Text className="font-inter ml-3 mt-1">Lý do: {order_transport_detail.order.reason}
+                                {(order_transport_detail.state == 'refunding' || order_transport_detail.state == 'refund' || order_transport_detail.state == 'decline') ? <Text className="font-inter ml-3 mt-1">Lý do: {order_transport_detail.reason}
                                 </Text> : null}
                                 <Flex direction='row' className="mt-5  items-center ">
                                     {/* {order_transport_detail?.status == 'not_shipping' ? <PressableOpacity onPress={alertShipping}>
@@ -521,11 +521,13 @@ const OrderShipperDetail = ({ navigation, route }) => {
 
 
                                 </Flex>
-                                {order_transport_detail?.order?.state_document == 'not_push' ? <PressableOpacity onPress={alertUpload}>
-                                    <Center className="text-white px-1 py-2  px-3s bg-[#FF0000] rounded-md ml-3  mt-2 mr-1 items-center">
-                                        <Text className='text-white'> Up hồ sơ</Text>
-                                    </Center>
-                                </PressableOpacity> : null}
+                                {
+                                    (order_transport_detail.state == 'delivered' && order_transport_detail?.order?.state_document == 'not_push') ? <PressableOpacity onPress={alertUpload}>
+                                        <Center className="text-white px-1 py-2  px-3s bg-[#FF0000] rounded-md ml-3  mt-2 mr-1 items-center">
+                                            <Text className='text-white'> Up hồ sơ</Text>
+                                        </Center>
+                                    </PressableOpacity> : null
+                                }
 
                             </Box>
                             : null}

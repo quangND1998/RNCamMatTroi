@@ -81,7 +81,22 @@ const HomeShipper = ({ navigation, route }) => {
         dispatch(fetchOrders(params))
 
     }
+    useEffect(() => {
 
+        const unsubscribe = navigation.addListener('focus', () => {
+            (async () => {
+                let params = {
+                    date: date,
+                    day: day,
+
+                }
+                dispatch(orderStatus(params))
+            })();
+        });
+
+        // Return the function to unsubscribe from the event so it gets removed on unmount
+        return unsubscribe;
+    }, [navigation]);
 
     return (
         <SafeAreaView style={styles.container}>
@@ -111,8 +126,9 @@ const HomeShipper = ({ navigation, route }) => {
                                                             order_transport_status.status == 'wait_refund' ? SHIPPER_STATUS.wait_refund :
                                                                 order_transport_status.status == 'refund' ? SHIPPER_STATUS.refund :
                                                                     order_transport_status.status == 'wait_decline' ? SHIPPER_STATUS.wait_decline :
-                                                                        order_transport_status.status == 'decline' ? SHIPPER_STATUS.decline :
-                                                                            order_transport_status.status == 'addition_document' ? SHIPPER_STATUS.addition_document : null}
+                                                                        order_transport_status.status == 'wait_warehouse' ? SHIPPER_STATUS.wait_warehouse :
+                                                                            order_transport_status.status == 'decline' ? SHIPPER_STATUS.decline :
+                                                                                order_transport_status.status == 'addition_document' ? SHIPPER_STATUS.addition_document : null}
                                             </Text>
 
 

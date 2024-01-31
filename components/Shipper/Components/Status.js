@@ -21,7 +21,7 @@ const Status = ({ order_transport }) => {
         wait_decline: 'text-[#FF0000]',
         decline: 'text-[#F00]',
         addition_document: 'text-[#f8c717]',
-
+        wait_warehouse: "text-[#FF0000]",
     }
     const color = useMemo(() => {
         if (order_transport.order.state_document == 'not_push' && order_transport.status == 'delivered') {
@@ -37,17 +37,17 @@ const Status = ({ order_transport }) => {
         return SHIPPER_STATUS[order_transport.status]
     })
 
-    return (
-        <SafeAreaView >
+    return ( <
+        SafeAreaView >
 
-            <Text
-                className={`${color}`}>
-                {text}
-            </Text>
-
+        <
+        Text className = { `${color}` } > { text } <
+        /Text>
 
 
-        </SafeAreaView >
+
+        <
+        /SafeAreaView >
     );
 }
 
