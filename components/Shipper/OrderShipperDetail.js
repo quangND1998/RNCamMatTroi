@@ -56,7 +56,7 @@ const OrderShipperDetail = ({ navigation, route }) => {
             type: 'info',
             text1: 'Đã lưu vào bộ nhớ tạm!',
             position: 'bottom',
-            visibilityTime: 3000
+         
 
         });
     };
@@ -389,8 +389,8 @@ const OrderShipperDetail = ({ navigation, route }) => {
                                     <Text bold className="font-inter">Mã đặt hàng</Text>
 
                                     <Flex direction='row' className=" items-center">
-                                        <Text className=" font-inter mr-3 text-[13px] text-[#686868]">{order_transport_detail.order?.order_number}</Text>
-                                        <PressableOpacity onPress={() => copyToClipboard(order_transport_detail.order?.order_number)}>
+                                        <Text className=" font-inter mr-3 text-[13px] text-[#686868]">{order_transport_detail.order_transport_number}</Text>
+                                        <PressableOpacity onPress={() => copyToClipboard(order_transport_detail.order_transport_number)}>
                                             <CopyOutline size={16} color="#686868" />
                                         </PressableOpacity>
 

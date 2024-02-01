@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import {
   Image,
   StyleSheet,
@@ -18,30 +18,34 @@ const imageHeight = height - 240;
 import QRCode from 'react-native-qrcode-svg';
 import { ArrowRight } from 'iconsax-react-native';
 import Video from 'react-native-video';
+import ImageModal from 'react-native-image-modal';
+import { PressableOpacity } from 'react-native-pressable-opacity';
+import ModalVideo from './ModalVideo';
 const ProductItem = ({ item, index, navigation }) => {
-  // console.log(navigation);
-  const [isOpen, setIsOpen] = useState(false);
-  const openGallery = () => setIsOpen(true);
-  const closeGallery = () => setIsOpen(false);
+
   const translateYImage = new Animated.Value(40);
   const { formatDateShort, formatDateUse } = useHelper();
-  const videoPlayer = useRef(null);
-  const [paused, setPaused] = useState(true);
-  const [duration, setDuration] = useState(0);
-  const onLoad = (data) => {
-    setDuration(data.duration);
-  };
-
-  const onLoadStart = (data) => setIsLoading(true);
   const handlerDetail = () => {
     console.log(index);
-
-    // console.log(navigation);
-    // navigation.navigate('Schedule', {
-    //   itemId: item.id,
-
-    // });
   }
+
+  const listImage = useMemo(() => {
+    const array = [];
+    if (item?.tree && item.tree?.images) {
+      item.tree.images.forEach((image) => {
+        if (image.mime_type.includes('image')) {
+          array.push({
+            source: {
+              uri: image.original_url
+            }
+          })
+        }
+
+      })
+      return array
+    }
+    return array
+  })
   const images = [
     {
       url: require('../../assets/images/anhcam.png')
@@ -138,18 +142,14 @@ const ProductItem = ({ item, index, navigation }) => {
           <Box className="px-3 py-3 bg-[#F9EDD5] w-full flex flex-row flex-wrap">
             {item?.tree ? item.tree?.images.map((image, index_m) =>
               <Box key={index_m} className="w-1/3 border border-[#F9EDD5]" >
-                {image.mime_type == "image/jpeg" ?
-                  <Image className="w-full object-cover" source={{ uri: image.original_url }} alt={`imageslide`} style={[styles.imageGallary]}></Image>
+                {image.mime_type.includes("image") ?
+                  <ImageModal resizeMode="contain"
+                    imageBackgroundColor="#000000" source={{ uri: image.original_url }} alt={`imageslide`} style={[styles.imageGallary]}></ImageModal>
                   :
                   <Box className="w-full h-[100px]">
-                    <Video source={{ uri: image.original_url }}
-                      paused={paused}
-                      onLoad={onLoad}
-                      className="w-full h-[100px]"
-                      ref={videoPlayer}
-                    />
-                    <Box className="absolute flex items-center justify-center w-full h-full">
-                      <Image className=" mx-auto object-cover w-[25px] h-[25px]" source={require('../../assets/icon/play.png')}></Image>
+                    <Box className="absolute flex items-center justify-center w-full h-full" >
+                      <ModalVideo url={image.original_url} />
+
                     </Box>
                   </Box>
                 }
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
     display: 'flex',
   },
   imageGallary: {
-    // width: "30%",
+    width: 100,
     height: 100,
   },
   backgroundVideo: {

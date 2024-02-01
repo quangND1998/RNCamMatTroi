@@ -156,7 +156,7 @@ const HomeShipper = ({ navigation, route }) => {
                             <PressableOpacity key={index} onPress={() => navigation.navigate('OrderShipperDetail', { title: formatUpdatedAt(order_transport.updated_at), orderId: order_transport.id, })}>
                                 <Box className=" bg-white  rounded-md px-1 mt-1 py-2">
                                     <Flex direction='row' className="justify-between px-2">
-                                        <Text className="text-[14px]  font-bold">{index + 1}.{order_transport.order.type == 'retail' ? 'Đơn lẻ' : 'Đơn quà'}<Text className="font-inter">({order_transport.order.order_number})</Text></Text>
+                                        <Text className="text-[14px]  font-bold">{index + 1}.{order_transport.order.type == 'retail' ? 'Đơn lẻ' : 'Đơn quà'}<Text className="font-inter">({order_transport.order_transport_number})</Text></Text>
 
                                         {order_transport ? <Status order_transport={order_transport} /> : null}
 

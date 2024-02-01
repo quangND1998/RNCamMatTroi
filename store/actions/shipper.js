@@ -118,7 +118,7 @@ export const confirmCustomerRecive = (data, onSuccess = () => {}, onError = () =
 
     ApiService.postFormData(`api/v1/shipper/${data.id}/confirm-recive`, formdata, {
         accept: 'application/json',
-        'content-type': `multipart/form-data; boundary=${Math.random().toString().substr(2)}`,
+        'content-type': 'multipart/form-data'
 
     }).then(response => {
         console.log('confirmCustomerRecive', response.data)
@@ -168,4 +168,33 @@ export const deleteImage = (id, media_id, onSuccess = () => {}, onError = () => 
         console.log(error)
         onError(error.response.data)
     });
+};
+
+
+export const findOrderTransport = (params, onSuccess = () => {}, onError = () => {}) => (dispatch) => {
+    console.log('findOrderTransport', params);
+    dispatch({
+        type: 'changeLoading',
+        payload: true,
+    });
+    return ApiService.queryData('api/v1/fetchOrders', params).then(response => {
+        console.log('findOrderTransport', response.data);
+        dispatch({
+            type: 'findOrderTransport',
+            payload: response.data,
+        });
+        dispatch({
+            type: 'changeLoading',
+            payload: false,
+        })
+
+    }).catch(error => {
+            dispatch({
+                type: 'changeLoading',
+                payload: false,
+            })
+            console.log(error)
+        }
+
+    );
 };

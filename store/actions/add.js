@@ -1,29 +1,35 @@
 import ApiService from '../../common/apiService';
 
 export const appReview = (formData, onSuccess = () => {}, onError = () => {}) => (dispatch) => {
-
-    ApiService.postFormData('api/v1/customer/review/saveApp', formData, {
+    console.log('appReview', formData)
+    ApiService.postFormData('api/v1/customer/complaint/save', formData, {
         accept: 'application/json',
         'content-type': 'multipart/form-data'
     }).then(response => {
-
-        onSuccess(response.data.data)
+        console.log('appReview', response)
+        onSuccess(response.data)
 
     }).catch(error => {
-        console.log(error)
-            // if (error.response.status == 422) {
-            //     var errors = ''
-            //     Object.keys(error.response.data.data).map(key =>
-            //         errors += error.response.data.data[key]
-            //     );
-            //     onError(errors)
 
-        //     dispatch({
-        //         type: 'saveReviewValidate',
-        //         payload: error.response.data,
-        //     })
+        if (error.response.status == 422) {
+            var errors = ''
+            Object.keys(error.response.data.data).map(key =>
+                errors += error.response.data.data[key]
+            );
+            onError(errors)
 
-        // }
+            dispatch({
+                type: 'saveReviewValidate',
+                payload: error.response.data.data,
+            })
+
+        }
+        if (error.response.status == 400) {
+
+            onError(error.response.data)
+
+
+        }
     });
 };
 

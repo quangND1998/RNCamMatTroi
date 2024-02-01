@@ -8,8 +8,8 @@ const initialState = {
     day: null,
     search: null,
     status: null,
-    isLoading: false
-
+    isLoading: false,
+    find_order_transports: null
 
 }
 
@@ -76,6 +76,11 @@ const shipperReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: action.payload
+            }
+        case 'findOrderTransport':
+            return {
+                ...state,
+                find_order_transports: action.payload
             }
         default:
             return state;
