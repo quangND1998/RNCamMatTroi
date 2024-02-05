@@ -23,13 +23,14 @@ const BottomNavigator = () => {
             screenOptions={({ navigation, route }) => ({
                 tabBarActiveTintColor: '#F78F43',
                 tabBarInactiveTintColor: "#184E17",
+                headerLeftLabelVisible: false,
                 tabBarStyle: {
                     borderTopLeftRadius: 24,
                     borderTopRightRadius: 24,
-                    borderLeftWidth: 0.2,
-                    borderRightWidth: 0.2,
+                    borderLeftWidth: 0.1,
+                    borderRightWidth: 0.1,
                     overflow: 'hidden',
-                    height: 78,
+                    height: 100,
                     bordercolor: 'transparent',
 
                 },
@@ -53,7 +54,7 @@ const BottomNavigator = () => {
                     borderBottomRightRadius: 24,
                     borderLeftWidth: 0.1,
                     borderRightWidth: 0.1,
-                    height: 68,
+                    height: 100,
                 },
                 paddingTop: 12,
                 headerLeft: (props) => (
@@ -82,7 +83,7 @@ const BottomNavigator = () => {
                     headerShown: false,
                     tabBarLabel: 'Đơn hàng',
                     title: 'Đơn hàng',
-
+                  
                     tabBarIcon: ({ color, size }) => (
                         // <DocumentText color="#F78F43" variant="Outline" size={25} />
                         <Image source={require('../assets/icon/fi-rr-box.png')} className="w-6 h-6 " alt='box' ></Image>

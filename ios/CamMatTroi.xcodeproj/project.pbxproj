@@ -26,6 +26,7 @@
 		6FF95F8BF7524D6C8332EACE /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3316DA6DF6C346C28FF29C32 /* Inter-Medium.ttf */; };
 		76CFC767A89143E4AE62EE0B /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6093A1B956B04EB1B55A9A2A /* RobotoCondensed-LightItalic.ttf */; };
 		79741B145D6E4FC7ADBB3EC2 /* Inter-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECBEEC88FDBD42BF845E8EEB /* Inter-ExtraLight.ttf */; };
+		7A5644912B6D01D70098E8D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A5644902B6D01D60098E8D5 /* GoogleService-Info.plist */; };
 		7C904A8688154C4CB6A80C4C /* RobotoCondensed-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B9525A009254C4C9D56BC9D /* RobotoCondensed-Medium.ttf */; };
 		813E97BD765B471479A19708 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAE39B7B6FB33B1FDCDDCAC /* ExpoModulesProvider.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -81,6 +82,7 @@
 		6DC704130C164BD78E0F3C83 /* RobotoCondensed-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-SemiBoldItalic.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		782D34CB3BE845C49732D9F9 /* Inter-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Bold.ttf"; path = "../assets/fonts/inter/Inter-Bold.ttf"; sourceTree = "<group>"; };
 		7A5644892B6CE9D20098E8D5 /* CamMatTroi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = CamMatTroi.entitlements; path = CamMatTroi/CamMatTroi.entitlements; sourceTree = "<group>"; };
+		7A5644902B6D01D60098E8D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CamMatTroi/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84B3CD0E9D9941449141E254 /* RobotoCondensed-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-ThinItalic.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-ThinItalic.ttf"; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-CamMatTroi-CamMatTroiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CamMatTroi-CamMatTroiTests.release.xcconfig"; path = "Target Support Files/Pods-CamMatTroi-CamMatTroiTests/Pods-CamMatTroi-CamMatTroiTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 		13B07FAE1A68108700A75B9A /* CamMatTroi */ = {
 			isa = PBXGroup;
 			children = (
+				7A5644902B6D01D60098E8D5 /* GoogleService-Info.plist */,
 				7A5644892B6CE9D20098E8D5 /* CamMatTroi.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
@@ -373,6 +376,7 @@
 				5D22864F1BEA4720A3BBBD0D /* Inter-ExtraBold.ttf in Resources */,
 				79741B145D6E4FC7ADBB3EC2 /* Inter-ExtraLight.ttf in Resources */,
 				67093E119707427DACB4AF5D /* Inter-Light.ttf in Resources */,
+				7A5644912B6D01D70098E8D5 /* GoogleService-Info.plist in Resources */,
 				6FF95F8BF7524D6C8332EACE /* Inter-Medium.ttf in Resources */,
 				014CE1158D0045F481BF74FA /* Inter-Regular.ttf in Resources */,
 				2FD63C9972F9474E84BAF53D /* Inter-SemiBold.ttf in Resources */,
@@ -742,6 +746,7 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cammattroi.vn;
 				PRODUCT_NAME = CamMatTroi;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -825,10 +830,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 			};
@@ -906,10 +908,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

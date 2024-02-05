@@ -16,7 +16,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { formatPhoneNumberIntl, isValidPhoneNumber, parsePhoneNumber } from 'react-phone-number-input'
 import PhoneInput from 'react-phone-number-input/input'
 import PhoneTextInput from './PhoneTextInput'
-
 const LoginOtp = ({ navigation }) => {
     const { setIsLoggedIn, profile } = useLogin();
     const [spinner, setSpinner] = useState(false)
@@ -74,7 +73,7 @@ const LoginOtp = ({ navigation }) => {
                         <Text className="my-1 mr-4 text-[#000]">+84</Text>
                         <Flex direction='column' className="flex-col w-full px-4 py-4">
                             <PhoneInput
-
+                             
                                 displayInitialValueAsLocalNumber={false}
                                 placeholder='0123456977'
                                 smartCaret={false}
@@ -138,6 +137,10 @@ const styles = StyleSheet.create({
         borderBottomColor: 'rgba(255, 255, 255, 0.3)',
         marginBottom: 20,
     },
+    inputNumber:{
+        paddingBottom: '16px',
+        paddingBottom: 's16px'
+    }
 });
 
 //make this component available to the app
