@@ -275,7 +275,7 @@ const ScheduleTour = ({ navigation, route }) => {
                                 </Box>
                                 <Box className="my-5 bg-[#F0F0F0] rounded-lg">
                                     <Heading size="sm" className="color-[#F78F43]">Ghi chú</Heading>
-                                    <TextArea value={textAreaValue} w="100%" placeholder="Ghi chú" className="bg-white"
+                                    <TextArea value={textAreaValue} w="100%" h="150" placeholder="Ghi chú" className="bg-white"
                                         maxW="500"
                                         onChangeText={text => setTextAreaValue(text)} // for android and ios
                                     />

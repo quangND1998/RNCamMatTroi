@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
-import { TextInput } from 'react-native'
-import { Box, FormControl } from 'native-base'
+import { TextInput, Keyboard, TouchableWithoutFeedback } from 'react-native'
+import { Box, FormControl, Input, } from 'native-base'
 function PhoneTextInput({
     placeholder,
     autoComplete,
@@ -17,17 +17,21 @@ function PhoneTextInput({
         })
     }, [onChange])
     return (
-        <Box className="my-3 relative flex pr-10">
-            <TextInput
-                className="bg-gray-50 border py-2.5 border-[#F78F43] text-gray-900 text-sm rounded-lg px-4"
-                ref={ref}
-                placeholder={placeholder}
-                autoFocus={autoFocus}
-                autoCompleteType={autoComplete}
-                keyboardType="phone-pad"
-                onChangeText={onChangeText}
-                value={value} />
-        </Box>
+     
+            <Box className="my-3 relative flex pr-10">
+                <Input
+                    className="bg-gray-50 py-2.5  text-gray-900 text-sm rounded-md px-4"
+                    borderColor={'#F78F43'}
+                    ref={ref}
+                    placeholder={placeholder}
+                    autoFocus={autoFocus}
+                    autoCompleteType={autoComplete}
+                    keyboardType="phone-pad"
+                    onChangeText={onChangeText}
+                    onSubmitEditing={Keyboard.dismiss}
+                    value={value} />
+            </Box>
+     
     )
 }
 

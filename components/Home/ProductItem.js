@@ -26,7 +26,9 @@ const ProductItem = ({ item, index, navigation }) => {
   const translateYImage = new Animated.Value(40);
   const { formatDateShort, formatDateUse } = useHelper();
   const handlerDetail = () => {
-    console.log(index);
+    navigation.navigate('Schedule', {
+      itemId: item.id
+    })
   }
 
   const listImage = useMemo(() => {
@@ -75,7 +77,7 @@ const ProductItem = ({ item, index, navigation }) => {
           ]}
         >
         </Image>
-        <Box className=" mt-[-220px] bg-white rounded-2xl  mx-4  border-solid border-2 border-[#2C5524]">
+        <Box className=" mt-[-260px] bg-white rounded-2xl  mx-4  border-solid border-2 border-[#2C5524]">
           <Box className="flex flex-row p-4 w-full justify-between">
             <Box style={styles.content} className="text-left mr-2 ">
               <Text numberOfLines={3} className="text-sm text-gray-700 px-1 my-1 font-base clamp three-lines"
@@ -106,7 +108,7 @@ const ProductItem = ({ item, index, navigation }) => {
           </TouchableOpacity>
         </Box>
       </View>
-      <Box className="bg-white rounded-2xl">
+      <Box className="bg-white rounded-2xl mt-4">
         <Box className="mx-4">
           <Text className="text-2xl text-[#FF6100]  px-1 py-3 font-bold" >Lịch sử chăm sóc cây</Text>
           <Box className="" >
@@ -144,7 +146,7 @@ const ProductItem = ({ item, index, navigation }) => {
               <Box key={index_m} className="w-1/3 border border-[#F9EDD5]" >
                 {image.mime_type.includes("image") ?
                   <ImageModal resizeMode="contain"
-                    imageBackgroundColor="#000000" source={{ uri: image.original_url }} alt={`imageslide`} style={[styles.imageGallary]}></ImageModal>
+                     source={{ uri: image.original_url }} alt={`imageslide`} style={[styles.imageGallary]}></ImageModal>
                   :
                   <Box className="w-full h-[100px]">
                     <Box className="absolute flex items-center justify-center w-full h-full" >
@@ -197,8 +199,8 @@ const styles = StyleSheet.create({
     display: 'flex',
   },
   imageGallary: {
-    width: 100,
-    height: 100,
+    width: 120,
+    height: 120,
   },
   backgroundVideo: {
     position: 'absolute',

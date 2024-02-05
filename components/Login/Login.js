@@ -94,7 +94,7 @@ const Login = ({ navigation }) => {
                 </View> */}
                 <FormControl className="my-3 relative flex ">
 
-                    <TextInput secureTextEntry={show} className="bg-gray-50 border  border-[#F78F43] text-gray-900 text-sm rounded-lg p-2.5  " onChangeText={changePassword} placeholder="Password" />
+                    <TextInput secureTextEntry={show}   className="bg-gray-50 border  border-[#F78F43] text-gray-900 text-sm rounded-lg p-2.5  " onChangeText={changePassword} placeholder="Password" />
                     <Box className="absolute bottom-0 right-0 px-2.5 py-0 items-center">
                         {show == false ? <Eye color="#F78F43" className="text-xs items-center" variant="Outline" size={20} onPress={() => setShow(true)} /> : <EyeSlash color="#F78F43" variant="Outline" className="text-xs" size={20} onPress={() => setShow(false)} />}
                         <Text className="text-[#F78F43] ">{show}</Text>

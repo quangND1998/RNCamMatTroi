@@ -91,8 +91,7 @@ const Complaint = ({ navigation, route }) => {
                 const result = await RNImagePicker.launchImageLibraryAsync({
                     options: {
                         allowsMultipleSelection: true,
-                        mediaType: 'photo',
-                        allowsEditing: true,
+                        mediaType: 'photo',           
                         base64: true,
                         selectionLimit: 4
                     }
