@@ -17,6 +17,7 @@ import { createSchedule } from '../../store/actions/schedule';
 import Toast from 'react-native-toast-message';
 import ErorrValidator from '../ErorrValidator';
 import { fetchProductDetail } from '../../store/actions/productRetail';
+import { Picker } from '@react-native-picker/picker';
 const ScheduleTour = ({ navigation, route }) => {
     const [quantity, setQuantity] = useState(1)
     const [quantityChildren, setQuantityChildren] = useState(1)
@@ -154,7 +155,7 @@ const ScheduleTour = ({ navigation, route }) => {
                                 </Flex>
                                 <Box className="my-5">
 
-                                    <Flex className="bg-[#EDEEF0] py-1.5 rounded-lg flex relative">
+                                    <Flex className="py-1.5 rounded-lg flex relative">
                                         <PressableOpacity onPress={showDatepicker}>
                                             <Flex direction='row' className="justify-between bg-white px-2 py-3 rounded-xl mb-2" >
                                                 <Text className="text-[#184E17]"> {formatOnlyDate(date)}</Text>
@@ -200,8 +201,8 @@ const ScheduleTour = ({ navigation, route }) => {
                                 </Box>
                                 {productOwnersActive ? <Box className="my-5" >
                                     <Heading size="sm" className="color-[#F78F43]">Hoạt động theo gói </Heading>
-                                    <Box maxW="500">
-                                        <Select selectedValue={productOwner} minWidth="100" accessibilityLabel="Chọn gói dịch vụ" placeholder="Chọn gói dịch vụ " _selectedItem={{
+                                    {/* <Box maxW="500" class="bg-white">
+                                        <Select class="bg-white" selectedValue={productOwner} minWidth="100" accessibilityLabel="Chọn gói dịch vụ" placeholder="Chọn gói dịch vụ " _selectedItem={{
                                             bg: "teal.600",
                                             endIcon: <CheckIcon size="1" />
                                         }} mt={1} onValueChange={itemValue => setProductOwner(itemValue)}>
@@ -209,8 +210,25 @@ const ScheduleTour = ({ navigation, route }) => {
                                             {productOwnersActive.map((item, key) =>
                                                 <Select.Item key={item.id} label={item?.product?.name} value={item.id} />)}
                                         </Select>
-                                    </Box>
+                                    </Box> */}
+                                    <Box className="border border-0.5 bg-white border-[#AEAEAE] rounded-md  border-opacity-25 " >
+                                        <Picker
+                                            style={{
+                                                height: 50
+                                            }}
+                                            selectionColor={"#FF6100"}
+                                            dropdownIconColor={'#FF6100'}
+                                            selectedValue={productOwner}
+                                            onValueChange={(itemValue, itemIndex) =>
+                                                setProductOwner(itemValue)
+                                            }>
 
+                                            {productOwnersActive.map((item, key) =>
+                                                <Picker.Item key={item.id} label={item?.product?.name} value={item.id} />)}
+
+
+                                        </Picker>
+                                    </Box>
                                     <ErorrValidator errors={errors} key_error={'product_service_owner_id'} />
                                 </Box> : null}
 
@@ -275,7 +293,7 @@ const ScheduleTour = ({ navigation, route }) => {
                                 </Box>
                                 <Box className="my-5 bg-[#F0F0F0] rounded-lg">
                                     <Heading size="sm" className="color-[#F78F43]">Ghi chú</Heading>
-                                    <TextArea value={textAreaValue} w="100%" h="150" placeholder="Ghi chú" className="bg-white"
+                                    <TextArea value={textAreaValue} w="100%" h="150" placeholder="Ghi chú"
                                         maxW="500"
                                         onChangeText={text => setTextAreaValue(text)} // for android and ios
                                     />
