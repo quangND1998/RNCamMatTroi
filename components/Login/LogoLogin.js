@@ -17,7 +17,7 @@ const LogoLogin = ({ navigation }) => {
         <ImageBackground source={require('../../assets/images/banner_login.png')} resizeMode="cover" style={styles.image}>
 
             <Flex direction='row' className="justify-center w-full h-full relative items-center p-0 ">
-                <Box className="relative p-0 w-[90%]">
+                <Box className="relative  p-0 w-[90%]">
 
                     {/* <!-- <img src="/public/assets/images/banner_login.png" class="m-auto" alt=""> --> */}
                     <Box className="m-auto  w-full p-0">

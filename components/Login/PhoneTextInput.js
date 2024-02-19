@@ -19,9 +19,9 @@ function PhoneTextInput({
     return (
      
             <Box className="my-3 relative flex pr-10">
-                <Input
-                    className="bg-gray-50 py-2.5  text-gray-900 text-sm rounded-md px-4"
-                    borderColor={'#F78F43'}
+                <TextInput
+                    className=" border  border-white text-gray-900 text-sm rounded-xl px-4 py-1.5"
+
                     ref={ref}
                     placeholder={placeholder}
                     autoFocus={autoFocus}

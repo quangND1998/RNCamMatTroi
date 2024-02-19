@@ -26,16 +26,32 @@ import SplashScreen from 'react-native-splash-screen';
 import Nofification from '../components/Notification/Index';
 import { useHelper } from '../helpers/helper';
 import ShipperNavigator from './ShipperNavigator';
+
 const Stack = createNativeStackNavigator();
 const StackNavigator = () => {
     return (
         <Stack.Navigator screenOptions={{
             headerShown: false,
             headerTitleAlign: 'center',
-            headerBackTitleVisible: false
-
+            headerBackTitleVisible: false,
+            headerTransparent: false,
+            tabBarActiveTintColor: '#F78F43',
+            tabBarInactiveTintColor: "#184E17",
+            headerLeftLabelVisible: false,
+            borderBottomWidth: 0,
+            headerTitleStyle: {
+                fontWeight: 'bold',
+                color: '#F78F43',
+            },
+            paddingTop: 12,
         }}>
-            <Stack.Screen initialRouteName="LogoLogin" name="LogoLogin" component={LogoLogin} />
+            <Stack.Screen initialRouteName="LogoLogin" name="LogoLogin"
+                options={{
+                    headerShown: false,
+
+
+                }}
+                component={LogoLogin} />
             <Stack.Screen name="Login" options={{
                 headerShown: true, title: 'Đăng nhập', headerTitleStyle: {
                     fontWeight: 'bold',
@@ -43,7 +59,12 @@ const StackNavigator = () => {
 
 
                 },
-                headerTitleAlign: 'center'
+                headerTitleAlign: 'center',
+                headerTransparent: true,
+                headerBackground: () => (
+                    <HeaderBackground style={styles.background}  >
+                    </HeaderBackground>
+                ),
             }} component={Login} />
             <Stack.Screen name="LoginOtp" options={{
                 headerShown: true, title: 'Đăng nhập OTP',
@@ -55,6 +76,11 @@ const StackNavigator = () => {
 
                 },
                 headerTitleAlign: 'center',
+                headerTransparent: true,
+                headerBackground: () => (
+                    <HeaderBackground style={styles.background}  >
+                    </HeaderBackground>
+                ),
 
             }} component={LoginOtp} />
 
@@ -68,6 +94,11 @@ const StackNavigator = () => {
 
                 },
                 headerTitleAlign: 'center',
+                headerTransparent: false,
+                headerBackground: () => (
+                    <HeaderBackground style={styles.background}  >
+                    </HeaderBackground>
+                ),
 
             }} component={OTP} />
 
@@ -93,6 +124,13 @@ const MainNavigator = () => {
 
                     },
                     headerTitleAlign: 'center',
+                    headerStyle: {
+                        borderBottomLeftRadius: 24,
+                        borderBottomRightRadius: 24,
+                        borderLeftWidth: 0.1,
+                        borderRightWidth: 0.1,
+                        height: 100,
+                    },
 
                 }
                 }
@@ -127,7 +165,7 @@ const MainNavigator = () => {
                         headerShown: false,
                     })} component={ScheduleSuccess} />
 
-                </Stack.Navigator> : <ShipperNavigator /> 
+                </Stack.Navigator> : <ShipperNavigator />
         )
     }
     if (!isLoggedIn) {
@@ -143,8 +181,9 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 24,
         borderLeftWidth: 0.1,
         borderRightWidth: 0.1,
-        height: 100,
-        paddingBottom: 0
+        height: 200,
+        paddingBottom: 0,
+        // backgroundColor: '#FF6100'
     }
 })
 

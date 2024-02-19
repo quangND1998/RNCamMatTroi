@@ -157,8 +157,8 @@ const OTP = ({ navigation }) => {
             </Box>
             <Box className="ion-padding px-6 py-6 absolute top-0 left-0 w-full h-full">
                 <Box className="ion-padding h-72">
-                    {phone_number ? <Text>Nhập mã gồm 6 chữ số được gửi tới số <Text>{phone_number}</Text> thông qua tin nhắn
-                        <Text>SMS</Text>
+                    {phone_number ? <Text>Nhập mã gồm 6 chữ số được gửi tới số <Text className="font-bold">{phone_number}</Text> thông qua tin nhắn
+                        <Text className="font-bold">SMS</Text>
                     </Text> : null}
 
                     <Box style="margin-top:4rem">

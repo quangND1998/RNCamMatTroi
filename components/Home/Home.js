@@ -31,6 +31,7 @@ const Home = ({ navigation, route }) => {
     const [refreshing, setRefreshing] = React.useState(false);
     const totalUnRead = useSelector(state => state.notification.totalUnRead);
     const scrollX = useRef(new Animated.Value(0)).current;
+    const [currentIndex, setCurrentIndex] = useState(0);
     useEffect(() => {
         fetchProductOwner();
         dispatch(getUnReadNotification())
@@ -50,6 +51,15 @@ const Home = ({ navigation, route }) => {
         console.log(productOwner);
     }, []);
 
+    const handlePrevious = () => {
+        setCurrentIndex((prevIndex) => prevIndex - 1);
+        console.log(prevIndex)
+      };
+    
+      const handleNext = () => {
+        setCurrentIndex((prevIndex) => prevIndex + 1);
+        console.log(prevIndex)
+      };
     const handleOnScroll = event => {
         Animated.event(
             [
@@ -101,9 +111,9 @@ const Home = ({ navigation, route }) => {
                                     navigation.navigate('Notification');
 
                                 }} >
-                                    <Image source={require('../../assets/icon/icon_bell.png')} className="ml-5" alt="icon_bell"></Image>
+                                    <Image source={require('../../assets/icon/icon_bell.png')}  className="ml-5" alt="icon_bell"></Image>
                                     <Box className="absolute left-8 top-[-8] shadow rounded-md ">
-                                        <Text className="py-0.5 px-1.5 text-white bg-[#F78F43] text-[10px] rounded-md">{
+                                        <Text className=" w-[20px] h-[20px] text-center text-white bg-[#F78F43] text-[10px] rounded-xl">{
                                             totalUnRead
                                         }
                                         </Text>
@@ -124,7 +134,18 @@ const Home = ({ navigation, route }) => {
                                 data={productOwner}
                                 renderItem={({ item,index }) => <ProductItem item={item} index={index} navigation={navigation} />}
                                 horizontal
+                                keyExtractor={(item) => item.id.toString()}
+                                initialScrollIndex={currentIndex}
+                                initialNumToRender={1}
+
                             /> : <View></View>}
+                            <Button className="absolute left-0" title="Previous" onPress={handlePrevious} disabled={currentIndex === 0} />
+                            <Button
+                                className="absolute right-0"
+                                title="Next"
+                                onPress={handleNext}
+                                disabled={currentIndex === productOwner?.length - 1}
+                            />
                     </View>
                 </Box>
             </ScrollView>

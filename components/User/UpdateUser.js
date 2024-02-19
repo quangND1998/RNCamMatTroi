@@ -18,6 +18,7 @@ import { useHelper } from '../../helpers/helper';
 import { Camera, CameraType, Constants, FlashMode, } from 'expo-camera';
 import { CONTENT_SPACING, CONTROL_BUTTON_SIZE, SAFE_AREA_PADDING } from '../QrCode/Constants'
 import { LampOn, LampSlash, Image as ImageIcon, ArrowLeft2, Camera as CameraIcon } from 'iconsax-react-native';
+import { Picker } from '@react-native-picker/picker';
 import UploadAvatar from './UploadAvatar';
 const UpdateUser = ({ navigation, route }) => {
     const dispatch = useDispatch();
@@ -36,7 +37,7 @@ const UpdateUser = ({ navigation, route }) => {
     const [permission, requestPermission] = Camera.useCameraPermissions();
     const photo = useSelector(state => state.auth.photo)
     const cameraRef = useRef(null);
-
+    const [selectedLanguage, setSelectedLanguage] = useState();
     const [form, setForm] = useState({
         name: user ? user.name : null,
         phone_number: user ? user.phone_number : null,
@@ -274,7 +275,14 @@ const UpdateUser = ({ navigation, route }) => {
                 <Box className="mx-4 px-2 my-2">
                     <Box className="w-full">
                         <Text bold className="text-[17px] mb-5  ">Thông tin liên hệ </Text>
-
+                        <Picker className="border border-0.5"
+                            selectedValue={selectedLanguage}
+                            onValueChange={(itemValue, itemIndex) =>
+                                setSelectedLanguage(itemValue)
+                            }>
+                            <Picker.Item label="Java" value="java" />
+                            <Picker.Item label="JavaScript" value="js" />
+                        </Picker>
                         <Box class="my-5 ">
                             <Text className="block mb-2 text-sm  text-[#184E17] ">Họ và
                                 tên </Text>

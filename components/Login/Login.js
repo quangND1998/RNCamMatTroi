@@ -78,12 +78,12 @@ const Login = ({ navigation }) => {
             </Box>
 
 
-            <Box className=" mt-[60px] absolute top-0 left-0 w-full h-full px-4 py-4 ">
-                <Box className="mb-5 pb-5 "  >
+            <Box className=" mt-[120px] absolute top-0 left-0 w-full h-full px-4 py-4 ">
+                <Box className="mb-5 pb-4 "  >
                     <Image source={require('../../assets/images/logo2.png')} className="m-auto  h-[29px] w-auto" resizeMode="contain" alt="logo2" />
                 </Box>
 
-                <TextInput onChangeText={changeCode} className=" border border-white text-gray-900 text-sm rounded-lg px-4 py-1.5" placeholder="Mã HĐ/SĐT" />
+                <TextInput onChangeText={changeCode} className=" border border-white text-gray-900 text-sm rounded-xl px-4 py-1.5" placeholder="Mã HĐ/SĐT" />
 
                 {/* <View className="my-3 relative flex items-center" >
                     <TextInput secureTextEntry={show} className="bg-gray-50 border border-[#FF6100] text-gray-900 text-sm rounded-lg p-2.5  " onChangeText={changePassword} placeholder="Password" />
@@ -94,13 +94,13 @@ const Login = ({ navigation }) => {
                 </View> */}
                 <FormControl className="my-2 relative flex ">
 
-                    <TextInput secureTextEntry={show} className=" border  border-white text-gray-900 text-sm rounded-lg px-4 py-1.5 " onChangeText={changePassword} placeholder="******" />
+                    <TextInput secureTextEntry={show} className=" border  border-white text-gray-900 text-sm rounded-xl px-4 py-1.5 " onChangeText={changePassword} placeholder="******" />
                     <Box className="absolute py-3 right-0 px-2.5  items-center">
                         {show == false ? <Eye color="gray" className="text-xs items-center" variant="Outline" size={16} onPress={() => setShow(true)} /> : <EyeSlash color="gray" variant="Outline" className="text-xs" size={16} onPress={() => setShow(false)} />}
                         <Text className="text-[#FF6100] ">{show}</Text>
                     </Box>
                 </FormControl>
-                <Flex direction='row' className=" justify-end mt-3">
+                <Flex direction='row' className=" justify-end mt-1">
                     <PressableOpacity onPress={() => navigation.navigate('LoginOtp')}>
                         <Text className="text-[#FF6100] ">Đăng nhập bằng OTP</Text>
                     </PressableOpacity>

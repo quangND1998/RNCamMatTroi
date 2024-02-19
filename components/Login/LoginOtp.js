@@ -57,7 +57,7 @@ const LoginOtp = ({ navigation }) => {
 
     return (
 
-        <Box className="relative h-full " >
+        <Box className="relative mt-10 h-full " >
             <Spinner
                 visible={spinner}
                 textContent={'Vui lòng đợi...'}
@@ -69,16 +69,16 @@ const LoginOtp = ({ navigation }) => {
             <Box className="ion-padding px-6 py-6 absolute top-0 left-0 w-full h-full">
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
                     <Box className="ion-padding h-72">
-                        <Text className="my-1 text-[#000]">Nhập số điện thoại</Text>
+                        <Text className="my-1.5 text-[#000]">Số điện thoại </Text>
                         <Flex direction='row' className="items-center">
 
-                            <Text className="my-1 mr-4 text-[#000]">+84</Text>
+                            <Text className="my-1 mr-4 font-bold text-[#080808]">+84</Text>
 
-                            <Flex direction='column' className="flex-col w-full px-4 py-4">
+                            <Flex direction='column' className="flex-col text-bold w-full px-4">
                                 <PhoneInput
-
+                                    className="rounded-xl"
                                     displayInitialValueAsLocalNumber={false}
-                                    placeholder='0123456977'
+                                    placeholder='0923456977'
                                     smartCaret={false}
                                     inputComponent={PhoneTextInput}
                                     defaultCountry="VN"
@@ -88,15 +88,12 @@ const LoginOtp = ({ navigation }) => {
 
                         </Flex>
 
-                        {value == null ?
-                            <Box>
-                                < Text className="text-red-500 ml-12 mt-2 text-xs" >Vui lòng nhập số điện thoại</Text>
-
-
+                        {value == null || value == "" ?
+                            <Box className="">
                             </Box>
                             : <Box>
                                 {/* {parsePhoneNumber(value) && parsePhoneNumber(value).formatNational()} */}
-                                {isValidPhoneNumber(value) ? null : <Text className="text-red-500 ml-12 mt-2 text-xs" >Số điện thoại không hợp lệ</Text>}
+                                {isValidPhoneNumber(value) ? null : <Text className="text-red-500 ml-14 mt- text-xs" >Số điện thoại không hợp lệ</Text>}
                             </Box>
 
                         }
@@ -106,8 +103,8 @@ const LoginOtp = ({ navigation }) => {
                 </TouchableWithoutFeedback>
             </Box>
             {value && isValidPhoneNumber(value) ? <Button onPress={loginWithOTP}
-                className="absolute bottom-0  w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 px-4 py-4 text-white bg-[#FF6100] rounded-xl " style={styles.btn_button}>
-                <Text className="text-white items-center text-center">Xác nhận</Text>
+                className="absolute bottom-0  w-[90%] ml-[5%] mr-[5%]  mb-16 px-4 py-2.5 text-white bg-[#FF6100] rounded-xl " style={styles.btn_button}>
+                <Text className="text-white items-center text-center">Tiếp tục</Text>
             </Button> : null
             }
 
@@ -144,7 +141,7 @@ const styles = StyleSheet.create({
     },
     inputNumber: {
         paddingBottom: '16px',
-        paddingBottom: 's16px'
+        paddingBottom: '16px'
     }
 });
 
