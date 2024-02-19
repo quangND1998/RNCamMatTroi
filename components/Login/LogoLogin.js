@@ -21,7 +21,7 @@ const LogoLogin = ({ navigation }) => {
 
                     {/* <!-- <img src="/public/assets/images/banner_login.png" class="m-auto" alt=""> --> */}
                     <Box className="m-auto  w-full p-0">
-                        <Image source={require('../../assets/images/logo_qcam.png')} className="m-auto" alt="logo_qcam"></Image>
+                        <Image source={require('../../assets/images/logo_qcam.png')} className="m-auto w-[128px] h-[133px]" alt="logo_qcam"></Image>
                         <Box className="mt-5">
                             <Image source={require('../../assets/images/cammattroi.png')} className="m-auto" alt="cammattroi"></Image>
                         </Box>
