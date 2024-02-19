@@ -60,7 +60,7 @@ const StackNavigator = () => {
 
                 },
                 headerTitleAlign: 'center',
-                headerTransparent: false,
+                headerTransparent: true,
                 headerBackground: () => (
                     <HeaderBackground style={styles.background}  >
                     </HeaderBackground>
@@ -76,7 +76,7 @@ const StackNavigator = () => {
 
                 },
                 headerTitleAlign: 'center',
-                headerTransparent: false,
+                headerTransparent: true,
                 headerBackground: () => (
                     <HeaderBackground style={styles.background}  >
                     </HeaderBackground>
@@ -94,7 +94,7 @@ const StackNavigator = () => {
 
                 },
                 headerTitleAlign: 'center',
-                headerTransparent: false,
+                headerTransparent: true,
                 headerBackground: () => (
                     <HeaderBackground style={styles.background}  >
                     </HeaderBackground>

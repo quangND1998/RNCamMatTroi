@@ -17,9 +17,12 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { useHelper } from '../../helpers/helper';
 import { Camera, CameraType, Constants, FlashMode, } from 'expo-camera';
 import { CONTENT_SPACING, CONTROL_BUTTON_SIZE, SAFE_AREA_PADDING } from '../QrCode/Constants'
-import { LampOn, LampSlash, Image as ImageIcon, ArrowLeft2, Camera as CameraIcon } from 'iconsax-react-native';
+import { LampOn, LampSlash, Image as ImageIcon, ArrowLeft2, Camera as CameraIcon, ArrowDown2 } from 'iconsax-react-native';
 import { Picker } from '@react-native-picker/picker';
+
+import Arrow from '../Svg/Arrow';
 import UploadAvatar from './UploadAvatar';
+
 const UpdateUser = ({ navigation, route }) => {
     const dispatch = useDispatch();
     const [type, setType] = useState(CameraType.front);
@@ -275,14 +278,8 @@ const UpdateUser = ({ navigation, route }) => {
                 <Box className="mx-4 px-2 my-2">
                     <Box className="w-full">
                         <Text bold className="text-[17px] mb-5  ">Thông tin liên hệ </Text>
-                        <Picker className="border border-0.5"
-                            selectedValue={selectedLanguage}
-                            onValueChange={(itemValue, itemIndex) =>
-                                setSelectedLanguage(itemValue)
-                            }>
-                            <Picker.Item label="Java" value="java" />
-                            <Picker.Item label="JavaScript" value="js" />
-                        </Picker>
+
+
                         <Box class="my-5 ">
                             <Text className="block mb-2 text-sm  text-[#184E17] ">Họ và
                                 tên </Text>
@@ -311,7 +308,7 @@ const UpdateUser = ({ navigation, route }) => {
                                     }} alignItems={{
                                         base: "flex-wrap",
                                         md: "center"
-                                    }} space={4} w="75%" maxW="400px">
+                                    }} space={10} w="75%" maxW="400px">
                                         <Radio value="male" color="orange" colorScheme="orange" my={3} size="sm">
                                             Nam
                                         </Radio>
@@ -376,9 +373,12 @@ const UpdateUser = ({ navigation, route }) => {
                             {provinces ? <Box >
                                 <Text className="text-[#184E17] my-2 text-sm">Tỉnh/ Thành phố</Text>
                                 <Box maxW="500">
-                                    <Select size="16" isInvalid={checkInValid(errors, 'city') ? true : false} selectedValue={form.city} minWidth="100" accessibilityLabel="Chọn Tính/ Thành phố" placeholder="Chọn Tính/ Thành phố" _selectedItem={{
-                                        color: "orange",
-                                        endIcon: <CheckIcon size="1" color="orange.600" />
+                                    <Select size="16" dropdownIcon={<Box className="mr-2">
+                                        <Arrow color="#F78F43" width={13} height={6} />
+                                    </Box>
+                                    } isInvalid={checkInValid(errors, 'city') ? true : false} selectedValue={form.city} minWidth="100" accessibilityLabel="Chọn Tính/ Thành phố" placeholder="Chọn Tính/ Thành phố" _selectedItem={{
+                                        bg: "orange.600",
+                                        rightIcon: <CheckIcon size="5" color="white" />
                                     }} mt={1} onValueChange={itemValue => {
                                         setForm(prevState => {
                                             return { ...prevState, city: itemValue }
@@ -396,6 +396,22 @@ const UpdateUser = ({ navigation, route }) => {
                                     </Select>
                                 </Box>
 
+                                {/* <Box className="border border-0.5 border-[#AEAEAE] rounded-md  border-opacity-25 " >
+                                    <Picker
+                                        style={{
+                                            height: 50
+                                        }}
+                                        selectionColor={"#FF6100"}
+                                        dropdownIconColor={'#FF6100'}
+                                        selectedValue={selectedLanguage}
+                                        onValueChange={(itemValue, itemIndex) =>
+                                            setSelectedLanguage(itemValue)
+                                        }>
+                                        {provinces.map((item, index) =>
+                                            <Picker.Item itemStyle={{ backgroundColor: "#FF6100" }} key={index} label={item.Name} value={item.Name} />)}
+
+                                    </Picker>
+                                </Box> */}
                                 {/* <ErorrValidator errors={errors} key_error={'product_service_owner_id'} /> */}
                             </Box> : null}
                             <ErorrValidator errors={errors} key_error={'city'} />
@@ -404,9 +420,12 @@ const UpdateUser = ({ navigation, route }) => {
                             <Box >
                                 <Text className="text-[#184E17] my-2 text-sm">Quận/ Huyện</Text>
                                 <Box maxW="500">
-                                    <Select size="16" isInvalid={checkInValid(errors, 'district') ? true : false} selectedValue={form.district} minWidth="100" accessibilityLabel="Chọn Quận/ Huyện" placeholder="Chọn Quận/ Huyện" _selectedItem={{
-                                        bg: "orange",
-                                        endIcon: <CheckIcon size="1" color="orange.600" />
+                                    <Select size="16" dropdownIcon={<Box className="mr-2">
+                                        <Arrow color="#F78F43" width={13} height={6} />
+                                    </Box>
+                                    } isInvalid={checkInValid(errors, 'district') ? true : false} selectedValue={form.district} minWidth="100" accessibilityLabel="Chọn Quận/ Huyện" placeholder="Chọn Quận/ Huyện" _selectedItem={{
+                                        bg: "orange.600",
+                                        rightIcon: <CheckIcon size="5" color="white" />
                                     }} mt={1} onValueChange={itemValue => setForm(prevState => {
                                         return { ...prevState, district: itemValue }
                                     })}>
@@ -423,10 +442,14 @@ const UpdateUser = ({ navigation, route }) => {
                         <Box className="my-2">
                             <Box >
                                 <Text className="text-[#184E17] my-2 text-sm">Xã/ Phường</Text>
+                                <CheckIcon size="1" color="orange.600" />
                                 <Box maxW="600">
-                                    <Select size="16" isInvalid={checkInValid(errors, 'wards') ? true : false} selectedValue={form.wards} minWidth="200" accessibilityLabel="Chọn Xã/ Phường" placeholder="Chọn Xã/ Phường" _selectedItem={{
-                                        bg: "orange",
-                                        endIcon: <CheckIcon size="1" color="orange.600" />
+                                    <Select size="16" dropdownIcon={<Box className="mr-2">
+                                        <Arrow color="#F78F43" width={13} height={6} />
+                                    </Box>
+                                    } isInvalid={checkInValid(errors, 'wards') ? true : false} selectedValue={form.wards} minWidth="200" accessibilityLabel="Chọn Xã/ Phường" placeholder="Chọn Xã/ Phường" _selectedItem={{
+                                        bg: "orange.600",
+                                        rightIcon: <CheckIcon size="5" color="white" />
                                     }} mt={1} onValueChange={itemValue => setForm(prevState => {
                                         return { ...prevState, wards: itemValue }
                                     })}>
