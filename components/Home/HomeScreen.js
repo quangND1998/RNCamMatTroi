@@ -19,6 +19,9 @@ const HomeScreen = () => {
     }
     return (
         <Stack.Navigator
+        screenOptions={{
+            headerBackTitleVisible: false
+        }}
         >
             <Stack.Screen name="HomeScreen" options={{ headerShown: false }} component={Home} />
             <Stack.Screen name="ProductHome" options={{ headerShown: false }} component={ProductHome} />

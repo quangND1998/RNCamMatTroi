@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { LogBox, Dimensions } from 'react-native';
 import { StyleSheet, TouchableOpacity, Linking, Keyboard, View, Alert, SafeAreaView, ScrollView, Platform } from 'react-native';
-import { Center, Container, Heading, Button, Text, Flex, Box, TextArea, Stack, Input, SearchBar, Image, Icon, Spacer, ZStack, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base'
+import { Center, Container, Heading, Button, Text, Flex, Box, Select, CheckIcon, TextArea, Stack, Input, SearchBar, Image, Icon, Spacer, ZStack, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base'
 import { useDispatch, useSelector } from 'react-redux'
 import { EmojiHappy, Logout } from 'iconsax-react-native';
 import { logoutAction } from '../../store/actions/auth';
@@ -15,18 +15,48 @@ import * as RNImagePicker from 'expo-image-picker'
 import { appReview } from '../../store/actions/add';
 import Toast from 'react-native-toast-message';
 import Spinner from 'react-native-loading-spinner-overlay';
+import { fetchProductOwners } from '../../store/actions/productService';
+import { selectProductOwnersActive } from '../../store/reducers/productService';
+import ErorrValidator from '../ErorrValidator';
 const Complaint = ({ navigation, route }) => {
     const dispatch = useDispatch();
     var { width, height } = Dimensions.get("window");
     const star = useSelector(state => state.add.star)
+    const productOwnersActive = useSelector(selectProductOwnersActive)
     const [spinner, setSpinner] = useState(false)
+    const errors = useSelector(state => state.add.errors)
     const [form, setForm] = useState({
         star: null,
         evaluate: null,
         data: [],
-        description: null
+        description: null,
+        productOwner: null
     })
     const [images, setImages] = useState([]);
+    const getProductOwner = () => {
+        dispatch(fetchProductOwners());
+    }
+    useEffect(() => {
+
+        const unsubscribe = navigation.addListener('focus', () => {
+            (async () => {
+                getProductOwner();
+
+                if (productOwnersActive && productOwnersActive.length > 0) {
+
+                    setForm(prevState => {
+                        return { ...prevState, productOwner: productOwnersActive[0].id }
+                    })
+                }
+                dispatch({
+                    type: 'clearErrorReview'
+                })
+            })();
+        });
+
+        // Return the function to unsubscribe from the event so it gets removed on unmount
+        return unsubscribe;
+    }, [navigation]);
 
     const isInclued = (data) => {
 
@@ -61,8 +91,7 @@ const Complaint = ({ navigation, route }) => {
                 const result = await RNImagePicker.launchImageLibraryAsync({
                     options: {
                         allowsMultipleSelection: true,
-                        mediaType: 'photo',
-                        allowsEditing: true,
+                        mediaType: 'photo',           
                         base64: true,
                         selectionLimit: 4
                     }
@@ -111,10 +140,12 @@ const Complaint = ({ navigation, route }) => {
         }
         formData.append('star', star);
         formData.append('data', JSON.stringify(form.data));
-        formData.append('description', form.description);
+        formData.append('description', form.description ? form.description : '');
+        formData.append('product_service_owner_id', form.productOwner ? form.productOwner : '')
         setSpinner(true)
         dispatch(appReview(formData,
             (message) => {
+                console.log('saveComplaint', message)
                 Toast.show({
                     type: 'success',
                     text1: message,
@@ -167,7 +198,7 @@ const Complaint = ({ navigation, route }) => {
         <SafeAreaView style={styles.container} >
             <Spinner
                 visible={spinner}
-                textContent={'Loading...'}
+                textContent={'Vui lòng đợi...'}
                 textStyle={styles.spinnerTextStyle}
             />
             <ScrollView>
@@ -293,13 +324,30 @@ const Complaint = ({ navigation, route }) => {
                                 })} // for android and ios
                             />
                         </Box>
+                        {productOwnersActive ? <Box className="my-5" >
+                            <Heading size="sm" className="color-[#F78F43]">Hoạt động theo gói </Heading>
+                            <Box maxW="500">
+                                <Select selectedValue={form.productOwner} minWidth="100" accessibilityLabel="Chọn gói dịch vụ" placeholder="Chọn gói dịch vụ " _selectedItem={{
+                                    bg: "teal.600",
+                                    endIcon: <CheckIcon size="1" />
+                                }} mt={1} onValueChange={itemValue => setForm(prevState => {
+                                    return { ...prevState, productOwner: itemValue }
+                                })}>
 
+                                    {productOwnersActive.map((item, key) =>
+                                        <Select.Item key={item.id} label={item?.product?.name} value={item.id} />)}
+                                </Select>
+                            </Box>
+
+                            <ErorrValidator errors={errors} key_error={'product_service_owner_id'} />
+                        </Box> : null}
                         <Flex direction='row' className="mt-1 items-center">
                             <PressableOpacity onPress={() => pickImages()}>
                                 <MaterialCommunityIcons name='file-image-plus-outline' size={32} color='#AEAEAE' />
                             </PressableOpacity>
                             <Text className=" text-[#686868] ml-2 text-[12px]">Đính kèm hình ảnh</Text>
                         </Flex>
+
 
                         <Flex direction='row' className="flex flex-wrap" >
                             {images.length > 0 && images.map((image, index) =>

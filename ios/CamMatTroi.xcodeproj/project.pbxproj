@@ -8,18 +8,48 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* CamMatTroiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* CamMatTroiTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-CamMatTroi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-CamMatTroi.a */; };
+		014CE1158D0045F481BF74FA /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFDB24E01A2C4D8AA2749C17 /* Inter-Regular.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7699B88040F8A987B510C191 /* libPods-CamMatTroi-CamMatTroiTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-CamMatTroi-CamMatTroiTests.a */; };
+		2219C5A8A4C34C479C7DD420 /* Inter-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3759A69AEF241A8A8B1803B /* Inter-Black.ttf */; };
+		231DF727FFA74C9D9DC5E1DF /* RobotoCondensed-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2BF4E43052E9419BAB623CE6 /* RobotoCondensed-SemiBold.ttf */; };
+		2FD63C9972F9474E84BAF53D /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3C3273A498614B41A26431D0 /* Inter-SemiBold.ttf */; };
+		339C13621461E71A757B46F2 /* libPods-CamMatTroi-CamMatTroiTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D84C24085FF39D2A9097785 /* libPods-CamMatTroi-CamMatTroiTests.a */; };
+		3C34E81692C28ADA1654AB4C /* libPods-CamMatTroi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B05F303C3310FDC6D8FA80E3 /* libPods-CamMatTroi.a */; };
+		3D84DD3BDE8B4CF881B79907 /* RobotoCondensed-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6DC704130C164BD78E0F3C83 /* RobotoCondensed-SemiBoldItalic.ttf */; };
+		435818D91B204346A8CBBAF5 /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 344E3DC2401D47FB8A715371 /* RobotoCondensed-Light.ttf */; };
+		53E21FFD9B574871A8873876 /* RobotoCondensed-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F30B74867474ED1B8639AAB /* RobotoCondensed-BoldItalic.ttf */; };
+		5D22864F1BEA4720A3BBBD0D /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99BEFBA6A817424D93A4874D /* Inter-ExtraBold.ttf */; };
+		67093E119707427DACB4AF5D /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB64ED0C1C2644F4962A9A4C /* Inter-Light.ttf */; };
+		6CD4085009204FF4AB57CDF4 /* RobotoCondensed-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9BA4981284C44D4C869AF762 /* RobotoCondensed-BlackItalic.ttf */; };
+		6FF95F8BF7524D6C8332EACE /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3316DA6DF6C346C28FF29C32 /* Inter-Medium.ttf */; };
+		76CFC767A89143E4AE62EE0B /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6093A1B956B04EB1B55A9A2A /* RobotoCondensed-LightItalic.ttf */; };
+		79741B145D6E4FC7ADBB3EC2 /* Inter-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECBEEC88FDBD42BF845E8EEB /* Inter-ExtraLight.ttf */; };
+		7A5644912B6D01D70098E8D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A5644902B6D01D60098E8D5 /* GoogleService-Info.plist */; };
+		7C904A8688154C4CB6A80C4C /* RobotoCondensed-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B9525A009254C4C9D56BC9D /* RobotoCondensed-Medium.ttf */; };
+		813E97BD765B471479A19708 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAE39B7B6FB33B1FDCDDCAC /* ExpoModulesProvider.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		867C1C0EB1B549AC8D6123ED /* Inter-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B7097AF985A5430A8F6D1525 /* Inter-Thin.ttf */; };
+		8A0BE5E961984E7885FABE99 /* RobotoCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0419F3FD1117411EBF486303 /* RobotoCondensed-Italic.ttf */; };
+		8DF243A1C06E4E239F07A080 /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB6E47DB17A64610BF5DD01E /* RobotoCondensed-Bold.ttf */; };
+		91B57A6A74544BB3AD4FF24F /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9CE6459945CC4A319043D601 /* RobotoCondensed-Regular.ttf */; };
+		99CAB194FB1A43C786E4A90D /* RobotoCondensed-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA13ADA562354CEC96DC2DD2 /* RobotoCondensed-ExtraLightItalic.ttf */; };
+		A70D46E7747A4DB7A2ED9CEA /* RobotoCondensed-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C636AA19984148E0B859F051 /* RobotoCondensed-MediumItalic.ttf */; };
+		AF656335197A44378982AB5B /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 782D34CB3BE845C49732D9F9 /* Inter-Bold.ttf */; };
+		B5F8AE6749EE448FAEE92213 /* RobotoCondensed-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1BB61A68EED4A178DB0E2B8 /* RobotoCondensed-Thin.ttf */; };
+		C8F7B617D3324691828244B1 /* RobotoCondensed-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA73E11E8B9F432485CE287D /* RobotoCondensed-ExtraBold.ttf */; };
+		CEF5581A4B5D4B728C8E5598 /* RobotoCondensed-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84B3CD0E9D9941449141E254 /* RobotoCondensed-ThinItalic.ttf */; };
+		EFC12DE6FCC04388B93B127C /* RobotoCondensed-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94CC74A479394640BAA3D327 /* RobotoCondensed-ExtraBoldItalic.ttf */; };
+		F3BD053C64FA411E9ECE8B19 /* RobotoCondensed-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0FFAF9583234796B39499B5 /* RobotoCondensed-ExtraLight.ttf */; };
+		FDAB56187FFEE88A6FEFAE83 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE68DBBD0EAA06B8E4C2944 /* ExpoModulesProvider.swift */; };
+		FFFB4D02B9DC49CB914CE6A3 /* RobotoCondensed-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A7DCC8ECFDF848C4A6068C3B /* RobotoCondensed-Black.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		00E356F41AD99517003FC87E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 83CBB9F71A601CBA00E9B192;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = CamMatTroi;
@@ -30,19 +60,50 @@
 		00E356EE1AD99517003FC87E /* CamMatTroiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CamMatTroiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* CamMatTroiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CamMatTroiTests.m; sourceTree = "<group>"; };
+		0419F3FD1117411EBF486303 /* RobotoCondensed-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-Italic.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-Italic.ttf"; sourceTree = "<group>"; };
+		0B9525A009254C4C9D56BC9D /* RobotoCondensed-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-Medium.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-Medium.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* CamMatTroi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CamMatTroi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CamMatTroi/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = CamMatTroi/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CamMatTroi/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CamMatTroi/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CamMatTroi/main.m; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-CamMatTroi-CamMatTroiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CamMatTroi-CamMatTroiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DAE39B7B6FB33B1FDCDDCAC /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-CamMatTroi/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		1F30B74867474ED1B8639AAB /* RobotoCondensed-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-BoldItalic.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-BoldItalic.ttf"; sourceTree = "<group>"; };
+		2BF4E43052E9419BAB623CE6 /* RobotoCondensed-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-SemiBold.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-SemiBold.ttf"; sourceTree = "<group>"; };
+		3316DA6DF6C346C28FF29C32 /* Inter-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Medium.ttf"; path = "../assets/fonts/inter/Inter-Medium.ttf"; sourceTree = "<group>"; };
+		344E3DC2401D47FB8A715371 /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-Light.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-CamMatTroi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CamMatTroi.debug.xcconfig"; path = "Target Support Files/Pods-CamMatTroi/Pods-CamMatTroi.debug.xcconfig"; sourceTree = "<group>"; };
+		3C3273A498614B41A26431D0 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-SemiBold.ttf"; path = "../assets/fonts/inter/Inter-SemiBold.ttf"; sourceTree = "<group>"; };
+		3DE68DBBD0EAA06B8E4C2944 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-CamMatTroi-CamMatTroiTests/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-CamMatTroi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CamMatTroi.release.xcconfig"; path = "Target Support Files/Pods-CamMatTroi/Pods-CamMatTroi.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-CamMatTroi-CamMatTroiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CamMatTroi-CamMatTroiTests.debug.xcconfig"; path = "Target Support Files/Pods-CamMatTroi-CamMatTroiTests/Pods-CamMatTroi-CamMatTroiTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-CamMatTroi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CamMatTroi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6093A1B956B04EB1B55A9A2A /* RobotoCondensed-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-LightItalic.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-LightItalic.ttf"; sourceTree = "<group>"; };
+		6DC704130C164BD78E0F3C83 /* RobotoCondensed-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-SemiBoldItalic.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		782D34CB3BE845C49732D9F9 /* Inter-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Bold.ttf"; path = "../assets/fonts/inter/Inter-Bold.ttf"; sourceTree = "<group>"; };
+		7A5644892B6CE9D20098E8D5 /* CamMatTroi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = CamMatTroi.entitlements; path = CamMatTroi/CamMatTroi.entitlements; sourceTree = "<group>"; };
+		7A5644902B6D01D60098E8D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CamMatTroi/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		84B3CD0E9D9941449141E254 /* RobotoCondensed-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-ThinItalic.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-ThinItalic.ttf"; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-CamMatTroi-CamMatTroiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CamMatTroi-CamMatTroiTests.release.xcconfig"; path = "Target Support Files/Pods-CamMatTroi-CamMatTroiTests/Pods-CamMatTroi-CamMatTroiTests.release.xcconfig"; sourceTree = "<group>"; };
+		8D84C24085FF39D2A9097785 /* libPods-CamMatTroi-CamMatTroiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CamMatTroi-CamMatTroiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		94CC74A479394640BAA3D327 /* RobotoCondensed-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-ExtraBoldItalic.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		99BEFBA6A817424D93A4874D /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraBold.ttf"; path = "../assets/fonts/inter/Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
+		9BA4981284C44D4C869AF762 /* RobotoCondensed-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-BlackItalic.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-BlackItalic.ttf"; sourceTree = "<group>"; };
+		9CE6459945CC4A319043D601 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-Regular.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
+		A7DCC8ECFDF848C4A6068C3B /* RobotoCondensed-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-Black.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-Black.ttf"; sourceTree = "<group>"; };
+		AB6E47DB17A64610BF5DD01E /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-Bold.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
+		B05F303C3310FDC6D8FA80E3 /* libPods-CamMatTroi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CamMatTroi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7097AF985A5430A8F6D1525 /* Inter-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Thin.ttf"; path = "../assets/fonts/inter/Inter-Thin.ttf"; sourceTree = "<group>"; };
+		BA73E11E8B9F432485CE287D /* RobotoCondensed-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-ExtraBold.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-ExtraBold.ttf"; sourceTree = "<group>"; };
+		C636AA19984148E0B859F051 /* RobotoCondensed-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-MediumItalic.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-MediumItalic.ttf"; sourceTree = "<group>"; };
+		CB64ED0C1C2644F4962A9A4C /* Inter-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Light.ttf"; path = "../assets/fonts/inter/Inter-Light.ttf"; sourceTree = "<group>"; };
+		CFDB24E01A2C4D8AA2749C17 /* Inter-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Regular.ttf"; path = "../assets/fonts/inter/Inter-Regular.ttf"; sourceTree = "<group>"; };
+		D3759A69AEF241A8A8B1803B /* Inter-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Black.ttf"; path = "../assets/fonts/inter/Inter-Black.ttf"; sourceTree = "<group>"; };
+		E0FFAF9583234796B39499B5 /* RobotoCondensed-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-ExtraLight.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-ExtraLight.ttf"; sourceTree = "<group>"; };
+		E1BB61A68EED4A178DB0E2B8 /* RobotoCondensed-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-Thin.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-Thin.ttf"; sourceTree = "<group>"; };
+		EA13ADA562354CEC96DC2DD2 /* RobotoCondensed-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-ExtraLightItalic.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		ECBEEC88FDBD42BF845E8EEB /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraLight.ttf"; path = "../assets/fonts/inter/Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -51,7 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-CamMatTroi-CamMatTroiTests.a in Frameworks */,
+				339C13621461E71A757B46F2 /* libPods-CamMatTroi-CamMatTroiTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-CamMatTroi.a in Frameworks */,
+				3C34E81692C28ADA1654AB4C /* libPods-CamMatTroi.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +147,8 @@
 		13B07FAE1A68108700A75B9A /* CamMatTroi */ = {
 			isa = PBXGroup;
 			children = (
+				7A5644902B6D01D60098E8D5 /* GoogleService-Info.plist */,
+				7A5644892B6CE9D20098E8D5 /* CamMatTroi.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -96,12 +159,21 @@
 			name = CamMatTroi;
 			sourceTree = "<group>";
 		};
+		29512889DEFC36179F02157F /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				A6CCE3CD75B01497C8A6AEA9 /* CamMatTroi */,
+				AFCA3EF2BF1926FF536111CF /* CamMatTroiTests */,
+			);
+			name = ExpoModulesProviders;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-CamMatTroi.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-CamMatTroi-CamMatTroiTests.a */,
+				B05F303C3310FDC6D8FA80E3 /* libPods-CamMatTroi.a */,
+				8D84C24085FF39D2A9097785 /* libPods-CamMatTroi-CamMatTroiTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -113,7 +185,7 @@
 			name = Libraries;
 			sourceTree = "<group>";
 		};
-		83CBB9F61A601CBA00E9B192 /* PBXGroup */ = {
+		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
 				13B07FAE1A68108700A75B9A /* CamMatTroi */,
@@ -122,6 +194,8 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				D94C642DC76540D9A323E123 /* Resources */,
+				29512889DEFC36179F02157F /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -137,6 +211,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A6CCE3CD75B01497C8A6AEA9 /* CamMatTroi */ = {
+			isa = PBXGroup;
+			children = (
+				1DAE39B7B6FB33B1FDCDDCAC /* ExpoModulesProvider.swift */,
+			);
+			name = CamMatTroi;
+			sourceTree = "<group>";
+		};
+		AFCA3EF2BF1926FF536111CF /* CamMatTroiTests */ = {
+			isa = PBXGroup;
+			children = (
+				3DE68DBBD0EAA06B8E4C2944 /* ExpoModulesProvider.swift */,
+			);
+			name = CamMatTroiTests;
+			sourceTree = "<group>";
+		};
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +238,40 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D94C642DC76540D9A323E123 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D3759A69AEF241A8A8B1803B /* Inter-Black.ttf */,
+				782D34CB3BE845C49732D9F9 /* Inter-Bold.ttf */,
+				99BEFBA6A817424D93A4874D /* Inter-ExtraBold.ttf */,
+				ECBEEC88FDBD42BF845E8EEB /* Inter-ExtraLight.ttf */,
+				CB64ED0C1C2644F4962A9A4C /* Inter-Light.ttf */,
+				3316DA6DF6C346C28FF29C32 /* Inter-Medium.ttf */,
+				CFDB24E01A2C4D8AA2749C17 /* Inter-Regular.ttf */,
+				3C3273A498614B41A26431D0 /* Inter-SemiBold.ttf */,
+				B7097AF985A5430A8F6D1525 /* Inter-Thin.ttf */,
+				A7DCC8ECFDF848C4A6068C3B /* RobotoCondensed-Black.ttf */,
+				9BA4981284C44D4C869AF762 /* RobotoCondensed-BlackItalic.ttf */,
+				AB6E47DB17A64610BF5DD01E /* RobotoCondensed-Bold.ttf */,
+				1F30B74867474ED1B8639AAB /* RobotoCondensed-BoldItalic.ttf */,
+				BA73E11E8B9F432485CE287D /* RobotoCondensed-ExtraBold.ttf */,
+				94CC74A479394640BAA3D327 /* RobotoCondensed-ExtraBoldItalic.ttf */,
+				E0FFAF9583234796B39499B5 /* RobotoCondensed-ExtraLight.ttf */,
+				EA13ADA562354CEC96DC2DD2 /* RobotoCondensed-ExtraLightItalic.ttf */,
+				0419F3FD1117411EBF486303 /* RobotoCondensed-Italic.ttf */,
+				344E3DC2401D47FB8A715371 /* RobotoCondensed-Light.ttf */,
+				6093A1B956B04EB1B55A9A2A /* RobotoCondensed-LightItalic.ttf */,
+				0B9525A009254C4C9D56BC9D /* RobotoCondensed-Medium.ttf */,
+				C636AA19984148E0B859F051 /* RobotoCondensed-MediumItalic.ttf */,
+				9CE6459945CC4A319043D601 /* RobotoCondensed-Regular.ttf */,
+				2BF4E43052E9419BAB623CE6 /* RobotoCondensed-SemiBold.ttf */,
+				6DC704130C164BD78E0F3C83 /* RobotoCondensed-SemiBoldItalic.ttf */,
+				E1BB61A68EED4A178DB0E2B8 /* RobotoCondensed-Thin.ttf */,
+				84B3CD0E9D9941449141E254 /* RobotoCondensed-ThinItalic.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -156,6 +280,7 @@
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "CamMatTroiTests" */;
 			buildPhases = (
 				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
+				148F75B920165108A8AF77F0 /* [Expo] Configure project */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
@@ -178,12 +303,14 @@
 			buildPhases = (
 				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
+				756E13F090213D9F4CF43942 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
 				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				5C391F46790D4D6BC203AA83 /* [CP-User] [RNFB] Core Configuration */,
 			);
 			buildRules = (
 			);
@@ -197,14 +324,14 @@
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		83CBB9F71A601CBA00E9B192 = {
+		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1210;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						TestTargetID = 13B07F861A680F5B00A75B9A /* CamMatTroi */;
+						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
 						LastSwiftMigration = 1120;
@@ -219,7 +346,7 @@
 				en,
 				Base,
 			);
-			mainGroup = 83CBB9F61A601CBA00E9B192 /* PBXGroup */;
+			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -244,6 +371,34 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				2219C5A8A4C34C479C7DD420 /* Inter-Black.ttf in Resources */,
+				AF656335197A44378982AB5B /* Inter-Bold.ttf in Resources */,
+				5D22864F1BEA4720A3BBBD0D /* Inter-ExtraBold.ttf in Resources */,
+				79741B145D6E4FC7ADBB3EC2 /* Inter-ExtraLight.ttf in Resources */,
+				67093E119707427DACB4AF5D /* Inter-Light.ttf in Resources */,
+				7A5644912B6D01D70098E8D5 /* GoogleService-Info.plist in Resources */,
+				6FF95F8BF7524D6C8332EACE /* Inter-Medium.ttf in Resources */,
+				014CE1158D0045F481BF74FA /* Inter-Regular.ttf in Resources */,
+				2FD63C9972F9474E84BAF53D /* Inter-SemiBold.ttf in Resources */,
+				867C1C0EB1B549AC8D6123ED /* Inter-Thin.ttf in Resources */,
+				FFFB4D02B9DC49CB914CE6A3 /* RobotoCondensed-Black.ttf in Resources */,
+				6CD4085009204FF4AB57CDF4 /* RobotoCondensed-BlackItalic.ttf in Resources */,
+				8DF243A1C06E4E239F07A080 /* RobotoCondensed-Bold.ttf in Resources */,
+				53E21FFD9B574871A8873876 /* RobotoCondensed-BoldItalic.ttf in Resources */,
+				C8F7B617D3324691828244B1 /* RobotoCondensed-ExtraBold.ttf in Resources */,
+				EFC12DE6FCC04388B93B127C /* RobotoCondensed-ExtraBoldItalic.ttf in Resources */,
+				F3BD053C64FA411E9ECE8B19 /* RobotoCondensed-ExtraLight.ttf in Resources */,
+				99CAB194FB1A43C786E4A90D /* RobotoCondensed-ExtraLightItalic.ttf in Resources */,
+				8A0BE5E961984E7885FABE99 /* RobotoCondensed-Italic.ttf in Resources */,
+				435818D91B204346A8CBBAF5 /* RobotoCondensed-Light.ttf in Resources */,
+				76CFC767A89143E4AE62EE0B /* RobotoCondensed-LightItalic.ttf in Resources */,
+				7C904A8688154C4CB6A80C4C /* RobotoCondensed-Medium.ttf in Resources */,
+				A70D46E7747A4DB7A2ED9CEA /* RobotoCondensed-MediumItalic.ttf in Resources */,
+				91B57A6A74544BB3AD4FF24F /* RobotoCondensed-Regular.ttf in Resources */,
+				231DF727FFA74C9D9DC5E1DF /* RobotoCondensed-SemiBold.ttf in Resources */,
+				3D84DD3BDE8B4CF881B79907 /* RobotoCondensed-SemiBoldItalic.ttf in Resources */,
+				B5F8AE6749EE448FAEE92213 /* RobotoCondensed-Thin.ttf in Resources */,
+				CEF5581A4B5D4B728C8E5598 /* RobotoCondensed-ThinItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +437,57 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CamMatTroi/Pods-CamMatTroi-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		148F75B920165108A8AF77F0 /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-CamMatTroi-CamMatTroiTests/expo-configure-project.sh\"\n";
+		};
+		5C391F46790D4D6BC203AA83 /* [CP-User] [RNFB] Core Configuration */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "[CP-User] [RNFB] Core Configuration";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/usr/bin/env bash\n#\n# Copyright (c) 2016-present Invertase Limited & Contributors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this library except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#   http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n#\nset -e\n\n_MAX_LOOKUPS=2;\n_SEARCH_RESULT=''\n_RN_ROOT_EXISTS=''\n_CURRENT_LOOKUPS=1\n_JSON_ROOT=\"'react-native'\"\n_JSON_FILE_NAME='firebase.json'\n_JSON_OUTPUT_BASE64='e30=' # { }\n_CURRENT_SEARCH_DIR=${PROJECT_DIR}\n_PLIST_BUDDY=/usr/libexec/PlistBuddy\n_TARGET_PLIST=\"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n_DSYM_PLIST=\"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist\"\n\n# plist arrays\n_PLIST_ENTRY_KEYS=()\n_PLIST_ENTRY_TYPES=()\n_PLIST_ENTRY_VALUES=()\n\nfunction setPlistValue {\n  echo \"info:      setting plist entry '$1' of type '$2' in file '$4'\"\n  ${_PLIST_BUDDY} -c \"Add :$1 $2 '$3'\" $4 || echo \"info:      '$1' already exists\"\n}\n\nfunction getFirebaseJsonKeyValue () {\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    ruby -Ku -e \"require 'rubygems';require 'json'; output=JSON.parse('$1'); puts output[$_JSON_ROOT]['$2']\"\n  else\n    echo \"\"\n  fi;\n}\n\nfunction jsonBoolToYesNo () {\n  if [[ $1 == \"false\" ]]; then\n    echo \"NO\"\n  elif [[ $1 == \"true\" ]]; then\n    echo \"YES\"\n  else echo \"NO\"\n  fi\n}\n\necho \"info: -> RNFB build script started\"\necho \"info: 1) Locating ${_JSON_FILE_NAME} file:\"\n\nif [[ -z ${_CURRENT_SEARCH_DIR} ]]; then\n  _CURRENT_SEARCH_DIR=$(pwd)\nfi;\n\nwhile true; do\n  _CURRENT_SEARCH_DIR=$(dirname \"$_CURRENT_SEARCH_DIR\")\n  if [[ \"$_CURRENT_SEARCH_DIR\" == \"/\" ]] || [[ ${_CURRENT_LOOKUPS} -gt ${_MAX_LOOKUPS} ]]; then break; fi;\n  echo \"info:      ($_CURRENT_LOOKUPS of $_MAX_LOOKUPS) Searching in '$_CURRENT_SEARCH_DIR' for a ${_JSON_FILE_NAME} file.\"\n  _SEARCH_RESULT=$(find \"$_CURRENT_SEARCH_DIR\" -maxdepth 2 -name ${_JSON_FILE_NAME} -print | /usr/bin/head -n 1)\n  if [[ ${_SEARCH_RESULT} ]]; then\n    echo \"info:      ${_JSON_FILE_NAME} found at $_SEARCH_RESULT\"\n    break;\n  fi;\n  _CURRENT_LOOKUPS=$((_CURRENT_LOOKUPS+1))\ndone\n\nif [[ ${_SEARCH_RESULT} ]]; then\n  _JSON_OUTPUT_RAW=$(cat \"${_SEARCH_RESULT}\")\n  _RN_ROOT_EXISTS=$(ruby -Ku -e \"require 'rubygems';require 'json'; output=JSON.parse('$_JSON_OUTPUT_RAW'); puts output[$_JSON_ROOT]\" || echo '')\n\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    if ! python3 --version >/dev/null 2>&1; then echo \"python3 not found, firebase.json file processing error.\" && exit 1; fi\n    _JSON_OUTPUT_BASE64=$(python3 -c 'import json,sys,base64;print(base64.b64encode(bytes(json.dumps(json.loads(open('\"'${_SEARCH_RESULT}'\"', '\"'rb'\"').read())['${_JSON_ROOT}']), '\"'utf-8'\"')).decode())' || echo \"e30=\")\n  fi\n\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n\n  # config.app_data_collection_default_enabled\n  _APP_DATA_COLLECTION_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_data_collection_default_enabled\")\n  if [[ $_APP_DATA_COLLECTION_ENABLED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseDataCollectionDefaultEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_DATA_COLLECTION_ENABLED\")\")\n  fi\n\n  # config.analytics_auto_collection_enabled\n  _ANALYTICS_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_auto_collection_enabled\")\n  if [[ $_ANALYTICS_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_COLLECTION\")\")\n  fi\n\n  # config.analytics_collection_deactivated\n  _ANALYTICS_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_collection_deactivated\")\n  if [[ $_ANALYTICS_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_DEACTIVATED\")\")\n  fi\n\n  # config.analytics_idfv_collection_enabled\n  _ANALYTICS_IDFV_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_idfv_collection_enabled\")\n  if [[ $_ANALYTICS_IDFV_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_IDFV_COLLECTION\")\")\n  fi\n\n  # config.analytics_default_allow_ad_personalization_signals\n  _ANALYTICS_PERSONALIZATION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_personalization_signals\")\n  if [[ $_ANALYTICS_PERSONALIZATION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_PERSONALIZATION\")\")\n  fi\n\n  # config.analytics_registration_with_ad_network_enabled\n  _ANALYTICS_REGISTRATION_WITH_AD_NETWORK=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_registration_with_ad_network_enabled\")\n  if [[ $_ANALYTICS_REGISTRATION_WITH_AD_NETWORK ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_REGISTRATION_WITH_AD_NETWORK_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_REGISTRATION_WITH_AD_NETWORK\")\")\n  fi\n\n  # config.google_analytics_automatic_screen_reporting_enabled\n  _ANALYTICS_AUTO_SCREEN_REPORTING=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_automatic_screen_reporting_enabled\")\n  if [[ $_ANALYTICS_AUTO_SCREEN_REPORTING ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAutomaticScreenReportingEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_SCREEN_REPORTING\")\")\n  fi\n\n  # config.perf_auto_collection_enabled\n  _PERF_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_auto_collection_enabled\")\n  if [[ $_PERF_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_enabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_AUTO_COLLECTION\")\")\n  fi\n\n  # config.perf_collection_deactivated\n  _PERF_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_collection_deactivated\")\n  if [[ $_PERF_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_deactivated\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_DEACTIVATED\")\")\n  fi\n\n  # config.messaging_auto_init_enabled\n  _MESSAGING_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"messaging_auto_init_enabled\")\n  if [[ $_MESSAGING_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseMessagingAutoInitEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_MESSAGING_AUTO_INIT\")\")\n  fi\n\n  # config.in_app_messaging_auto_colllection_enabled\n  _FIAM_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"in_app_messaging_auto_collection_enabled\")\n  if [[ $_FIAM_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseInAppMessagingAutomaticDataCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_FIAM_AUTO_INIT\")\")\n  fi\n\n  # config.app_check_token_auto_refresh\n  _APP_CHECK_TOKEN_AUTO_REFRESH=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_check_token_auto_refresh\")\n  if [[ $_APP_CHECK_TOKEN_AUTO_REFRESH ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAppCheckTokenAutoRefreshEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_CHECK_TOKEN_AUTO_REFRESH\")\")\n  fi\n\n  # config.crashlytics_disable_auto_disabler - undocumented for now - mainly for debugging, document if becomes useful\n  _CRASHLYTICS_AUTO_DISABLE_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"crashlytics_disable_auto_disabler\")\n  if [[ $_CRASHLYTICS_AUTO_DISABLE_ENABLED == \"true\" ]]; then\n    echo \"Disabled Crashlytics auto disabler.\" # do nothing\n  else\n    _PLIST_ENTRY_KEYS+=(\"FirebaseCrashlyticsCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"NO\")\n  fi\nelse\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n  echo \"warning:   A firebase.json file was not found, whilst this file is optional it is recommended to include it to configure firebase services in React Native Firebase.\"\nfi;\n\necho \"info: 2) Injecting Info.plist entries: \"\n\n# Log out the keys we're adding\nfor i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n  echo \"    ->  $i) ${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\"\ndone\n\nfor plist in \"${_TARGET_PLIST}\" \"${_DSYM_PLIST}\" ; do\n  if [[ -f \"${plist}\" ]]; then\n\n    # paths with spaces break the call to setPlistValue. temporarily modify\n    # the shell internal field separator variable (IFS), which normally\n    # includes spaces, to consist only of line breaks\n    oldifs=$IFS\n    IFS=\"\n\"\n\n    for i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n      setPlistValue \"${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\" \"${plist}\"\n    done\n\n    # restore the original internal field separator value\n    IFS=$oldifs\n  else\n    echo \"warning:   A Info.plist build output file was not found (${plist})\"\n  fi\ndone\n\necho \"info: <- RNFB build script finished\"\n";
+		};
+		756E13F090213D9F4CF43942 /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-CamMatTroi/expo-configure-project.sh\"\n";
 		};
 		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -405,6 +611,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00E356F31AD99517003FC87E /* CamMatTroiTests.m in Sources */,
+				FDAB56187FFEE88A6FEFAE83 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +621,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				813E97BD765B471479A19708 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +641,8 @@
 			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-CamMatTroi-CamMatTroiTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				DEVELOPMENT_TEAM = J7QLCNXS7V;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -449,7 +659,10 @@
 					"-lc++",
 					"$(inherited)",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.cammattroi.test;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.cammattroi.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CamMatTroi.app/CamMatTroi";
 			};
@@ -473,6 +686,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CamMatTroi.app/CamMatTroi";
@@ -485,9 +699,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_ENTITLEMENTS = CamMatTroi/CamMatTroi.entitlements;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = J7QLCNXS7V;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CamMatTroi/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cam Mặt Trời";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -498,7 +715,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cammattroi.test;
 				PRODUCT_NAME = CamMatTroi;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -512,8 +730,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_ENTITLEMENTS = CamMatTroi/CamMatTroi.entitlements;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = J7QLCNXS7V;
 				INFOPLIST_FILE = CamMatTroi/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cam Mặt Trời";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -524,7 +745,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cammattroi.vn;
 				PRODUCT_NAME = CamMatTroi;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -564,7 +786,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -572,6 +794,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+					_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -580,6 +803,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
@@ -592,12 +823,15 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-DFOLLY_NO_CONFIG",
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
+				OTHER_LDFLAGS = "$(inherited)  ";
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -635,15 +869,27 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION,
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
@@ -655,12 +901,15 @@
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-DFOLLY_NO_CONFIG",
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
+				OTHER_LDFLAGS = "$(inherited)  ";
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -698,5 +947,5 @@
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 83CBB9F71A601CBA00E9B192;
+	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
 }

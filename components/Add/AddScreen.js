@@ -13,7 +13,7 @@ const AddScreen = () => {
             screenOptions={({ navigation, route }) => ({
                 tabBarActiveTintColor: '#FF6100',
                 tabBarInactiveTintColor: "#184E17",
-
+                headerLeftLabelVisible: false,
                 headerTitleStyle: {
                     fontWeight: 'bold',
                     color: '#FF6100',
@@ -21,7 +21,7 @@ const AddScreen = () => {
                 headerTitleAlign: 'center',
                 paddingTop: 12,
                 headerLeft: (props) => (
-                    <HeaderBackButton labelStyle={{ marginLeft: 0 }}
+                    <HeaderBackButton labelStyle={{ marginLeft: 0 }} labelVisible={false}
                         {...props}
                         onPress={() => {
                             if (navigation.canGoBack()) {

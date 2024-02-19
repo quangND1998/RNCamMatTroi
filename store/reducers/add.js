@@ -8,7 +8,6 @@ const initialState = {
     // app review
     appreview: null,
     star: 5,
-    errors: null,
     order_review: null
 }
 
@@ -28,6 +27,11 @@ const addReducer = (state = initialState, action) => {
             }
         case 'saveReviewOrderError':
             state.errors = action.payload
+            return {
+                ...state
+            }
+        case 'clearErrorReview':
+            state.errors = null
             return {
                 ...state
             }

@@ -1,25 +1,21 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { EmojiHappy, Home, User, More, DocumentText, Card } from 'iconsax-react-native';
-import HomeScreen from '../components/Home/HomeScreen';
-import OrderScreen from '../components/Order/OrderScreen';
-import UserScreen from '../components/User/Index';
+import { EmojiHappy, User, More, DocumentText, Card } from 'iconsax-react-native';
 import AddScreen from '../components/Add/AddScreen';
-import ScanExpo from '../components/QrCode/ScanExpo';
-import Payment from '../components/Payment/Payment';
-import { Button, Image } from 'native-base';
-import ScheduleTour from '../components/Schedule/ScheduleTour';
+import { Button, Image, Select, Box } from 'native-base';
 import { HeaderBackButton } from '@react-navigation/elements';
-import UpdateUser from '../components/User/UpdateUser';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import ShipperScreen from '../components/Shipper/ShipperScreen';
+import CheckOrderScreen from '../components/Shipper/Check/CheckOrderScreen';
+import Home from '../components/Svg/Home';
+import Chevron from '../components/Svg/Chevron';
 const Tab = createBottomTabNavigator();
 
 const BottomShipperNavigator = () => {
     return (
         <Tab.Navigator
 
-            initialRouteName="Home"
+            initialRouteName="HomeShipper"
             backBehavior="history"
             screenOptions={({ navigation, route }) => ({
                 tabBarActiveTintColor: '#FF6100',
@@ -65,7 +61,7 @@ const BottomShipperNavigator = () => {
                                 navigation.goBack();
                             }
                             else {
-                                navigation.navigate('Home')
+                                navigation.navigate('HomeShipper')
                             }
                         }}
                     />
@@ -73,28 +69,29 @@ const BottomShipperNavigator = () => {
             })}
 
         >
-           
+
             <Tab.Screen
-                name="User"
-                component={UpdateUser}
+                name="ShipperScreen"
+                component={ShipperScreen}
                 options={{
                     headerShown: false,
-                    tabBarLabel: 'Tài khoản',
+                    tabBarLabel: 'Quản lý vận đơn',
                     tabBarIcon: ({ color, size }) => (
-                        <User color="#184E17" variant="Outline" size={24} />
+                        // <Home source={require('../assets/icon/home.png')} className="w-14 h-14 " alt='box' ></Home>
+                        <Home color="#F78F43" size={26} />
 
                     ),
                 }}
             />
             <Tab.Screen
-                name="Add"
-                component={AddScreen}
+                name="CheckOrderScreen"
+                component={CheckOrderScreen}
                 options={{
                     headerShown: false,
                     tabBarLabel: 'Thêm',
-                    title: 'Dịch vụ khách hàng',
+                    title: 'Quản lý vận đơn',
                     tabBarIcon: ({ color, size }) => (
-                        <More color="#184E17" variant="Outline" size={24} />
+                        <Chevron color="#F78F43" size={26} />
                     ),
                 }}
             />

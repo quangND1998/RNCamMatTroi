@@ -32,7 +32,7 @@ const StackNavigator = () => {
         <Stack.Navigator screenOptions={{
             headerShown: false,
             headerTitleAlign: 'center',
-
+            headerBackTitleVisible: false
 
         }}>
             <Stack.Screen initialRouteName="LogoLogin" name="LogoLogin" component={LogoLogin} />
@@ -86,7 +86,7 @@ const MainNavigator = () => {
         return (
             hasAnyPermission(['customer', 'super-admin']) ?
                 <Stack.Navigator screenOptions={{
-
+                    headerLeftLabelVisible: false,
                     headerTitleStyle: {
                         fontWeight: 'bold',
                         color: '#FF6100',

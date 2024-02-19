@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component, useState, useRef } from 'react';
-import { View, StyleSheet, ToastAndroid, Keyboard, TextInput, KeyboardAvoidingView, SafeAreaView, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, ToastAndroid, Keyboard, TextInput, KeyboardAvoidingView, SafeAreaView, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { Center, Container, Heading, Button, Text, Box, Stack, Icon, ZStack, FormControl, Image, Input, Link, HStack, VStack, Pressable, useToast, AspectRatio, Flex } from 'native-base'
 import { loginAction, loginOtp, logoutAction } from '../../store/actions/auth';
 import { NavigationContainer, DrawerActions } from '@react-navigation/native';
@@ -16,7 +16,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { formatPhoneNumberIntl, isValidPhoneNumber, parsePhoneNumber } from 'react-phone-number-input'
 import PhoneInput from 'react-phone-number-input/input'
 import PhoneTextInput from './PhoneTextInput'
-
 const LoginOtp = ({ navigation }) => {
     const { setIsLoggedIn, profile } = useLogin();
     const [spinner, setSpinner] = useState(false)
@@ -55,51 +54,56 @@ const LoginOtp = ({ navigation }) => {
             },
         ));
     }
-   
+
     return (
 
         <Box className="relative h-full " >
             <Spinner
                 visible={spinner}
-                textContent={'Loading...'}
+                textContent={'Vui lòng đợi...'}
                 textStyle={styles.spinnerTextStyle}
             />
             <Box className="bottom-0 h-full">
                 <Image source={require('../../assets/images/banner3_login.png')} className="m-auto bottom-0 absolute " alt="banner3_login" />
             </Box>
             <Box className="ion-padding px-6 py-6 absolute top-0 left-0 w-full h-full">
-                <Box className="ion-padding h-72">
-                    <Text className="my-1 text-[#000]">Số điện thoại</Text>
-                    <Flex direction='row' className="items-center mt-4">
-                        <Text className="my-1 mr-4 text-[#000]">+84</Text>
-                        <Flex direction='column' className="flex-col w-full px-4 py-4">
-                            <PhoneInput
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+                    <Box className="ion-padding h-72">
+                        <Text className="my-1 text-[#000]">Nhập số điện thoại</Text>
+                        <Flex direction='row' className="items-center">
 
-                                displayInitialValueAsLocalNumber={false}
-                                placeholder='0123456977'
-                                smartCaret={false}
-                                inputComponent={PhoneTextInput}
-                                defaultCountry="VN"
-                                value={value}
-                                onChange={setValue} />
+                            <Text className="my-1 mr-4 text-[#000]">+84</Text>
+
+                            <Flex direction='column' className="flex-col w-full px-4 py-4">
+                                <PhoneInput
+
+                                    displayInitialValueAsLocalNumber={false}
+                                    placeholder='0123456977'
+                                    smartCaret={false}
+                                    inputComponent={PhoneTextInput}
+                                    defaultCountry="VN"
+                                    value={value}
+                                    onChange={setValue} />
+                            </Flex>
+
                         </Flex>
-                    </Flex>
-                    {value == null ?
-                        <Box>
-                            < Text className="text-red-500 ml-12 mt-2 text-xs" >Vui lòng nhập số điện thoại</Text>
+
+                        {value == null ?
+                            <Box>
+                                < Text className="text-red-500 ml-12 mt-2 text-xs" >Vui lòng nhập số điện thoại</Text>
 
 
-                        </Box>
-                        : <Box>
-                            {/* {parsePhoneNumber(value) && parsePhoneNumber(value).formatNational()} */}
-                            {isValidPhoneNumber(value) ? null : <Text className="text-red-500 ml-12 mt-2 text-xs" >Số điện thoại không hợp lệ</Text>}
-                        </Box>
+                            </Box>
+                            : <Box>
+                                {/* {parsePhoneNumber(value) && parsePhoneNumber(value).formatNational()} */}
+                                {isValidPhoneNumber(value) ? null : <Text className="text-red-500 ml-12 mt-2 text-xs" >Số điện thoại không hợp lệ</Text>}
+                            </Box>
 
-                    }
+                        }
 
-                    {/* <Box class="text-red-500" v-if="otp_flash"> { otp_flash }</Box> */}
-                </Box>
-
+                        {/* <Box class="text-red-500" v-if="otp_flash"> { otp_flash }</Box> */}
+                    </Box>
+                </TouchableWithoutFeedback>
             </Box>
             {value && isValidPhoneNumber(value) ? <Button onPress={loginWithOTP}
                 className="absolute bottom-0  w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 px-4 py-4 text-white bg-[#FF6100] rounded-xl " style={styles.btn_button}>
@@ -138,6 +142,10 @@ const styles = StyleSheet.create({
         borderBottomColor: 'rgba(255, 255, 255, 0.3)',
         marginBottom: 20,
     },
+    inputNumber: {
+        paddingBottom: '16px',
+        paddingBottom: 's16px'
+    }
 });
 
 //make this component available to the app

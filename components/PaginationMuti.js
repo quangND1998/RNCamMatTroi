@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, useWindowDimensions } from 'react-native';
 import {
-    Skeleton, VStack, Box, Text, Button
+    Skeleton, VStack, Box, Text, Button, Flex
 } from 'native-base';
 import { ArrowLeft2, ArrowRight2 } from 'iconsax-react-native';
 import RenderHtml from 'react-native-render-html';
@@ -36,13 +36,13 @@ const PaginationMuti = ({ data, changePage }) => {
     //     </Box>
     // ) : <View></View>;
     return data.links.length > 0 ? (
-        <Box className="flex  flex-row justify-between bg-white rounded-b-lg px-4 py-2 ">
+        <Flex direction='row' className="justify-between bg-white rounded-b-lg px-4 py-2 ">
             <Box>
                 <Text className="text-[12px] font-roboto font-bold">Tổng {data.total} kết quả</Text>
             </Box>
             {data.links.length > 3 ?
-                (<Box className="flex">
-                    <Box className="flex flex-row ">
+                (<Flex className="flex">
+                    <Flex direction='row'>
                         <PressableOpacity onPress={() => {
                             changePage(data.current_page - 1)
 
@@ -71,10 +71,10 @@ const PaginationMuti = ({ data, changePage }) => {
                             </Box>
                         </PressableOpacity>
 
-                    </Box>
-                </Box>) : <View></View>
+                    </Flex>
+                </Flex>) : <View></View>
             }
-        </Box >
+        </Flex >
     ) : <View></View >;
 }
 
