@@ -150,7 +150,7 @@ const ScheduleTour = ({ navigation, route }) => {
                         <Box className="my-4">
                             <Box className="w-full">
                                 <Flex className="flex justify-between">
-                                    <Heading size="sm" className="color-[#F78F43]">Mã đặt lịch tham quan</Heading>
+                                    <Heading size="sm" className="color-[#FF6100]">Mã đặt lịch tham quan</Heading>
                                 </Flex>
                                 <Box className="my-5">
 
@@ -199,7 +199,7 @@ const ScheduleTour = ({ navigation, route }) => {
 
                                 </Box>
                                 {productOwnersActive ? <Box className="my-5" >
-                                    <Heading size="sm" className="color-[#F78F43]">Hoạt động theo gói </Heading>
+                                    <Heading size="sm" className="color-[#FF6100]">Hoạt động theo gói </Heading>
                                     <Box maxW="500">
                                         <Select selectedValue={productOwner} minWidth="100" accessibilityLabel="Chọn gói dịch vụ" placeholder="Chọn gói dịch vụ " _selectedItem={{
                                             bg: "teal.600",
@@ -216,7 +216,7 @@ const ScheduleTour = ({ navigation, route }) => {
 
 
                                 <Box className="my-5 bg-[#F0F0F0] rounded-lg">
-                                    <Heading size="sm" className="color-[#F78F43]">Số lượng {productOwnersActive ? productOwnersActive.title : null}</Heading>
+                                    <Heading size="sm" className="color-[#FF6100]">Số lượng {productOwnersActive ? productOwnersActive.title : null}</Heading>
                                     <Flex direction='row' className=" justify-between my-2">
                                         <Flex direction='row' className=" items-center">
                                             <User
@@ -274,7 +274,7 @@ const ScheduleTour = ({ navigation, route }) => {
                                     </Flex>
                                 </Box>
                                 <Box className="my-5 bg-[#F0F0F0] rounded-lg">
-                                    <Heading size="sm" className="color-[#F78F43]">Ghi chú</Heading>
+                                    <Heading size="sm" className="color-[#FF6100]">Ghi chú</Heading>
                                     <TextArea value={textAreaValue} w="100%" placeholder="Ghi chú" className="bg-white"
                                         maxW="500"
                                         onChangeText={text => setTextAreaValue(text)} // for android and ios
@@ -283,7 +283,7 @@ const ScheduleTour = ({ navigation, route }) => {
 
                             </Box>
                         </Box>
-                        <Button onPress={() => saveSchedule()} className="w-full  text-white bg-[#F78F43] rounded-xl btn_button"
+                        <Button onPress={() => saveSchedule()} className="w-full  text-white bg-[#FF6100] rounded-xl btn_button"
                         >Xác nhận đặt chỗ</Button>
 
 

@@ -79,36 +79,40 @@ const Login = ({ navigation }) => {
 
 
             <Box className=" mt-[60px] absolute top-0 left-0 w-full h-full px-4 py-4 ">
-                <Box className="mb-5 pb-5"  >
-                    <Image source={require('../../assets/images/logo2.png')} className="m-auto h-[35px] w-[251px]" alt="logo2" />
+                <Box className="mb-5 pb-5 "  >
+                    <Image source={require('../../assets/images/logo2.png')} className="m-auto  h-[29px] w-auto" resizeMode="contain" alt="logo2" />
                 </Box>
 
-                <TextInput onChangeText={changeCode} className="bg-gray-50 border border-[#F78F43] text-gray-900 text-sm rounded-lg p-2.5" placeholder="Mã HĐ/SĐT" />
+                <TextInput onChangeText={changeCode} className=" border border-white text-gray-900 text-sm rounded-lg px-4 py-1.5" placeholder="Mã HĐ/SĐT" />
 
                 {/* <View className="my-3 relative flex items-center" >
-                    <TextInput secureTextEntry={show} className="bg-gray-50 border border-[#F78F43] text-gray-900 text-sm rounded-lg p-2.5  " onChangeText={changePassword} placeholder="Password" />
+                    <TextInput secureTextEntry={show} className="bg-gray-50 border border-[#FF6100] text-gray-900 text-sm rounded-lg p-2.5  " onChangeText={changePassword} placeholder="Password" />
                     <View className="absolute bottom-0 right-2 px-2.5 py-1.5">
-                        {show == false ? <Eye color="#F78F43" className="text-lg" variant="Outline" size={25} onPress={() => setShow(true)} /> : <EyeSlash color="#F78F43" variant="Outline" className="text-lg" size={25} onPress={() => setShow(false)} />}
-                        <Text className="text-[#F78F43] ">{show}</Text>
+                        {show == false ? <Eye color="#FF6100" className="text-lg" variant="Outline" size={25} onPress={() => setShow(true)} /> : <EyeSlash color="#FF6100" variant="Outline" className="text-lg" size={25} onPress={() => setShow(false)} />}
+                        <Text className="text-[#FF6100] ">{show}</Text>
                     </View>
                 </View> */}
-                <FormControl className="my-3 relative flex ">
+                <FormControl className="my-2 relative flex ">
 
-                    <TextInput secureTextEntry={show} className="bg-gray-50 border  border-[#F78F43] text-gray-900 text-sm rounded-lg p-2.5  " onChangeText={changePassword} placeholder="Password" />
-                    <Box className="absolute bottom-0 right-0 px-2.5 py-0 items-center">
-                        {show == false ? <Eye color="#F78F43" className="text-xs items-center" variant="Outline" size={20} onPress={() => setShow(true)} /> : <EyeSlash color="#F78F43" variant="Outline" className="text-xs" size={20} onPress={() => setShow(false)} />}
-                        <Text className="text-[#F78F43] ">{show}</Text>
+                    <TextInput secureTextEntry={show} className=" border  border-white text-gray-900 text-sm rounded-lg px-4 py-1.5 " onChangeText={changePassword} placeholder="******" />
+                    <Box className="absolute py-3 right-0 px-2.5  items-center">
+                        {show == false ? <Eye color="gray" className="text-xs items-center" variant="Outline" size={16} onPress={() => setShow(true)} /> : <EyeSlash color="gray" variant="Outline" className="text-xs" size={16} onPress={() => setShow(false)} />}
+                        <Text className="text-[#FF6100] ">{show}</Text>
                     </Box>
                 </FormControl>
-                <Flex direction='row' className=" justify-end mt-3">
+                <Flex direction='row' className=" justify-end mt-1">
                     <PressableOpacity onPress={() => navigation.navigate('Otp')}>
-                        <Text className="text-[#F78F43] ">Đăng nhập bằng OTP</Text>
+                        <Text className="text-[#FF6100] ">Đăng nhập bằng OTP</Text>
                     </PressableOpacity>
-                    {/* <router-link to='/otp-phone' class="text-[#F78F43]  ">Đăng nhập bằng OTP</router-link> */}
+                    {/* <router-link to='/otp-phone' class="text-[#FF6100]  ">Đăng nhập bằng OTP</router-link> */}
                 </Flex>
 
 
-                <Button className="w-full mt-6 text-white bg-[#F78F43] focus:text-[#F78F43] rounded-xl" size='md' text="submit" onPress={submitHandler}>Login</Button>
+                <Button className="w-full mt-4 text-white bg-[#FF6100] focus:text-[#FF6100] rounded-xl" size='md' text="submit" onPress={submitHandler}>Đăng nhập</Button>
+
+                <Box className="mt-7 text-center flex items-center flex-row justify-center">
+                    <Text className="text-[#080808] ">Bạn chưa có tài khoản?</Text> <Text className="text-[#FF6100] ">Hotline</Text>
+                </Box>
             </Box>
 
         </Box >

@@ -39,7 +39,7 @@ const StackNavigator = () => {
             <Stack.Screen name="Login" options={{
                 headerShown: true, title: 'Đăng nhập', headerTitleStyle: {
                     fontWeight: 'bold',
-                    color: '#F78F43',
+                    color: '#FF6100',
 
 
                 },
@@ -50,7 +50,7 @@ const StackNavigator = () => {
 
                 headerTitleStyle: {
                     fontWeight: 'bold',
-                    color: '#F78F43',
+                    color: '#FF6100',
 
 
                 },
@@ -63,7 +63,7 @@ const StackNavigator = () => {
 
                 headerTitleStyle: {
                     fontWeight: 'bold',
-                    color: '#F78F43',
+                    color: '#FF6100',
 
 
                 },
@@ -89,7 +89,7 @@ const MainNavigator = () => {
 
                     headerTitleStyle: {
                         fontWeight: 'bold',
-                        color: '#F78F43',
+                        color: '#FF6100',
 
                     },
                     headerTitleAlign: 'center',

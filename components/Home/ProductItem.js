@@ -18,11 +18,10 @@ const imageHeight = height - 240;
 import QRCode from 'react-native-qrcode-svg';
 import { ArrowRight } from 'iconsax-react-native';
 import Video from 'react-native-video';
+import Gallery from 'react-native-image-gallery';
 const ProductItem = ({ item,index , navigation }) => {
   // console.log(navigation);
   const [isOpen, setIsOpen] = useState(false);
-  const openGallery = () => setIsOpen(true);
-  const closeGallery = () => setIsOpen(false);
   const translateYImage = new Animated.Value(40);
   const { formatDateShort, formatDateUse } = useHelper();
   const videoPlayer = useRef(null);
@@ -160,7 +159,15 @@ const ProductItem = ({ item,index , navigation }) => {
         </Box>
         
       </Box>
-    
+      <Gallery
+        style={{ flex: 1, backgroundColor: 'black' }}
+        images={[
+          { source: { uri: 'http://i.imgur.com/XP2BE7q.jpg' } },
+          { source: { uri: 'http://i.imgur.com/5nltiUd.jpg' } },
+          { source: { uri: 'http://i.imgur.com/6vOahbP.jpg' } },
+          { source: { uri: 'http://i.imgur.com/kj5VXtG.jpg' } }
+        ]}
+      />
     </View>
   );
 };

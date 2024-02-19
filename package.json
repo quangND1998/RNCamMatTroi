@@ -10,7 +10,6 @@
         "test": "jest"
     },
     "dependencies": {
-        "@georstat/react-native-image-gallery": "^1.1.0",
         "@gluestack-style/react": "^1.0.30",
         "@gluestack-ui/config": "^1.0.10",
         "@gluestack-ui/themed": "^1.0.33",
@@ -44,6 +43,7 @@
         "react-native-date-picker": "^4.3.5",
         "react-native-dotenv": "^3.4.9",
         "react-native-gesture-handler": "^2.2.0",
+        "react-native-image-gallery": "^2.1.5",
         "react-native-image-layout": "^5.9.1",
         "react-native-loading-spinner-overlay": "^3.0.1",
         "react-native-mmkv": "^2.11.0",

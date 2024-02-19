@@ -91,7 +91,7 @@ const ProductHome = ({ navigation, route }) => {
                                     <Box className="absolute top-3/2 left-3/2 -translate-x-3/2 -translate-y-3/2 w-full">
                                         <Box className="pt-[16px] pb-[14px]">
                                             <Image source={require('../../assets/images/goi1.png')} className="w-8 h-8 m-auto" alt="goi1"></Image>
-                                            <Text className="text-[#F78F43] " style={styles.icon_state}>{product?.life_time}</Text>
+                                            <Text className="text-[#FF6100] " style={styles.icon_state}>{product?.life_time}</Text>
                                         </Box>
                                         <Text className="text-center text-[14px]">Sở hữu {product?.life_time} năm</Text>
                                         <Text className="text-center font-bold mt-2 text-[12px]">(Thu hoạch {product?.amount_products_received} kg/năm)</Text>
@@ -149,7 +149,7 @@ const ProductHome = ({ navigation, route }) => {
             </ScrollView >
 
             {total > 0 ? <PressableOpacity onPress={() => navigation.navigate('CartConfirmation')} className="bg-white"  ><Box
-                className="fixed bottom-0  w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 px-4 py-4 text-white bg-[#F78F43] rounded-xl " style={styles.btn_button}>
+                className="fixed bottom-0  w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 px-4 py-4 text-white bg-[#FF6100] rounded-xl " style={styles.btn_button}>
                 <Box className="w-full flex flex-row  justify-between" >
                     <Text className="mr-0 text-white ">Giỏ hàng {total} sản phẩm</Text>
                     <Text className=" text-white "> {formatPrice(totalPrice)}đ</Text>
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
         bottom: '-10px'
     },
     spinnerTextStyle: {
-        color: '#F78F43'
+        color: '#FF6100'
     },
 
 })

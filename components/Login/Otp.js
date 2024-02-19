@@ -162,7 +162,7 @@ const OTP = ({ navigation }) => {
                     </Text> : null}
 
                     <Box style="margin-top:4rem">
-                        <TextInput className="bg-gray-50 border  border-[#F78F43] text-gray-900 text-sm rounded-lg px-4" autoFocus={true}
+                        <TextInput className="bg-gray-50 border  border-[#FF6100] text-gray-900 text-sm rounded-lg px-4" autoFocus={true}
                             value={otpValue}
                             autoCompleteType={true}
                             caretHidden={false}

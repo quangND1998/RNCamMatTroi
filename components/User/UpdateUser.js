@@ -539,7 +539,7 @@ const UpdateUser = ({ navigation, route }) => {
                     </Box>
                 </Box>
                 {form.phone_number && isValidPhoneNumber(form.phone_number, "VN") ? <Button onPress={alertsaveUserInfor}
-                    className=" bottom-0  w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 px-4 py-4 text-white bg-[#F78F43] rounded-xl " style={styles.btn_button}>
+                    className=" bottom-0  w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 px-4 py-4 text-white bg-[#FF6100] rounded-xl " style={styles.btn_button}>
                     <Text className="text-white items-center text-center">Lưu</Text>
                 </Button> : null
                 }
