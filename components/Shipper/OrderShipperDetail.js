@@ -372,7 +372,7 @@ const OrderShipperDetail = ({ navigation, route }) => {
         <SafeAreaView style={styles.container}>
             <Spinner
                 visible={spinner}
-                textContent={'Loading...'}
+                textContent={'Vui lòng đợi...'}
                 textStyle={styles.spinnerTextStyle}
             />
             <ScrollView

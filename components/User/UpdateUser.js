@@ -237,7 +237,7 @@ const UpdateUser = ({ navigation, route }) => {
         isCamera ? <UploadAvatar /> : <SafeAreaView  >
             <Spinner
                 visible={spinner}
-                textContent={'Loading...'}
+                textContent={'Vui lòng đợi...'}
                 textStyle={styles.spinnerTextStyle}
             />
             <ScrollView

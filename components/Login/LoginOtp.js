@@ -60,7 +60,7 @@ const LoginOtp = ({ navigation }) => {
         <Box className="relative h-full " >
             <Spinner
                 visible={spinner}
-                textContent={'Loading...'}
+                textContent={'Vui lòng đợi...'}
                 textStyle={styles.spinnerTextStyle}
             />
             <Box className="bottom-0 h-full">
