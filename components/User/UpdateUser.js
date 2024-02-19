@@ -268,7 +268,7 @@ const UpdateUser = ({ navigation, route }) => {
                             <Text className="text-[13px] text-[#184E17] text-center my-1">{user?.email}</Text>
                             {user?.infor?.status == 0 ? <Text className="text-xs text-[#CB9200] text-center my-1">Đang chờ xét duyệt</Text> : null}
                         </Box>
-                      
+
                     </Box>
                 </Box>
                 <Box className="mx-4 px-2 my-2">
@@ -304,13 +304,13 @@ const UpdateUser = ({ navigation, route }) => {
                                         base: "flex-wrap",
                                         md: "center"
                                     }} space={4} w="75%" maxW="400px">
-                                        <Radio value="male" color="orange"  colorScheme="orange" my={3}   size="sm">
+                                        <Radio value="male" color="orange" colorScheme="orange" my={3} size="sm">
                                             Nam
                                         </Radio>
-                                        <Radio value="female" colorScheme="orange"  my={3}  size="sm">
+                                        <Radio value="female" colorScheme="orange" my={3} size="sm">
                                             Nữ
                                         </Radio>
-                                        <Radio value="khác" colorScheme="orange" my={3}   size="sm">
+                                        <Radio value="khác" colorScheme="orange" my={3} size="sm">
                                             Khác
                                         </Radio>
 
@@ -322,7 +322,7 @@ const UpdateUser = ({ navigation, route }) => {
                         </Flex>
                         <Box className="my-2">
                             <Text className="block mb-2 text-sm  text-[#184E17] ">Email</Text>
-                            <Input type="text"  isInvalid={checkInValid(errors, 'email') ? true : false} value={form.email} onChangeText={(value) => setForm(prevState => {
+                            <Input type="text" isInvalid={checkInValid(errors, 'email') ? true : false} value={form.email} onChangeText={(value) => setForm(prevState => {
                                 return { ...prevState, email: value }
                             })}
                                 size="xl"
@@ -334,7 +334,7 @@ const UpdateUser = ({ navigation, route }) => {
                             <Text className="my-1 text-[#184E17] text-sm">Số điện thoại </Text>
 
 
-                            <Input keyboardType="phone-pad"  size="xl" value={form.phone_number} isInvalid={checkInValid(errors, 'phone_number') ? true : false} onChangeText={(value) => setForm(prevState => {
+                            <Input keyboardType="phone-pad" size="xl" value={form.phone_number} isInvalid={checkInValid(errors, 'phone_number') ? true : false} onChangeText={(value) => setForm(prevState => {
                                 return { ...prevState, phone_number: value }
                             })}
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
@@ -357,7 +357,7 @@ const UpdateUser = ({ navigation, route }) => {
                                 setForm(prevState => {
                                     return { ...prevState, address: value }
                                 });
-                        
+
                             }}
                                 size="xl"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
@@ -368,8 +368,8 @@ const UpdateUser = ({ navigation, route }) => {
                             {provinces ? <Box >
                                 <Text className="text-[#184E17] my-2 text-sm">Tỉnh/ Thành phố</Text>
                                 <Box maxW="500">
-                                    <Select isInvalid={checkInValid(errors, 'city') ? true : false} selectedValue={form.city} minWidth="100" accessibilityLabel="Chọn Tính/ Thành phố" placeholder="Chọn Tính/ Thành phố" _selectedItem={{
-                                        bg: "orange",
+                                    <Select size="16" isInvalid={checkInValid(errors, 'city') ? true : false} selectedValue={form.city} minWidth="100" accessibilityLabel="Chọn Tính/ Thành phố" placeholder="Chọn Tính/ Thành phố" _selectedItem={{
+                                        color: "orange",
                                         endIcon: <CheckIcon size="1" color="orange.600" />
                                     }} mt={1} onValueChange={itemValue => {
                                         setForm(prevState => {
@@ -396,8 +396,8 @@ const UpdateUser = ({ navigation, route }) => {
                             <Box >
                                 <Text className="text-[#184E17] my-2 text-sm">Quận/ Huyện</Text>
                                 <Box maxW="500">
-                                    <Select isInvalid={checkInValid(errors, 'district') ? true : false} selectedValue={form.district} minWidth="100" accessibilityLabel="Chọn Quận/ Huyện" placeholder="Chọn Quận/ Huyện" _selectedItem={{
-                                        bg: "orange.600",
+                                    <Select size="16" isInvalid={checkInValid(errors, 'district') ? true : false} selectedValue={form.district} minWidth="100" accessibilityLabel="Chọn Quận/ Huyện" placeholder="Chọn Quận/ Huyện" _selectedItem={{
+                                        bg: "orange",
                                         endIcon: <CheckIcon size="1" color="orange.600" />
                                     }} mt={1} onValueChange={itemValue => setForm(prevState => {
                                         return { ...prevState, district: itemValue }
@@ -416,9 +416,9 @@ const UpdateUser = ({ navigation, route }) => {
                             <Box >
                                 <Text className="text-[#184E17] my-2 text-sm">Xã/ Phường</Text>
                                 <Box maxW="600">
-                                    <Select size="16" isInvalid={checkInValid(errors, 'wards') ? true : false} selectedValue={form.wards}  minWidth="200" accessibilityLabel="Chọn Xã/ Phường" placeholder="Chọn Xã/ Phường" _selectedItem={{
-                                        bg: "orange.600",
-                                        endIcon: <CheckIcon size="1" />
+                                    <Select size="16" isInvalid={checkInValid(errors, 'wards') ? true : false} selectedValue={form.wards} minWidth="200" accessibilityLabel="Chọn Xã/ Phường" placeholder="Chọn Xã/ Phường" _selectedItem={{
+                                        bg: "orange",
+                                        endIcon: <CheckIcon size="1" color="orange.600" />
                                     }} mt={1} onValueChange={itemValue => setForm(prevState => {
                                         return { ...prevState, wards: itemValue }
                                     })}>
@@ -436,9 +436,9 @@ const UpdateUser = ({ navigation, route }) => {
                 </Box>
                 <Box className="mx-4 px-2 my-2 ">
                     <Box className="w-full">
-                        <Text bold className="text-[17px]  ">Thông tin giấy tờ</Text>
+                        <Text bold className="text-[17px] mb-4 ">Thông tin giấy tờ</Text>
 
-                        <Box class="my-5 ">
+                        <Box class="my-5 mt-4 ">
                             <Text className="block mb-2 text-sm  text-[#184E17] ">Giấy tờ tùy thân (CMT/CCCD)</Text>
                             <Input size="xl" type="text" isInvalid={checkInValid(errors, 'cic_number') ? true : false} value={form.cic_number} onChangeText={(value) => setForm(prevState => {
                                 return { ...prevState, cic_number: value }
