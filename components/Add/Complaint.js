@@ -220,7 +220,7 @@ const Complaint = ({ navigation, route }) => {
                                     })
                                 }}>
                                     <Box className="text-3xl mx-1 text-[#AEAEAE]" >
-                                        <MaterialCommunityIcons name='star' size={48} color={i <= star ? '#F78F43' : '#AEAEAE'} />
+                                        <MaterialCommunityIcons name='star' size={48} color={i <= star ? '#FF6100' : '#AEAEAE'} />
                                     </Box>
                                 </PressableOpacity>
 
@@ -364,7 +364,7 @@ const Complaint = ({ navigation, route }) => {
 
                             )}
                         </Flex>
-                        <Button onPress={() => saveComplaint()} className=" bottom-0 w-full  text-white bg-[#F78F43] rounded-xl btn_button"
+                        <Button onPress={() => saveComplaint()} className=" bottom-0 w-full  text-white bg-[#FF6100] rounded-xl btn_button"
                         >Gửi</Button>
                     </Box >
 

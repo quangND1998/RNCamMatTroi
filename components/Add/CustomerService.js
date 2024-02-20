@@ -26,17 +26,13 @@ const CustomerService = ({ navigation, route }) => {
                     () => {
                         toast.show({
                             title: "Đăng xuất thành công",
-
-                            description: "Thanks for signing up with us."
                         })
                         setIsLoggedIn(false)
                         // navigation.navigate('Login');
                     },
                     () => {
                         toast.show({
-                            title: "Something went wrong, please try again!",
-
-                            description: "Something went wrong, please try again."
+                            title: "Có lỗi xảy ra, vui lòng thử lại!",
                         })
                         setIsLoggedIn(false)
                     },

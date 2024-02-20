@@ -17,16 +17,18 @@ const LogoLogin = ({ navigation }) => {
         <ImageBackground source={require('../../assets/images/banner_login.png')} resizeMode="cover" style={styles.image}>
 
             <Flex direction='row' className="justify-center w-full h-full relative items-center p-0 ">
-                <Box className="relative p-0 w-[90%]">
+                <Box className="relative  p-0 w-[90%]">
 
                     {/* <!-- <img src="/public/assets/images/banner_login.png" class="m-auto" alt=""> --> */}
                     <Box className="m-auto  w-full p-0">
-                        <Image source={require('../../assets/images/logo_qcam.png')} className="m-auto w-[128px] h-[133px]" alt="logo_qcam"></Image>
+                        <Box className="w-[36%] h-[120px] m-auto">
+                            <Image source={require('../../assets/images/logo_qcam.png')} resizeMode="contain" className="m-auto" alt="logo_qcam"></Image>
+                        </Box>
                         <Box className="mt-5">
                             <Image source={require('../../assets/images/cammattroi.png')} className="m-auto" alt="cammattroi"></Image>
                         </Box>
-                        {/* <PressableOpacity className="hover:bg-[#F78F43]  "> */}
-                        <Button onPress={() => navigation.navigate('Login')} className="w-full px-3 py-4 items-center bg-white  mt-16 text-black ion-padding rounded-xl active:bg-[#F78F43] "><Text className="text-black">
+                        {/* <PressableOpacity className="hover:bg-[#FF6100]  "> */}
+                        <Button onPress={() => navigation.navigate('Login')} className="w-full px-3 py-2.5 items-center bg-white  mt-16 text-[#080808] ion-padding rounded-xl active:bg-[#FF6100] "><Text className="text-black">
                             Đăng nhập
                         </Text>
                         </Button>

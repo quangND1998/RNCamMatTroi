@@ -91,8 +91,8 @@ const CodeScan = ({ navigation, route }) => {
         }
     }
     return (
-        <SafeAreaView style={styles.container} className="bg-[#F78F43]" >
-            <Box className=" bg-[#F78F43]" >
+        <SafeAreaView style={styles.container} className="bg-[#FF6100]" >
+            <Box className=" bg-[#FF6100]" >
 
                 <PressableOpacity onPress={navigation.goBack} className="absolute mt-10 ml-3 text-white">
                     <ArrowLeft2
@@ -104,7 +104,7 @@ const CodeScan = ({ navigation, route }) => {
             {/* <StatusBarBlurBackground /> */}
             <Box style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} >
 
-                <ImageBackground source={require('../../assets/images/bg.jpg')} resizeMode="cover" className="bg-[#F78F43]  rounded-xl absolute bg-no-repeat  p-1" style={styles.scan_page}>
+                <ImageBackground source={require('../../assets/images/bg.jpg')} resizeMode="cover" className="bg-[#FF6100]  rounded-xl absolute bg-no-repeat  p-1" style={styles.scan_page}>
 
                     <Text className="mt-5 mx-12 text-center  text-[#ffffff] " style={styles.innerText}>Quét mã cây hoặc đơn hàng để xác nhận </Text>
 
@@ -152,7 +152,7 @@ const CodeScan = ({ navigation, route }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F78F43'
+        backgroundColor: '#FF6100'
     },
     cardcontainer: {
         flex: 1

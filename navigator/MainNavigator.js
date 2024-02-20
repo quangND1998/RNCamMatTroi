@@ -34,16 +34,16 @@ const StackNavigator = () => {
             headerShown: false,
             headerTitleAlign: 'center',
             headerBackTitleVisible: false,
-            headerTransparent: false,
+            headerTransparent: true,
             tabBarActiveTintColor: '#F78F43',
             tabBarInactiveTintColor: "#184E17",
             headerLeftLabelVisible: false,
+            borderBottomWidth: 0,
             headerTitleStyle: {
                 fontWeight: 'bold',
                 color: '#F78F43',
             },
             paddingTop: 12,
-            headerTransparent: false,
         }}>
             <Stack.Screen initialRouteName="LogoLogin" name="LogoLogin"
                 options={{
@@ -55,7 +55,7 @@ const StackNavigator = () => {
             <Stack.Screen name="Login" options={{
                 headerShown: true, title: 'Đăng nhập', headerTitleStyle: {
                     fontWeight: 'bold',
-                    color: '#F78F43',
+                    color: '#FF6100',
 
 
                 },
@@ -71,7 +71,7 @@ const StackNavigator = () => {
 
                 headerTitleStyle: {
                     fontWeight: 'bold',
-                    color: '#F78F43',
+                    color: '#FF6100',
 
 
                 },
@@ -89,7 +89,7 @@ const StackNavigator = () => {
 
                 headerTitleStyle: {
                     fontWeight: 'bold',
-                    color: '#F78F43',
+                    color: '#FF6100',
 
 
                 },
@@ -120,7 +120,7 @@ const MainNavigator = () => {
                     headerLeftLabelVisible: false,
                     headerTitleStyle: {
                         fontWeight: 'bold',
-                        color: '#F78F43',
+                        color: '#FF6100',
 
                     },
                     headerTitleAlign: 'center',
@@ -182,7 +182,8 @@ const styles = StyleSheet.create({
         borderLeftWidth: 0.1,
         borderRightWidth: 0.1,
         height: 200,
-        paddingBottom: 0
+        paddingBottom: 0,
+        // backgroundColor: '#FF6100'
     }
 })
 

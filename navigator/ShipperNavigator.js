@@ -18,7 +18,7 @@ const BottomShipperNavigator = () => {
             initialRouteName="HomeShipper"
             backBehavior="history"
             screenOptions={({ navigation, route }) => ({
-                tabBarActiveTintColor: '#F78F43',
+                tabBarActiveTintColor: '#FF6100',
                 tabBarInactiveTintColor: "#184E17",
                 tabBarStyle: {
                     borderTopLeftRadius: 24,
@@ -32,7 +32,7 @@ const BottomShipperNavigator = () => {
                 },
                 headerTitleStyle: {
                     fontWeight: 'bold',
-                    color: '#F78F43',
+                    color: '#FF6100',
                 },
                 headerTitleAlign: 'center',
                 tabBarLabelStyle: {
@@ -109,7 +109,7 @@ const ShipperNavigator = () => {
 
             headerTitleStyle: {
                 fontWeight: 'bold',
-                color: '#F78F43',
+                color: '#FF6100',
 
             },
             headerTitleAlign: 'center',

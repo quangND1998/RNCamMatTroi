@@ -25,16 +25,17 @@ const BottomNavigator = () => {
                 tabBarActiveTintColor: '#FF6100',
                 tabBarInactiveTintColor: "#184E17",
                 headerLeftLabelVisible: false,
+       
                 tabBarStyle: {
 
                     borderTopLeftRadius: 24,
                     borderTopRightRadius: 24,
                     borderLeftWidth: 0.1,
                     borderRightWidth: 0.1,
-                    height: 100,
-                    position: 'absolute',
                     overflow: 'hidden',
+                    height: 74,
                     bordercolor: 'transparent',
+                    position: 'absolute'
 
                 },
                 headerTitleStyle: {
@@ -45,20 +46,14 @@ const BottomNavigator = () => {
                 tabBarLabelStyle: {
                     margin: 0,
                     padding: 0,
-                    paddingBottom: 12,
+                    paddingBottom: 20,
 
                 },
                 tabBarItemStyle: {
                     padding: 0,
-                    paddingTop: 8,
+                    paddingTop: 14,
                 },
-                headerStyle: {
-                    borderBottomLeftRadius: 24,
-                    borderBottomRightRadius: 24,
-                    borderLeftWidth: 0.1,
-                    borderRightWidth: 0.1,
-                    height: 100,
-                },
+
                 paddingTop: 12,
                 headerLeft: (props) => (
                     <HeaderBackButton
@@ -88,7 +83,7 @@ const BottomNavigator = () => {
                     title: 'Đơn hàng',
 
                     tabBarIcon: ({ color, size }) => (
-                        // <DocumentText color="#F78F43" variant="Outline" size={25} />
+                        // <DocumentText color="#FF6100" variant="Outline" size={25} />
                         <Image source={require('../assets/icon/fi-rr-box.png')} className="w-6 h-6 " alt='box' ></Image>
                     ),
 
@@ -104,7 +99,7 @@ const BottomNavigator = () => {
                     title: 'Đặt lịch thăm vườn',
                     tabBarLabel: 'Thăm vườn',
                     tabBarIcon: ({ color, size }) => (
-                        // <Card color="#F78F43" variant="Outline" size={25} />
+                        // <Card color="#FF6100" variant="Outline" size={25} />
                         <Image source={require('../assets/icon/fi-rr-calendar.png')} className="w-6 h-6 " alt='calendar' ></Image>
                     ),
                 }}
@@ -115,6 +110,7 @@ const BottomNavigator = () => {
                 options={{
                     headerShown: false,
                     tabBarLabel: '',
+                    // headerTransparent: true,
                     tabBarIcon: ({ color, size }) => (
                         <Image source={require('../assets/icon/icon_orange.png')} className="w-14 h-14 " alt='box' ></Image>
                     ),
@@ -128,7 +124,7 @@ const BottomNavigator = () => {
                     headerShown: false,
                     tabBarLabel: 'Tài khoản',
                     tabBarIcon: ({ color, size }) => (
-                        <User color="#184E17" variant="Outline" size={24} />
+                        <User color="#184E17" variant="Outline" size={20} />
 
                     ),
                 }}
@@ -141,7 +137,8 @@ const BottomNavigator = () => {
                     tabBarLabel: 'Thêm',
                     title: 'Dịch vụ khách hàng',
                     tabBarIcon: ({ color, size }) => (
-                        <More color="#184E17" variant="Outline" size={24} />
+                        // <More color="#184E17" variant="Outline" size={20} />
+                        <Image source={require('../assets/icon/more2.png')} className="w-6 h-6 " alt='box' ></Image>
                     ),
                 }}
             />

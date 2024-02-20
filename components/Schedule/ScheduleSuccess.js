@@ -27,7 +27,7 @@ const ScheduleSuccess = ({ navigation, route }) => {
                 </Box >
 
             </ScrollView>
-            <Button onPress={() => navigation.navigate('Home')} className="absolute bottom-[-200]    w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 px-4 py-4 text-white bg-[#F78F43] rounded-xl"
+            <Button onPress={() => navigation.navigate('Home')} className="absolute bottom-[-200]    w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 px-4 py-4 text-white bg-[#FF6100] rounded-xl"
             >Trở về Trang chủ</Button>
         </SafeAreaView>
     );

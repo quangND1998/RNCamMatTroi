@@ -14,7 +14,7 @@ import { Linking, Keyboard, ScrollView, RefreshControl, ImageBackground, Section
 import { Center, Container, Heading, Button, Box, Flex, Stack, Input, SearchBar, Icon, Spacer, ZStack, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
 import { useHelper } from '../../helpers/helper';
 const { width, height } = Dimensions.get('screen');
-const imageHeight = height - 240;
+const imageHeight = height ;
 import QRCode from 'react-native-qrcode-svg';
 import { ArrowRight } from 'iconsax-react-native';
 import Video from 'react-native-video';
@@ -77,51 +77,55 @@ const ProductItem = ({ item, index, navigation }) => {
           ]}
         >
         </Image>
-        <Box className=" mt-[-260px] bg-white rounded-2xl  mx-4  border-solid border-2 border-[#2C5524]">
-          <Box className="flex flex-row p-4 w-full justify-between">
+        <Box className=" mt-[-288px] bg-white rounded-2xl  mx-4  border-solid border-2 border-[#2C5524]">
+          <Box className="flex flex-row px-4 py-2 w-full justify-between">
             <Box style={styles.content} className="text-left mr-2 ">
-              <Text numberOfLines={3} className="text-sm text-gray-700 px-1 my-1 font-base clamp three-lines"
-                style={styles.description}>Mã cây: <Text className="text-[#184E17]">{item.tree?.address}</Text></Text>
-              <Text numberOfLines={3} className="text-sm text-gray-700 px-1 my-1 font-base clamp three-lines"
-                style={styles.description}>Tên cây: <Text className="text-[#FF6100]">{item.tree?.name}</Text></Text>
-              <Text numberOfLines={3} className="text-sm text-gray-700 px-1 my-1 font-base clamp three-lines"
-                style={styles.description}>Ngày nhận nuôi: <Text className="text-[#184E17]">{formatDateShort(item.time_approve)}</Text></Text>
-              <Text numberOfLines={3} className="text-sm text-gray-700 px-1 my-1 font-base clamp three-lines"
-                style={styles.description}>Số ngày nhận nuôi: <Text className="text-[#184E17]">{formatDateUse(item.time_approve)} </Text></Text>
+              <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
+                style={styles.description}>Mã cây: <Text className="text-[#184E17] font-bold">{item.tree?.address}</Text></Text>
+              <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
+                style={styles.description}>Tên cây: <Text className="text-[#FF6100] font-bold">{item.tree?.name}</Text></Text>
+              <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
+                style={styles.description}>Ngày nhận nuôi: <Text className="text-[#184E17] font-bold" >{formatDateShort(item.time_approve)}</Text></Text>
+              <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
+                style={styles.description}>Số ngày nhận nuôi: <Text className="text-[#184E17] font-bold">{formatDateUse(item.time_approve)} </Text></Text>
             </Box>
             <Box className="p-1 ">
               <QRCode
                 value={`https://qly.cammattroi.com/tree/qrcode/${item?.id}`}
-                logo={require('../../assets/images/product.png')}
-                logoSize={20}
+                logo={require('../../assets/images/logo_qcam.png')}
+                logoSize={16}
                 logoBackgroundColor='white'
+                size={70}
+                resizeMode="contain"
               />
             </Box>
           </Box>
-          <TouchableOpacity onPress={handlerDetail} className="bg-[#FF6100]  flex flex-row rounded-b-2xl items-center justify-center text-white" >
-            <Text numberOfLines={3} className="text-sm text-white uppercase px-1 py-3 font-bold"
+          <TouchableOpacity onPress={handlerDetail} className="bg-[#FF6100]  flex flex-row rounded-b-xl items-center justify-center text-white" >
+            <Text numberOfLines={3} className="text-[15px] text-white uppercase px-1 py-2 font-bold"
             >Đặt lịch thăm vườn ngay</Text>
-            <ArrowRight className="text-[#ffffff] "
+            {/* <ArrowRight className="text-[#ffffff] "
               size="25"
               color="#FFFFFF"
-            />
+            /> */}
+            <Image className="ml-4 w-[25px] h-6" resizeMode="contain" source={require('../../assets/icon/arrow-small-right.png')}></Image>
           </TouchableOpacity>
         </Box>
       </View>
-      <Box className="bg-white rounded-2xl mt-4">
+      <Box className="bg-white rounded--t-2xl mt-4 py-2 mb-[77px]">
         <Box className="mx-4">
           <Text className="text-2xl text-[#FF6100]  px-1 py-3 font-bold" >Lịch sử chăm sóc cây</Text>
           <Box className="" >
             {item.tree?.history_care ? Object.keys(item.tree?.history_care).map((history, key) =>
               <Box key={key} >
-                {key < 2 ?
+                {key < 3 ?
                   <Box className="flex mx-3">
                     <Text className="font-base text-sm text-[#184E17] ">{formatDateShort(history)}</Text>
                     <Box className="flex w-full my-2 items-center">
                       {item.tree?.history_care[history].map((history_care, index) =>
                         // <Text className="font-inter font-normal text-base text-[#080808] ">{activity.name} ,</Text>
-                        <Box key={index} className=" flex w-full flex-row flex-wrap">
-                          <Text className="font-bold  text-[#184E17] px-3">.</Text>
+                        <Box key={index} className=" flex w-full flex-row flex-wrap items-center">
+                          {/* <Text className="font-bold  text-[#184E17] px-3">.</Text> */}
+                          <Image source={require('../../assets/icon/dot.png')} className="px-3  w-[5px] h-[5px]" resizeMode="contain"></Image>
                           {history_care.activity_care.map((activity, index) =>
                             <Box key={index} className="flex flex-row">
                               {history_care.activity_care.length - 1 == index ?
@@ -131,13 +135,15 @@ const ProductItem = ({ item, index, navigation }) => {
                             </Box>
                           )}
                         </Box>
-                      )}
+                      )} 
                     </Box>
                   </Box>
-                  :
-                  <Text className="font-base text-center text-sm text-[#184E17] ">Xem tất cả</Text>
+                  : key == 3 ? 
+                    <Text className="font-base text-center text-sm text-[#184E17] ">Xem tất cả</Text>
+                 : null
                 }
               </Box>
+              
             ) : null}
           </Box>
           <Text className="text-2xl text-[#FF6100]  px-1 py-3 font-bold" >Hình ảnh và video</Text>
@@ -162,7 +168,6 @@ const ProductItem = ({ item, index, navigation }) => {
         </Box>
 
       </Box>
-
     </View>
   );
 };
@@ -170,10 +175,11 @@ export default ProductItem;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     width: width,
   },
   content: {
-    // flex: 1,
+    flex: 1,
   },
   title: {
     fontSize: 24,

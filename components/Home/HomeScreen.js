@@ -26,12 +26,12 @@ const HomeScreen = () => {
             <Stack.Screen name="HomeScreen" options={{ headerShown: false }} component={Home} />
             <Stack.Screen name="ProductHome" options={{ headerShown: false }} component={ProductHome} />
             <Stack.Screen name="Notification" options={{
-                headerShown: true, title: 'Thông báo', tabBarActiveTintColor: '#F78F43',
+                headerShown: true, title: 'Thông báo', tabBarActiveTintColor: '#FF6100',
                 tabBarInactiveTintColor: "#184E17",
 
                 headerTitleStyle: {
                     fontWeight: 'bold',
-                    color: '#F78F43',
+                    color: '#FF6100',
                 },
                 headerTitleAlign: 'center',
                 headerRight: (props) => (
@@ -42,12 +42,12 @@ const HomeScreen = () => {
             }} component={Notification} />
 
             <Stack.Screen name="HistoryCare" options={{
-                headerShown: true, title: 'Lịch sử chăm sóc cây', tabBarActiveTintColor: '#F78F43',
+                headerShown: true, title: 'Lịch sử chăm sóc cây', tabBarActiveTintColor: '#FF6100',
                 tabBarInactiveTintColor: "#184E17",
 
                 headerTitleStyle: {
                     fontWeight: 'bold',
-                    color: '#F78F43',
+                    color: '#FF6100',
                 },
                 headerTitleAlign: 'center',
 
