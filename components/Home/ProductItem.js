@@ -14,7 +14,7 @@ import { Linking, Keyboard, ScrollView, RefreshControl, ImageBackground, Section
 import { Center, Container, Heading, Button, Box, Flex, Stack, Input, SearchBar, Icon, Spacer, ZStack, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
 import { useHelper } from '../../helpers/helper';
 const { width, height } = Dimensions.get('screen');
-const imageHeight = height - 240;
+const imageHeight = height ;
 import QRCode from 'react-native-qrcode-svg';
 import { ArrowRight } from 'iconsax-react-native';
 import Video from 'react-native-video';
@@ -77,8 +77,8 @@ const ProductItem = ({ item, index, navigation }) => {
           ]}
         >
         </Image>
-        <Box className=" mt-[-260px] bg-white rounded-2xl  mx-4  border-solid border-2 border-[#2C5524]">
-          <Box className="flex flex-row p-4 w-full justify-between">
+        <Box className=" mt-[-288px] bg-white rounded-2xl  mx-4  border-solid border-2 border-[#2C5524]">
+          <Box className="flex flex-row px-4 py-2 w-full justify-between">
             <Box style={styles.content} className="text-left mr-2 ">
               <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
                 style={styles.description}>Mã cây: <Text className="text-[#184E17] font-bold">{item.tree?.address}</Text></Text>
@@ -92,30 +92,29 @@ const ProductItem = ({ item, index, navigation }) => {
             <Box className="p-1 ">
               <QRCode
                 value={`https://qly.cammattroi.com/tree/qrcode/${item?.id}`}
-                logo={require('../../assets/images/product.png')}
-                logoSize={20}
+                logo={require('../../assets/images/logo_qcam.png')}
+                logoSize={16}
                 logoBackgroundColor='white'
-                className="w-[78px] h-[78px]"
-                size={80}
+                size={70}
+                resizeMode="contain"
               />
             </Box>
           </Box>
-          <TouchableOpacity onPress={handlerDetail} className="bg-[#FF6100]  flex flex-row rounded-b-2xl items-center justify-center text-white" >
-            <Text numberOfLines={3} className="text-[16px] text-white uppercase px-1 py-3 font-bold"
+          <TouchableOpacity onPress={handlerDetail} className="bg-[#FF6100]  flex flex-row rounded-b-xl items-center justify-center text-white" >
+            <Text numberOfLines={3} className="text-[15px] text-white uppercase px-1 py-2 font-bold"
             >Đặt lịch thăm vườn ngay</Text>
             {/* <ArrowRight className="text-[#ffffff] "
               size="25"
               color="#FFFFFF"
             /> */}
-            <Image className="w-[25px] h-10" resizeMode="contain" source={require('../../assets/icon/arrow-small-right.png')}></Image>
+            <Image className="ml-4 w-[25px] h-6" resizeMode="contain" source={require('../../assets/icon/arrow-small-right.png')}></Image>
           </TouchableOpacity>
         </Box>
       </View>
-      <Box className="bg-white rounded-2xl mt-4">
+      <Box className="bg-white rounded--t-2xl mt-4 py-2 mb-[77px]">
         <Box className="mx-4">
           <Text className="text-2xl text-[#FF6100]  px-1 py-3 font-bold" >Lịch sử chăm sóc cây</Text>
           <Box className="" >
-            
             {item.tree?.history_care ? Object.keys(item.tree?.history_care).map((history, key) =>
               <Box key={key} >
                 {key < 3 ?
@@ -176,10 +175,11 @@ export default ProductItem;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     width: width,
   },
   content: {
-    // flex: 1,
+    flex: 1,
   },
   title: {
     fontSize: 24,
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   description: {
-    fontSize: 15,
+    fontSize: 14,
     marginVertical: 12,
     color: '#000',
   },

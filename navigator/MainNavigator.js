@@ -34,7 +34,7 @@ const StackNavigator = () => {
             headerShown: false,
             headerTitleAlign: 'center',
             headerBackTitleVisible: false,
-            headerTransparent: false,
+            headerTransparent: true,
             tabBarActiveTintColor: '#F78F43',
             tabBarInactiveTintColor: "#184E17",
             headerLeftLabelVisible: false,
@@ -94,7 +94,7 @@ const StackNavigator = () => {
 
                 },
                 headerTitleAlign: 'center',
-                headerTransparent: false,
+                headerTransparent: true,
                 headerBackground: () => (
                     <HeaderBackground style={styles.background}  >
                     </HeaderBackground>

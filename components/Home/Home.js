@@ -83,9 +83,9 @@ const Home = ({ navigation, route }) => {
                 refreshControl={
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                 }>
-                <Box className='shadow bg-white rounded-b-[28px]'>
+                <Box className='absolute z-50 w-full shadow bg-white rounded-b-[28px]'>
                     {/* <Image source={require('../../assets/images/banner.png')} className="m-auto h-24 w-full object-cover" alt='banner'></Image> */}
-                    <Box className="px-4 py-6 w-full  ">
+                    <Box className="px-4 py-4 w-full  ">
                         <Flex direction='row' className="flex items-center justify-between">
                             <Flex direction='row' className="">
                                 <Avatar source={{
@@ -95,7 +95,7 @@ const Home = ({ navigation, route }) => {
 
                                 <Flex className="ml-4">
                                     <Text className="font-bold text-xl text-gray-800">{user?.name}</Text>
-                                    <Text className="text-[#FF6100] text-sm">#{user?.cic_number}</Text>
+                                    <Text className="text-[#FF6100] text-[12px]">#{user?.cic_number}</Text>
                                 </Flex>
 
                             </Flex>
@@ -127,8 +127,8 @@ const Home = ({ navigation, route }) => {
                 {/* <Box className="bg">
                     <SlideBG></SlideBG>
                 </Box> */}
-                <Box className="">
-                    <View >
+                <Box className="" style={styles.container}>
+                    <View style={styles.container}>
                         {productOwner ?
                             <FlatList
                                 data={productOwner}

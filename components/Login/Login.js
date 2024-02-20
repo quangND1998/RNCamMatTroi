@@ -42,7 +42,6 @@ const Login = ({ navigation }) => {
                 Toast.show({
                     type: 'success',
                     text1: 'Đăng nhập thành công!',
-                    text2: 'Thanks for signing up with us 👋',
                     position: 'bottom'
                 });
                 // console.log(navigation)

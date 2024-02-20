@@ -146,7 +146,7 @@ const OTP = ({ navigation }) => {
     }
     return (
 
-        <Box className="relative h-full " >
+        <Box className="relative h-full mt-9" >
             <Spinner
                 visible={spinner}
                 textContent={'Vui lòng đợi...'}
@@ -157,12 +157,12 @@ const OTP = ({ navigation }) => {
             </Box>
             <Box className="ion-padding px-6 py-6 absolute top-0 left-0 w-full h-full">
                 <Box className="ion-padding h-72">
-                    {phone_number ? <Text>Nhập mã gồm 6 chữ số được gửi tới số <Text className="font-bold">{phone_number}</Text> thông qua tin nhắn
-                        <Text className="font-bold">SMS</Text>
+                    {phone_number ? <Text>Nhập mã gồm 6 chữ số được gửi tới số <Text className="font-bold">{phone_number}</Text> thông qua tin nhắn 
+                        <Text className="font-bold"> SMS</Text>
                     </Text> : null}
 
-                    <Box style="margin-top:4rem">
-                        <TextInput className="bg-gray-50 border py-3 border-[#F78F43] text-gray-900 text-sm rounded-lg px-4" autoFocus={true}
+                    <Box className="mt-12">
+                        <TextInput className=" border border-white py-3 text-[16px]  text-gray-900 text-sm rounded-lg px-4" autoFocus={true}
                             value={otpValue}
                             autoCompleteType={true}
                             caretHidden={false}
@@ -175,10 +175,10 @@ const OTP = ({ navigation }) => {
                     {counter > 0 ? <Text>
                         Gửi lại mã sau：  {counter} s.
                     </Text> : null}
-                    {counter == 0 ? <Box className="mt-16 ">
+                    {counter == 0 ? <Box className="mt-20 flex flex-row">
 
                         <Text>Bạn chưa nhận được mã?</Text>
-                        <Button onPress={loginWithOTP}>Gửi lại mã</Button>
+                        <Text className="ml-1 text-[#FF6100] border-b-2 border-[#FF6100]" onPress={loginWithOTP}>Gửi lại mã</Text>
 
                     </Box> : null}
                     {/* <Box>
