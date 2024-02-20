@@ -77,7 +77,7 @@ const ProductItem = ({ item, index, navigation }) => {
           ]}
         >
         </Image>
-        <Box  className=" mt-[-288px] bg-white rounded-2xl  mx-4  border-solid border-2 border-[#2C5524]">
+        <Box className=" mt-[-288px] bg-white rounded-2xl  mx-4  border-solid border-2 border-[#2C5524]">
           <Box className="flex flex-row px-4 py-2 w-full justify-between">
             <Box style={styles.content} className="text-left mr-2 ">
               <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
@@ -210,8 +210,8 @@ const styles = StyleSheet.create({
     display: 'flex',
   },
   imageGallary: {
-    width: 120,
-    height: 120,
+    width: 100,
+    height: 100,
   },
   backgroundVideo: {
     position: 'absolute',
