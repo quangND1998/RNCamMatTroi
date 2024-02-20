@@ -8,6 +8,8 @@ import { logoutAction } from '../../store/actions/auth';
 import { getToken } from '../../common/asynStorage';
 import { useLogin } from '../../context/LoginProvider';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Calender from '../Svg/Calender';
+import Message from '../Svg/Message';
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 import HrTag from '../HrTag';
 const CustomerService = ({ navigation, route }) => {

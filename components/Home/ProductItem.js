@@ -125,12 +125,12 @@ const ProductItem = ({ item, index, navigation }) => {
                         // <Text className="font-inter font-normal text-base text-[#080808] ">{activity.name} ,</Text>
                         <Box key={index} className=" flex w-full flex-row flex-wrap items-center">
                           {/* <Text className="font-bold  text-[#184E17] px-3">.</Text> */}
-                          <Image source={require('../../assets/icon/dot.png')} className="px-3  w-[5px] h-[5px]" resizeMode="contain"></Image>
+                          <Image source={require('../../assets/icon/dot.png')} className="px-3  w-[5px] h-[5px] flex justify-center mb-0" resizeMode="contain"></Image>
                           {history_care.activity_care.map((activity, index) =>
                             <Box key={index} className="flex flex-row">
                               {history_care.activity_care.length - 1 == index ?
-                                <Text className="font-inter text-[13px] text-[#080808] " >{activity.name}</Text> :
-                                <Text className="font-inter  text-[13px] text-[#080808] " >{activity.name},</Text>}
+                                <Text className="font-inter text-[16px] text-[#080808] " >{activity.name}</Text> :
+                                <Text className="font-inter  text-[16px] text-[#080808] " >{activity.name}, </Text>}
 
                             </Box>
                           )}

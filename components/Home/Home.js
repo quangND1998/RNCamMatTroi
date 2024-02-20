@@ -32,6 +32,7 @@ const Home = ({ navigation, route }) => {
     const totalUnRead = useSelector(state => state.notification.totalUnRead);
     const scrollX = useRef(new Animated.Value(0)).current;
     const [currentIndex, setCurrentIndex] = useState(0);
+    const flatListRef = useRef(null);
     useEffect(() => {
         fetchProductOwner();
         dispatch(getUnReadNotification())
@@ -52,13 +53,21 @@ const Home = ({ navigation, route }) => {
     }, []);
 
     const handlePrevious = () => {
-        setCurrentIndex((prevIndex) => prevIndex - 1);
-        console.log(prevIndex)
+        const previousIndex = currentIndex - 1;
+        if (previousIndex >= 0) {
+        setCurrentIndex(previousIndex);
+        flatListRef.current.scrollToIndex({ index: previousIndex });
+        }
+        console.log(currentIndex)
       };
     
       const handleNext = () => {
-        setCurrentIndex((prevIndex) => prevIndex + 1);
-        console.log(prevIndex)
+        const nextIndex = currentIndex + 1;
+        if (nextIndex < productOwner?.length) {
+        setCurrentIndex(nextIndex);
+        flatListRef.current.scrollToIndex({ index: nextIndex });
+        }
+        console.log(currentIndex)
       };
     const handleOnScroll = event => {
         Animated.event(
@@ -135,17 +144,23 @@ const Home = ({ navigation, route }) => {
                                 renderItem={({ item,index }) => <ProductItem item={item} index={index} navigation={navigation} />}
                                 horizontal
                                 keyExtractor={(item) => item.id.toString()}
-                                initialScrollIndex={currentIndex}
+                                ref={flatListRef}
                                 initialNumToRender={1}
+                                showsHorizontalScrollIndicator={false}
 
                             /> : <View></View>}
-                            <Button className="absolute left-0" title="Previous" onPress={handlePrevious} disabled={currentIndex === 0} />
-                            <Button
-                                className="absolute right-0"
-                                title="Next"
-                                onPress={handleNext}
-                                disabled={currentIndex === productOwner?.length - 1}
-                            />
+                            {currentIndex > 0 ? 
+                            <TouchableOpacity className="absolute top-1/4 rounded-full bg-white h-8 w-8 z-50 m-auto left-4" title="Previous" onPress={handlePrevious} disabled={currentIndex === 0} >
+                                <Image className="h-6 w-6 z-50 m-auto" source={require('../../assets/icon/fi-rr-arrow-small-left.png')} resizeMode="contain"></Image>
+                            </TouchableOpacity>
+                            : null }
+
+                            {currentIndex != productOwner?.length - 1 ? 
+                            <TouchableOpacity className="absolute top-1/4 rounded-full bg-white h-8 w-8 z-50 m-auto right-4" title="Next" onPress={handleNext} disabled={currentIndex === productOwner?.length - 1} >
+                                <Image className="h-6 w-6 z-50 m-auto" source={require('../../assets/icon/fi-rr-arrow-small-right.png')} resizeMode="contain"></Image>
+                            </TouchableOpacity>
+                            : null }
+
                     </View>
                 </Box>
             </ScrollView>
