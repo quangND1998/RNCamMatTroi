@@ -42,7 +42,7 @@ const ShipperScreen = () => {
     return (
         <Stack.Navigator>
             <Stack.Screen name="HomeShipper" options={{
-                headerShown: true, title: 'Quản lý vận đơn', tabBarActiveTintColor: '#F78F43',
+                headerShown: true, title: 'Quản lý vận đơn', tabBarActiveTintColor: '#FF6100',
                 tabBarInactiveTintColor: "#184E17",
 
                 headerTitleStyle: {
@@ -50,7 +50,7 @@ const ShipperScreen = () => {
                     color: '#FFFFFF',
                 },
                 headerStyle: {
-                    backgroundColor: '#F78F43',
+                    backgroundColor: '#FF6100',
 
                 },
 
@@ -123,7 +123,7 @@ const ShipperScreen = () => {
             }} component={HomeShipper} />
             <Stack.Screen name="OrderShipperDetail" options={({ navigation, route }) => ({
                 title: route.params.title,
-                tabBarActiveTintColor: '#F78F43',
+                tabBarActiveTintColor: '#FF6100',
                 tabBarInactiveTintColor: "#184E17",
 
                 headerTitleStyle: {
@@ -131,7 +131,7 @@ const ShipperScreen = () => {
                     color: '#FFFFFF',
                 },
                 headerStyle: {
-                    backgroundColor: '#F78F43',
+                    backgroundColor: '#FF6100',
 
                 },
 
@@ -152,7 +152,7 @@ const ShipperScreen = () => {
                 ),
             })} component={OrderShipperDetail} />
             {/* <Stack.Screen name="HomeShipper" options={{
-                headerShown: true, title: 'Quản lý vận đơn', tabBarActiveTintColor: '#F78F43',
+                headerShown: true, title: 'Quản lý vận đơn', tabBarActiveTintColor: '#FF6100',
                 tabBarInactiveTintColor: "#184E17",
 
                 headerTitleStyle: {
@@ -160,7 +160,7 @@ const ShipperScreen = () => {
                     color: '#FFFFFF',
                 },
                 headerStyle: {
-                    backgroundColor: '#F78F43',
+                    backgroundColor: '#FF6100',
 
                 },
 

@@ -59,7 +59,7 @@ const OrderAddress = ({ order_detail }) => {
 
                         <Flex key={index} direction='row' className=" justify-between  py-2 w-full">
                             <Flex direction='row' className=" items-center">
-                                <Text className="py-0.5 px-1 border border-0.5 rounded-lg text-[#F78F43]">{item.quantity}x</Text>
+                                <Text className="py-0.5 px-1 border border-0.5 rounded-lg text-[#FF6100]">{item.quantity}x</Text>
                                 <Box className="ml-3">
                                     <Text className="text-[12px] ">{item.product?.name}</Text>
                                 </Box>
@@ -76,7 +76,7 @@ const OrderAddress = ({ order_detail }) => {
 
                         <Flex key="index" direction='row' className=" justify-between  py-2 w-full">
                             <Flex direction='row' className=" items-center">
-                                <Text className="py-0.5 px-1 border border-0.5 rounded-lg text-[#F78F43]">{item.quantity}x</Text>
+                                <Text className="py-0.5 px-1 border border-0.5 rounded-lg text-[#FF6100]">{item.quantity}x</Text>
                                 <Box className="ml-3">
                                     <Text className="text-[12px] ">{item.product?.name}</Text>
                                 </Box>

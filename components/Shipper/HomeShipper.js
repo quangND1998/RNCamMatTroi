@@ -108,7 +108,7 @@ const HomeShipper = ({ navigation, route }) => {
                 <Box className=" mx-3 my-3 ">
                     <Box className={`  bg-white  rounded-md  `} >
                         {orders_transport_status ? orders_transport_status.map((order_transport_status, index) =>
-                            <Box key={index} className={`${order_transport_status.status == status ? 'bg-[#F78F43]' : ''}`}>
+                            <Box key={index} className={`${order_transport_status.status == status ? 'bg-[#FF6100]' : ''}`}>
                                 <TouchableOpacity onPress={() =>
                                     dispatch({
                                         type: 'changeShipperStatus',

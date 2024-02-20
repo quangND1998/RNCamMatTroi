@@ -28,7 +28,7 @@ const OrderPrice = ({ order_detail }) => {
                     <Text className="text-[13px] font-[400]">  {order_detail.shipping_fee > 0 ? formatPrice(order_detail.shipping_fee) : 'Miễn phí'}</Text>
                 </Flex>
                 <Flex direction='row' className="justify-between" >
-                    <Text className="text-[13px] font-[400] text-[#686868]"><Icon name='pricetag-outline' className="mr-2" size={16} color="#F78F43" />Ưu đãi</Text>
+                    <Text className="text-[13px] font-[400] text-[#686868]"><Icon name='pricetag-outline' className="mr-2" size={16} color="#FF6100" />Ưu đãi</Text>
                     {order_detail.discount ? <Text className="text-[13px] font-[400]">-{formatPrice(order_detail.discount.discount_mount)}</Text> : null}
 
                 </Flex>

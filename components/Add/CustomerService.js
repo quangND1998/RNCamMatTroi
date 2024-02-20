@@ -48,14 +48,14 @@ const CustomerService = ({ navigation, route }) => {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
-                <Box className="mb-5 pb-5">
-                    <Box className=" h-full px-3 pt-5 bg-[#F0F0F0]">
+                <Box className="mb-4 pb-4">
+                    <Box className=" h-full px-3 pt-4 bg-[#F0F0F0]">
                         <TouchableOpacity onPress={() => navigation.navigate('Schedule')}  >
                             <Flex className="w-full py-2 ">
                                 <Flex direction='row' >
                                     <Calender width={24} height={25} />
                                     {/* <MaterialCommunityIcons name='calendar-range-outline' size={24} className="text-[#070707]" color="#070707" /> */}
-                                    <Text className=" text-[#000000] ml-3 text-[20px]  ">Đặt lịch thăm vườn</Text>
+                                    <Text className=" text-[#000000] ml-3 text-[18px]  ">Đặt lịch thăm vườn</Text>
                                 </Flex>
                             </Flex>
                         </TouchableOpacity>
@@ -66,7 +66,7 @@ const CustomerService = ({ navigation, route }) => {
                                 <Flex direction='row' className="mt-4">
                                     <Message width={24} height={24} />
 
-                                    <Text className="  text-[#000000] ml-3 text-[20px] ">Khiếu nại, phản hồi</Text>
+                                    <Text className="  text-[#000000] ml-3 text-[18px] ">Khiếu nại, phản hồi</Text>
                                 </Flex>
                             </Flex>
                         </TouchableOpacity>
@@ -79,7 +79,7 @@ const CustomerService = ({ navigation, route }) => {
                                         color="#000000"
                                         variant="Outline"
                                     />
-                                    <Text className="  text-[#000000] ml-2 text-[20px] ">Đăng xuất</Text>
+                                    <Text className="  text-[#000000] ml-2 text-[18px] ">Đăng xuất</Text>
                                 </Flex>
                             </TouchableOpacity>
                         </Flex>

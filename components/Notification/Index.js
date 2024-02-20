@@ -41,7 +41,7 @@ const Notification = ({ navigation, route }) => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView
+            <ScrollView className="mb-[77px]"
                 contentContainerStyle={styles.scrollView}
                 refreshControl={
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />

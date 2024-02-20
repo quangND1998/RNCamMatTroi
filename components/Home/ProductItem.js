@@ -14,7 +14,7 @@ import { Linking, Keyboard, ScrollView, RefreshControl, ImageBackground, Section
 import { Center, Container, Heading, Button, Box, Flex, Stack, Input, SearchBar, Icon, Spacer, ZStack, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
 import { useHelper } from '../../helpers/helper';
 const { width, height } = Dimensions.get('screen');
-const imageHeight = height ;
+const imageHeight = height;
 import QRCode from 'react-native-qrcode-svg';
 import { ArrowRight } from 'iconsax-react-native';
 import Video from 'react-native-video';
@@ -77,7 +77,7 @@ const ProductItem = ({ item, index, navigation }) => {
           ]}
         >
         </Image>
-        <Box className=" mt-[-288px] bg-white rounded-2xl  mx-4  border-solid border-2 border-[#2C5524]">
+        <Box  className=" mt-[-288px] bg-white rounded-2xl  mx-4  border-solid border-2 border-[#2C5524]">
           <Box className="flex flex-row px-4 py-2 w-full justify-between">
             <Box style={styles.content} className="text-left mr-2 ">
               <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
@@ -135,15 +135,20 @@ const ProductItem = ({ item, index, navigation }) => {
                             </Box>
                           )}
                         </Box>
-                      )} 
+                      )}
                     </Box>
                   </Box>
-                  : key == 3 ? 
-                    <Text className="font-base text-center text-sm text-[#184E17] ">Xem tất cả</Text>
-                 : null
+                  : key == 3 ?
+                    <PressableOpacity onPress={() => navigation.navigate('HistoryCare', { treeId: item.tree.id }
+
+                    )}>
+                      <Text className="font-base text-center text-sm text-[#184E17] ">Xem tất cả</Text>
+                    </PressableOpacity>
+
+                    : null
                 }
               </Box>
-              
+
             ) : null}
           </Box>
           <Text className="text-2xl text-[#FF6100]  px-1 py-3 font-bold" >Hình ảnh và video</Text>
@@ -152,7 +157,7 @@ const ProductItem = ({ item, index, navigation }) => {
               <Box key={index_m} className="w-1/3 border border-[#F9EDD5]" >
                 {image.mime_type.includes("image") ?
                   <ImageModal resizeMode="contain"
-                     source={{ uri: image.original_url }} alt={`imageslide`} style={[styles.imageGallary]}></ImageModal>
+                    source={{ uri: image.original_url }} alt={`imageslide`} style={[styles.imageGallary]}></ImageModal>
                   :
                   <Box className="w-full h-[100px]">
                     <Box className="absolute flex items-center justify-center w-full h-full" >
@@ -179,7 +184,7 @@ const styles = StyleSheet.create({
     width: width,
   },
   content: {
-    flex: 1,
+    // flex: 1,
   },
   title: {
     fontSize: 24,

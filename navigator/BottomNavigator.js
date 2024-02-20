@@ -53,7 +53,13 @@ const BottomNavigator = () => {
                     padding: 0,
                     paddingTop: 14,
                 },
-
+                headerStyle: {
+                    borderBottomLeftRadius: 20,
+                    borderBottomRightRadius: 20,
+                    borderLeftWidth: 0.1,
+                    borderRightWidth: 0.1,
+                    height: 60,
+                },
                 paddingTop: 12,
                 headerLeft: (props) => (
                     <HeaderBackButton

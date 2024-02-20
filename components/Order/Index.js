@@ -99,7 +99,7 @@ const OrderItem = ({ navigation, route }) => {
                         <Text className="font-base text-[18px] text-white ">Liên hệ đặt nông sản</Text>
                     </PressableOpacity>
                 </Button>
-                <Box className="bg-white rounded-t-[30px] mt-3 px-3">
+                <Box className="bg-white rounded-t-[30px] mt-3 mb-[77px] px-3">
                     <Text className="text-center font-bold my-6 text-[22px] text-[#FF6100] ">Lịch sử nhận quà nông sản</Text>
                     <Box >
                         {orderGilfs ? orderGilfs.map((order, index) =>

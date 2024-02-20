@@ -78,7 +78,7 @@ const BottomShipperNavigator = () => {
                     tabBarLabel: 'Quản lý vận đơn',
                     tabBarIcon: ({ color, size }) => (
                         // <Home source={require('../assets/icon/home.png')} className="w-14 h-14 " alt='box' ></Home>
-                        <Home color="#F78F43" size={26} />
+                        <Home color="#FF6100" size={26} />
 
                     ),
                 }}
@@ -91,7 +91,7 @@ const BottomShipperNavigator = () => {
                     tabBarLabel: 'Thêm',
                     title: 'Quản lý vận đơn',
                     tabBarIcon: ({ color, size }) => (
-                        <Chevron color="#F78F43" size={26} />
+                        <Chevron color="#FF6100" size={26} />
                     ),
                 }}
             />

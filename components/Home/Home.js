@@ -113,7 +113,7 @@ const Home = ({ navigation, route }) => {
                                 }} >
                                     <Image source={require('../../assets/icon/icon_bell.png')}  className="ml-5" alt="icon_bell"></Image>
                                     <Box className="absolute left-8 top-[-8] shadow rounded-md ">
-                                        <Text className=" w-[20px] h-[20px] text-center text-white bg-[#F78F43] text-[10px] rounded-xl">{
+                                        <Text className=" w-[20px] h-[20px] text-center text-white bg-[#FF6100] text-[10px] rounded-xl">{
                                             totalUnRead
                                         }
                                         </Text>
