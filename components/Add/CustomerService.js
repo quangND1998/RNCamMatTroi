@@ -8,6 +8,8 @@ import { logoutAction } from '../../store/actions/auth';
 import { getToken } from '../../common/asynStorage';
 import { useLogin } from '../../context/LoginProvider';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Calender from '../Svg/Calender';
+import Message from '../Svg/Message';
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 import HrTag from '../HrTag';
 const CustomerService = ({ navigation, route }) => {
@@ -51,7 +53,7 @@ const CustomerService = ({ navigation, route }) => {
                         <TouchableOpacity onPress={() => navigation.navigate('Schedule')}  >
                             <Flex className="w-full py-2 ">
                                 <Flex direction='row' >
-                                    <Image source={require('../../assets/icon/calender.png')} className="w-6 h-6" alt="calendar"></Image>
+                                    <Calender width={24} height={25} />
                                     {/* <MaterialCommunityIcons name='calendar-range-outline' size={24} className="text-[#070707]" color="#070707" /> */}
                                     <Text className=" text-[#000000] ml-3 text-[20px]  ">Đặt lịch thăm vườn</Text>
                                 </Flex>
@@ -62,7 +64,7 @@ const CustomerService = ({ navigation, route }) => {
                         <TouchableOpacity onPress={() => navigation.navigate('Complaint')}  >
                             <Flex className="w-full py-2 ">
                                 <Flex direction='row' className="mt-4">
-                                    <Image source={require('../../assets/icon/message.png')} className="w-6 h-6" alt="message"></Image>
+                                    <Message width={24} height={24} />
 
                                     <Text className="  text-[#000000] ml-3 text-[20px] ">Khiếu nại, phản hồi</Text>
                                 </Flex>

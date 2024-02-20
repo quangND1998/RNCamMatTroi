@@ -320,7 +320,7 @@ const ScheduleTour = ({ navigation, route }) => {
                                     </Flex>
                                 </Box>
                                 <Box className="my-5 bg-[#F0F0F0] rounded-lg">
-                                    <Heading size="sm" className="color-[#FF6100]">Ghi chú</Heading>
+                                    {/* <Heading size="sm" className="color-[#FF6100]">Ghi chú</Heading> */}
                                     <TextArea value={textAreaValue} w="100%" h="150" placeholder="Ghi chú"
                                         maxW="500"
                                         onChangeText={text => setTextAreaValue(text)} // for android and ios
