@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { LogBox, Dimensions } from 'react-native';
-import { StyleSheet, TouchableOpacity, Linking, Keyboard, View, Alert, SafeAreaView, ScrollView, Platform, RefreshControl } from 'react-native';
+import { StyleSheet, TextInput,TouchableOpacity, Linking, Keyboard, View, Alert, SafeAreaView, ScrollView, Platform, RefreshControl } from 'react-native';
 import { Center, Container, Heading, Button, Text, Flex, Box, Radio, TextArea, Stack, Select, CheckIcon, Input, SearchBar, Image, Icon, Spacer, ZStack, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUserData, logoutAction, saveInforChange } from '../../store/actions/auth';
@@ -17,9 +17,13 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { useHelper } from '../../helpers/helper';
 import { Camera, CameraType, Constants, FlashMode, } from 'expo-camera';
 import { CONTENT_SPACING, CONTROL_BUTTON_SIZE, SAFE_AREA_PADDING } from '../QrCode/Constants'
-import { LampOn, LampSlash, Image as ImageIcon, ArrowLeft2, Camera as CameraIcon } from 'iconsax-react-native';
+import { LampOn, LampSlash, Image as ImageIcon, ArrowLeft2, Camera as CameraIcon, ArrowDown2 } from 'iconsax-react-native';
 import { Picker } from '@react-native-picker/picker';
+
+import Arrow from '../Svg/Arrow';
 import UploadAvatar from './UploadAvatar';
+// import { TextInput } from 'react-native-gesture-handler';
+
 const UpdateUser = ({ navigation, route }) => {
     const dispatch = useDispatch();
     const [type, setType] = useState(CameraType.front);
@@ -246,318 +250,335 @@ const UpdateUser = ({ navigation, route }) => {
                 refreshControl={
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                 }>
-                <Box>
-                    <Box className="my-10 w-full ">
-                        <Box className="relative">
+                <Box className="mb-[77px]">
+                    <Box>
+                        <Box className="my-10 mt-14 w-full ">
+                            <Box className="relative">
 
-                            {photo ? <Image source={{ uri: photo }} className="rounded-full m-auto h-28 w-28 " alt="avt"></Image>
-                                : checkIsImage(user?.profile_photo_url) == true ? <Image source={{ uri: user?.profile_photo_url }} className="rounded-full m-auto h-28 w-28 " alt="avt"></Image> : <Image source={require("../../assets/images/avt.png")} className="rounded-full m-auto h-28 w-28 " alt="avt"></Image>}
+                                {photo ? <Image source={{ uri: photo }} className="rounded-full m-auto h-28 w-28 " alt="avt"></Image>
+                                    : checkIsImage(user?.profile_photo_url) == true ? <Image source={{ uri: user?.profile_photo_url }} className="rounded-full m-auto h-28 w-28 " alt="avt"></Image> : <Image source={require("../../assets/images/avt.png")} className="rounded-full m-auto h-28 w-28 " alt="avt"></Image>}
 
-                            <Box className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                <Box className="m-[12px]">
-
-                                    <PressableOpacity onPress={() => dispatch({ type: 'openCamera', payload: true })} className="bg-white w-12 h-12  absolute  rounded-full shadow-md">
-                                        <Image source={require("../../assets/icon/camera.png")} className="rounded-full m-auto w-[17.07] h-[15.89] " alt="avt"></Image>
-                                    </PressableOpacity>
-
-
+                                <Box className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                                    <Box className="m-[12px]">
+                                        <PressableOpacity onPress={() => dispatch({ type: 'openCamera', payload: true })} className="bg-white w-10 h-10  absolute  rounded-full shadow-md">
+                                            <Image source={require("../../assets/icon/camera.png")} resizeMode="contain" className=" m-auto w-[17] h-[18] " alt="avt"></Image>
+                                        </PressableOpacity>
+                                    </Box>
                                 </Box>
                             </Box>
-                        </Box>
-                        <Box className="mt-8">
-                            <Text className="text-[20px] font-bold text-center mt-5">{user?.name}</Text>
-                            <Text className="text-[13px] text-[#184E17] text-center my-1">{user?.email}</Text>
-                            {user?.infor?.status == 0 ? <Text className="text-xs text-[#CB9200] text-center my-1">Đang chờ xét duyệt</Text> : null}
-                        </Box>
+                            <Box className="mt-6">
+                                <Text className="text-[20px] font-bold text-center mt-5">{user?.name}</Text>
+                                <Text className="text-[13px] text-[#184E17] text-center my-1">{user?.email}</Text>
+                                {user?.infor?.status == 0 ? <Text className="text-[10px] text-[#FF6100] text-center">Đang chờ xét duyệt</Text> : null}
+                            </Box>
 
+                        </Box>
                     </Box>
-                </Box>
-                <Box className="mx-4 px-2 my-2">
-                    <Box className="w-full">
-                        <Text bold className="text-[17px] mb-5  ">Thông tin liên hệ </Text>
-                        <Picker className="border border-0.5"
-                            selectedValue={selectedLanguage}
-                            onValueChange={(itemValue, itemIndex) =>
-                                setSelectedLanguage(itemValue)
-                            }>
-                            <Picker.Item label="Java" value="java" />
-                            <Picker.Item label="JavaScript" value="js" />
-                        </Picker>
-                        <Box class="my-5 ">
-                            <Text className="block mb-2 text-sm  text-[#184E17] ">Họ và
-                                tên </Text>
-                            <Input type="text" isInvalid={checkInValid(errors, 'name') ? true : false} value={form.name} onChangeText={(value) => setForm(prevState => {
-                                return { ...prevState, name: value }
-                            })}
-                                size="xl"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full "
-                                placeholder="" required></Input>
-                            <Box className="text-red-500 text-[11px]" >
-                                <ErorrValidator errors={errors} key_error={'name'} />
-                            </Box>
-                        </Box>
-
-                        <Flex direction='column' className="my-2">
-                            <Text className="text-[#184E17] text-sm mt-">Giới tính</Text>
-                            <Box className="my-1">
-                                <Radio.Group name="myRadioGroup" accessibilityLabel="favorite number" value={form.sex} onChange={nextValue => {
-                                    setForm(prevState => {
-                                        return { ...prevState, sex: nextValue }
-                                    })
-                                }}>
-                                    <Stack direction={{
-                                        base: "row",
-                                        md: "row"
-                                    }} alignItems={{
-                                        base: "flex-wrap",
-                                        md: "center"
-                                    }} space={4} w="75%" maxW="400px">
-                                        <Radio value="male" color="orange" colorScheme="orange" my={3} size="sm">
-                                            Nam
-                                        </Radio>
-                                        <Radio value="female" colorScheme="orange" my={3} size="sm">
-                                            Nữ
-                                        </Radio>
-                                        <Radio value="khác" colorScheme="orange" my={3} size="sm">
-                                            Khác
-                                        </Radio>
-
-                                    </Stack>
-
-                                </Radio.Group>
-                                <ErorrValidator errors={errors} key_error={'sex'} />
-                            </Box>
-                        </Flex>
-                        <Box className="my-2">
-                            <Text className="block mb-2 text-sm  text-[#184E17] ">Email</Text>
-                            <Input type="text" isInvalid={checkInValid(errors, 'email') ? true : false} value={form.email} onChangeText={(value) => setForm(prevState => {
-                                return { ...prevState, email: value }
-                            })}
-                                size="xl"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                                placeholder="" required></Input>
-                            <ErorrValidator errors={errors} key_error={'email'} />
-                        </Box>
-                        <Box className="my-2">
-                            <Text className="my-1 text-[#184E17] text-sm">Số điện thoại </Text>
-
-
-                            <Input keyboardType="phone-pad" size="xl" value={form.phone_number} isInvalid={checkInValid(errors, 'phone_number') ? true : false} onChangeText={(value) => setForm(prevState => {
-                                return { ...prevState, phone_number: value }
-                            })}
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                                placeholder="" required></Input>
-                            {form.phone_number == null ?
-                                <Box>
-
+                    <Box className="mx-4 px-2 my-2">
+                        <Box className="w-full">
+                            <Text bold className="text-[18px] mb-5  ">Thông tin liên hệ </Text>
+                            <Box className=" ">
+                                <Text className="block mb-2 text-[13px]  text-[#184E17] ">Họ</Text>
+                                <TextInput type="text" isInvalid={checkInValid(errors, 'name') ? true : false} value={form.name} onChangeText={(value) => setForm(prevState => {
+                                    return { ...prevState, name: value }
+                                })}
+                                    className=" border border-[#AEAEAE] text-gray-900 text-sm rounded-[10px] px-3 py-1.5 block w-full "
+                                    placeholder="" required></TextInput>
+                                <Box className="text-red-500 text-[11px]" >
+                                    <ErorrValidator errors={errors} key_error={'name'} />
                                 </Box>
-                                : <Box>
-
-                                    {isValidPhoneNumber(form.phone_number, 'VN') ? null : <Text className="text-red-500 ml-12 mt-2 text-xs" >Số điện thoại không hợp lệ </Text>}
+                            </Box>
+                            <Box className="my-4 ">
+                                <Text className="block mb-2 text-[13px]  text-[#184E17] ">Tên đệm và tên </Text>
+                                <TextInput type="text" isInvalid={checkInValid(errors, 'name') ? true : false} value={form.name} onChangeText={(value) => setForm(prevState => {
+                                    return { ...prevState, name: value }
+                                })}
+                                    className=" border border-[#AEAEAE] text-gray-900 text-sm rounded-[10px] px-3 py-1.5 block w-full "
+                                    placeholder="" required></TextInput>
+                                <Box className="text-red-500 text-[11px]" >
+                                    <ErorrValidator errors={errors} key_error={'name'} />
                                 </Box>
+                            </Box>
 
-                            }
-                            <ErorrValidator errors={errors} key_error={'phone_number'} />
-                        </Box>
-                        <Box className="my-2">
-                            <Text className="my-1 text-[#184E17] text-sm">Địa chỉ</Text>
-                            <Input type="text" isInvalid={checkInValid(errors, 'address') ? true : false} value={form.address} onChangeText={(value) => {
-                                setForm(prevState => {
-                                    return { ...prevState, address: value }
-                                });
-
-                            }}
-                                size="xl"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                                placeholder="" required></Input>
-                            <ErorrValidator errors={errors} key_error={'address'} />
-                        </Box>
-                        <Box className="my-2">
-                            {provinces ? <Box >
-                                <Text className="text-[#184E17] my-2 text-sm">Tỉnh/ Thành phố</Text>
-                                <Box maxW="500">
-                                    <Select size="16" isInvalid={checkInValid(errors, 'city') ? true : false} selectedValue={form.city} minWidth="100" accessibilityLabel="Chọn Tính/ Thành phố" placeholder="Chọn Tính/ Thành phố" _selectedItem={{
-                                        color: "orange",
-                                        endIcon: <CheckIcon size="1" color="orange.600" />
-                                    }} mt={1} onValueChange={itemValue => {
+                            <Flex direction='column' className="my-1">
+                                <Text className="text-[#184E17] text-[13px] mt-">Giới tính</Text>
+                                <Box className="mt-2">
+                                    <Radio.Group name="myRadioGroup" accessibilityLabel="favorite number" value={form.sex} onChange={nextValue => {
                                         setForm(prevState => {
-                                            return { ...prevState, city: itemValue }
-                                        });
-                                        setForm(prevState => {
-                                            return { ...prevState, district: null }
-                                        });
-                                        setForm(prevState => {
-                                            return { ...prevState, wards: null }
+                                            return { ...prevState, sex: nextValue }
                                         })
                                     }}>
+                                        <Stack direction={{
+                                            base: "row",
+                                            md: "row"
+                                        }} alignItems={{
+                                            base: "flex-wrap",
+                                            md: "center"
+                                        }} space={10} w="75%" >
+                                            <Radio value="male" color="orange" colorScheme="orange" my={3} size="3">
+                                                <Text className="text-[#184E17] text-[13px]">Nam</Text>
+                                            </Radio>
+                                            <Radio value="female" colorScheme="orange" my={3} size="3" >
+                                                <Text className="text-[#184E17] text-[13px]">Nữ</Text>
+                                            </Radio>
+                                            <Radio value="khác" colorScheme="orange" my={3} size="3">
+                                                <Text className="text-[#184E17] text-[13px]">Khác</Text>
+                                            </Radio>
 
-                                        {provinces.map((item, index) =>
-                                            <Select.Item key={index} label={item.Name} value={item.Name} />)}
-                                    </Select>
+                                        </Stack>
+
+                                    </Radio.Group>
+                                    <ErorrValidator errors={errors} key_error={'sex'} />
                                 </Box>
+                            </Flex>
+                            <Box className="my-1">
+                                <Text className="my-1 text-[#184E17] text-[13px]">Số điện thoại </Text>
+                                <TextInput keyboardType="phone-pad" value={form.phone_number} isInvalid={checkInValid(errors, 'phone_number') ? true : false} onChangeText={(value) => setForm(prevState => {
+                                    return { ...prevState, phone_number: value }
+                                })}
+                                    className="border border-[#AEAEAE] text-gray-900 text-sm rounded-[10px] px-3 py-1.5 block w-full"
+                                    placeholder="" required></TextInput>
+                                {form.phone_number == null ?
+                                    <Box>
 
-                                {/* <ErorrValidator errors={errors} key_error={'product_service_owner_id'} /> */}
-                            </Box> : null}
-                            <ErorrValidator errors={errors} key_error={'city'} />
-                        </Box>
-                        <Box className="my-2">
-                            <Box >
-                                <Text className="text-[#184E17] my-2 text-sm">Quận/ Huyện</Text>
-                                <Box maxW="500">
-                                    <Select size="16" isInvalid={checkInValid(errors, 'district') ? true : false} selectedValue={form.district} minWidth="100" accessibilityLabel="Chọn Quận/ Huyện" placeholder="Chọn Quận/ Huyện" _selectedItem={{
-                                        bg: "orange",
-                                        endIcon: <CheckIcon size="1" color="orange.600" />
-                                    }} mt={1} onValueChange={itemValue => setForm(prevState => {
-                                        return { ...prevState, district: itemValue }
-                                    })}>
-                                        {districts.Districts ? districts.Districts.map((item, index) =>
-                                            <Select.Item key={index} label={item.Name} value={item.Name} />)
-                                            : null}
-                                    </Select>
-                                </Box>
+                                    </Box>
+                                    : <Box>
 
-                                {/* <ErorrValidator errors={errors} key_error={'product_service_owner_id'} /> */}
+                                        {isValidPhoneNumber(form.phone_number, 'VN') ? null : <Text className="text-red-500 ml-12 mt-2 text-xs" >Số điện thoại không hợp lệ </Text>}
+                                    </Box>
+                                }
+                                <ErorrValidator errors={errors} key_error={'phone_number'} />
                             </Box>
-                            <ErorrValidator errors={errors} key_error={'district'} />
-                        </Box>
-                        <Box className="my-2">
-                            <Box >
-                                <Text className="text-[#184E17] my-2 text-sm">Xã/ Phường</Text>
-                                <Box maxW="600">
-                                    <Select size="16" isInvalid={checkInValid(errors, 'wards') ? true : false} selectedValue={form.wards} minWidth="200" accessibilityLabel="Chọn Xã/ Phường" placeholder="Chọn Xã/ Phường" _selectedItem={{
-                                        bg: "orange",
-                                        endIcon: <CheckIcon size="1" color="orange.600" />
-                                    }} mt={1} onValueChange={itemValue => setForm(prevState => {
-                                        return { ...prevState, wards: itemValue }
-                                    })}>
-                                        {wards?.Wards ? wards.Wards.map((item, index) =>
-                                            <Select.Item key={index} label={item.Name} value={item.Name} />)
-                                            : null}
-                                    </Select>
-                                </Box>
-
-                                {/* <ErorrValidator errors={errors} key_error={'product_service_owner_id'} /> */}
+                            <Box className="my-2">
+                                <Text className="block mb-2 text-[13px]  text-[#184E17] ">Email</Text>
+                                <TextInput type="text" isInvalid={checkInValid(errors, 'email') ? true : false} value={form.email} onChangeText={(value) => setForm(prevState => {
+                                    return { ...prevState, email: value }
+                                })}
+                                    className="border border-[#AEAEAE] text-gray-900 text-sm rounded-[10px] px-3 py-1.5 block w-full"
+                                    placeholder="" required></TextInput>
+                                <ErorrValidator errors={errors} key_error={'email'} />
                             </Box>
-                            <ErorrValidator errors={errors} key_error={'wards'} />
+
+                            <Box className="mt-1">
+                                <Text className="my-1 text-[#184E17] text-[13px]">Địa chỉ</Text>
+                                <TextInput type="text" isInvalid={checkInValid(errors, 'address') ? true : false} value={form.address} onChangeText={(value) => {
+                                    setForm(prevState => {
+                                        return { ...prevState, address: value }
+                                    });
+
+                                }}
+                                    size="xl"
+                                    className="border border-[#AEAEAE] text-gray-900 text-sm rounded-[10px] px-3 py-1.5 block w-full"
+                                    placeholder="" required></TextInput>
+                                <ErorrValidator errors={errors} key_error={'address'} />
+                            </Box>
+                            <Box className="mt-2">
+                                {provinces ? <Box >
+                                    <Text className="text-[#184E17] my-1 text-[13px]">Tỉnh/ Thành phố</Text>
+                                    <Box maxW="500" className="">
+                                        <Select size="16" className="rounded-xl"
+                                        dropdownIcon={<Box className="mr-2">
+                                            <Arrow color="#FF6100" width={13} height={6} />
+                                        </Box>
+                                        } isInvalid={checkInValid(errors, 'city') ? true : false} selectedValue={form.city} minWidth="100" accessibilityLabel="Chọn Tính/ Thành phố" placeholder="Chọn Tính/ Thành phố" 
+                                        _selectedItem={{
+                                            bg: "#FF6100",
+                                            color: 'white',
+                                            rightIcon: <CheckIcon size="5" color="white" />
+                                        }} 
+                                        mt={1} 
+                                        borderRadius={10}
+                                        borderColor={'#AEAEAE'}
+                                        color={'#184E17'}
+                                        padding={1.5}
+                                        onValueChange={itemValue => {
+                                            setForm(prevState => {
+                                                return { ...prevState, city: itemValue }
+                                            });
+                                            setForm(prevState => {
+                                                return { ...prevState, district: null }
+                                            });
+                                            setForm(prevState => {
+                                                return { ...prevState, wards: null }
+                                            })
+                                        }}>
+
+                                            {provinces.map((item, index) =>
+                                                <Select.Item key={index} label={item.Name} value={item.Name} />)}
+                                        </Select>
+                                    </Box>
+                                </Box> : null}
+                                <ErorrValidator errors={errors} key_error={'city'} />
+                            </Box>
+                            <Box className="mt-2">
+                                <Box >
+                                    <Text className="text-[#184E17] my-1 text-[13px]">Quận/ Huyện</Text>
+                                    <Box maxW="500">
+                                        <Select size="16" 
+                                            dropdownIcon={<Box className="mr-2">
+                                                <Arrow color="#FF6100" width={13} height={6} />
+                                            </Box>
+                                            } isInvalid={checkInValid(errors, 'district') ? true : false} selectedValue={form.district} minWidth="100" accessibilityLabel="Chọn Quận/ Huyện" placeholder="Chọn Quận/ Huyện" 
+                                            _selectedItem={{
+                                                bg: "teal.600",
+                                                rightIcon: <CheckIcon size="5" color="white" />
+                                            }}
+                                            mt={1} 
+                                            borderRadius={10}
+                                            borderColor={'#AEAEAE'}
+                                            color={'#184E17'}
+                                            padding={1.5}
+                                            onValueChange={itemValue => setForm(prevState => {
+                                                            return { ...prevState, district: itemValue }
+                                                        })}>
+                                            {districts.Districts ? districts.Districts.map((item, index) =>
+                                                    <Select.Item key={index} label={item.Name} value={item.Name} />)
+                                                    : null}
+                                        </Select>
+                                    </Box>
+
+                                    {/* <ErorrValidator errors={errors} key_error={'product_service_owner_id'} /> */}
+                                </Box>
+                                <ErorrValidator errors={errors} key_error={'district'} />
+                            </Box>
+                            <Box className="mt-2 mb-2">
+                                <Box >
+                                    <Text className="text-[#184E17] my-1 text-[13px]">Xã/ Phường</Text>
+                                    <CheckIcon size="1" color="orange.600" />
+                                    <Box maxW="600">
+                                        <Select size="16" dropdownIcon={<Box className="mr-2">
+                                            <Arrow color="#FF6100" width={13} height={6} />
+                                        </Box>
+                                        } isInvalid={checkInValid(errors, 'wards') ? true : false} selectedValue={form.wards} minWidth="200" 
+                                        accessibilityLabel="Chọn Xã/ Phường" 
+                                        placeholder="Chọn Xã/ Phường" 
+                                        _selectedItem={{
+                                            bg: "orange.600",
+                                            rightIcon: <CheckIcon size="5" color="white" />
+                                        }} 
+                                        borderRadius={10}
+                                        borderColor={'#AEAEAE'}
+                                        color={'#184E17'}
+                                        padding={1.5}
+                                        onValueChange={itemValue => setForm(prevState => {
+                                            return { ...prevState, wards: itemValue }
+                                        })}>
+                                            {wards?.Wards ? wards.Wards.map((item, index) =>
+                                                <Select.Item key={index} label={item.Name} value={item.Name} />)
+                                                : null}
+                                        </Select>
+                                    </Box>
+
+                                    {/* <ErorrValidator errors={errors} key_error={'product_service_owner_id'} /> */}
+                                </Box>
+                                <ErorrValidator errors={errors} key_error={'wards'} />
+                            </Box>
                         </Box>
                     </Box>
-                </Box>
-                <Box className="mx-4 px-2 my-2 ">
-                    <Box className="w-full">
-                        <Text bold className="text-[17px] mb-4 ">Thông tin giấy tờ</Text>
+                    {/* <Box className="mx-4 px-2 my-2 ">
+                        <Box className="w-full">
+                            <Text bold className="text-[17px] mb-4 text-[13px]">Thông tin giấy tờ</Text>
 
-                        <Box class="my-5 mt-4 ">
-                            <Text className="block mb-2 text-sm  text-[#184E17] ">Giấy tờ tùy thân (CMT/CCCD)</Text>
-                            <Input size="xl" type="text" isInvalid={checkInValid(errors, 'cic_number') ? true : false} value={form.cic_number} onChangeText={(value) => setForm(prevState => {
-                                return { ...prevState, cic_number: value }
-                            })}
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                                placeholder="" required></Input>
-                            <Box class="text-red-500 text-[11px]" >
-                                <ErorrValidator errors={errors} key_error={'cic_number'} />
+                            <Box class="my-5 mt-4 ">
+                                <Text className="block mb-2 text-sm  text-[#184E17] ">Giấy tờ tùy thân (CMT/CCCD)</Text>
+                                <Input size="xl" type="text" isInvalid={checkInValid(errors, 'cic_number') ? true : false} value={form.cic_number} onChangeText={(value) => setForm(prevState => {
+                                    return { ...prevState, cic_number: value }
+                                })}
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                    placeholder="" required></Input>
+                                <Box class="text-red-500 text-[11px]" >
+                                    <ErorrValidator errors={errors} key_error={'cic_number'} />
+                                </Box>
                             </Box>
+
+
+                            <Box className="my-2">
+                                <Text className="block mb-2 text-[13px] text-[#184E17] ">Ngày sinh</Text>
+                                <PressableOpacity onPress={() => setShow(true)}>
+                                    <Flex direction='row' className={`justify-between border border-0.5 bg-[#F0F0F0] px-1.5 py-2.5 rounded-md mb-2 ${checkInValid(errors, 'date_of_birth') ? 'border border-red-500' : ''}`} >
+                                        <Text className="text-[#184E17]"> {formatOnlyDate(form.date_of_birth)}</Text>
+                                    </Flex>
+
+                                </PressableOpacity>
+                                {show && (
+                                    <DateTimePicker
+                                        testID="date_of_birthPicker"
+                                        value={form.date_of_birth}
+                                        textColor="red"
+                                        mode='date'
+                                        is24Hour={true}
+                                        onChange={(event, selectedDate) => {
+                                            setShow(false);
+                                            setForm(prevState => {
+                                                return { ...prevState, date_of_birth: selectedDate }
+                                            })
+
+                                        }}
+                                    />
+                                )}
+                                <ErorrValidator errors={errors} key_error={'date_of_birth'} />
+                            </Box>
+                            <Box className="my-2">
+                                <Text className="my-1 text-[#184E17] text-[13px]">Ngày cấp</Text>
+                                <PressableOpacity onPress={() => setShowCicDate(true)}>
+                                    <Flex direction='row' className={`justify-between border border-0.5 bg-[#F0F0F0] px-1.5 py-2.5 rounded-md mb-2 ${checkInValid(errors, 'cic_date') ? 'border border-red-500' : ''}`} >
+                                        <Text className="text-[#184E17]"> {formatOnlyDate(form.cic_date)}</Text>
+                                    </Flex>
+
+                                </PressableOpacity>
+                                {showCicDate && (
+                                    <DateTimePicker
+                                        testID="date_cicPicker"
+                                        value={form.cic_date}
+                                        textColor="red"
+                                        mode='date'
+                                        is24Hour={true}
+                                        onChange={(event, selectedDate) => {
+                                            setShowCicDate(false);
+                                            setForm(prevState => {
+                                                return { ...prevState, cic_date: selectedDate }
+                                            })
+
+                                        }}
+                                    />
+                                )}
+                                <ErorrValidator errors={errors} key_error={'cic_date'} />
+                            </Box>
+                            <Box className="my-2">
+                                <Text className="my-1 text-[#184E17] text-[13px]">Có giá trị đến</Text>
+                                <PressableOpacity onPress={() => setshowCicDateExpried(true)}>
+                                    <Flex direction='row' className={`justify-between border border-0.5 bg-[#F0F0F0] px-1.5 py-2.5 rounded-md mb-2 ${checkInValid(errors, 'cic_date_expried') ? 'border border-red-500' : ''}`} >
+                                        <Text className="text-[#184E17]"> {formatOnlyDate(form.cic_date_expried)}</Text>
+                                    </Flex>
+
+                                </PressableOpacity>
+                                {showCicDateExpried && (
+                                    <DateTimePicker
+                                        testID="date_cic_expriedPicker"
+                                        value={form.cic_date_expried}
+                                        textColor="red"
+                                        mode='date'
+                                        is24Hour={true}
+                                        onChange={(event, selectedDate) => {
+                                            setshowCicDateExpried(false);
+                                            setForm(prevState => {
+                                                return { ...prevState, cic_date_expried: selectedDate }
+                                            })
+
+                                        }}
+                                    />
+                                )}
+                                <ErorrValidator errors={errors} key_error={'cic_date_expried'} />
+                            </Box>
+
                         </Box>
-
-
-                        <Box className="my-2">
-                            <Text className="block mb-2 text-sm  text-[#184E17] ">Ngày sinh</Text>
-                            <PressableOpacity onPress={() => setShow(true)}>
-                                <Flex direction='row' className={`justify-between border border-0.5 bg-[#F0F0F0] px-1.5 py-2.5 rounded-md mb-2 ${checkInValid(errors, 'date_of_birth') ? 'border border-red-500' : ''}`} >
-                                    <Text className="text-[#184E17]"> {formatOnlyDate(form.date_of_birth)}</Text>
-                                    {/* <Calendar
-                                                    size="24"
-                                                    color="#FF8A65"
-                                                /> */}
-                                </Flex>
-
-                            </PressableOpacity>
-                            {show && (
-                                <DateTimePicker
-                                    testID="date_of_birthPicker"
-                                    value={form.date_of_birth}
-                                    textColor="red"
-                                    mode='date'
-                                    is24Hour={true}
-                                    onChange={(event, selectedDate) => {
-                                        setShow(false);
-                                        setForm(prevState => {
-                                            return { ...prevState, date_of_birth: selectedDate }
-                                        })
-
-                                    }}
-                                />
-                            )}
-                            <ErorrValidator errors={errors} key_error={'date_of_birth'} />
-                        </Box>
-                        <Box className="my-2">
-                            <Text className="my-1 text-[#184E17] text-sm">Ngày cấp</Text>
-                            <PressableOpacity onPress={() => setShowCicDate(true)}>
-                                <Flex direction='row' className={`justify-between border border-0.5 bg-[#F0F0F0] px-1.5 py-2.5 rounded-xl mb-2 ${checkInValid(errors, 'cic_date') ? 'border border-red-500' : ''}`} >
-                                    <Text className="text-[#184E17]"> {formatOnlyDate(form.cic_date)}</Text>
-                                    {/* <Calendar
-                                                    size="24"
-                                                    color="#FF8A65"
-                                                /> */}
-                                </Flex>
-
-                            </PressableOpacity>
-                            {showCicDate && (
-                                <DateTimePicker
-                                    testID="date_cicPicker"
-                                    value={form.cic_date}
-                                    textColor="red"
-                                    mode='date'
-                                    is24Hour={true}
-                                    onChange={(event, selectedDate) => {
-                                        setShowCicDate(false);
-                                        setForm(prevState => {
-                                            return { ...prevState, cic_date: selectedDate }
-                                        })
-
-                                    }}
-                                />
-                            )}
-                            <ErorrValidator errors={errors} key_error={'cic_date'} />
-                        </Box>
-                        <Box className="my-2">
-                            <Text className="my-1 text-[#184E17] text-sm">Có giá trị đến</Text>
-                            <PressableOpacity onPress={() => setshowCicDateExpried(true)}>
-                                <Flex direction='row' className={`justify-between border border-0.5 bg-[#F0F0F0] px-1.5 py-2.5 rounded-xl mb-2 ${checkInValid(errors, 'cic_date_expried') ? 'border border-red-500' : ''}`} >
-                                    <Text className="text-[#184E17]"> {formatOnlyDate(form.cic_date_expried)}</Text>
-                                    {/* <Calendar
-                                                    size="24"
-                                                    color="#FF8A65"
-                                                /> */}
-                                </Flex>
-
-                            </PressableOpacity>
-                            {showCicDateExpried && (
-                                <DateTimePicker
-                                    testID="date_cic_expriedPicker"
-                                    value={form.cic_date_expried}
-                                    textColor="red"
-                                    mode='date'
-                                    is24Hour={true}
-                                    onChange={(event, selectedDate) => {
-                                        setshowCicDateExpried(false);
-                                        setForm(prevState => {
-                                            return { ...prevState, cic_date_expried: selectedDate }
-                                        })
-
-                                    }}
-                                />
-                            )}
-                            <ErorrValidator errors={errors} key_error={'cic_date_expried'} />
-                        </Box>
-
-                    </Box>
+                    </Box> */}
+                    {form.phone_number && isValidPhoneNumber(form.phone_number, "VN") ? <Button onPress={alertsaveUserInfor}
+                        className=" bottom-0  w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 px-4 py-[10px] text-white bg-[#FF6100] rounded-[10px] " style={styles.btn_button}>
+                        <Text className="text-white items-center text-center">Lưu</Text>
+                    </Button> : null
+                    }
                 </Box>
-                {form.phone_number && isValidPhoneNumber(form.phone_number, "VN") ? <Button onPress={alertsaveUserInfor}
-                    className=" bottom-0  w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 px-4 py-4 text-white bg-[#FF6100] rounded-xl " style={styles.btn_button}>
-                    <Text className="text-white items-center text-center">Lưu</Text>
-                </Button> : null
-                }
-
             </ScrollView >
 
 

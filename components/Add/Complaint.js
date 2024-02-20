@@ -325,7 +325,7 @@ const Complaint = ({ navigation, route }) => {
                             />
                         </Box>
                         {productOwnersActive ? <Box className="my-5" >
-                            <Heading size="sm" className="color-[#F78F43]">Hoạt động theo gói </Heading>
+                            <Heading size="sm" className="color-[#FF6100]">Hoạt động theo gói </Heading>
                             <Box maxW="500">
                                 <Select selectedValue={form.productOwner} minWidth="100" accessibilityLabel="Chọn gói dịch vụ" placeholder="Chọn gói dịch vụ " _selectedItem={{
                                     bg: "teal.600",

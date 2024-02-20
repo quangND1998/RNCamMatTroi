@@ -17,9 +17,15 @@ import { createSchedule } from '../../store/actions/schedule';
 import Toast from 'react-native-toast-message';
 import ErorrValidator from '../ErorrValidator';
 import { fetchProductDetail } from '../../store/actions/productRetail';
+import { Picker } from '@react-native-picker/picker';
+import CopyOutline from '../Svg/CopyOutline';
+import Clipboard from '@react-native-community/clipboard';
+import Arrow from '../Svg/Arrow';
 const ScheduleTour = ({ navigation, route }) => {
+    const user = useSelector(state => state.auth.user);
     const [quantity, setQuantity] = useState(1)
     const [quantityChildren, setQuantityChildren] = useState(1)
+    const [code, setCode] = useState('HKS' + user.id + Math.floor(Math.random() * 1000))
     const [textAreaValue, setTextAreaValue] = useState(null);
     const [productOwner, setProductOwner] = useState(null);
     const [refreshing, setRefreshing] = React.useState(false);
@@ -76,7 +82,6 @@ const ScheduleTour = ({ navigation, route }) => {
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
         setTimeout(() => {
-
             setRefreshing(false);
         }, 2000);
     }, []);
@@ -102,8 +107,10 @@ const ScheduleTour = ({ navigation, route }) => {
     const saveSchedule = () => {
         const form = {
             date_time: date,
-            number_adult: quantity + quantityChildren,
-            product_service_owner_id: productOwner
+            number_adult: quantity,
+            number_children: quantityChildren,
+            product_service_owner_id: productOwner,
+            code: code
         }
         setSpinner(true);
         dispatch(createSchedule(form,
@@ -129,7 +136,16 @@ const ScheduleTour = ({ navigation, route }) => {
             },
         ));
     }
+    const copyToClipboard = (value) => {
+        Clipboard.setString(value);
+        Toast.show({
+            type: 'info',
+            text1: 'Đã lưu vào bộ nhớ tạm!',
+            position: 'bottom',
 
+
+        });
+    };
     return (
 
         <SafeAreaView style={styles.container}>
@@ -147,17 +163,27 @@ const ScheduleTour = ({ navigation, route }) => {
 
                 <Box className="my-5 mx-5 pb-5 ion-padding">
                     <Box className=" h-full ">
-                        <Box className="my-4">
+                        <Box className="my-2">
                             <Box className="w-full">
-                                <Flex className="flex justify-between">
+                                <Flex direction='row' className="flex justify-between">
                                     <Heading size="sm" className="color-[#FF6100]">Mã đặt lịch tham quan</Heading>
-                                </Flex>
-                                <Box className="my-5">
 
-                                    <Flex className="bg-[#EDEEF0] py-1.5 rounded-lg flex relative">
+                                    <Flex direction='row' className=" items-center">
+                                        <Text className=" font-inter mr-2 text-[13px] text-[#AEAEAE] leading-4" >{code}</Text>
+                                        <PressableOpacity className="leading-4" onPress={() => copyToClipboard(code)}>
+                                            <CopyOutline size={11} color="#AEAEAE" />
+                                        </PressableOpacity>
+
+                                        {/* <Icon name="copy-outline" size={16} color="#686868" /> */}
+                                    </Flex>
+
+                                </Flex>
+                                <Box className="mt-2">
+
+                                    <Flex className="py-1.5 rounded-lg flex relative">
                                         <PressableOpacity onPress={showDatepicker}>
-                                            <Flex direction='row' className="justify-between bg-white px-2 py-3 rounded-xl mb-2" >
-                                                <Text className="text-[#184E17]"> {formatOnlyDate(date)}</Text>
+                                            <Flex direction='row' className="justify-between bg-white p-[12px] rounded-[5px] mb-2" >
+                                                <Text className="text-[#184E17] font-bold"> {formatOnlyDate(date)}</Text>
                                                 {/* <Calendar
                                                     size="24"
                                                     color="#FF8A65"
@@ -167,8 +193,8 @@ const ScheduleTour = ({ navigation, route }) => {
                                         </PressableOpacity>
                                         <PressableOpacity onPress={showTimepicker}>
 
-                                            <Flex direction='row' className="justify-between bg-white px-2 py-3 rounded-xl" >
-                                                <Text className="text-[#184E17]"> {formatTime(date)}</Text>
+                                            <Flex direction='row' className="justify-between mt-2 bg-white p-[12px] rounded-[5px]" >
+                                                <Text className="text-[#184E17] font-bold"> {formatTime(date)}</Text>
                                                 {/* <Timer1
                                                     size="24"
                                                     color="#FF8A65"
@@ -198,10 +224,10 @@ const ScheduleTour = ({ navigation, route }) => {
                                     </Flex>
 
                                 </Box>
-                                {productOwnersActive ? <Box className="my-5" >
-                                    <Heading size="sm" className="color-[#FF6100]">Hoạt động theo gói </Heading>
-                                    <Box maxW="500">
-                                        <Select selectedValue={productOwner} minWidth="100" accessibilityLabel="Chọn gói dịch vụ" placeholder="Chọn gói dịch vụ " _selectedItem={{
+                                {productOwnersActive ? <Box className="" >
+                                    <Heading size="sm" className="color-[#FF6100] mt-2 mb-4">Hoạt động theo gói </Heading>
+                                    {/* <Box maxW="500" class="bg-white">
+                                        <Select class="bg-white" selectedValue={productOwner} minWidth="100" accessibilityLabel="Chọn gói dịch vụ" placeholder="Chọn gói dịch vụ " _selectedItem={{
                                             bg: "teal.600",
                                             endIcon: <CheckIcon size="1" />
                                         }} mt={1} onValueChange={itemValue => setProductOwner(itemValue)}>
@@ -209,28 +235,42 @@ const ScheduleTour = ({ navigation, route }) => {
                                             {productOwnersActive.map((item, key) =>
                                                 <Select.Item key={item.id} label={item?.product?.name} value={item.id} />)}
                                         </Select>
-                                    </Box>
+                                    </Box> */}
+                                    <Box className=" bg-white border-[#AEAEAE] rounded-[5px] font-bold" >
+                                        <Picker
+                                            itemStyle={styles.dropdownStyle}
+                                            dropdownIconColor={'#184E17'}
+                                            selectedValue={productOwner}
+                                            onValueChange={(itemValue, itemIndex) =>
+                                                setProductOwner(itemValue)
+                                            }>
 
+                                            {productOwnersActive.map((item, key) =>
+                                                <Picker.Item key={item.id} color="#184E17" label={item?.product?.name} value={item.id} />)}
+
+
+                                        </Picker>
+                                    </Box>
                                     <ErorrValidator errors={errors} key_error={'product_service_owner_id'} />
                                 </Box> : null}
 
 
                                 <Box className="my-5 bg-[#F0F0F0] rounded-lg">
-                                    <Heading size="sm" className="color-[#FF6100]">Số lượng {productOwnersActive ? productOwnersActive.title : null}</Heading>
-                                    <Flex direction='row' className=" justify-between my-2">
+                                    <Heading size="sm" className="color-[#FF6100] my-1">Số lượng {productOwnersActive ? productOwnersActive.title : null}</Heading>
+                                    <Flex direction='row' className=" justify-between ">
                                         <Flex direction='row' className=" items-center">
                                             <User
-                                                size="24"
+                                                size="20"
                                                 color="#184E17"
                                             />
-                                            <Text className="ml-3">Người lớn</Text>
+                                            <Text className="ml-3 text-[#184E17]">Người lớn</Text>
                                         </Flex>
                                         <Flex direction='row' >
                                             <NumericInput
                                                 value={quantity}
                                                 onChange={value => setQuantity(value)}
                                                 onLimitReached={(isMax, msg) => console.log(isMax, msg)}
-                                                totalWidth={120}
+                                                totalWidth={40}
                                                 totalHeight={40}
                                                 iconSize={16}
                                                 step={1}
@@ -239,6 +279,7 @@ const ScheduleTour = ({ navigation, route }) => {
                                                 rounded
                                                 textColor='#184E17'
                                                 iconStyle={{ color: '#FF6100' }}
+                                                borderColor='#F0F0F0'
                                                 rightButtonBackgroundColor='transparent'
                                                 leftButtonBackgroundColor='transparent' />
 
@@ -246,20 +287,20 @@ const ScheduleTour = ({ navigation, route }) => {
 
                                     </Flex>
                                     <ErorrValidator errors={errors} key_error={'number_adult'} />
-                                    <Flex direction='row' className=" justify-between my-2">
+                                    <Flex direction='row' className=" justify-between">
                                         <Flex direction='row' className=" items-center">
                                             <User
-                                                size="24"
+                                                size="20"
                                                 color="#184E17"
                                             />
-                                            <Text className="ml-3">Trẻ em</Text>
+                                            <Text className="ml-3  text-[#184E17]">Trẻ em</Text>
                                         </Flex>
                                         <Flex direction='row' >
                                             <NumericInput
                                                 value={quantityChildren}
                                                 onChange={value => setQuantityChildren(value)}
                                                 onLimitReached={(isMax, msg) => console.log(isMax, msg)}
-                                                totalWidth={120}
+                                                totalWidth={40}
                                                 totalHeight={40}
                                                 iconSize={16}
                                                 step={1}
@@ -268,14 +309,16 @@ const ScheduleTour = ({ navigation, route }) => {
                                                 minValue={1}
                                                 textColor='#184E17'
                                                 iconStyle={{ color: '#FF6100' }}
+                                                borderColor='#F0F0F0'
                                                 rightButtonBackgroundColor='transparent'
                                                 leftButtonBackgroundColor='transparent' />
                                         </Flex>
                                     </Flex>
                                 </Box>
-                                <Box className="my-5 bg-[#F0F0F0] rounded-lg">
-                                    <Heading size="sm" className="color-[#F78F43]">Ghi chú</Heading>
-                                    <TextArea value={textAreaValue} w="100%" h="150" placeholder="Ghi chú" className="bg-white"
+                                <Box className="my-0 bg-[#F0F0F0] ">
+                                    {/* <Heading size="sm" className="color-[#FF6100]">Ghi chú</Heading> */}
+                                    <TextArea value={textAreaValue} w="100%" h="110" placeholder="Ghi chú"
+                                        borderRadius={10}
                                         maxW="500"
                                         onChangeText={text => setTextAreaValue(text)} // for android and ios
                                     />
@@ -283,8 +326,8 @@ const ScheduleTour = ({ navigation, route }) => {
 
                             </Box>
                         </Box>
-                        <Button onPress={() => saveSchedule()} className="w-full  text-white bg-[#FF6100] rounded-xl btn_button"
-                        >Xác nhận đặt chỗ</Button>
+                        <Button onPress={() => saveSchedule()} className="w-full mt-10  text-white  bg-[#FF6100] rounded-[10px] btn_button"
+                        ><Text className="text-white text-[16px]">Xác nhận đặt chỗ</Text></Button>
 
 
                     </Box >
@@ -298,6 +341,10 @@ const ScheduleTour = ({ navigation, route }) => {
 const styles = StyleSheet.create({
     cardcontainer: {
         flex: 1
+    },
+    dropdownStyle:{
+        fontWeight: 600,
+        padding: '5px'
     }
 })
 

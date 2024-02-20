@@ -35,21 +35,19 @@ const StackNavigator = () => {
             headerTitleAlign: 'center',
             headerBackTitleVisible: false,
             headerTransparent: true,
-            tabBarActiveTintColor: '#F78F43',
+            tabBarActiveTintColor: '#FF6100',
             tabBarInactiveTintColor: "#184E17",
             headerLeftLabelVisible: false,
             borderBottomWidth: 0,
             headerTitleStyle: {
                 fontWeight: 'bold',
-                color: '#F78F43',
+                color: '#FF6100',
             },
             paddingTop: 12,
         }}>
             <Stack.Screen initialRouteName="LogoLogin" name="LogoLogin"
                 options={{
                     headerShown: false,
-
-
                 }}
                 component={LogoLogin} />
             <Stack.Screen name="Login" options={{
