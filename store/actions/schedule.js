@@ -3,6 +3,7 @@ export const createSchedule = (form, onSuccess = () => {}, onError = () => {}) =
     return ApiService.post('api/v1/customer/visit/save', {
         date_time: form.date_time,
         number_adult: form.number_adult,
+        code: form.code,
         product_service_owner_id: form.product_service_owner_id
     }).then(response => {
 

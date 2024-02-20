@@ -57,7 +57,7 @@ const CustomerService = ({ navigation, route }) => {
                                 <Flex direction='row' >
                                     <Image source={require('../../assets/icon/calender.png')} className="w-6 h-6" alt="calendar"></Image>
                                     {/* <MaterialCommunityIcons name='calendar-range-outline' size={24} className="text-[#070707]" color="#070707" /> */}
-                                    <Text className=" text-[#686868] ml-3 text-[12px]">Đặt lịch thăm vườn</Text>
+                                    <Text className=" text-[#000000] ml-3 text-[20px]  ">Đặt lịch thăm vườn</Text>
                                 </Flex>
                             </Flex>
                         </TouchableOpacity>
@@ -68,7 +68,7 @@ const CustomerService = ({ navigation, route }) => {
                                 <Flex direction='row' className="mt-4">
                                     <Image source={require('../../assets/icon/message.png')} className="w-6 h-6" alt="message"></Image>
 
-                                    <Text className=" text-[#686868] ml-3 text-[12px]">Khiếu nại, phản hồi</Text>
+                                    <Text className="  text-[#000000] ml-3 text-[20px] ">Khiếu nại, phản hồi</Text>
                                 </Flex>
                             </Flex>
                         </TouchableOpacity>
@@ -77,11 +77,11 @@ const CustomerService = ({ navigation, route }) => {
                             <TouchableOpacity onPress={handlerLogout}  >
                                 <Flex direction='row' className="mt-4">
                                     <Logout
-                                        size="24"
+                                        size="28"
                                         color="#000000"
                                         variant="Outline"
                                     />
-                                    <Text className=" text-[#686868] ml-3 text-[12px]">Đăng xuất</Text>
+                                    <Text className="  text-[#000000] ml-2 text-[20px] ">Đăng xuất</Text>
                                 </Flex>
                             </TouchableOpacity>
                         </Flex>

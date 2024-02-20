@@ -515,7 +515,7 @@ const UpdateUser = ({ navigation, route }) => {
                         <Box className="my-2">
                             <Text className="my-1 text-[#184E17] text-sm">Ngày cấp</Text>
                             <PressableOpacity onPress={() => setShowCicDate(true)}>
-                                <Flex direction='row' className={`justify-between border border-0.5 bg-[#F0F0F0] px-1.5 py-2.5 rounded-xl mb-2 ${checkInValid(errors, 'cic_date') ? 'border border-red-500' : ''}`} >
+                                <Flex direction='row' className={`justify-between border border-0.5 bg-[#F0F0F0] px-1.5 py-2.5 rounded-md mb-2 ${checkInValid(errors, 'cic_date') ? 'border border-red-500' : ''}`} >
                                     <Text className="text-[#184E17]"> {formatOnlyDate(form.cic_date)}</Text>
                                     {/* <Calendar
                                                     size="24"
@@ -545,7 +545,7 @@ const UpdateUser = ({ navigation, route }) => {
                         <Box className="my-2">
                             <Text className="my-1 text-[#184E17] text-sm">Có giá trị đến</Text>
                             <PressableOpacity onPress={() => setshowCicDateExpried(true)}>
-                                <Flex direction='row' className={`justify-between border border-0.5 bg-[#F0F0F0] px-1.5 py-2.5 rounded-xl mb-2 ${checkInValid(errors, 'cic_date_expried') ? 'border border-red-500' : ''}`} >
+                                <Flex direction='row' className={`justify-between border border-0.5 bg-[#F0F0F0] px-1.5 py-2.5 rounded-md mb-2 ${checkInValid(errors, 'cic_date_expried') ? 'border border-red-500' : ''}`} >
                                     <Text className="text-[#184E17]"> {formatOnlyDate(form.cic_date_expried)}</Text>
                                     {/* <Calendar
                                                     size="24"
@@ -576,7 +576,7 @@ const UpdateUser = ({ navigation, route }) => {
                     </Box>
                 </Box>
                 {form.phone_number && isValidPhoneNumber(form.phone_number, "VN") ? <Button onPress={alertsaveUserInfor}
-                    className=" bottom-0  w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 px-4 py-4 text-white bg-[#F78F43] rounded-xl " style={styles.btn_button}>
+                    className=" bottom-0  w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 px-4 py-4 text-white bg-[#F78F43] rounded-md " style={styles.btn_button}>
                     <Text className="text-white items-center text-center">Lưu</Text>
                 </Button> : null
                 }
