@@ -11,7 +11,10 @@ import { Button, Image } from 'native-base';
 import ScheduleTour from '../components/Schedule/ScheduleTour';
 import { HeaderBackButton } from '@react-navigation/elements';
 import UpdateUser from '../components/User/UpdateUser';
-
+import OrderTab from '../components/Svg/OrderTab';
+import CalenderTab from '../components/Svg/CalenderTab';
+import UserTab from '../components/Svg/UserTab';
+import MoreTab from '../components/Svg/MoreTab';
 const Tab = createBottomTabNavigator();
 
 const BottomNavigator = () => {
@@ -35,8 +38,15 @@ const BottomNavigator = () => {
                     overflow: 'hidden',
                     height: 74,
                     bordercolor: 'transparent',
-                    position: 'absolute'
-
+                    position: 'absolute',
+                    shadowColor: 'rgba(0, 0, 0, 0.2)',
+                    shadowOffset: {
+                        width: 0,
+                        height: -2,
+                        },
+                    shadowOpacity: 1,
+                    shadowRadius: 2,
+                    elevation: 2,
                 },
                 headerTitleStyle: {
                     fontWeight: 'bold',
@@ -47,6 +57,7 @@ const BottomNavigator = () => {
                     margin: 0,
                     padding: 0,
                     paddingBottom: 20,
+                    fontWeight: '500'
 
                 },
                 tabBarItemStyle: {
@@ -81,7 +92,6 @@ const BottomNavigator = () => {
 
             <Tab.Screen
                 name="Order"
-
                 component={OrderScreen}
                 options={{
                     headerShown: false,
@@ -91,6 +101,8 @@ const BottomNavigator = () => {
                     tabBarIcon: ({ color, size }) => (
                         // <DocumentText color="#FF6100" variant="Outline" size={25} />
                         <Image source={require('../assets/icon/fi-rr-box.png')} className="w-6 h-6 " alt='box' ></Image>
+                        // <OrderTab width={24} height={25} />
+                        // <CalenderTab width={24} height={25} />
                     ),
 
                 }}
@@ -106,7 +118,8 @@ const BottomNavigator = () => {
                     tabBarLabel: 'Thăm vườn',
                     tabBarIcon: ({ color, size }) => (
                         // <Card color="#FF6100" variant="Outline" size={25} />
-                        <Image source={require('../assets/icon/fi-rr-calendar.png')} className="w-6 h-6 " alt='calendar' ></Image>
+                        // <Image source={require('../assets/icon/fi-rr-calendar.png')} className="w-6 h-6 " alt='calendar' ></Image>
+                        <CalenderTab width={24} height={25} />
                     ),
                 }}
             />
@@ -130,8 +143,8 @@ const BottomNavigator = () => {
                     headerShown: false,
                     tabBarLabel: 'Tài khoản',
                     tabBarIcon: ({ color, size }) => (
-                        <User color="#184E17" variant="Outline" size={20} />
-
+                        // <User color="#184E17" variant="Outline" size={20} />
+                        <UserTab width={24} height={25}  />
                     ),
                 }}
             />
@@ -144,7 +157,8 @@ const BottomNavigator = () => {
                     title: 'Dịch vụ khách hàng',
                     tabBarIcon: ({ color, size }) => (
                         // <More color="#184E17" variant="Outline" size={20} />
-                        <Image source={require('../assets/icon/more2.png')} className="w-6 h-6 " alt='box' ></Image>
+                        // <Image source={require('../assets/icon/more2.png')} className="w-6 h-6 " alt='box' ></Image>
+                        <MoreTab width={24} height={25}/>
                     ),
                 }}
             />

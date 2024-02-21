@@ -87,12 +87,7 @@ const Home = ({ navigation, route }) => {
     };
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView
-                contentContainerStyle={styles.scrollView}
-                refreshControl={
-                    <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-                }>
-                <Box className='absolute z-50 w-full shadow bg-white rounded-b-[28px]'>
+            <Box className='absolute z-50 w-full  bg-white rounded-b-[28px]'>
                     {/* <Image source={require('../../assets/images/banner.png')} className="m-auto h-24 w-full object-cover" alt='banner'></Image> */}
                     <Box className="px-4 py-4 w-full  ">
                         <Flex direction='row' className="flex items-center justify-between">
@@ -114,15 +109,15 @@ const Home = ({ navigation, route }) => {
                                     navigation.navigate('ScanExpo');
 
                                 }} >
-                                    <Image source={require('../../assets/icon/scan.png')} alt="scan"  ></Image>
+                                    <Image source={require('../../assets/icon/scan.png')} alt="scan" className="w-[24px] h-[24px]" resizeMode="contain" ></Image>
                                 </PressableOpacity>
                                 <PressableOpacity onPress={() => {
                                     navigation.navigate('Notification');
 
                                 }} >
-                                    <Image source={require('../../assets/icon/icon_bell.png')}  className="ml-5" alt="icon_bell"></Image>
+                                    <Image source={require('../../assets/icon/icon_bell.png')}  alt="icon_bell" className="ml-5 w-[24px] h-[24px]" resizeMode="contain"></Image>
                                     <Box className="absolute left-8 top-[-8] shadow rounded-md ">
-                                        <Text className=" w-[20px] h-[20px] text-center text-white bg-[#FF6100] text-[10px] rounded-xl">{
+                                        <Text className="min-w-min w-[20px] h-[20px] text-center text-white bg-[#FF6100] text-[10px] rounded-xl">{
                                             totalUnRead
                                         }
                                         </Text>
@@ -132,7 +127,13 @@ const Home = ({ navigation, route }) => {
                         </Flex>
 
                     </Box>
-                </Box>
+            </Box>
+            <ScrollView
+                contentContainerStyle={styles.scrollView}
+                refreshControl={
+                    <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+                }>
+
                 {/* <Box className="bg">
                     <SlideBG></SlideBG>
                 </Box> */}

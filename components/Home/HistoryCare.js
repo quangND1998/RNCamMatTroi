@@ -38,7 +38,7 @@ const HistoryCare = ({ navigation, route }) => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView
+            <ScrollView className="mb-[77px]"
                 contentContainerStyle={styles.scrollView}
                 refreshControl={
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
@@ -65,14 +65,14 @@ const HistoryCare = ({ navigation, route }) => {
 
                 {history_care ?
                     Object.keys(history_care).map((history, key) =>
-                        <Box key={key} className="my-2 mx-4" >
+                        <Box key={key} className="my-2 mx-4 " >
                             <Text className='text-[#184E17] my-3 text-[13px]'>
                                 {formatDateShort(history)}
                             </Text>
                             {history_care[history].map((item, index) =>
-                                <Flex key={index} direction='row' className="flex-wrap mx-1 object-fill bg-white px-2 py-2 rounded-md mb-2  border border-[#FF6100] " >
+                                <Flex key={index} direction='row' className="flex-wrap mx-1 object-fill bg-white px-2 py-2 rounded-md mb-2 border border-0.5 border-[#FF6100] " >
                                     {item.activity_care.map((activity, index) =>
-                                        <Box>
+                                        <Box key={index} >
                                             {item.activity_care.length - 1 == index ? <Text className='text-[13px] mr-1  items-center' >{activity.name}.</Text> :
                                                 <Text className='text-[13px]  mr-1  items-center ' >{activity.name},</Text>}
                                         </Box>
@@ -82,6 +82,7 @@ const HistoryCare = ({ navigation, route }) => {
                         </Box>
                     )
                     : null}
+              
             </ScrollView>
         </SafeAreaView>
     );

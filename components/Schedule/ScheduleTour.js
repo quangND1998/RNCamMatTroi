@@ -25,7 +25,7 @@ const ScheduleTour = ({ navigation, route }) => {
     const user = useSelector(state => state.auth.user);
     const [quantity, setQuantity] = useState(1)
     const [quantityChildren, setQuantityChildren] = useState(1)
-    const [code, setCode] = useState('HKS' + user.id + Math.floor(Math.random() * 1000))
+    const [code, setCode] = useState('HKS' + user?.id + Math.floor(Math.random() * 1000))
     const [textAreaValue, setTextAreaValue] = useState(null);
     const [productOwner, setProductOwner] = useState(null);
     const [refreshing, setRefreshing] = React.useState(false);
@@ -326,7 +326,7 @@ const ScheduleTour = ({ navigation, route }) => {
 
                             </Box>
                         </Box>
-                        <Button onPress={() => saveSchedule()} className="w-full mt-10  text-white  bg-[#FF6100] rounded-[10px] btn_button"
+                        <Button onPress={() => saveSchedule()} className="w-full mt-10 mb-[77px]  text-white  bg-[#FF6100] rounded-[10px] btn_button"
                         ><Text className="text-white text-[16px]">Xác nhận đặt chỗ</Text></Button>
 
 

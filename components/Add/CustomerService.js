@@ -53,7 +53,7 @@ const CustomerService = ({ navigation, route }) => {
                         <TouchableOpacity onPress={() => navigation.navigate('Schedule')}  >
                             <Flex className="w-full py-2 ">
                                 <Flex direction='row' >
-                                    <Image source={require('../../assets/icon/calender.png')} className="w-6 h-6" resizeMode="contain" alt="calendar"></Image>
+                                    <Calender width={24} height={25} />
                                     {/* <MaterialCommunityIcons name='calendar-range-outline' size={24} className="text-[#070707]" color="#070707" /> */}
                                     <Text className=" text-[#000000] ml-3 text-[18px]  ">Đặt lịch thăm vườn</Text>
                                 </Flex>
@@ -64,7 +64,7 @@ const CustomerService = ({ navigation, route }) => {
                         <TouchableOpacity onPress={() => navigation.navigate('Complaint')}  >
                             <Flex className="w-full py-2 ">
                                 <Flex direction='row' className="mt-4">
-                                    <Image source={require('../../assets/icon/message.png')} className="w-6 h-6" resizeMode="contain" alt="message"></Image>
+                                    <Message width={24} height={24} />
 
                                     <Text className="  text-[#000000] ml-3 text-[18px] ">Khiếu nại, phản hồi</Text>
                                 </Flex>
