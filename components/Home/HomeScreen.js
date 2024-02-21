@@ -19,9 +19,9 @@ const HomeScreen = () => {
     }
     return (
         <Stack.Navigator
-        screenOptions={{
-            headerBackTitleVisible: false
-        }}
+            screenOptions={{
+                headerBackTitleVisible: false
+            }}
         >
             <Stack.Screen name="HomeScreen" options={{ headerShown: false }} component={Home} />
             <Stack.Screen name="ProductHome" options={{ headerShown: false }} component={ProductHome} />
@@ -30,9 +30,11 @@ const HomeScreen = () => {
                 tabBarInactiveTintColor: "#184E17",
 
                 headerTitleStyle: {
-                    fontWeight: 'bold',
+                    fontWeight: '700',
                     color: '#FF6100',
+                    lineHeight: 20
                 },
+                headerShadowVisible: false,
                 headerTitleAlign: 'center',
                 headerRight: (props) => (
                     <PressableOpacity onPress={clearNotification} >
@@ -49,6 +51,7 @@ const HomeScreen = () => {
                     fontWeight: 'bold',
                     color: '#FF6100',
                 },
+                headerShadowVisible: false,
                 headerTitleAlign: 'center',
 
             }} component={HistoryCare} />

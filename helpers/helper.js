@@ -38,7 +38,7 @@ export const useHelper = () => {
     }
     const formatTime = (value) => {
         if (value) {
-            return Moment(String(value)).format('HH:mm');
+            return Moment(String(value)).format('HH : mm');
         }
 
     }

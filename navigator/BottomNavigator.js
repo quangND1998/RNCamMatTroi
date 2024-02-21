@@ -11,9 +11,9 @@ import { Button, Image } from 'native-base';
 import ScheduleTour from '../components/Schedule/ScheduleTour';
 import { HeaderBackButton } from '@react-navigation/elements';
 import UpdateUser from '../components/User/UpdateUser';
-
+import { enableScreens } from 'react-native-screens';
 const Tab = createBottomTabNavigator();
-
+enableScreens(true)
 const BottomNavigator = () => {
     return (
         <Tab.Navigator
@@ -25,7 +25,7 @@ const BottomNavigator = () => {
                 tabBarActiveTintColor: '#FF6100',
                 tabBarInactiveTintColor: "#184E17",
                 headerLeftLabelVisible: false,
-       
+                headerShadowVisible: false,
                 tabBarStyle: {
 
                     borderTopLeftRadius: 24,
@@ -54,10 +54,11 @@ const BottomNavigator = () => {
                     paddingTop: 14,
                 },
                 headerStyle: {
-                    borderBottomLeftRadius: 20,
-                    borderBottomRightRadius: 20,
+                    borderBottomLeftRadius: 18,
+                    borderBottomRightRadius: 18,
                     borderLeftWidth: 0.1,
                     borderRightWidth: 0.1,
+                   
                     height: 60,
                 },
                 paddingTop: 12,
@@ -118,7 +119,7 @@ const BottomNavigator = () => {
                     tabBarLabel: '',
                     // headerTransparent: true,
                     tabBarIcon: ({ color, size }) => (
-                        <Image source={require('../assets/icon/icon_orange.png')} className="w-14 h-14 " alt='box' ></Image>
+                        <Image source={require('../assets/icon/icon_orange.png')} className="w-14 h-14 m-auto" alt='box' ></Image>
                     ),
                     tabBarLabelStyle: { marginBottom: -10 },
                 }}
@@ -144,7 +145,7 @@ const BottomNavigator = () => {
                     title: 'Dịch vụ khách hàng',
                     tabBarIcon: ({ color, size }) => (
                         // <More color="#184E17" variant="Outline" size={20} />
-                        <Image source={require('../assets/icon/more2.png')} className="w-6 h-6 " alt='box' ></Image>
+                        <Image source={require('../assets/icon/more2.png')} className="w-6 h-6 m-auto " alt='box' ></Image>
                     ),
                 }}
             />

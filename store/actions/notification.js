@@ -45,7 +45,7 @@ export const deleteAllNotification = () => (dispatch) => {
 export const getUnReadNotification = () => (dispatch) => {
 
     ApiService.query('api/v1/notification/unreadNotifications').then(response => {
-        console.log(response)
+        console.log(response.data)
         dispatch({
             type: "getUnReadNotifications",
             payload: response.data

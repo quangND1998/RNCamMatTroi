@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { LogBox } from 'react-native';
-import { StyleSheet,Animated, TouchableOpacity, Linking, Keyboard, View, ScrollView, RefreshControl, ImageBackground, SectionList, YellowBox } from 'react-native';
+import { StyleSheet, Animated, TouchableOpacity, Linking, Keyboard, View, ScrollView, RefreshControl, ImageBackground, SectionList, YellowBox } from 'react-native';
 import { Center, Container, Heading, Button, Text, Box, Flex, Stack, Input, SearchBar, Icon, Spacer, ZStack, Image, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
 import { useDispatch, useSelector } from 'react-redux'
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
@@ -32,11 +32,25 @@ const Home = ({ navigation, route }) => {
     const totalUnRead = useSelector(state => state.notification.totalUnRead);
     const scrollX = useRef(new Animated.Value(0)).current;
     const [currentIndex, setCurrentIndex] = useState(0);
+    const flatListRef = useRef(null);
     useEffect(() => {
         fetchProductOwner();
         dispatch(getUnReadNotification())
 
     }, []);
+
+    useEffect(() => {
+
+        const unsubscribe = navigation.addListener('focus', () => {
+            (async () => {
+                dispatch(getUnReadNotification())
+
+            })();
+        });
+
+        // Return the function to unsubscribe from the event so it gets removed on unmount
+        return unsubscribe;
+    }, [navigation]);
     const fetchProductOwner = async () => {
         dispatch(getProductOwner())
 
@@ -46,20 +60,29 @@ const Home = ({ navigation, route }) => {
         setRefreshing(true);
         setTimeout(() => {
             fetchProductOwner();
+            getUnReadNotification()
             setRefreshing(false);
         }, 2000);
         console.log(productOwner);
     }, []);
 
     const handlePrevious = () => {
-        setCurrentIndex((prevIndex) => prevIndex - 1);
-        console.log(prevIndex)
-      };
-    
-      const handleNext = () => {
-        setCurrentIndex((prevIndex) => prevIndex + 1);
-        console.log(prevIndex)
-      };
+        const previousIndex = currentIndex - 1;
+        if (previousIndex >= 0) {
+            setCurrentIndex(previousIndex);
+            flatListRef.current.scrollToIndex({ index: previousIndex });
+        }
+        console.log(currentIndex)
+    };
+
+    const handleNext = () => {
+        const nextIndex = currentIndex + 1;
+        if (nextIndex < productOwner?.length) {
+            setCurrentIndex(nextIndex);
+            flatListRef.current.scrollToIndex({ index: nextIndex });
+        }
+        console.log(currentIndex)
+    };
     const handleOnScroll = event => {
         Animated.event(
             [
@@ -111,7 +134,7 @@ const Home = ({ navigation, route }) => {
                                     navigation.navigate('Notification');
 
                                 }} >
-                                    <Image source={require('../../assets/icon/icon_bell.png')}  className="ml-5" alt="icon_bell"></Image>
+                                    <Image source={require('../../assets/icon/icon_bell.png')} className="ml-5" alt="icon_bell"></Image>
                                     <Box className="absolute left-8 top-[-8] shadow rounded-md ">
                                         <Text className=" w-[20px] h-[20px] text-center text-white bg-[#FF6100] text-[10px] rounded-xl">{
                                             totalUnRead
@@ -132,20 +155,26 @@ const Home = ({ navigation, route }) => {
                         {productOwner ?
                             <FlatList
                                 data={productOwner}
-                                renderItem={({ item,index }) => <ProductItem item={item} index={index} navigation={navigation} />}
+                                renderItem={({ item, index }) => <ProductItem item={item} index={index} navigation={navigation} />}
                                 horizontal
                                 keyExtractor={(item) => item.id.toString()}
-                                initialScrollIndex={currentIndex}
+                                ref={flatListRef}
                                 initialNumToRender={1}
+                                showsHorizontalScrollIndicator={false}
 
                             /> : <View></View>}
-                            <Button className="absolute left-0" title="Previous" onPress={handlePrevious} disabled={currentIndex === 0} />
-                            <Button
-                                className="absolute right-0"
-                                title="Next"
-                                onPress={handleNext}
-                                disabled={currentIndex === productOwner?.length - 1}
-                            />
+                        {currentIndex > 0 ?
+                            <TouchableOpacity className="absolute top-1/4 rounded-full bg-white h-8 w-8 z-50 m-auto left-4" title="Previous" onPress={handlePrevious} disabled={currentIndex === 0} >
+                                <Image className="h-6 w-6 z-50 m-auto" source={require('../../assets/icon/fi-rr-arrow-small-left.png')} alt="fi-rr-arrow-small-left" resizeMode="contain"></Image>
+                            </TouchableOpacity>
+                            : null}
+
+                        {currentIndex != productOwner?.length - 1 ?
+                            <TouchableOpacity className="absolute top-1/4 rounded-full bg-white h-8 w-8 z-50 m-auto right-4" title="Next" onPress={handleNext} disabled={currentIndex === productOwner?.length - 1} >
+                                <Image className="h-6 w-6 z-50 m-auto" source={require('../../assets/icon/fi-rr-arrow-small-right.png')} alt="fi-rr-arrow-small-right" resizeMode="contain"></Image>
+                            </TouchableOpacity>
+                            : null}
+
                     </View>
                 </Box>
             </ScrollView>

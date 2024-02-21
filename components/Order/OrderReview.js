@@ -221,7 +221,7 @@ const OrderReview = ({ navigation, route }) => {
                 }>
 
                 <Box>
-                    <Flex direction='row' className="justify-between items-center w-full mb-3  my-4  px-5 ">
+                    <Flex direction='row' className="justify-between items-center w-full  mt-5 mb-2 px-5 ">
                         {star && star < 2 ? <Text className="font-bold text-[17px] text-[#FF6100]" > Rất tệ</Text> : null}
                         {star && star == 2 ? <Text className="font-bold text-[17px] text-[#FF6100]" > Kém</Text> : null}
                         {star && star == 3 ? <Text className="font-bold text-[17px] text-[#FF6100]" >Trung Bình</Text> : null}
@@ -254,27 +254,27 @@ const OrderReview = ({ navigation, route }) => {
 
                 </Box>
                 <Box>
-                    <Box className="text-[#AEAEAE] text-[13px]   mx-5  my-5 w-full">
-                        <Text className="text-gray-800/50">Bạn hài lòng về dịch vụ chứ? Hãy cho chúng tôi biết ý kiến của bạn? </Text>
+                    <Box className="text-[#AEAEAE] text-[13px] mx-5 my-2 w-full">
+                        <Text className="text-[#AEAEAE]">Bạn hài lòng về dịch vụ chứ? Hãy cho chúng tôi biết ý kiến của bạn? </Text>
                     </Box>
-                    <Box className="my-5 mx-5">
+                    <Box className="my-2 mx-4">
 
                         {star && star < 2 ? <Flex direction='row' className="flex flex-wrap" >
                             <PressableOpacity onPress={() => Add('Sản phẩm lỗi')}>
-                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Sản phẩm lỗi') ? 'border border-amber-600' : ''}`}
+                                <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Sản phẩm lỗi') ? 'border border-amber-600' : ''}`}
                                 >Sản phẩm lỗi</Box>
                             </PressableOpacity>
 
                             <PressableOpacity onPress={() => Add('Đội Giá')}>
-                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Đội Giá') ? 'border border-amber-600' : ''}`}
+                                <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Đội Giá') ? 'border border-amber-600' : ''}`}
                                 >Đội Giá</Box>
                             </PressableOpacity>
                             <PressableOpacity onPress={() => Add('Thái độ nhận viên')}>
-                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Thái độ nhận viên') ? 'border border-amber-600' : ''}`}
+                                <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Thái độ nhận viên') ? 'border border-amber-600' : ''}`}
                                 >Thái độ nhận viên</Box>
                             </PressableOpacity>
                             <PressableOpacity onPress={() => Add('Giao hàng lâu')}>
-                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Giao hàng lâu') ? 'border border-amber-600' : ''}`}
+                                <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Giao hàng lâu') ? 'border border-amber-600' : ''}`}
                                 >Giao hàng lâu</Box>
                             </PressableOpacity>
 
@@ -283,20 +283,20 @@ const OrderReview = ({ navigation, route }) => {
                             : null}
                         {star && star == 2 ? <Flex direction='row' className="flex flex-wrap" >
                             <PressableOpacity onPress={() => Add('Sản phẩm lỗi')}>
-                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Sản phẩm lỗi') ? 'border border-amber-600' : ''}`}
+                                <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Sản phẩm lỗi') ? 'border border-amber-600' : ''}`}
                                 >Sản phẩm lỗi</Box>
                             </PressableOpacity>
 
                             <PressableOpacity onPress={() => Add('Đội Giá')}>
-                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Đội Giá') ? 'border border-amber-600' : ''}`}
+                                <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Đội Giá') ? 'border border-amber-600' : ''}`}
                                 >Đội Giá</Box>
                             </PressableOpacity>
                             <PressableOpacity onPress={() => Add('Thái độ nhận viên')}>
-                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Thái độ nhận viên') ? 'border border-amber-600' : ''}`}
+                                <Box className={`px-2 py-1 text-[8px]  rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Thái độ nhận viên') ? 'border border-amber-600' : ''}`}
                                 >Thái độ nhận viên</Box>
                             </PressableOpacity>
                             <PressableOpacity onPress={() => Add('Giao hàng lâu')}>
-                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Giao hàng lâu') ? 'border border-amber-600' : ''}`}
+                                <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Giao hàng lâu') ? 'border border-amber-600' : ''}`}
                                 >Giao hàng lâu</Box>
                             </PressableOpacity>
 
@@ -308,20 +308,20 @@ const OrderReview = ({ navigation, route }) => {
                         {star && star == 3 ? <Flex direction='row' className="flex flex-wrap" >
 
                             <PressableOpacity onPress={() => Add('Sản phẩm lỗi')}>
-                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Sản phẩm lỗi') ? 'border border-amber-600' : ''}`}
+                                <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Sản phẩm lỗi') ? 'border border-amber-600' : ''}`}
                                 >Sản phẩm lỗi</Box>
                             </PressableOpacity>
 
                             <PressableOpacity onPress={() => Add('Đội Giá')}>
-                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Đội Giá') ? 'border border-amber-600' : ''}`}
+                                <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Đội Giá') ? 'border border-amber-600' : ''}`}
                                 >Đội Giá</Box>
                             </PressableOpacity>
                             <PressableOpacity onPress={() => Add('Thái độ nhận viên')}>
-                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Thái độ nhận viên') ? 'border border-amber-600' : ''}`}
+                                <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Thái độ nhận viên') ? 'border border-amber-600' : ''}`}
                                 >Thái độ nhận viên</Box>
                             </PressableOpacity>
                             <PressableOpacity onPress={() => Add('Giao hàng lâu')}>
-                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Giao hàng lâu') ? 'border border-amber-600' : ''}`}
+                                <Box className={`px-2 py-1 text-[8px]  rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Giao hàng lâu') ? 'border border-amber-600' : ''}`}
                                 >Giao hàng lâu</Box>
                             </PressableOpacity>
 
@@ -330,27 +330,26 @@ const OrderReview = ({ navigation, route }) => {
                         </Flex >
                             : null}
 
-                        {star && star >= 4 ? <Flex direction='row' className="flex flex-wrap" >
+                        {star && star >= 4 ? <Flex direction='row' className="flex flex-wrap text-[10px]" >
                             <PressableOpacity onPress={() => Add('Chất lượng')}>
-                                <Box className={` px-2 py-1 rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Chất lượng') ? 'border border-amber-600' : ''}`}
-                                >Chất
-                                    lượng</Box>
+                                <Box className={` px-2 py-1 text-[8px]  rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Chất lượng') ? 'border border-amber-600' : ''}`}
+                                >Chất lượng</Box>
                             </PressableOpacity>
                             <PressableOpacity onPress={() => Add('Tuyệt vời')}>
-                                <Box className={` px-2 py-1 rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Tuyệt vời') ? ' border border-amber-600' : ''}`}
+                                <Box className={` px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Tuyệt vời') ? ' border border-amber-600' : ''}`}
                                 >Tuyệt vời</Box>
                             </PressableOpacity>
 
                             <PressableOpacity onPress={() => Add('Sạch sẽ')}>
-                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Sạch sẽ') ? 'border border-amber-600' : ''}`}
+                                <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Sạch sẽ') ? 'border border-amber-600' : ''}`}
                                 >Sạch sẽ</Box>
                             </PressableOpacity>
                             <PressableOpacity onPress={() => Add('Đóng gói cẩn thận')}>
-                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Đóng gói cẩn thận') ? 'border border-amber-600' : ''}`}
+                                <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Đóng gói cẩn thận') ? 'border border-amber-600' : ''}`}
                                 >Đóng gói cẩn thận</Box>
                             </PressableOpacity>
                             <PressableOpacity onPress={() => Add('Thái độ thân thiện')}>
-                                <Box className={`px-2 py-1 bỏ rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Thái độ thân thiện') ? 'border border-amber-600' : ''}`}
+                                <Box className={`px-2 py-1 text-[8px] bỏ rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Thái độ thân thiện') ? 'border border-amber-600' : ''}`}
                                 >Thái độ thân thiện</Box>
                             </PressableOpacity>
 
@@ -361,19 +360,19 @@ const OrderReview = ({ navigation, route }) => {
 
                         <Box className="my-5 bg-[#F0F0F0] rounded-lg">
 
-                            <TextArea value={form.description} maxH="500" placeholder="Nhận xét thêm" className="bg-white"
-                                maxW="1000"
+                            <TextArea value={form.description} placeholder="Nhận xét thêm" className="bg-white h-[300px] "
+                               
                                 onChangeText={text => setForm(prevState => {
                                     return { ...prevState, description: text }
                                 })} // for android and ios
                             />
                         </Box>
 
-                        <Flex direction='row' className="mt-1 items-center">
+                        <Flex direction='row' className="mt-1 mb-3 items-center">
                             <PressableOpacity onPress={() => pickImages()}>
                                 <MaterialCommunityIcons name='file-image-plus-outline' size={32} color='#AEAEAE' />
                             </PressableOpacity>
-                            <Text className=" text-[#686868] ml-2 text-[12px]">Đính kèm hình ảnh</Text>
+                            <Text className=" text-[#AEAEAE]  ml-2 text-[12px]">Đính kèm hình ảnh</Text>
                         </Flex>
 
                         <Flex direction='row' className="flex flex-wrap" >

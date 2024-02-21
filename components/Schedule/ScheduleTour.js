@@ -270,7 +270,7 @@ const ScheduleTour = ({ navigation, route }) => {
                                                 value={quantity}
                                                 onChange={value => setQuantity(value)}
                                                 onLimitReached={(isMax, msg) => console.log(isMax, msg)}
-                                                totalWidth={40}
+                                                totalWidth={60}
                                                 totalHeight={40}
                                                 iconSize={16}
                                                 step={1}
@@ -300,7 +300,7 @@ const ScheduleTour = ({ navigation, route }) => {
                                                 value={quantityChildren}
                                                 onChange={value => setQuantityChildren(value)}
                                                 onLimitReached={(isMax, msg) => console.log(isMax, msg)}
-                                                totalWidth={40}
+                                                totalWidth={60}
                                                 totalHeight={40}
                                                 iconSize={16}
                                                 step={1}
@@ -326,12 +326,13 @@ const ScheduleTour = ({ navigation, route }) => {
 
                             </Box>
                         </Box>
-                        <Button onPress={() => saveSchedule()} className="w-full mt-10 mb-[77px]  text-white  bg-[#FF6100] rounded-[10px] btn_button"
-                        ><Text className="text-white text-[16px]">Xác nhận đặt chỗ</Text></Button>
 
+                        <Button onPress={() => saveSchedule()} className="mb-3 bottom-0 mx-2 px-2 py-3 text-white  bg-[#FF6100] rounded-[10px] btn_button"
+                        ><Text className="text-white text-[16px]">Xác nhận đặt chỗ</Text></Button>
 
                     </Box >
                 </Box >
+
             </ScrollView>
         </SafeAreaView>
     );
@@ -342,7 +343,7 @@ const styles = StyleSheet.create({
     cardcontainer: {
         flex: 1
     },
-    dropdownStyle:{
+    dropdownStyle: {
         fontWeight: 600,
         padding: '5px'
     }

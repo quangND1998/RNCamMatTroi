@@ -43,7 +43,7 @@ const HistoryCare = ({ navigation, route }) => {
                 refreshControl={
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                 }>
-                <Box className="bg-white mt-1 rounded-b-3xl  ">
+                <Box className="bg-white  rounded-b-3xl  ">
                     <Flex direction='row' className="justify-between ">
                         <Box className="p-4 text-left mr-2  ">
 

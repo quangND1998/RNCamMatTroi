@@ -17,7 +17,9 @@ const AddScreen = () => {
                 headerTitleStyle: {
                     fontWeight: 'bold',
                     color: '#FF6100',
+
                 },
+
                 headerTitleAlign: 'center',
                 paddingTop: 12,
                 headerLeft: (props) => (
@@ -40,7 +42,7 @@ const AddScreen = () => {
                 ),
             })}
         >
-            <Stack.Screen name="CustomerService" options={{ title: 'Dịch vụ khách hàng' }} component={CustomerService} />
+            <Stack.Screen name="CustomerService" options={{ title: 'Dịch vụ khách hàng', headerShadowVisible: false, }} component={CustomerService} />
             <Stack.Screen name="Complaint" options={{ title: 'Khiếu nại' }} component={Complaint} />
             {/* <Stack.Screen name="HomeScreen" options={{ headerShown: false }} component={Home} />
             <Stack.Screen name="CustomerService" options={{ headerShown: false }} component={ProductHome} /> */}
@@ -56,7 +58,11 @@ const styles = StyleSheet.create({
         borderLeftWidth: 0.1,
         borderRightWidth: 0.1,
         height: 100,
-        paddingBottom: 0
+        paddingBottom: 0,
+
+        elevation: 0, // remove shadow on Android
+        shadowOpacity: 0, // remove shadow on iOS
+
     }
 })
 
