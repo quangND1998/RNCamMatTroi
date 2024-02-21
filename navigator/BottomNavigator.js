@@ -11,11 +11,11 @@ import { Button, Image } from 'native-base';
 import ScheduleTour from '../components/Schedule/ScheduleTour';
 import { HeaderBackButton } from '@react-navigation/elements';
 import UpdateUser from '../components/User/UpdateUser';
+import { enableScreens } from 'react-native-screens';
 import OrderTab from '../components/Svg/OrderTab';
 import CalenderTab from '../components/Svg/CalenderTab';
 import UserTab from '../components/Svg/UserTab';
 import MoreTab from '../components/Svg/MoreTab';
-import { enableScreens } from 'react-native-screens';
 const Tab = createBottomTabNavigator();
 enableScreens(true)
 const BottomNavigator = () => {
@@ -32,10 +32,8 @@ const BottomNavigator = () => {
                 headerShadowVisible: false,
                 tabBarStyle: {
 
-                    borderTopLeftRadius: 24,
-                    borderTopRightRadius: 24,
-                    borderLeftWidth: 0.1,
-                    borderRightWidth: 0.1,
+                    borderTopLeftRadius: 20,
+                    borderTopRightRadius: 20,
                     overflow: 'hidden',
                     height: 74,
                     bordercolor: 'transparent',
@@ -66,11 +64,8 @@ const BottomNavigator = () => {
                     paddingTop: 14,
                 },
                 headerStyle: {
-                    borderBottomLeftRadius: 18,
-                    borderBottomRightRadius: 18,
-                    borderLeftWidth: 0.1,
-                    borderRightWidth: 0.1,
-                   
+                    borderBottomLeftRadius: 20,
+                    borderBottomRightRadius: 20,
                     height: 60,
                 },
                 paddingTop: 12,

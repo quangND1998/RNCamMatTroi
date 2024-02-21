@@ -101,46 +101,46 @@ const Home = ({ navigation, route }) => {
     };
     return (
         <SafeAreaView style={styles.container}>
-            <Box className='absolute z-50 w-full  bg-white rounded-b-[28px]'>
-                    {/* <Image source={require('../../assets/images/banner.png')} className="m-auto h-24 w-full object-cover" alt='banner'></Image> */}
-                    <Box className="px-4 py-4 w-full  ">
-                        <Flex direction='row' className="flex items-center justify-between">
-                            <Flex direction='row' className="">
-                                <Avatar source={{
-                                    uri: user?.profile_photo_url
-                                }}>
-                                </Avatar>
+            <Box className='absolute z-50 w-full  bg-white rounded-b-[20px]'>
+                {/* <Image source={require('../../assets/images/banner.png')} className="m-auto h-24 w-full object-cover" alt='banner'></Image> */}
+                <Box className="px-4 py-4 w-full  ">
+                    <Flex direction='row' className="flex items-center justify-between">
+                        <Flex direction='row' className="">
+                            <Avatar source={{
+                                uri: user?.profile_photo_url
+                            }}>
+                            </Avatar>
 
-                                <Flex className="ml-4">
-                                    <Text className="font-bold text-xl text-gray-800">{user?.name}</Text>
-                                    <Text className="text-[#FF6100] text-[12px]">#{user?.cic_number}</Text>
-                                </Flex>
-
+                            <Flex className="ml-4">
+                                <Text className="font-bold text-xl text-gray-800">{user?.name}</Text>
+                                <Text className="text-[#FF6100] text-[12px]">#{user?.cic_number}</Text>
                             </Flex>
 
-                            <Box className="flex flex-row">
-                                <PressableOpacity onPress={() => {
-                                    navigation.navigate('ScanExpo');
-
-                                }} >
-                                    <Image source={require('../../assets/icon/scan.png')} alt="scan" className="w-[24px] h-[24px]" resizeMode="contain" ></Image>
-                                </PressableOpacity>
-                                <PressableOpacity onPress={() => {
-                                    navigation.navigate('Notification');
-
-                                }} >
-                                    <Image source={require('../../assets/icon/icon_bell.png')}  alt="icon_bell" className="ml-5 w-[24px] h-[24px]" resizeMode="contain"></Image>
-                                    <Box className="absolute left-8 top-[-8] shadow rounded-md ">
-                                        <Text className="min-w-min w-[20px] h-[20px] text-center text-white bg-[#FF6100] text-[10px] rounded-xl">{
-                                            totalUnRead > 0 ? '1+' : '0'
-                                        }
-                                        </Text>
-                                    </Box>
-                                </PressableOpacity>
-                            </Box>
                         </Flex>
 
-                    </Box>
+                        <Box className="flex flex-row">
+                            <PressableOpacity onPress={() => {
+                                navigation.navigate('ScanExpo');
+
+                            }} >
+                                <Image source={require('../../assets/icon/scan.png')} alt="scan" className="w-[24px] h-[24px]" resizeMode="contain" ></Image>
+                            </PressableOpacity>
+                            <PressableOpacity onPress={() => {
+                                navigation.navigate('Notification');
+
+                            }} >
+                                <Image source={require('../../assets/icon/icon_bell.png')} alt="icon_bell" className="ml-2 w-[24px] h-[24px]" resizeMode="contain"></Image>
+                                <Box className="absolute left-5 top-[-6] shadow rounded-md ">
+                                    <Text className="min-w-min w-[20px] h-[20px] text-center text-white bg-[#FF6100] text-[10px] rounded-xl">{
+                                        totalUnRead
+                                    }
+                                    </Text>
+                                </Box>
+                            </PressableOpacity>
+                        </Box>
+                    </Flex>
+
+                </Box>
             </Box>
             <ScrollView
                 contentContainerStyle={styles.scrollView}

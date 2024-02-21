@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { LogBox, Dimensions } from 'react-native';
+import { LogBox, Dimensions, TextInput } from 'react-native';
 import { StyleSheet, TouchableOpacity, Linking, Keyboard, View, Alert, SafeAreaView, ScrollView, Platform, RefreshControl } from 'react-native';
 import { Center, Container, Heading, Button, Text, Flex, Box, TextArea, Stack, Input, SearchBar, Image, Icon, Spacer, ZStack, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base'
 import { useDispatch, useSelector } from 'react-redux'
@@ -17,6 +17,7 @@ import Toast from 'react-native-toast-message';
 import Spinner from 'react-native-loading-spinner-overlay';
 import HrTag from '../HrTag';
 import { getOrderDetail } from '../../store/actions/history';
+import Star from '../Svg/Star';
 const OrderReview = ({ navigation, route }) => {
     const dispatch = useDispatch();
     const { itemId } = route.params;
@@ -241,7 +242,7 @@ const OrderReview = ({ navigation, route }) => {
 
                                 }}>
                                     <Box className="text-3xl mx-1 text-[#AEAEAE]" >
-                                        <MaterialCommunityIcons name='star' size={32} color={i <= star ? '#FF6100' : '#AEAEAE'} />
+                                        <Star width={28} height={28} color={i <= star ? '#FF6100' : '#AEAEAE'} />
                                     </Box>
                                 </PressableOpacity>
 
@@ -253,7 +254,7 @@ const OrderReview = ({ navigation, route }) => {
 
 
                 </Box>
-                <Box>
+                <Box className="mb-[77px]">
                     <Box className="text-[#AEAEAE] text-[13px] mx-5 my-2 w-full">
                         <Text className="text-[#AEAEAE]">Bạn hài lòng về dịch vụ chứ? Hãy cho chúng tôi biết ý kiến của bạn? </Text>
                     </Box>
@@ -262,20 +263,20 @@ const OrderReview = ({ navigation, route }) => {
                         {star && star < 2 ? <Flex direction='row' className="flex flex-wrap" >
                             <PressableOpacity onPress={() => Add('Sản phẩm lỗi')}>
                                 <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Sản phẩm lỗi') ? 'border border-amber-600' : ''}`}
-                                >Sản phẩm lỗi</Box>
+                                ><Text className="text-[10px]">Sản phẩm lỗi</Text></Box>
                             </PressableOpacity>
 
                             <PressableOpacity onPress={() => Add('Đội Giá')}>
                                 <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Đội Giá') ? 'border border-amber-600' : ''}`}
-                                >Đội Giá</Box>
+                                ><Text className="text-[10px]">Đội Giá</Text></Box>
                             </PressableOpacity>
                             <PressableOpacity onPress={() => Add('Thái độ nhận viên')}>
                                 <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Thái độ nhận viên') ? 'border border-amber-600' : ''}`}
-                                >Thái độ nhận viên</Box>
+                                ><Text className="text-[10px]">Thái độ nhận viên</Text></Box>
                             </PressableOpacity>
                             <PressableOpacity onPress={() => Add('Giao hàng lâu')}>
                                 <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Giao hàng lâu') ? 'border border-amber-600' : ''}`}
-                                >Giao hàng lâu</Box>
+                                ><Text className="text-[10px]">Giao hàng lâu</Text></Box>
                             </PressableOpacity>
 
 
@@ -284,20 +285,20 @@ const OrderReview = ({ navigation, route }) => {
                         {star && star == 2 ? <Flex direction='row' className="flex flex-wrap" >
                             <PressableOpacity onPress={() => Add('Sản phẩm lỗi')}>
                                 <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Sản phẩm lỗi') ? 'border border-amber-600' : ''}`}
-                                >Sản phẩm lỗi</Box>
+                                ><Text className="text-[10px]">Sản phẩm lỗi</Text></Box>
                             </PressableOpacity>
 
                             <PressableOpacity onPress={() => Add('Đội Giá')}>
                                 <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Đội Giá') ? 'border border-amber-600' : ''}`}
-                                >Đội Giá</Box>
+                                ><Text className="text-[10px]">Đội Giá</Text></Box>
                             </PressableOpacity>
                             <PressableOpacity onPress={() => Add('Thái độ nhận viên')}>
                                 <Box className={`px-2 py-1 text-[8px]  rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Thái độ nhận viên') ? 'border border-amber-600' : ''}`}
-                                >Thái độ nhận viên</Box>
+                                ><Text className="text-[10px]">Thái độ nhận viên</Text></Box>
                             </PressableOpacity>
                             <PressableOpacity onPress={() => Add('Giao hàng lâu')}>
                                 <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Giao hàng lâu') ? 'border border-amber-600' : ''}`}
-                                >Giao hàng lâu</Box>
+                                ><Text className="text-[10px]">Giao hàng lâu</Text></Box>
                             </PressableOpacity>
 
 
@@ -309,20 +310,20 @@ const OrderReview = ({ navigation, route }) => {
 
                             <PressableOpacity onPress={() => Add('Sản phẩm lỗi')}>
                                 <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Sản phẩm lỗi') ? 'border border-amber-600' : ''}`}
-                                >Sản phẩm lỗi</Box>
+                                ><Text className="text-[10px]">Sản phẩm lỗi</Text></Box>
                             </PressableOpacity>
 
                             <PressableOpacity onPress={() => Add('Đội Giá')}>
                                 <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Đội Giá') ? 'border border-amber-600' : ''}`}
-                                >Đội Giá</Box>
+                                ><Text className="text-[10px]">Đội Giá</Text></Box>
                             </PressableOpacity>
                             <PressableOpacity onPress={() => Add('Thái độ nhận viên')}>
                                 <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Thái độ nhận viên') ? 'border border-amber-600' : ''}`}
-                                >Thái độ nhận viên</Box>
+                                ><Text className="text-[10px]">Thái độ nhận viên</Text></Box>
                             </PressableOpacity>
                             <PressableOpacity onPress={() => Add('Giao hàng lâu')}>
                                 <Box className={`px-2 py-1 text-[8px]  rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Giao hàng lâu') ? 'border border-amber-600' : ''}`}
-                                >Giao hàng lâu</Box>
+                                ><Text className="text-[10px]">Giao hàng lâu</Text></Box>
                             </PressableOpacity>
 
 
@@ -333,24 +334,24 @@ const OrderReview = ({ navigation, route }) => {
                         {star && star >= 4 ? <Flex direction='row' className="flex flex-wrap text-[10px]" >
                             <PressableOpacity onPress={() => Add('Chất lượng')}>
                                 <Box className={` px-2 py-1 text-[8px]  rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Chất lượng') ? 'border border-amber-600' : ''}`}
-                                >Chất lượng</Box>
+                                ><Text className="text-[10px]">Chất lượng</Text></Box>
                             </PressableOpacity>
                             <PressableOpacity onPress={() => Add('Tuyệt vời')}>
                                 <Box className={` px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Tuyệt vời') ? ' border border-amber-600' : ''}`}
-                                >Tuyệt vời</Box>
+                                ><Text className="text-[10px]">Tuyệt vời</Text></Box>
                             </PressableOpacity>
 
                             <PressableOpacity onPress={() => Add('Sạch sẽ')}>
                                 <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Sạch sẽ') ? 'border border-amber-600' : ''}`}
-                                >Sạch sẽ</Box>
+                                ><Text className="text-[10px]">Sạch sẽ</Text></Box>
                             </PressableOpacity>
                             <PressableOpacity onPress={() => Add('Đóng gói cẩn thận')}>
                                 <Box className={`px-2 py-1 text-[8px] rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Đóng gói cẩn thận') ? 'border border-amber-600' : ''}`}
-                                >Đóng gói cẩn thận</Box>
+                                ><Text className="text-[10px]">Đóng gói cẩn thận</Text></Box>
                             </PressableOpacity>
                             <PressableOpacity onPress={() => Add('Thái độ thân thiện')}>
                                 <Box className={`px-2 py-1 text-[8px] bỏ rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Thái độ thân thiện') ? 'border border-amber-600' : ''}`}
-                                >Thái độ thân thiện</Box>
+                                ><Text className="text-[10px]">Thái độ thân thiện</Text></Box>
                             </PressableOpacity>
 
 
@@ -360,8 +361,18 @@ const OrderReview = ({ navigation, route }) => {
 
                         <Box className="my-5 bg-[#F0F0F0] rounded-lg">
 
-                            <TextArea value={form.description} placeholder="Nhận xét thêm" className="bg-white h-[300px] "
-                               
+                            <TextInput underlineColorAndroid="transparent"
+
+                                placeholderTextColor="grey"
+                                numberOfLines={10}
+                                multiline={true} style={{
+                                    flex: 1,
+                                    textAlignVertical: 'top',
+                                    padding: 10,
+                                    paddingLeft: 15,
+                                    height: 150, justifyContent: "flex-start"
+                                }} value={form.description} placeholder="Nhận xét thêm" className="rounded-md bg-white  border-white text-[11px]"
+
                                 onChangeText={text => setForm(prevState => {
                                     return { ...prevState, description: text }
                                 })} // for android and ios
@@ -375,12 +386,15 @@ const OrderReview = ({ navigation, route }) => {
                             <Text className=" text-[#AEAEAE]  ml-2 text-[12px]">Đính kèm hình ảnh</Text>
                         </Flex>
 
-                        <Flex direction='row' className="flex flex-wrap" >
+                        <Flex direction='row' className="flex flex-wrap mb-[30px]" >
                             {images.length > 0 && images.map((image, index) =>
                                 <Flex key={`image${index}`} direction='row' className=" flex flex-wrap mx-1 my-1" >
                                     <Box className="relative ">
                                         <Box className="absolute right-0 top-0 z-10 ">
-                                            <MaterialCommunityIcons onPress={() => DeleteImage(image)} name='trash-can-outline' size={16} color='#fc5050' />
+                                            <PressableOpacity onPress={() => DeleteImage(image)}>
+                                                <MaterialCommunityIcons name='trash-can-outline' size={16} color='#fc5050' />
+                                            </PressableOpacity>
+
                                         </Box>
                                         <Image source={{ uri: image.uri }} alt={`image${index}`} size="md" className="rounded-md" />
 
@@ -390,8 +404,7 @@ const OrderReview = ({ navigation, route }) => {
 
                             )}
                         </Flex>
-                        <Button onPress={() => saveComplaint()} className=" bottom-0 w-full  text-white bg-[#FF6100] rounded-xl btn_button"
-                        >Gửi</Button>
+
                     </Box >
 
                 </Box>
@@ -401,7 +414,10 @@ const OrderReview = ({ navigation, route }) => {
 
 
             </ScrollView >
-
+            <Box className="mx-3">
+                <Button onPress={() => saveComplaint()} className="absolute bottom-[77px] w-full  text-white bg-[#FF6100] rounded-xl btn_button"
+                >Gửi</Button>
+            </Box>
 
         </SafeAreaView >
     );

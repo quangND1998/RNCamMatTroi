@@ -52,10 +52,10 @@ const CustomerService = ({ navigation, route }) => {
                     <Box className=" h-full px-3 pt-4 bg-[#F0F0F0]">
                         <TouchableOpacity onPress={() => navigation.navigate('Schedule')}  >
                             <Flex className="w-full py-2 ">
-                                <Flex direction='row' >
+                                <Flex direction='row' className="flex items-center">
                                     <Calender width={24} height={25} />
                                     {/* <MaterialCommunityIcons name='calendar-range-outline' size={24} className="text-[#070707]" color="#070707" /> */}
-                                    <Text className=" text-[#000000] ml-3 text-[18px]  ">Đặt lịch thăm vườn</Text>
+                                    <Text className=" text-[#000000] ml-3 text-[20px]  ">Đặt lịch thăm vườn</Text>
                                 </Flex>
                             </Flex>
                         </TouchableOpacity>
@@ -63,23 +63,23 @@ const CustomerService = ({ navigation, route }) => {
                         <HrTag mr="1" ml="1" opacity={0.3}> </HrTag>
                         <TouchableOpacity onPress={() => navigation.navigate('Complaint')}  >
                             <Flex className="w-full py-2 ">
-                                <Flex direction='row' className="mt-4">
+                                <Flex direction='row' className="mt-4 flex items-center">
                                     <Message width={24} height={24} />
 
-                                    <Text className="  text-[#000000] ml-3 text-[18px] ">Khiếu nại, phản hồi</Text>
+                                    <Text className="  text-[#000000] ml-3 text-[20px] ">Khiếu nại, phản hồi</Text>
                                 </Flex>
                             </Flex>
                         </TouchableOpacity>
                         <HrTag mr="1" ml="1" opacity={0.3}> </HrTag>
                         <Flex className="w-full py-2  ">
                             <TouchableOpacity onPress={handlerLogout}  >
-                                <Flex direction='row' className="mt-4">
+                                <Flex direction='row' className="mt-4 flex items-center">
                                     <Logout
                                         size="28"
                                         color="#000000"
                                         variant="Outline"
                                     />
-                                    <Text className="  text-[#000000] ml-2 text-[18px] ">Đăng xuất</Text>
+                                    <Text className="  text-[#000000] ml-2 text-[20px] ">Đăng xuất</Text>
                                 </Flex>
                             </TouchableOpacity>
                         </Flex>

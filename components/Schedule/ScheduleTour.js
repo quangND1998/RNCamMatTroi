@@ -166,7 +166,7 @@ const ScheduleTour = ({ navigation, route }) => {
                         <Box className="my-2">
                             <Box className="w-full">
                                 <Flex direction='row' className="flex justify-between">
-                                    <Heading size="sm" className="color-[#FF6100] my-1">Mã đặt lịch tham quan</Heading>
+                                    <Heading size="sm" className="color-[#FF6100] font-medium my-1">Mã đặt lịch tham quan</Heading>
 
                                     <Flex direction='row' className=" items-center">
                                         <Text className=" font-inter mr-2 text-[13px] text-[#AEAEAE] leading-4" >{code}</Text>
@@ -183,7 +183,7 @@ const ScheduleTour = ({ navigation, route }) => {
                                     <Flex className="py-1.5 rounded-lg flex relative">
                                         <PressableOpacity onPress={showDatepicker}>
                                             <Flex direction='row' className="justify-between bg-white p-[16px] rounded-[5px] mb-2" >
-                                                <Text className="text-[#184E17] text-[16px] font-bold"> {formatOnlyDate(date)}</Text>
+                                                <Text className="text-[#184E17] text-[16px] font-medium"> {formatOnlyDate(date)}</Text>
                                                 {/* <Calendar
                                                     size="24"
                                                     color="#FF8A65"
@@ -194,7 +194,7 @@ const ScheduleTour = ({ navigation, route }) => {
                                         <PressableOpacity onPress={showTimepicker}>
 
                                             <Flex direction='row' className="justify-between mt-2 bg-white p-[16px] rounded-[5px]" >
-                                                <Text className="text-[#184E17] text-[16px] font-bold"> {formatTime(date)}</Text>
+                                                <Text className="text-[#184E17] text-[16px] font-medium"> {formatTime(date)}</Text>
                                                 {/* <Timer1
                                                     size="24"
                                                     color="#FF8A65"
@@ -225,7 +225,7 @@ const ScheduleTour = ({ navigation, route }) => {
 
                                 </Box>
                                 {productOwnersActive ? <Box className="" >
-                                    <Heading size="sm" className="color-[#FF6100] mt-2 mb-4">Hoạt động theo gói </Heading>
+                                    <Heading size="sm" className="color-[#FF6100] font-medium mt-2 mb-4">Hoạt động theo gói </Heading>
                                     {/* <Box maxW="500" class="bg-white">
                                         <Select class="bg-white" selectedValue={productOwner} minWidth="100" accessibilityLabel="Chọn gói dịch vụ" placeholder="Chọn gói dịch vụ " _selectedItem={{
                                             bg: "teal.600",
@@ -257,7 +257,7 @@ const ScheduleTour = ({ navigation, route }) => {
 
 
                                 <Box className="my-5 bg-[#F0F0F0] rounded-lg">
-                                    <Heading size="sm" className="color-[#FF6100] my-1">Số lượng {productOwnersActive ? productOwnersActive.title : null}</Heading>
+                                    <Heading size="sm" className="color-[#FF6100] font-medium my-1">Số lượng {productOwnersActive ? productOwnersActive.title : null}</Heading>
                                     <Flex direction='row' className=" justify-between ">
                                         <Flex direction='row' className=" items-center">
                                             <User

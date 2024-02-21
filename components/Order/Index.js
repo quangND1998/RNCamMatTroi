@@ -49,10 +49,10 @@ const OrderItem = ({ navigation, route }) => {
 
                 <Box style={styles.container} className="mx-3 mt-3 ">
                     {productService ? productService.map((product, index) =>
-                        <Box key={product.id} className="mb-3">
-                            <Box className=" flex flex-row ">
+                        <Box key={product.id} className="mb-3 mx-1">
+                            <Box className=" flex flex-row">
                                 <Image source={require('../../assets/images/icon_package.png')} alt={`anh${index}`} className="h-8 w-8 mr-3" ></Image>
-                                <Text className="font-bold text-xl text-[#FF6100]">{product.name}</Text>
+                                <Text className="font-bold text-xl text-[#FF6100] flex flex-row flex-wrap ">{product.name}</Text>
                             </Box>
                             <Box className="ml-1 mt-2 flex flex-row items-center">
                                 <Text className="font-bold text-[30px] text-[#000000] px-3">.</Text>

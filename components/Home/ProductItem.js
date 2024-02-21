@@ -15,6 +15,7 @@ import { Center, Container, Heading, Button, Box, Flex, Stack, Input, SearchBar,
 import { useHelper } from '../../helpers/helper';
 const { width, height } = Dimensions.get('screen');
 const imageHeight = height;
+const heightScreen = height - 77;
 import QRCode from 'react-native-qrcode-svg';
 import { ArrowRight } from 'iconsax-react-native';
 import Video from 'react-native-video';
@@ -77,8 +78,8 @@ const ProductItem = ({ item, index, navigation }) => {
           ]}
         >
         </Image>
-        <Box className=" mt-[-288px] bg-white rounded-2xl  mx-4  border-solid border-2 border-[#2C5524]">
-          <Box className="flex flex-row px-4 py-2 w-full justify-between">
+        <Box style={{ marginTop: -288 }} className="  bg-white rounded-[20px]  mx-4  border-solid border-[1px] border-[#2C5524]">
+          <Box className="flex flex-row px-3 py-3 w-full justify-between">
             <Box style={styles.content} className="text-left mr-2 ">
               <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
                 style={styles.description}>Mã cây: <Text className="text-[#184E17] font-bold">{item.tree?.address}</Text></Text>
@@ -100,8 +101,8 @@ const ProductItem = ({ item, index, navigation }) => {
               />
             </Box>
           </Box>
-          <TouchableOpacity onPress={handlerDetail} className="bg-[#FF6100]  flex flex-row rounded-b-xl items-center justify-center text-white" >
-            <Text numberOfLines={3} className="text-[15px] text-white uppercase px-1 py-2 font-bold"
+          <TouchableOpacity onPress={handlerDetail} className="bg-[#FF6100]  flex flex-row rounded-b-[18px] items-center justify-center text-white" >
+            <Text numberOfLines={3} className="text-[15px] text-[#F0F0F0] uppercase px-1 py-2.5 font-bold"
             >Đặt lịch thăm vườn ngay</Text>
             {/* <ArrowRight className="text-[#ffffff] "
               size="25"
@@ -113,19 +114,19 @@ const ProductItem = ({ item, index, navigation }) => {
       </View>
       <Box className="bg-white rounded-t-[20px] mt-4 py-2 mb-[77px]">
         <Box className="mx-4">
-          <Text className="text-2xl text-[#FF6100]  px-1 py-3 font-bold" >Lịch sử chăm sóc cây</Text>
+          <Text className="text-[20px] text-[#FF6100]  px-1 py-3 font-bold" >Lịch sử chăm sóc cây</Text>
           <Box className="" >
             {item.tree?.history_care ? Object.keys(item.tree?.history_care).map((history, key) =>
               <Box key={key} >
                 {key < 3 ?
                   <Box className="flex mx-3">
-                    <Text className="font-base text-sm text-[#184E17]  ">{formatDateShort(history)}</Text>
+                    <Text className="font-base text-[12px] text-[#184E17]  ">{formatDateShort(history)}</Text>
                     <Box className="flex w-full my-2 items-center">
                       {item.tree?.history_care[history].map((history_care, index) =>
                         // <Text className="font-inter font-normal text-base text-[#080808] ">{activity.name} ,</Text>
                         <Box key={index} className=" flex w-full flex-row flex-wrap items-center">
-                          {/* <Text className="font-bold  text-[#184E17] px-3">.</Text> */}
-                          <Image source={require('../../assets/icon/dot.png')} className="px-3  w-[5px] h-[5px] flex justify-center mb-0" alt="dot" resizeMode="contain"></Image>
+                          {/* <Text className="font-bold text-[40px] text-[#184E17] px-3 py-4">.</Text> */}
+                          <Image source={require('../../assets/icon/dot.png')} className="px-3  w-[4px] h-[4px] flex justify-center" alt="dot" resizeMode="contain"></Image>
                           {history_care.activity_care.map((activity, index) =>
                             <Box key={index} className="flex flex-row">
                               {history_care.activity_care.length - 1 == index ?
@@ -142,7 +143,7 @@ const ProductItem = ({ item, index, navigation }) => {
                     <PressableOpacity onPress={() => navigation.navigate('HistoryCare', { treeId: item.tree.id }
 
                     )}>
-                      <Text className="font-base text-center text-sm text-[#184E17] ">Xem tất cả</Text>
+                      <Text className="font-base text-center text-[14px] font-normal text-[#184E17] ">Xem tất cả</Text>
                     </PressableOpacity>
 
                     : null
@@ -151,13 +152,14 @@ const ProductItem = ({ item, index, navigation }) => {
 
             ) : null}
           </Box>
-          <Text className="text-2xl text-[#FF6100]  px-1 py-3 font-bold" >Hình ảnh và video</Text>
+          <Text className="text-[20px] text-[#FF6100]  px-1 py-3 font-bold" >Hình ảnh và video</Text>
           <Box className="px-3 py-3 bg-[#F9EDD5] w-full flex flex-row flex-wrap">
             {item?.tree ? item.tree?.images.map((image, index_m) =>
               <Box key={index_m} className="w-1/3 border border-[#F9EDD5]" >
                 {image.mime_type.includes("image") ?
-                  <ImageModal resizeMode="cover" modalImageResizeMode="contain"
-                    source={{ uri: image.original_url }} alt={`imageslide${image.id}`} style={[styles.imageGallary]}></ImageModal>
+                  <Image resizeMode="cover" modalImageResizeMode="contain"
+                    source={{ uri: image.original_url }} alt={`imageslide${image.id}`} className="w-full h-[100px]">
+                    </Image>
                   :
                   <Box className="w-full h-[100px]">
                     <Box className="absolute flex items-center justify-center w-full h-full" >
@@ -211,7 +213,7 @@ const styles = StyleSheet.create({
   },
   imageGallary: {
     height: 100,
-    width: 100,
+    width: 120,
   },
   backgroundVideo: {
     position: 'absolute',

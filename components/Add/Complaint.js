@@ -237,7 +237,7 @@ const Complaint = ({ navigation, route }) => {
 
 
                 </Center>
-                <Box>
+                <Box className="mb-[77px]">
                     <Box className="text-[#AEAEAE] text-[13px]   mx-5 w-full">
                         <Text className="text-[#AEAEAE]">Chúng tôi cần cải thiện điều gì? </Text>
                     </Box>
@@ -326,7 +326,7 @@ const Complaint = ({ navigation, route }) => {
                             <TextInput underlineColorAndroid="transparent"
 
                                 placeholderTextColor="grey"
-                                numberOfLines={10}
+                                numberOfLines={100}
                                 multiline={true} style={{
                                     flex: 1,
                                     textAlignVertical: 'top',
@@ -340,7 +340,7 @@ const Complaint = ({ navigation, route }) => {
                                 })} // for android and ios
                             />
                         </Box>
-                        {productOwnersActive ? <Box className="my-5" >
+                        {productOwnersActive ? <Box className="mt-1 mb-3" >
                             <Heading size="sm" className="color-[#FF6100]">Hoạt động theo gói </Heading>
                             <Box maxW="500">
                                 <Select selectedValue={form.productOwner} minWidth="100" accessibilityLabel="Chọn gói dịch vụ" placeholder="Chọn gói dịch vụ " _selectedItem={{
@@ -365,12 +365,15 @@ const Complaint = ({ navigation, route }) => {
                         </Flex>
 
 
-                        <Flex direction='row' className="flex flex-wrap" >
+                        <Flex direction='row' className="flex flex-wrap mb-[30px]" >
                             {images.length > 0 && images.map((image, index) =>
                                 <Flex key={`image${index}`} direction='row' className=" flex flex-wrap mx-1 my-1" >
                                     <Box className="relative ">
                                         <Box className="absolute right-0 top-0 z-10 ">
-                                            <MaterialCommunityIcons onPress={() => DeleteImage(image)} name='trash-can-outline' size={16} color='#fc5050' />
+                                            <PressableOpacity onPress={() => DeleteImage(image)}>
+                                                <MaterialCommunityIcons name='trash-can-outline' size={16} color='#fc5050' />
+                                            </PressableOpacity>
+
                                         </Box>
                                         <Image source={{ uri: image.uri }} alt={`image${index}`} size="md" className="rounded-md" />
 
@@ -380,17 +383,21 @@ const Complaint = ({ navigation, route }) => {
 
                             )}
                         </Flex>
-
+                        {/* <Button onPress={() => saveComplaint()} className=" mb-[77px] bottom-0  w-full  text-white bg-[#FF6100] rounded-xl btn_button"
+                        >Gửi</Button> */}
                     </Box >
 
                 </Box>
 
-                <Button onPress={() => saveComplaint()} className="mb-3 bottom-0 mx-2 px-2 py-3  text-white bg-[#FF6100] rounded-xl btn_button"
-                >Gửi</Button>
+
 
 
 
             </ScrollView >
+            <Box className="mx-3">
+                <Button onPress={() => saveComplaint()} className="absolute bottom-[77px] w-full  text-white bg-[#FF6100] rounded-[10px] btn_button"
+                >Gửi</Button>
+            </Box>
 
 
         </SafeAreaView >
