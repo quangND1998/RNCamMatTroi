@@ -238,7 +238,7 @@ const ScheduleTour = ({ navigation, route }) => {
                                     </Box> */}
                                     <Box className=" bg-white border-[#AEAEAE] rounded-[5px] font-bold" >
                                         <Picker
-                                            itemStyle={styles.dropdownStyle}
+                                            
                                             dropdownIconColor={'#184E17'}
                                             selectedValue={productOwner}
                                             onValueChange={(itemValue, itemIndex) =>
@@ -246,7 +246,7 @@ const ScheduleTour = ({ navigation, route }) => {
                                             }>
 
                                             {productOwnersActive.map((item, key) =>
-                                                <Picker.Item key={item.id} color="#184E17" label={item?.product?.name} value={item.id} />)}
+                                                <Picker.Item key={item.id} color="#184E17" style={styles.dropdownStyle} label={item?.product?.name} value={item.id} />)}
 
 
                                         </Picker>
@@ -326,9 +326,11 @@ const ScheduleTour = ({ navigation, route }) => {
 
                             </Box>
                         </Box>
-
-                        <Button onPress={() => saveSchedule()} className="mb-3 bottom-0 mx-2 px-2 py-3 text-white  bg-[#FF6100] rounded-[10px] btn_button"
+                        <Button onPress={() => saveSchedule()} className="w-full mt-10 mb-[77px]  text-white  bg-[#FF6100] rounded-[10px] btn_button"
                         ><Text className="text-white text-[16px]">Xác nhận đặt chỗ</Text></Button>
+
+                        {/* <Button onPress={() => saveSchedule()} className="mb-3 bottom-0 mx-2 px-2 py-3 text-white  bg-[#FF6100] rounded-[10px] btn_button"
+                        ><Text className="text-white text-[16px]">Xác nhận đặt chỗ</Text></Button> */}
 
                     </Box >
                 </Box >

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { LogBox } from 'react-native';
+import { LogBox, Touchable } from 'react-native';
 import { StyleSheet, Animated, TouchableOpacity, Linking, Keyboard, View, ScrollView, RefreshControl, ImageBackground, SectionList, YellowBox } from 'react-native';
 import { Center, Container, Heading, Button, Text, Box, Flex, Stack, Input, SearchBar, Icon, Spacer, ZStack, Image, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
 import { useDispatch, useSelector } from 'react-redux'
@@ -101,52 +101,53 @@ const Home = ({ navigation, route }) => {
     };
     return (
         <SafeAreaView style={styles.container}>
+            <Box className='absolute z-50 w-full  bg-white rounded-b-[28px]'>
+                {/* <Image source={require('../../assets/images/banner.png')} className="m-auto h-24 w-full object-cover" alt='banner'></Image> */}
+                <Box className="px-4 py-4 w-full  ">
+                    <Flex direction='row' className="flex items-center justify-between">
+                        <Flex direction='row' className="">
+                            <Avatar source={{
+                                uri: user?.profile_photo_url
+                            }}>
+                            </Avatar>
+
+                            <Flex className="ml-4">
+                                <Text className="font-bold text-xl text-gray-800">{user?.name}</Text>
+                                <Text className="text-[#FF6100] text-[12px]">#{user?.cic_number}</Text>
+                            </Flex>
+
+                        </Flex>
+
+                        <Box className="flex flex-row">
+                            <PressableOpacity onPress={() => {
+                                navigation.navigate('ScanExpo');
+
+                            }} >
+                                <Image source={require('../../assets/icon/scan.png')} alt="scan" className="w-[24px] h-[24px]" resizeMode="contain" ></Image>
+                            </PressableOpacity>
+                            <PressableOpacity onPress={() => {
+                                navigation.navigate('Notification');
+
+                            }} >
+                                <Image source={require('../../assets/icon/icon_bell.png')} alt="icon_bell" className="ml-5 w-[24px] h-[24px]" resizeMode="contain"></Image>
+                                <Box className="absolute left-8 top-[-8] shadow rounded-md ">
+                                    <Text className="min-w-min w-[20px] h-[20px] text-center text-white bg-[#FF6100] text-[10px] rounded-xl">{
+                                        totalUnRead
+                                    }
+                                    </Text>
+                                </Box>
+                            </PressableOpacity>
+                        </Box>
+                    </Flex>
+
+                </Box>
+            </Box>
             <ScrollView
                 contentContainerStyle={styles.scrollView}
                 refreshControl={
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                 }>
-                <Box className='absolute z-50 w-full shadow bg-white rounded-b-[28px]'>
-                    {/* <Image source={require('../../assets/images/banner.png')} className="m-auto h-24 w-full object-cover" alt='banner'></Image> */}
-                    <Box className="px-4 py-4 w-full  ">
-                        <Flex direction='row' className="flex items-center justify-between">
-                            <Flex direction='row' className="">
-                                <Avatar source={{
-                                    uri: user?.profile_photo_url
-                                }}>
-                                </Avatar>
 
-                                <Flex className="ml-4">
-                                    <Text className="font-bold text-xl text-gray-800">{user?.name}</Text>
-                                    <Text className="text-[#FF6100] text-[12px]">#{user?.cic_number}</Text>
-                                </Flex>
-
-                            </Flex>
-
-                            <Box className="flex flex-row">
-                                <PressableOpacity onPress={() => {
-                                    navigation.navigate('ScanExpo');
-
-                                }} >
-                                    <Image source={require('../../assets/icon/scan.png')} alt="scan"  ></Image>
-                                </PressableOpacity>
-                                <PressableOpacity onPress={() => {
-                                    navigation.navigate('Notification');
-
-                                }} >
-                                    <Image source={require('../../assets/icon/icon_bell.png')} className="ml-5" alt="icon_bell"></Image>
-                                    <Box className="absolute left-8 top-[-8] shadow rounded-md ">
-                                        <Text className=" w-[20px] h-[20px] text-center text-white bg-[#FF6100] text-[10px] rounded-xl">{
-                                            totalUnRead
-                                        }
-                                        </Text>
-                                    </Box>
-                                </PressableOpacity>
-                            </Box>
-                        </Flex>
-
-                    </Box>
-                </Box>
                 {/* <Box className="bg">
                     <SlideBG></SlideBG>
                 </Box> */}
@@ -157,6 +158,7 @@ const Home = ({ navigation, route }) => {
                                 data={productOwner}
                                 renderItem={({ item, index }) => <ProductItem item={item} index={index} navigation={navigation} />}
                                 horizontal
+                                scrollEnabled={false}
                                 keyExtractor={(item) => item.id.toString()}
                                 ref={flatListRef}
                                 initialNumToRender={1}
@@ -164,13 +166,13 @@ const Home = ({ navigation, route }) => {
 
                             /> : <View></View>}
                         {currentIndex > 0 ?
-                            <TouchableOpacity className="absolute top-1/4 rounded-full bg-white h-8 w-8 z-50 m-auto left-4" title="Previous" onPress={handlePrevious} disabled={currentIndex === 0} >
+                            <TouchableOpacity activeOpacity={0.7} className="absolute top-1/4 rounded-full bg-white h-8 w-8 z-50 m-auto left-4" title="Previous" onPress={handlePrevious} disabled={currentIndex === 0} >
                                 <Image className="h-6 w-6 z-50 m-auto" source={require('../../assets/icon/fi-rr-arrow-small-left.png')} alt="fi-rr-arrow-small-left" resizeMode="contain"></Image>
                             </TouchableOpacity>
                             : null}
 
                         {currentIndex != productOwner?.length - 1 ?
-                            <TouchableOpacity className="absolute top-1/4 rounded-full bg-white h-8 w-8 z-50 m-auto right-4" title="Next" onPress={handleNext} disabled={currentIndex === productOwner?.length - 1} >
+                            <TouchableOpacity activeOpacity={0.7} className="absolute top-1/4 rounded-full bg-white h-8 w-8 z-50 m-auto right-4" title="Next" onPress={handleNext} disabled={currentIndex === productOwner?.length - 1} >
                                 <Image className="h-6 w-6 z-50 m-auto" source={require('../../assets/icon/fi-rr-arrow-small-right.png')} alt="fi-rr-arrow-small-right" resizeMode="contain"></Image>
                             </TouchableOpacity>
                             : null}
