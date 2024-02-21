@@ -15,8 +15,9 @@ import OrderTab from '../components/Svg/OrderTab';
 import CalenderTab from '../components/Svg/CalenderTab';
 import UserTab from '../components/Svg/UserTab';
 import MoreTab from '../components/Svg/MoreTab';
+import { enableScreens } from 'react-native-screens';
 const Tab = createBottomTabNavigator();
-
+enableScreens(true)
 const BottomNavigator = () => {
     return (
         <Tab.Navigator
@@ -28,7 +29,7 @@ const BottomNavigator = () => {
                 tabBarActiveTintColor: '#FF6100',
                 tabBarInactiveTintColor: "#184E17",
                 headerLeftLabelVisible: false,
-       
+                headerShadowVisible: false,
                 tabBarStyle: {
 
                     borderTopLeftRadius: 24,
@@ -65,10 +66,11 @@ const BottomNavigator = () => {
                     paddingTop: 14,
                 },
                 headerStyle: {
-                    borderBottomLeftRadius: 20,
-                    borderBottomRightRadius: 20,
+                    borderBottomLeftRadius: 18,
+                    borderBottomRightRadius: 18,
                     borderLeftWidth: 0.1,
                     borderRightWidth: 0.1,
+                   
                     height: 60,
                 },
                 paddingTop: 12,
@@ -131,7 +133,7 @@ const BottomNavigator = () => {
                     tabBarLabel: '',
                     // headerTransparent: true,
                     tabBarIcon: ({ color, size }) => (
-                        <Image source={require('../assets/icon/icon_orange.png')} className="w-14 h-14 " alt='box' ></Image>
+                        <Image source={require('../assets/icon/icon_orange.png')} className="w-14 h-14 m-auto" alt='box' ></Image>
                     ),
                     tabBarLabelStyle: { marginBottom: -10 },
                 }}

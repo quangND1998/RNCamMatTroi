@@ -52,9 +52,9 @@ const StackNavigator = () => {
                 component={LogoLogin} />
             <Stack.Screen name="Login" options={{
                 headerShown: true, title: 'Đăng nhập', headerTitleStyle: {
-                    fontWeight: 'bold',
+                    fontWeight: '700',
                     color: '#FF6100',
-
+                    fontFamily: "Inter-Regular"
 
                 },
                 headerTitleAlign: 'center',
@@ -68,9 +68,9 @@ const StackNavigator = () => {
                 headerShown: true, title: 'Đăng nhập OTP',
 
                 headerTitleStyle: {
-                    fontWeight: 'bold',
+                    fontWeight: '650',
                     color: '#FF6100',
-
+                    fontFamily: "Inter-Regular"
 
                 },
                 headerTitleAlign: 'center',
@@ -88,7 +88,7 @@ const StackNavigator = () => {
                 headerTitleStyle: {
                     fontWeight: 'bold',
                     color: '#FF6100',
-
+                    fontFamily: "Inter-Regular"
 
                 },
                 headerTitleAlign: 'center',
@@ -181,6 +181,8 @@ const styles = StyleSheet.create({
         borderRightWidth: 0.1,
         height: 200,
         paddingBottom: 0,
+        elevation: 0, // remove shadow on Android
+        shadowOpacity: 0, // remove shadow on iOS
         // backgroundColor: '#FF6100'
     }
 })

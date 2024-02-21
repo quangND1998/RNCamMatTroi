@@ -125,7 +125,7 @@ const ProductItem = ({ item, index, navigation }) => {
                         // <Text className="font-inter font-normal text-base text-[#080808] ">{activity.name} ,</Text>
                         <Box key={index} className=" flex w-full flex-row flex-wrap items-center">
                           {/* <Text className="font-bold  text-[#184E17] px-3">.</Text> */}
-                          <Image source={require('../../assets/icon/dot.png')} className="px-3  w-[5px] h-[5px] flex justify-center mb-0" resizeMode="contain"></Image>
+                          <Image source={require('../../assets/icon/dot.png')} className="px-3  w-[5px] h-[5px] flex justify-center mb-0" alt="dot" resizeMode="contain"></Image>
                           {history_care.activity_care.map((activity, index) =>
                             <Box key={index} className="flex flex-row">
                               {history_care.activity_care.length - 1 == index ?
@@ -157,7 +157,7 @@ const ProductItem = ({ item, index, navigation }) => {
               <Box key={index_m} className="w-1/3 border border-[#F9EDD5]" >
                 {image.mime_type.includes("image") ?
                   <ImageModal resizeMode="cover" modalImageResizeMode="contain"
-                    source={{ uri: image.original_url }} alt={`imageslide`} style={[styles.imageGallary]}></ImageModal>
+                    source={{ uri: image.original_url }} alt={`imageslide${image.id}`} style={[styles.imageGallary]}></ImageModal>
                   :
                   <Box className="w-full h-[100px]">
                     <Box className="absolute flex items-center justify-center w-full h-full" >
@@ -203,15 +203,15 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     height: imageHeight,
-    width: '100%',
+
   },
   imagelist: {
     width: '100%',
     display: 'flex',
   },
   imageGallary: {
-    width: 100,
     height: 100,
+    width: 100,
   },
   backgroundVideo: {
     position: 'absolute',

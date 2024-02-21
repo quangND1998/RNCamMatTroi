@@ -101,16 +101,16 @@ const Login = ({ navigation }) => {
                 </FormControl>
                 <Flex direction='row' className=" justify-end mt-1">
                     <PressableOpacity onPress={() => navigation.navigate('LoginOtp')}>
-                        <Text className="text-[#FF6100] ">Đăng nhập bằng OTP</Text>
+                        <Text className="text-[#FF6100] text-[13px]" style={{ fontFamily: 'Inter-Regular', fontWeight: 400 }}>Đăng nhập bằng OTP</Text>
                     </PressableOpacity>
                     {/* <router-link to='/otp-phone' class="text-[#FF6100]  ">Đăng nhập bằng OTP</router-link> */}
                 </Flex>
 
 
-                <Button className="w-full mt-4 text-white bg-[#FF6100] focus:text-[#FF6100] rounded-xl" size='md' text="submit" onPress={submitHandler}>Đăng nhập</Button>
+                <Button className="w-full mt-3 text-[14px] text-white bg-[#FF6100] focus:text-[#FF6100] rounded-xl" size='md' text="submit" onPress={submitHandler}>Đăng nhập</Button>
 
                 <Box className="mt-7 text-center flex items-center flex-row justify-center">
-                    <Text className="text-[#080808] text-[12px] ">Bạn chưa có tài khoản?</Text> <Text className="text-[#FF6100] ">Hotline</Text>
+                    <Text className="text-[#080808] text-[13px] ">Bạn chưa có tài khoản?</Text> <Text className="text-[#FF6100] ">Hotline</Text>
                 </Box>
             </Box>
 

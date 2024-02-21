@@ -38,6 +38,19 @@ const Home = ({ navigation, route }) => {
         dispatch(getUnReadNotification())
 
     }, []);
+
+    useEffect(() => {
+
+        const unsubscribe = navigation.addListener('focus', () => {
+            (async () => {
+                dispatch(getUnReadNotification())
+
+            })();
+        });
+
+        // Return the function to unsubscribe from the event so it gets removed on unmount
+        return unsubscribe;
+    }, [navigation]);
     const fetchProductOwner = async () => {
         dispatch(getProductOwner())
 
@@ -47,6 +60,7 @@ const Home = ({ navigation, route }) => {
         setRefreshing(true);
         setTimeout(() => {
             fetchProductOwner();
+            getUnReadNotification()
             setRefreshing(false);
         }, 2000);
         console.log(productOwner);
@@ -55,20 +69,20 @@ const Home = ({ navigation, route }) => {
     const handlePrevious = () => {
         const previousIndex = currentIndex - 1;
         if (previousIndex >= 0) {
-        setCurrentIndex(previousIndex);
-        flatListRef.current.scrollToIndex({ index: previousIndex });
+            setCurrentIndex(previousIndex);
+            flatListRef.current.scrollToIndex({ index: previousIndex });
         }
         console.log(currentIndex)
-      };
-    
-      const handleNext = () => {
+    };
+
+    const handleNext = () => {
         const nextIndex = currentIndex + 1;
         if (nextIndex < productOwner?.length) {
-        setCurrentIndex(nextIndex);
-        flatListRef.current.scrollToIndex({ index: nextIndex });
+            setCurrentIndex(nextIndex);
+            flatListRef.current.scrollToIndex({ index: nextIndex });
         }
         console.log(currentIndex)
-      };
+    };
     const handleOnScroll = event => {
         Animated.event(
             [
@@ -142,7 +156,7 @@ const Home = ({ navigation, route }) => {
                         {productOwner ?
                             <FlatList
                                 data={productOwner}
-                                renderItem={({ item,index }) => <ProductItem item={item} index={index} navigation={navigation} />}
+                                renderItem={({ item, index }) => <ProductItem item={item} index={index} navigation={navigation} />}
                                 horizontal
                                 scrollEnabled={false}
                                 keyExtractor={(item) => item.id.toString()}
@@ -155,13 +169,13 @@ const Home = ({ navigation, route }) => {
                             <TouchableOpacity activeOpacity={0.7} className="absolute top-1/4 rounded-full bg-white h-8 w-8 z-50 m-auto left-4" title="Previous" onPress={handlePrevious} disabled={currentIndex === 0} >
                                 <Image className="h-6 w-6 z-50 m-auto" source={require('../../assets/icon/fi-rr-arrow-small-left.png')} resizeMode="contain"></Image>
                             </TouchableOpacity>
-                            : null }
+                            : null}
 
                             {currentIndex != productOwner?.length - 1 ? 
                             <TouchableOpacity activeOpacity={0.7} className="absolute top-1/4 rounded-full bg-white h-8 w-8 z-50 m-auto right-4" title="Next" onPress={handleNext} disabled={currentIndex === productOwner?.length - 1} >
                                 <Image className="h-6 w-6 z-50 m-auto" source={require('../../assets/icon/fi-rr-arrow-small-right.png')} resizeMode="contain"></Image>
                             </TouchableOpacity>
-                            : null }
+                            : null}
 
                     </View>
                 </Box>
