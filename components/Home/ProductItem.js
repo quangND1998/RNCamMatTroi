@@ -111,7 +111,7 @@ const ProductItem = ({ item, index, navigation }) => {
           </TouchableOpacity>
         </Box>
       </View>
-      <Box className="bg-white rounded--t-2xl mt-4 py-2 mb-[77px]">
+      <Box className="bg-white rounded-t-[20px] mt-4 py-2 mb-[77px]">
         <Box className="mx-4">
           <Text className="text-2xl text-[#FF6100]  px-1 py-3 font-bold" >Lịch sử chăm sóc cây</Text>
           <Box className="" >
@@ -119,7 +119,7 @@ const ProductItem = ({ item, index, navigation }) => {
               <Box key={key} >
                 {key < 3 ?
                   <Box className="flex mx-3">
-                    <Text className="font-base text-sm text-[#184E17] ">{formatDateShort(history)}</Text>
+                    <Text className="font-base text-sm text-[#184E17]  ">{formatDateShort(history)}</Text>
                     <Box className="flex w-full my-2 items-center">
                       {item.tree?.history_care[history].map((history_care, index) =>
                         // <Text className="font-inter font-normal text-base text-[#080808] ">{activity.name} ,</Text>

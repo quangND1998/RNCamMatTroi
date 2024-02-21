@@ -118,7 +118,7 @@ const Home = ({ navigation, route }) => {
                                     <Image source={require('../../assets/icon/icon_bell.png')}  alt="icon_bell" className="ml-5 w-[24px] h-[24px]" resizeMode="contain"></Image>
                                     <Box className="absolute left-8 top-[-8] shadow rounded-md ">
                                         <Text className="min-w-min w-[20px] h-[20px] text-center text-white bg-[#FF6100] text-[10px] rounded-xl">{
-                                            totalUnRead
+                                            totalUnRead > 0 ? '1+' : '0'
                                         }
                                         </Text>
                                     </Box>
