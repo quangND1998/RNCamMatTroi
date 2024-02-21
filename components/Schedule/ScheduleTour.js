@@ -238,7 +238,7 @@ const ScheduleTour = ({ navigation, route }) => {
                                     </Box> */}
                                     <Box className=" bg-white border-[#AEAEAE] rounded-[5px] font-bold" >
                                         <Picker
-                                            itemStyle={styles.dropdownStyle}
+                                            
                                             dropdownIconColor={'#184E17'}
                                             selectedValue={productOwner}
                                             onValueChange={(itemValue, itemIndex) =>
@@ -246,7 +246,7 @@ const ScheduleTour = ({ navigation, route }) => {
                                             }>
 
                                             {productOwnersActive.map((item, key) =>
-                                                <Picker.Item key={item.id} color="#184E17" label={item?.product?.name} value={item.id} />)}
+                                                <Picker.Item key={item.id} color="#184E17" style={styles.dropdownStyle} label={item?.product?.name} value={item.id} />)}
 
 
                                         </Picker>
