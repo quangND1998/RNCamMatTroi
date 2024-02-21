@@ -238,7 +238,10 @@ const ScheduleTour = ({ navigation, route }) => {
                                     </Box> */}
                                     <Box className=" bg-white border-[#AEAEAE] rounded-[5px] font-bold" >
                                         <Picker
-                                            
+                                            itemStyle={{
+                                                fontSize: 15,
+                                                fontFamily: 'Inter-Bold',
+                                            }}
                                             dropdownIconColor={'#184E17'}
                                             selectedValue={productOwner}
                                             onValueChange={(itemValue, itemIndex) =>
@@ -346,8 +349,9 @@ const styles = StyleSheet.create({
         flex: 1
     },
     dropdownStyle: {
-        fontWeight: 600,
-        padding: '5px'
+        fontWeight: 'bold',
+        padding: '5px',
+        fontFamily: 'Inter-Bold'
     }
 })
 

@@ -28,7 +28,7 @@ const LogoLogin = ({ navigation }) => {
                             <Image source={require('../../assets/images/cammattroi.png')} resizeMode="contain" className="w-[205px] h-[37px] m-auto items-center" alt="cammattroi"></Image>
                         </Box>
                         {/* <PressableOpacity className="hover:bg-[#FF6100]  "> */}
-                        <Button onPress={() => navigation.navigate('Login')} className="w-full px-3  shadow-xl py-2.5 items-center bg-white  mt-16 text-[#080808] ion-padding rounded-xl active:bg-[#FF6100] "><Text className="text-black">
+                        <Button onPress={() => navigation.navigate('Login')} style={styles.shadowLogin} className="w-full px-3 shadow-xl py-2.5 items-center bg-white  mt-16 text-[#080808] ion-padding rounded-xl active:bg-[#FF6100] "><Text className="text-black">
                             Đăng nhập
                         </Text>
                         </Button>
@@ -63,6 +63,14 @@ const styles = StyleSheet.create({
 
 
     },
+    shadowLogin: {
+
+        shadowColor: '#000000',
+        shadowOffset: { width: 0, height: 10 },
+        shadowOpacity: 0.25,
+        shadowRadius: 0,
+        padding: 20
+    }
 });
 
 //make this component available to the app
