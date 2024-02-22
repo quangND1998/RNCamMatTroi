@@ -139,9 +139,9 @@ const BottomNavigator = () => {
                     // headerTransparent: true,
                     tabBarIcon: ({ color, size }) => (
 
-                        <Box className="mt-4 h-full w-full">
+                        // <Box className="mt-4 h-full w-full">
                             <Image source={require('../assets/icon/icon_orange.png')} resizeMode='contain' className="w-[52px] h-[52px]  " alt='box' ></Image>
-                        </Box>
+                        // </Box>
 
                     ),
                     tabBarLabelStyle: { marginBottom: -10 },
