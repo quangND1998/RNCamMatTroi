@@ -26,11 +26,14 @@ const CustomerService = ({ navigation, route }) => {
             {
                 text: 'Đăng xuất', onPress: () => dispatch(logoutAction(
                     () => {
+                        setIsLoggedIn(false)
                         toast.show({
                             title: "Đăng xuất thành công",
                         })
-                        setIsLoggedIn(false)
-                        // navigation.navigate('Login');
+
+                        navigation.navigate('Login');
+
+
                     },
                     () => {
                         toast.show({

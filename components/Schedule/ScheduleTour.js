@@ -105,6 +105,15 @@ const ScheduleTour = ({ navigation, route }) => {
         showMode('time');
     };
     const saveSchedule = () => {
+        if (productOwnersActive.length == 0) {
+            Toast.show({
+                type: 'error',
+                text1: 'Chưa có gói hoạt động nào kích hoạt!',
+                position: 'bottom',
+
+            });
+            return
+        }
         const form = {
             date_time: date,
             number_adult: quantity,
@@ -224,7 +233,7 @@ const ScheduleTour = ({ navigation, route }) => {
                                     </Flex>
 
                                 </Box>
-                                {productOwnersActive ? <Box className="" >
+                                <Box className="" >
                                     <Heading size="sm" className="color-[#FF6100] mt-2 mb-4">Hoạt động theo gói </Heading>
                                     {/* <Box maxW="500" class="bg-white">
                                         <Select class="bg-white" selectedValue={productOwner} minWidth="100" accessibilityLabel="Chọn gói dịch vụ" placeholder="Chọn gói dịch vụ " _selectedItem={{
@@ -236,30 +245,34 @@ const ScheduleTour = ({ navigation, route }) => {
                                                 <Select.Item key={item.id} label={item?.product?.name} value={item.id} />)}
                                         </Select>
                                     </Box> */}
-                                    <Box className=" bg-white border-[#AEAEAE] rounded-[5px] font-bold" >
-                                        <Picker
-                                            itemStyle={{
-                                                fontSize: 15,
-                                                fontFamily: 'Inter-Bold',
-                                            }}
-                                            dropdownIconColor={'#184E17'}
-                                            selectedValue={productOwner}
-                                            onValueChange={(itemValue, itemIndex) =>
-                                                setProductOwner(itemValue)
-                                            }>
 
-                                            {productOwnersActive.map((item, key) =>
-                                                <Picker.Item key={item.id} color="#184E17" style={styles.dropdownStyle} label={item?.product?.name} value={item.id} />)}
+                                    {productOwnersActive.length > 0 ?
+                                        <Box className=" bg-white border-[#AEAEAE] rounded-[5px] font-bold" >
+                                            <Picker
+                                                itemStyle={{
+                                                    fontSize: 15,
+                                                    fontFamily: 'Inter-Bold',
+                                                }}
+                                                dropdownIconColor={'#184E17'}
+                                                selectedValue={productOwner}
+                                                onValueChange={(itemValue, itemIndex) =>
+                                                    setProductOwner(itemValue)
+                                                }>
+
+                                                {productOwnersActive.map((item, key) =>
+                                                    <Picker.Item key={item.id} color="#184E17" style={styles.dropdownStyle} label={item?.product?.name} value={item.id} />)}
 
 
-                                        </Picker>
-                                    </Box>
+                                            </Picker>
+                                        </Box>
+                                        : <Text className="text-red-600 font-bold">Chưa có gói được kích hoạt</Text>}
                                     <ErorrValidator errors={errors} key_error={'product_service_owner_id'} />
-                                </Box> : null}
+
+                                </Box>
 
 
                                 <Box className="my-5 bg-[#F0F0F0] rounded-lg">
-                                    <Heading size="sm" className="color-[#FF6100] my-1">Số lượng {productOwnersActive ? productOwnersActive.title : null}</Heading>
+                                    <Heading size="sm" className="color-[#FF6100] my-1">Số lượng </Heading>
                                     <Flex direction='row' className=" justify-between ">
                                         <Flex direction='row' className=" items-center">
                                             <User
