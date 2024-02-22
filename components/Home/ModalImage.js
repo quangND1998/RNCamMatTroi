@@ -5,7 +5,8 @@ import {
     StyleSheet,
     TouchableOpacity,
     Modal,
-    Image
+    Image,
+    ScrollView, RefreshControl,
 } from 'react-native';
 
 import { Center, Container, Heading, Button, Box, Flex, Stack, Input, SearchBar, Icon, Spacer, ZStack, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
@@ -24,7 +25,9 @@ const ModalImage = ({ url, alt }) => {
     useEffect(() => {
 
     }, [])
-
+    const onRefresh = React.useCallback(() => {
+        setVisible(false)
+    }, []);
     return (
         <View style={styles.container}>
 
@@ -64,6 +67,7 @@ const ModalImage = ({ url, alt }) => {
                 </View>
 
             </Modal>
+
         </View>
     );
 };

@@ -16,6 +16,7 @@ import OrderTab from '../components/Svg/OrderTab';
 import CalenderTab from '../components/Svg/CalenderTab';
 import UserTab from '../components/Svg/UserTab';
 import MoreTab from '../components/Svg/MoreTab';
+import { Box } from 'native-base';
 const Tab = createBottomTabNavigator();
 enableScreens(true)
 const BottomNavigator = () => {
@@ -30,21 +31,22 @@ const BottomNavigator = () => {
                 tabBarInactiveTintColor: "#184E17",
                 headerLeftLabelVisible: false,
                 headerShadowVisible: false,
+                margin: 5,
+
                 tabBarStyle: {
 
                     borderTopLeftRadius: 24,
                     borderTopRightRadius: 24,
-                    borderLeftWidth: 0.1,
-                    borderRightWidth: 0.1,
+
                     overflow: 'hidden',
-                    height: 74,
+                    height: 80,
                     bordercolor: 'transparent',
                     position: 'absolute',
                     shadowColor: 'rgba(0, 0, 0, 0.2)',
                     shadowOffset: {
                         width: 0,
                         height: -2,
-                        },
+                    },
                     shadowOpacity: 1,
                     shadowRadius: 2,
                     elevation: 2,
@@ -54,24 +56,27 @@ const BottomNavigator = () => {
                     color: '#FF6100',
                 },
                 headerTitleAlign: 'center',
-                tabBarLabelStyle: {
-                    margin: 0,
-                    padding: 0,
-                    paddingBottom: 20,
-                    fontWeight: '500'
+                // tabBarLabelStyle: {
+                //     margin: 0,
+                //     padding: 0,
+                //     paddingBottom: 8,
+                //     fontWeight: '500',
+                //     textAlign: 'center'
 
-                },
+                // },
                 tabBarItemStyle: {
                     padding: 0,
-                    paddingTop: 14,
+                    paddingBottom: 20,
+                    flex: 1,
+                    alignItems: 'center'
                 },
                 headerStyle: {
                     borderBottomLeftRadius: 18,
                     borderBottomRightRadius: 18,
                     borderLeftWidth: 0.1,
                     borderRightWidth: 0.1,
-                   
-                    height: 60,
+
+                    height: 70,
                 },
                 paddingTop: 12,
                 headerLeft: (props) => (
@@ -133,7 +138,11 @@ const BottomNavigator = () => {
                     tabBarLabel: '',
                     // headerTransparent: true,
                     tabBarIcon: ({ color, size }) => (
-                        <Image source={require('../assets/icon/icon_orange.png')} className="w-14 h-14 m-auto" alt='box' ></Image>
+
+                        <Box className="mt-4 h-full w-full">
+                            <Image source={require('../assets/icon/icon_orange.png')} resizeMode='contain' className="w-[52px] h-[52px]  " alt='box' ></Image>
+                        </Box>
+
                     ),
                     tabBarLabelStyle: { marginBottom: -10 },
                 }}
@@ -146,7 +155,7 @@ const BottomNavigator = () => {
                     tabBarLabel: 'Tài khoản',
                     tabBarIcon: ({ color, size }) => (
                         // <User color="#184E17" variant="Outline" size={20} />
-                        <UserTab width={24} height={25}  />
+                        <UserTab width={24} height={25} />
                     ),
                 }}
             />
@@ -160,7 +169,7 @@ const BottomNavigator = () => {
                     tabBarIcon: ({ color, size }) => (
                         // <More color="#184E17" variant="Outline" size={20} />
                         // <Image source={require('../assets/icon/more2.png')} className="w-6 h-6 " alt='box' ></Image>
-                        <MoreTab width={24} height={25}/>
+                        <MoreTab width={24} height={25} />
                     ),
                 }}
             />
