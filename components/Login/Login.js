@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component, useState } from 'react';
-import { View, StyleSheet, ToastAndroid, Keyboard, TextInput, KeyboardAvoidingView } from 'react-native';
+import { View, StyleSheet, Linking, ToastAndroid, Keyboard, TextInput, KeyboardAvoidingView } from 'react-native';
 import { Center, Container, Heading, Button, Text, Box, Stack, Icon, ZStack, FormControl, Image, Link, Input, HStack, VStack, Pressable, useToast, AspectRatio, Flex } from 'native-base'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginAction, logoutAction } from '../../store/actions/auth';
@@ -110,7 +110,29 @@ const Login = ({ navigation }) => {
                 <Button className="w-full mt-3 text-[14px] text-white bg-[#FF6100] focus:text-[#FF6100] rounded-[10px]"  text="submit" onPress={submitHandler}>Đăng nhập</Button>
 
                 <Box className="mt-7 text-center flex items-center flex-row justify-center">
-                    <Text className="text-[#080808] text-[13px] ">Bạn chưa có tài khoản?</Text> <Text className="text-[#FF6100] ">Hotline</Text>
+                    <Text className="text-[#080808] text-[13px] ">Bạn chưa có tài khoản?</Text>
+
+                    <PressableOpacity onPress={() => {
+                        let phoneNumber = null;
+                        if (Platform.OS !== 'android') {
+                            phoneNumber = `telprompt:0825105999`;
+                        }
+                        else {
+                            phoneNumber = `tel:0825105999`;
+                        }
+                        Linking.canOpenURL(phoneNumber)
+                            .then(supported => {
+                                if (!supported) {
+                                    Alert.alert('Phone number is not available');
+                                } else {
+                                    return Linking.openURL(phoneNumber);
+                                }
+                            })
+                            .catch(err => console.log(err));
+                    }
+                    }>
+                        <Text className="text-[#FF6100] ">Hotline</Text>
+                    </PressableOpacity>
                 </Box>
             </Box>
 

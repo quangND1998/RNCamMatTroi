@@ -28,10 +28,10 @@ const LogoLogin = ({ navigation }) => {
                         <Box className="mt-5">
                             <Image source={require('../../assets/images/cammattroi.png')} resizeMode="contain" className="w-[205px] h-[37px] m-auto items-center" alt="cammattroi"></Image>
                         </Box>
-                        <Button onPress={() => navigation.navigate('Login')} style={styles.shadowLogin} className="w-full px-3 shadow-md  py-2.8 items-center bg-white mt-16 text-[#080808] ion-padding rounded-[10px] active:bg-[#FF6100] ">
-                            <Text className="text-black">
-                                Đăng nhập
-                            </Text>
+                        {/* <PressableOpacity className="hover:bg-[#FF6100]  "> */}
+                        <Button onPress={() => navigation.navigate('Login')} style={styles.shadowLogin} className="w-full px-3 shadow-xl py-2.5 items-center bg-white  mt-16 text-[#080808] ion-padding rounded-xl active:bg-[#FF6100] "><Text className="text-black">
+                            Đăng nhập
+                        </Text>
                         </Button>
                     </Box>
                 </Box>
@@ -63,11 +63,12 @@ const styles = StyleSheet.create({
 
 
     },
-    shadowLogin:{
+    shadowLogin: {
+
         shadowColor: '#000000',
-        shadowOffset: {width: 0, height: 4},
+        shadowOffset: { width: 0, height: 10 },
         shadowOpacity: 0.25,
-        shadowRadius: 10,
+        shadowRadius: 0,
         padding: 20
     }
 });
