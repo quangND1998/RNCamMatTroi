@@ -21,6 +21,7 @@ import Video from 'react-native-video';
 import ImageModal from 'react-native-image-modal';
 import { PressableOpacity } from 'react-native-pressable-opacity';
 import ModalVideo from './ModalVideo';
+import ModalImage from './ModalImage';
 const ProductItem = ({ item, index, navigation }) => {
 
   const translateYImage = new Animated.Value(40);
@@ -156,8 +157,11 @@ const ProductItem = ({ item, index, navigation }) => {
             {item?.tree ? item.tree?.images.map((image, index_m) =>
               <Box key={index_m} className="w-1/3 border border-[#F9EDD5]" >
                 {image.mime_type.includes("image") ?
-                  <ImageModal resizeMode="cover" modalImageResizeMode="contain"
-                    source={{ uri: image.original_url }} alt={`imageslide${image.id}`} style={[styles.imageGallary]}></ImageModal>
+                  // <ImageModal resizeMode="cover" modalImageResizeMode="contain"
+                  //   source={{ uri: image.original_url }} alt={`imageslide${image.id}`} style={[styles.imageGallary]}></ImageModal>
+
+
+                  <ModalImage url={image.original_url} alt={`imageslide${image.id}`} ></ModalImage>
                   :
                   <Box className="w-full h-[100px]">
                     <Box className="absolute flex items-center justify-center w-full h-full" >
@@ -173,7 +177,7 @@ const ProductItem = ({ item, index, navigation }) => {
         </Box>
 
       </Box>
-    </View>
+    </View >
   );
 };
 export default ProductItem;
