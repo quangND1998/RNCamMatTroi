@@ -170,12 +170,12 @@ const ScheduleTour = ({ navigation, route }) => {
                 }
             >
 
-                <Box className="my-5 mx-5 pb-5 ion-padding">
+                <Box className="my-5 mb-[140] mx-5 pb-5 ion-padding">
                     <Box className=" h-full ">
                         <Box className="my-2">
                             <Box className="w-full">
                                 <Flex direction='row' className="flex justify-between">
-                                    <Heading size="sm" className="color-[#FF6100]">Mã đặt lịch tham quan</Heading>
+                                    <Heading size="sm" className="color-[#FF6100] font-medium my-1">Mã đặt lịch tham quan</Heading>
 
                                     <Flex direction='row' className=" items-center">
                                         <Text className=" font-inter mr-2 text-[13px] text-[#AEAEAE] leading-4" >{code}</Text>
@@ -191,8 +191,8 @@ const ScheduleTour = ({ navigation, route }) => {
 
                                     <Flex className="py-1.5 rounded-lg flex relative">
                                         <PressableOpacity onPress={showDatepicker}>
-                                            <Flex direction='row' className="justify-between bg-white p-[12px] rounded-[5px] mb-2" >
-                                                <Text className="text-[#184E17] font-bold"> {formatOnlyDate(date)}</Text>
+                                            <Flex direction='row' className="justify-between bg-white p-[14px] rounded-[5px] mb-2" >
+                                                <Text className="text-[#184E17] text-[14px] font-bold"> {formatOnlyDate(date)}</Text>
                                                 {/* <Calendar
                                                     size="24"
                                                     color="#FF8A65"
@@ -202,8 +202,8 @@ const ScheduleTour = ({ navigation, route }) => {
                                         </PressableOpacity>
                                         <PressableOpacity onPress={showTimepicker}>
 
-                                            <Flex direction='row' className="justify-between mt-2 bg-white p-[12px] rounded-[5px]" >
-                                                <Text className="text-[#184E17] font-bold"> {formatTime(date)}</Text>
+                                            <Flex direction='row' className="justify-between mt-2 bg-white p-[14px] rounded-[5px] " >
+                                                <Text className="text-[#184E17] text-[14px] font-bold"> {formatTime(date)}</Text>
                                                 {/* <Timer1
                                                     size="24"
                                                     color="#FF8A65"
@@ -248,7 +248,7 @@ const ScheduleTour = ({ navigation, route }) => {
 
                                     {productOwnersActive.length > 0 ?
                                         <Box className=" bg-white border-[#AEAEAE] rounded-[5px] font-bold" >
-                                            <Picker
+                                            {/* <Picker
                                                 itemStyle={{
                                                     fontSize: 15,
                                                     fontFamily: 'Inter-Bold',
@@ -261,9 +261,32 @@ const ScheduleTour = ({ navigation, route }) => {
 
                                                 {productOwnersActive.map((item, key) =>
                                                     <Picker.Item key={item.id} color="#184E17" style={styles.dropdownStyle} label={item?.product?.name} value={item.id} />)}
+                                            </Picker> */}
+                                            <Select selectedValue={productOwner} minWidth="100" accessibilityLabel="Chọn gói dịch vụ"
+                                                backgroundColor={'white'}
+                                                borderRadius={10}
+                                                borderColor={'white'}
+                                                padding={2}
+                                                fontSize={14}
+                                                fontWeight={'bold'}
+                                                color={'#184E17'}
+                                                placeholder="Chọn gói dịch vụ " 
+                                                _selectedItem={{
+                                                    bg: "orange.600",
+                                                    
+                                                }}
+                                                dropdownIcon={<Box className="mr-2">
+                                                    <Arrow color="#184E17" width={16} height={6} />
+                                                </Box>
+                                                } 
+                                                mt={1} 
+                                                onValueChange={(itemValue, itemIndex) =>
+                                                    setProductOwner(itemValue)
+                                                }>
 
-
-                                            </Picker>
+                                                    {productOwnersActive.map((item, key) =>
+                                                        <Select.Item key={item.id}  label={item?.product?.name} value={item.id} />)}
+                                            </Select>
                                         </Box>
                                         : <Text className="text-red-600 font-bold">Chưa có gói được kích hoạt</Text>}
                                     <ErorrValidator errors={errors} key_error={'product_service_owner_id'} />
@@ -279,7 +302,7 @@ const ScheduleTour = ({ navigation, route }) => {
                                                 size="20"
                                                 color="#184E17"
                                             />
-                                            <Text className="ml-3 text-[#184E17]">Người lớn</Text>
+                                            <Text className="ml-3 text-[#184E17] font-normal ">Người lớn</Text>
                                         </Flex>
                                         <Flex direction='row' >
                                             <NumericInput
@@ -300,7 +323,6 @@ const ScheduleTour = ({ navigation, route }) => {
                                                 leftButtonBackgroundColor='transparent' />
 
                                         </Flex>
-
                                     </Flex>
                                     <ErorrValidator errors={errors} key_error={'number_adult'} />
                                     <Flex direction='row' className=" justify-between">
@@ -309,7 +331,7 @@ const ScheduleTour = ({ navigation, route }) => {
                                                 size="20"
                                                 color="#184E17"
                                             />
-                                            <Text className="ml-3  text-[#184E17]">Trẻ em</Text>
+                                            <Text className="ml-3 font-normal  text-[#184E17]">Trẻ em</Text>
                                         </Flex>
                                         <Flex direction='row' >
                                             <NumericInput
@@ -342,16 +364,13 @@ const ScheduleTour = ({ navigation, route }) => {
 
                             </Box>
                         </Box>
-                        <Button onPress={() => saveSchedule()} className="w-full mt-10 mb-[77px]  text-white  bg-[#FF6100] rounded-[10px] btn_button"
-                        ><Text className="text-white text-[16px]">Xác nhận đặt chỗ</Text></Button>
-
-                        {/* <Button onPress={() => saveSchedule()} className="mb-3 bottom-0 mx-2 px-2 py-3 text-white  bg-[#FF6100] rounded-[10px] btn_button"
-                        ><Text className="text-white text-[16px]">Xác nhận đặt chỗ</Text></Button> */}
 
                     </Box >
                 </Box >
 
             </ScrollView>
+            <Button onPress={() => saveSchedule()} className="absolute mx-5 w-[90%] my-[87px] bottom-0  px-2 py-3 text-white  bg-[#FF6100] rounded-[10px] btn_button"
+                        ><Text className="text-white text-[16px]">Xác nhận đặt chỗ</Text></Button>
         </SafeAreaView>
     );
 }

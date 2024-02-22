@@ -16,7 +16,6 @@ import OrderTab from '../components/Svg/OrderTab';
 import CalenderTab from '../components/Svg/CalenderTab';
 import UserTab from '../components/Svg/UserTab';
 import MoreTab from '../components/Svg/MoreTab';
-import { Box } from 'native-base';
 const Tab = createBottomTabNavigator();
 enableScreens(true)
 const BottomNavigator = () => {
@@ -31,15 +30,12 @@ const BottomNavigator = () => {
                 tabBarInactiveTintColor: "#184E17",
                 headerLeftLabelVisible: false,
                 headerShadowVisible: false,
-                margin: 5,
-
                 tabBarStyle: {
 
-                    borderTopLeftRadius: 24,
-                    borderTopRightRadius: 24,
-
+                    borderTopLeftRadius: 20,
+                    borderTopRightRadius: 20,
                     overflow: 'hidden',
-                    height: 80,
+                    height: 74,
                     bordercolor: 'transparent',
                     position: 'absolute',
                     shadowColor: 'rgba(0, 0, 0, 0.2)',
@@ -56,27 +52,23 @@ const BottomNavigator = () => {
                     color: '#FF6100',
                 },
                 headerTitleAlign: 'center',
-                // tabBarLabelStyle: {
-                //     margin: 0,
-                //     padding: 0,
-                //     paddingBottom: 8,
-                //     fontWeight: '500',
-                //     textAlign: 'center'
+                tabBarLabelStyle: {
+                    margin: 0,
+                    padding: 0,
+                    paddingBottom: 14,
+                    fontWeight: '500',
+                    fontFamily: 'Inter-Medium',
+                    fontSize: 12
 
-                // },
+                },
                 tabBarItemStyle: {
                     padding: 0,
-                    paddingBottom: 20,
-                    flex: 1,
-                    alignItems: 'center'
+                    paddingTop: 14,
                 },
                 headerStyle: {
-                    borderBottomLeftRadius: 18,
-                    borderBottomRightRadius: 18,
-                    borderLeftWidth: 0.1,
-                    borderRightWidth: 0.1,
-
-                    height: 70,
+                    borderBottomLeftRadius: 20,
+                    borderBottomRightRadius: 20,
+                    height: 60,
                 },
                 paddingTop: 12,
                 headerLeft: (props) => (
@@ -138,11 +130,7 @@ const BottomNavigator = () => {
                     tabBarLabel: '',
                     // headerTransparent: true,
                     tabBarIcon: ({ color, size }) => (
-
-                        // <Box className="mt-4 h-full w-full">
-                            <Image source={require('../assets/icon/icon_orange.png')} resizeMode='contain' className="w-[52px] h-[52px]  " alt='box' ></Image>
-                        // </Box>
-
+                        <Image source={require('../assets/icon/icon_orange.png')} className="w-14 h-14 m-auto" alt='box' ></Image>
                     ),
                     tabBarLabelStyle: { marginBottom: -10 },
                 }}

@@ -129,6 +129,16 @@ const Complaint = ({ navigation, route }) => {
     }
 
     const saveComplaint = () => {
+
+        if (productOwnersActive.length == 0) {
+            Toast.show({
+                type: 'error',
+                text1: 'Chưa có gói hoạt động nào kích hoạt!',
+                position: 'bottom',
+
+            });
+            return
+        }
         const formData = new FormData();
 
         for (var i = 0; i < images.length; i++) {
@@ -237,7 +247,7 @@ const Complaint = ({ navigation, route }) => {
 
 
                 </Center>
-                <Box className="mb-[77px]">
+                <Box className="mb-[177px]">
                     <Box className="text-[#AEAEAE] text-[13px]   mx-5 w-full">
                         <Text className="text-[#AEAEAE]">Chúng tôi cần cải thiện điều gì? </Text>
                     </Box>
@@ -340,23 +350,31 @@ const Complaint = ({ navigation, route }) => {
                                 })} // for android and ios
                             />
                         </Box>
-                        {productOwnersActive ? <Box className="mt-1 mb-3" >
-                            <Heading size="sm" className="color-[#FF6100]">Hoạt động theo gói </Heading>
-                            <Box maxW="500">
-                                <Select selectedValue={form.productOwner} minWidth="100" accessibilityLabel="Chọn gói dịch vụ" placeholder="Chọn gói dịch vụ " _selectedItem={{
-                                    bg: "orange.600",
-                                    endIcon: <CheckIcon size="1" />
-                                }} mt={1} onValueChange={itemValue => setForm(prevState => {
-                                    return { ...prevState, productOwner: itemValue }
-                                })}>
 
-                                    {productOwnersActive.map((item, key) =>
-                                        <Select.Item key={item.id} label={item?.product?.name} value={item.id} />)}
-                                </Select>
-                            </Box>
+                        <Box className="mt-1 mb-3" >
+                            <Heading size="sm" className="color-[#FF6100]">Hoạt động theo gói </Heading>
+                            {productOwnersActive.length > 0 ?
+                                <Box maxW="500">
+                                    <Select selectedValue={form.productOwner} minWidth="100" accessibilityLabel="Chọn gói dịch vụ"
+                                        backgroundColor={'white'}
+                                        borderRadius={10}
+                                        borderColor={'white'}
+                                        placeholder="Chọn gói dịch vụ "
+                                        _selectedItem={{
+                                            bg: "orange.600",
+                                            endIcon: <CheckIcon size="1" />
+                                        }} mt={1} onValueChange={itemValue => setForm(prevState => {
+                                            return { ...prevState, productOwner: itemValue }
+                                        })}>
+
+                                        {productOwnersActive.map((item, key) =>
+                                            <Select.Item key={item.id} label={item?.product?.name} value={item.id} />)}
+                                    </Select>
+                                </Box>
+                                : <Text className="text-red-500 font-bold">Chưa có gói được kích hoạt</Text>}
 
                             <ErorrValidator errors={errors} key_error={'product_service_owner_id'} />
-                        </Box> : null}
+                        </Box>
                         <Flex direction='row' className="mt-1 items-center mb-2">
                             <PressableOpacity onPress={() => pickImages()} >
                                 <FileUpload />
@@ -383,19 +401,15 @@ const Complaint = ({ navigation, route }) => {
 
                             )}
                         </Flex>
+
                         {/* <Button onPress={() => saveComplaint()} className=" mb-[77px] bottom-0  w-full  text-white bg-[#FF6100] rounded-xl btn_button"
                         >Gửi</Button> */}
                     </Box >
 
                 </Box>
-
-
-
-
-
             </ScrollView >
-            <Box className="mx-3">
-                <Button onPress={() => saveComplaint()} className="absolute bottom-[77px] w-full  text-white bg-[#FF6100] rounded-xl btn_button"
+            <Box className="mx-5 w-[90%] absolute bottom-[80px]">
+                <Button onPress={() => saveComplaint()} className=" w-full  text-white bg-[#FF6100] rounded-[10px] btn_button"
                 >Gửi</Button>
             </Box>
 

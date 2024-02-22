@@ -258,9 +258,9 @@ const UpdateUser = ({ navigation, route }) => {
                                 {photo ? <Image source={{ uri: photo }} className="rounded-full m-auto h-28 w-28 " alt="avt"></Image>
                                     : checkIsImage(user?.profile_photo_url) == true ? <Image source={{ uri: user?.profile_photo_url }} className="rounded-full m-auto h-28 w-28 " alt="avt"></Image> : <Image source={require("../../assets/images/avt.png")} className="rounded-full m-auto h-28 w-28 " alt="avt"></Image>}
 
-                                <Box className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                    <Box className="m-[12px]">
-                                        <PressableOpacity onPress={() => dispatch({ type: 'openCamera', payload: true })} className="bg-white w-10 h-10  absolute  rounded-full shadow-md">
+                                <Box className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
+                                    <Box className="m-[12px] ">
+                                        <PressableOpacity onPress={() => dispatch({ type: 'openCamera', payload: true })} className="bg-white w-10 h-10  absolute  rounded-full shadow-[rgba(0,0,0,0.25)_-2px_-1px_0px_1px]">
                                             <Image source={require("../../assets/icon/camera.png")} resizeMode="contain" className=" m-auto w-[17] h-[18] " alt="avt"></Image>
                                         </PressableOpacity>
                                     </Box>

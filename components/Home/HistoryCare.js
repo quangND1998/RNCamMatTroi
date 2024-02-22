@@ -44,8 +44,8 @@ const HistoryCare = ({ navigation, route }) => {
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                 }>
                 <Box className="bg-white  rounded-b-3xl  ">
-                    <Flex direction='row' className="justify-between ">
-                        <Box className="p-4 text-left mr-2  ">
+                    <Flex direction='row' className="flex flex-row px-3 py-3 w-full justify-between ">
+                        {/* <Box className="p-4 text-left mr-2  ">
 
                             <Text>Mã cây: <Text className="text-[#184E17]">{tree?.address}</Text></Text>
                             <Text>Tên cây: <Text bold className="text-[#FF6100] uppercase">{tree?.name}</Text></Text>
@@ -59,6 +59,27 @@ const HistoryCare = ({ navigation, route }) => {
                                 logoSize={16}
                                 logoBackgroundColor='white'
                             />
+                        </Box> */}
+
+                        <Box  className="text-left mr-2">
+                        <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
+                            style={styles.description}>Mã cây: <Text className="text-[#184E17] font-bold">{tree?.address}</Text></Text>
+                        <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
+                            style={styles.description}>Tên cây: <Text className="text-[#FF6100] font-bold">{tree?.name}</Text></Text>
+                        <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
+                            style={styles.description}>Ngày nhận nuôi: <Text className="text-[#184E17] font-bold" >{formatDateShort(tree?.product_service_owner?.time_approve)}</Text></Text>
+                        <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
+                            style={styles.description}>Số ngày nhận nuôi: <Text className="text-[#184E17] font-bold">{formatDateUse(tree?.product_service_owner?.time_approve)} </Text></Text>
+                        </Box>
+                        <Box className="p-1 ">
+                        <QRCode
+                            value={`https://qly.cammattroi.com/tree/qrcode/${tree?.product_service_owner?.id}`}
+                            logo={require('../../assets/images/logo_qcam.png')}
+                            logoSize={16}
+                            logoBackgroundColor='white'
+                            size={70}
+                            resizeMode="contain"
+                        />
                         </Box>
                     </Flex>
                 </Box>
@@ -66,15 +87,15 @@ const HistoryCare = ({ navigation, route }) => {
                 {history_care ?
                     Object.keys(history_care).map((history, key) =>
                         <Box key={key} className="my-2 mx-4 " >
-                            <Text className='text-[#184E17] my-3 text-[13px]'>
+                            <Text style={{ fontFamily:'Inter-Regular' }} className='text-[#184E17] my-3 text-[12px]  font-[400px]'>
                                 {formatDateShort(history)}
                             </Text>
                             {history_care[history].map((item, index) =>
-                                <Flex key={index} direction='row' className="flex-wrap mx-1 object-fill bg-white px-2 py-2 rounded-md mb-2 border border-0.5 border-[#FF6100] " >
+                                <Flex key={index} direction='row' className="flex-wrap mx-1  bg-white px-2 py-2 rounded-md mb-2  border-[1px] border-[#FF6100] " >
                                     {item.activity_care.map((activity, index) =>
                                         <Box key={index} >
-                                            {item.activity_care.length - 1 == index ? <Text className='text-[13px] mr-1  items-center' >{activity.name}.</Text> :
-                                                <Text className='text-[13px]  mr-1  items-center ' >{activity.name},</Text>}
+                                            {item.activity_care.length - 1 == index ? <Text style={{ fontFamily:'Inter-Regular' }}  className='text-[16px] mr-1  items-center' >{activity.name}.</Text> :
+                                                <Text style={{ fontFamily:'Inter-Regular' }} className='text-[16px]  mr-1  items-center ' >{activity.name},</Text>}
                                         </Box>
                                     )}
                                 </Flex>
@@ -103,7 +124,13 @@ const styles = StyleSheet.create({
     },
     containt_service: {
         margin: 20
-    }
+    },
+    description: {
+        fontSize: 14,
+        marginVertical: 12,
+        color: '#000',
+        fontFamily: 'Inter-Regular'
+      },
 })
 
 

@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component, useState } from 'react';
-import { View, StyleSheet, ToastAndroid, Keyboard, TextInput, KeyboardAvoidingView, ScrollView, SafeAreaView, ImageBackground } from 'react-native';
+import { View, StyleSheet, ToastAndroid, Keyboard, TextInput, KeyboardAvoidingView, ScrollView, SafeAreaView, ImageBackground , } from 'react-native';
 import { Center, Container, Heading, Button, Text, Box, Stack, Icon, ZStack, FormControl, Image, Link, Input, HStack, VStack, Pressable, useToast, AspectRatio, Flex } from 'native-base'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginAction, logoutAction } from '../../store/actions/auth';
@@ -9,6 +9,7 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import { Eye, EyeSlash, VideoSlash } from 'iconsax-react-native';
 import Toast from 'react-native-toast-message';
 import { PressableOpacity } from 'react-native-pressable-opacity';
+// import { TouchableOpacity } from 'react-native-gesture-handler';
 // create a component
 const LogoLogin = ({ navigation }) => {
 
@@ -32,11 +33,10 @@ const LogoLogin = ({ navigation }) => {
                             Đăng nhập
                         </Text>
                         </Button>
-                        {/* </PressableOpacity> */}
                     </Box>
                 </Box>
             </Flex>
-        </ImageBackground>
+          </ImageBackground>
 
     );
 };

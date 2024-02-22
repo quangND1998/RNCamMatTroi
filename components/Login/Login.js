@@ -73,7 +73,7 @@ const Login = ({ navigation }) => {
                 textStyle={styles.spinnerTextStyle}
             />
             <Box className="bottom-0 h-full ">
-                <Image source={require('../../assets/images/banner3_login.png')} className="m-auto bottom-0 absolute " alt="" />
+                <Image source={require('../../assets/images/banner3_login.png')} className="h-[100%] w-[100%] bottom-0 absolute " alt="" />
             </Box>
 
 
@@ -82,7 +82,7 @@ const Login = ({ navigation }) => {
                     <Image source={require('../../assets/images/logo2.png')} className="m-auto  h-[29px] w-auto" resizeMode="contain" alt="logo2" />
                 </Box>
 
-                <TextInput onChangeText={changeCode} className=" border border-white text-gray-900 text-sm rounded-xl px-4 py-1.5" placeholder="Mã HĐ/SĐT" />
+                <TextInput onChangeText={changeCode} className=" border border-white text-gray-900 text-sm rounded-[10px] px-4 py-1.6" placeholder="Mã HĐ/SĐT" />
 
                 {/* <View className="my-3 relative flex items-center" >
                     <TextInput secureTextEntry={show} className="bg-gray-50 border border-[#FF6100] text-gray-900 text-sm rounded-lg p-2.5  " onChangeText={changePassword} placeholder="Password" />
@@ -91,10 +91,10 @@ const Login = ({ navigation }) => {
                         <Text className="text-[#FF6100] ">{show}</Text>
                     </View>
                 </View> */}
-                <FormControl className="my-2 relative flex ">
+                <FormControl className="my-3 relative flex ">
 
-                    <TextInput secureTextEntry={show} className=" border  border-white text-gray-900 text-sm rounded-xl px-4 py-1.5 " onChangeText={changePassword} placeholder="******" />
-                    <Box className="absolute py-3 right-0 px-2.5  items-center">
+                    <TextInput secureTextEntry={show} className=" border  border-white text-gray-900 text-sm rounded-[10px] px-4 py-1.6" onChangeText={changePassword} placeholder="******" />
+                    <Box className="absolute py-4 right-0 px-2.5  items-center">
                         {show == false ? <Eye color="gray" className="text-xs items-center" variant="Outline" size={16} onPress={() => setShow(true)} /> : <EyeSlash color="gray" variant="Outline" className="text-xs" size={16} onPress={() => setShow(false)} />}
                         <Text className="text-[#FF6100] ">{show}</Text>
                     </Box>
@@ -107,7 +107,7 @@ const Login = ({ navigation }) => {
                 </Flex>
 
 
-                <Button className="w-full mt-3 text-[14px] text-white bg-[#FF6100] focus:text-[#FF6100] rounded-xl" size='md' text="submit" onPress={submitHandler}>Đăng nhập</Button>
+                <Button className="w-full mt-3 text-[14px] text-white bg-[#FF6100] focus:text-[#FF6100] rounded-[10px]"  text="submit" onPress={submitHandler}>Đăng nhập</Button>
 
                 <Box className="mt-7 text-center flex items-center flex-row justify-center">
                     <Text className="text-[#080808] text-[13px] ">Bạn chưa có tài khoản?</Text>

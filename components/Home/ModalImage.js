@@ -29,13 +29,12 @@ const ModalImage = ({ url, alt }) => {
         setVisible(false)
     }, []);
     return (
-        <View style={styles.container}>
+        <View style={styles.container} className="w-full">
 
-            <View className="flex items-center align-center h-[100px]">
-                <PressableOpacity onPress={() => setVisible(true)}  >
-                    {url && <Image source={{ uri: url }} className=" mx-auto object-cover w-[100px] h-[100px] " />}
+            <View className=" flex items-center align-center w-full">
+                <PressableOpacity onPress={() => setVisible(true)} className="w-full h-full">
+                    {url && <Image source={{ uri: url }} alt={alt} className=" mx-auto object-cover w-full h-full " />}
                 </PressableOpacity>
-
 
             </View>
 

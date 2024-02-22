@@ -39,12 +39,12 @@ const ModalVideo = ({ url }) => {
         }
     };
     return (
-        <View style={styles.container}>
+        <View style={styles.container} className="w-full h-full">
 
-            <View className="flex items-center align-center h-[100px]">
-                {image && <Image source={{ uri: image }} resizeMode='cover' className=" mx-auto object-cover w-[100px] h-[100px] " />}
+            <View className="flex items-center align-center w-full h-full">
+                {image && <Image source={{ uri: image }} resizeMode='cover' className=" mx-auto object-cover w-full h-full " />}
 
-                <PressableOpacity onPress={() => setVisible(true)} className="absolute w-[100px] h-[100px] flex items-center " style={styles.bg_color} >
+                <PressableOpacity onPress={() => setVisible(true)} className="absolute w-full h-full flex items-center " style={styles.bg_color} >
                     <Image className=" m-auto object-cover w-[25px] h-[25px] z-25" source={require('../../assets/icon/play.png')}></Image>
                 </PressableOpacity>
 

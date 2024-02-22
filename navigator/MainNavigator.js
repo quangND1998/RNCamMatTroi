@@ -169,21 +169,18 @@ const MainNavigator = () => {
     if (!isLoggedIn) {
         return <StackNavigator />
     }
-
-
 };
 export default MainNavigator;
 const styles = StyleSheet.create({
     background: {
-        borderBottomLeftRadius: 24,
-        borderBottomRightRadius: 24,
-        borderLeftWidth: 0.1,
-        borderRightWidth: 0.1,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
         height: 200,
         paddingBottom: 0,
         elevation: 0, // remove shadow on Android
         shadowOpacity: 0, // remove shadow on iOS
         // backgroundColor: '#FF6100'
+        fontFamily:'Inter-Bold'
     }
 })
 
