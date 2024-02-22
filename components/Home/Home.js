@@ -167,13 +167,13 @@ const Home = ({ navigation, route }) => {
                             /> : <View></View>}
                         {currentIndex > 0 ?
                             <TouchableOpacity activeOpacity={0.7} className="absolute top-1/4 rounded-full bg-white h-8 w-8 z-50 m-auto left-4" title="Previous" onPress={handlePrevious} disabled={currentIndex === 0} >
-                                <Image className="h-6 w-6 z-50 m-auto" source={require('../../assets/icon/fi-rr-arrow-small-left.png')} alt="fi-rr-arrow-small-left" resizeMode="contain"></Image>
+                                <Image className="h-6 w-6 z-50 m-auto" source={require('../../assets/icon/fi-rr-arrow-small-left.png')} alt="icon_next" resizeMode="contain"></Image>
                             </TouchableOpacity>
                             : null}
 
                         {currentIndex != productOwner?.length - 1 ?
                             <TouchableOpacity activeOpacity={0.7} className="absolute top-1/4 rounded-full bg-white h-8 w-8 z-50 m-auto right-4" title="Next" onPress={handleNext} disabled={currentIndex === productOwner?.length - 1} >
-                                <Image className="h-6 w-6 z-50 m-auto" source={require('../../assets/icon/fi-rr-arrow-small-right.png')} alt="fi-rr-arrow-small-right" resizeMode="contain"></Image>
+                                <Image className="h-6 w-6 z-50 m-auto" source={require('../../assets/icon/fi-rr-arrow-small-right.png')} alt="icon_pre" resizeMode="contain"></Image>
                             </TouchableOpacity>
                             : null}
 

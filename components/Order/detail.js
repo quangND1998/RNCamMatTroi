@@ -81,7 +81,7 @@ const OrderDetail = ({ navigation, route }) => {
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                 }>
 
-                <Box style={styles.container} className="mx-3 mt-3 ">
+                <Box style={styles.container} className="mx-3 mt-3  ">
                     {orderDetail ?
                         <Box style={styles.container} className="ml-1">
                             {orderDetail.order_items ? orderDetail.order_items.map((item, index) =>
@@ -93,7 +93,7 @@ const OrderDetail = ({ navigation, route }) => {
                             <Box className="my-6 ">
                                 <Box className="flex flex-row items-center my-1">
                                     <Image source={require('../../assets/icon/start.png')} className="h-4 w-4 " alt="start" ></Image>
-                                    <Text className="font-base text-[12px] text-[#080808] px-3">{orderDetail.address}, {orderDetail.wards}, {orderDetail.district}, {orderDetail.city}  </Text>
+                                    <Text className="font-bold text-[12px] text-[#080808] px-3 " style={{ fontFamily:'Inter-SemiBold' }}>{orderDetail.address}, {orderDetail.wards}, {orderDetail.district}, {orderDetail.city}  </Text>
                                 </Box>
                                 <Box className="mx-1 ">
                                     <Image source={require('../../assets/icon/location.png')} className="h-2 w-2 " alt="location1" ></Image>
@@ -105,32 +105,31 @@ const OrderDetail = ({ navigation, route }) => {
                                     <Image source={require('../../assets/icon/location.png')} className="h-2 w-2 " alt="location3"></Image>
                                 </Box>
                                 <Box className="flex flex-row items-center my-1">
-                                    <Image source={require('../../assets/icon/end.png')} className="h-4 w-4 " alt="end"></Image>
-                                    <Text className="font-base text-[12px] text-[#080808] px-3">{orderDetail.address}, {orderDetail.wards}, {orderDetail.district}, {orderDetail.city}  </Text>
+                                    <Image source={require('../../assets/icon/end.png')} resizeMode='contain' className="h-4 w-4 " alt="end"></Image>
+                                    <Text className="font-bold text-[12px] text-[#080808] px-3" style={{ fontFamily:'Inter-SemiBold' }}>{orderDetail.address}, {orderDetail.wards}, {orderDetail.district}, {orderDetail.city}  </Text>
                                 </Box>
                             </Box>
                             <Box className="flex flex-row my-3">
-                                <Text className="font-base text-[16px] text-[#080808]">Ngày giao hàng:</Text>
+                                <Text className="font-bold text-[16px] text-[#080808]">Ngày giao hàng:</Text>
                                 <Text className="font-bold text-[16px] text-[#184E17] px-2">15/12/2024</Text>
                             </Box>
                             <Box className="flex flex-row my-3">
-                                <Text className="font-base text-[16px] text-[#080808]">Trạng thái:</Text>
+                                <Text className="font-bold text-[16px] text-[#080808]">Trạng thái:</Text>
                                 <Text className="font-bold text-[16px] text-[#FF6100] px-2">{orderDetail.status == "pending" ? "Đang giao hàng" : "Hoàn thành"}</Text>
                             </Box>
                             <Box className="flex flex-row my-3">
-                                <Text className="font-base text-[16px] text-[#080808]">Giá trị đơn hàng:</Text>
+                                <Text className="font-bold text-[16px] text-[#080808]">Giá trị đơn hàng:</Text>
                                 <Text className="font-bold text-[16px] text-[#184E17] px-2">{orderDetail.grand_total} VNĐ</Text>
                             </Box>
-                            <Button
-                                className="fixed bottom-[0px] rounded-2xl bg-[#FF6100] text-white my-8 mx-3 mb-0 p-3 font-bold"
-                                onPress={alertOrderCofirm}
-                            >
-                                <Text className="font-base text-[18px] text-white ">Xác nhận đã nhận hàng</Text>
-                            </Button>
+
                         </Box>
                         : null}
                 </Box>
             </ScrollView>
+            <Button className="fixed bottom-[87px] mx-3 rounded-[10px] bg-[#FF6100] text-white my-8  mb-0 p-3 font-bold"
+                                onPress={alertOrderCofirm}>
+                <Text className="font-base text-[18px]  text-white ">Xác nhận đã nhận hàng</Text>
+            </Button>
         </SafeAreaView>
     );
 }

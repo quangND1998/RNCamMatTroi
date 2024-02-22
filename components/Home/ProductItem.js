@@ -79,7 +79,7 @@ const ProductItem = ({ item, index, navigation }) => {
           ]}
         >
         </Image>
-        <Box  className=" mt-[-340px]  bg-white rounded-[20px]  mx-4  border-solid border-[1px] border-[#2C5524]">
+        <Box  className=" mt-[-340px] mx-4   bg-white rounded-[20px]   border-solid border-[1px] border-[#2C5524]">
           <Box className="flex flex-row px-3 py-3 w-full justify-between">
             <Box style={styles.content} className="text-left mr-2 ">
               <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
@@ -109,11 +109,11 @@ const ProductItem = ({ item, index, navigation }) => {
               size="25"
               color="#FFFFFF"
             /> */}
-            <Image className="ml-4 w-[25px] h-6" resizeMode="contain" source={require('../../assets/icon/arrow-small-right.png')}></Image>
+            <Image className="ml-4 w-[25px] h-6" alt="icon_next" resizeMode="contain" source={require('../../assets/icon/arrow-small-right.png')}></Image>
           </TouchableOpacity>
         </Box>
       </View>
-      <Box className="bg-white rounded-t-[20px] mt-4 py-2 mb-[77px]">
+      <Box className="bg-white  rounded-t-[20px] mt-4 py-2 mb-[77px]">
         <Box className="mx-4">
           <Text className="text-[20px] text-[#FF6100]  px-1 py-3 font-bold" >Lịch sử chăm sóc cây</Text>
           <Box className="" >
@@ -156,7 +156,7 @@ const ProductItem = ({ item, index, navigation }) => {
           <Text className="text-[20px] text-[#FF6100]  px-1 py-3 font-bold" >Hình ảnh và video</Text>
           <Box className="px-3 py-3 bg-[#F9EDD5] w-full flex flex-row flex-wrap">
             {item?.tree ? item.tree?.images.map((image, index_m) =>
-              <Box key={index_m} className="w-1/3 border border-[#F9EDD5]" >
+              <Box key={index_m} className="w-1/3 lg:w-1/6 border border-[#F9EDD5]" >
                 {image.mime_type.includes("image") ?
                   // <ImageModal resizeMode="cover" modalImageResizeMode="contain"
                   //   source={{ uri: image.original_url }} alt={`imageslide${image.id}`} style={[styles.imageGallary]}></ImageModal>

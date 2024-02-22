@@ -21,10 +21,8 @@ const BottomShipperNavigator = () => {
                 tabBarActiveTintColor: '#FF6100',
                 tabBarInactiveTintColor: "#184E17",
                 tabBarStyle: {
-                    borderTopLeftRadius: 24,
-                    borderTopRightRadius: 24,
-                    borderLeftWidth: 0.2,
-                    borderRightWidth: 0.2,
+                    borderTopLeftRadius: 20,
+                    borderTopRightRadius: 20,
                     overflow: 'hidden',
                     height: 78,
                     bordercolor: 'transparent',
@@ -46,25 +44,25 @@ const BottomShipperNavigator = () => {
                     paddingTop: 8,
                 },
                 headerStyle: {
-                    borderBottomLeftRadius: 24,
-                    borderBottomRightRadius: 24,
-                    borderLeftWidth: 0.1,
-                    borderRightWidth: 0.1,
-                    height: 68,
+                    borderBottomLeftRadius: 20,
+                    borderBottomRightRadius: 20,
+                    height: 60,
                 },
                 paddingTop: 12,
                 headerLeft: (props) => (
-                    <HeaderBackButton
-                        {...props}
-                        onPress={() => {
-                            if (navigation.canGoBack()) {
-                                navigation.goBack();
-                            }
-                            else {
-                                navigation.navigate('HomeShipper')
-                            }
-                        }}
-                    />
+                    <PressableOpacity onPress={() => {
+                        if (navigation.canGoBack()) {
+                            navigation.goBack();
+                        }
+                        else {
+                            navigation.navigate('Home')
+                        }
+                    }}>
+                        <Image className=" w-6 h-6" resizeMode='contain' alt='back' source={require('../assets/icon/fi-rr-arrow-small-left.png')}
+                            {...props}
+
+                        />
+                    </PressableOpacity>
                 )
             })}
 

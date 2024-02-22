@@ -250,8 +250,8 @@ const UpdateUser = ({ navigation, route }) => {
                 refreshControl={
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                 }>
-                <Box className="mb-[77px]">
-                    <Box>
+                <Box className="mb-[77px] lg:w-[70%] lg:mx-[15%]">
+                    <Box className="w-full">
                         <Box className="my-10 mt-14 w-full ">
                             <Box className="relative">
 
@@ -277,7 +277,7 @@ const UpdateUser = ({ navigation, route }) => {
                     <Box className="mx-4 px-2 my-2">
                         <Box className="w-full">
                             <Text bold className="text-[18px] mb-5  ">Thông tin liên hệ </Text>
-                            <Box className=" ">
+                            {/* <Box className=" ">
                                 <Text className="block mb-2 text-[13px]  text-[#184E17] ">Họ</Text>
                                 <TextInput type="text" isInvalid={checkInValid(errors, 'name') ? true : false} value={form.name} onChangeText={(value) => setForm(prevState => {
                                     return { ...prevState, name: value }
@@ -287,9 +287,9 @@ const UpdateUser = ({ navigation, route }) => {
                                 <Box className="text-red-500 text-[11px]" >
                                     <ErorrValidator errors={errors} key_error={'name'} />
                                 </Box>
-                            </Box>
+                            </Box> */}
                             <Box className="my-4 ">
-                                <Text className="block mb-2 text-[13px]  text-[#184E17] ">Tên đệm và tên </Text>
+                                <Text className="block mb-2 text-[13px]  text-[#184E17] ">Họ và tên </Text>
                                 <TextInput type="text" isInvalid={checkInValid(errors, 'name') ? true : false} value={form.name} onChangeText={(value) => setForm(prevState => {
                                     return { ...prevState, name: value }
                                 })}
@@ -374,8 +374,8 @@ const UpdateUser = ({ navigation, route }) => {
                             </Box>
                             <Box className="mt-2">
                                 {provinces ? <Box >
-                                    <Text className="text-[#184E17] my-1 text-[13px]">Tỉnh/ Thành phố</Text>
-                                    <Box maxW="500" className="">
+                                    <Text className="text-[#184E17] my-1 text-[13px] w-full">Tỉnh/ Thành phố</Text>
+                                    <Box  className="">
                                         <Select size="16" className="rounded-xl"
                                         dropdownIcon={<Box className="mr-2">
                                             <Arrow color="#FF6100" width={13} height={6} />
@@ -413,14 +413,14 @@ const UpdateUser = ({ navigation, route }) => {
                             <Box className="mt-2">
                                 <Box >
                                     <Text className="text-[#184E17] my-1 text-[13px]">Quận/ Huyện</Text>
-                                    <Box maxW="500">
+                                    <Box m>
                                         <Select size="16" 
                                             dropdownIcon={<Box className="mr-2">
                                                 <Arrow color="#FF6100" width={13} height={6} />
                                             </Box>
                                             } isInvalid={checkInValid(errors, 'district') ? true : false} selectedValue={form.district} minWidth="100" accessibilityLabel="Chọn Quận/ Huyện" placeholder="Chọn Quận/ Huyện" 
                                             _selectedItem={{
-                                                bg: "teal.600",
+                                                bg: "#FF6100",
                                                 rightIcon: <CheckIcon size="5" color="white" />
                                             }}
                                             mt={1} 
@@ -444,8 +444,7 @@ const UpdateUser = ({ navigation, route }) => {
                             <Box className="mt-2 mb-2">
                                 <Box >
                                     <Text className="text-[#184E17] my-1 text-[13px]">Xã/ Phường</Text>
-                                    <CheckIcon size="1" color="orange.600" />
-                                    <Box maxW="600">
+                                    <Box >
                                         <Select size="16" dropdownIcon={<Box className="mr-2">
                                             <Arrow color="#FF6100" width={13} height={6} />
                                         </Box>
@@ -453,7 +452,7 @@ const UpdateUser = ({ navigation, route }) => {
                                         accessibilityLabel="Chọn Xã/ Phường" 
                                         placeholder="Chọn Xã/ Phường" 
                                         _selectedItem={{
-                                            bg: "orange.600",
+                                            bg: "#FF6100",
                                             rightIcon: <CheckIcon size="5" color="white" />
                                         }} 
                                         borderRadius={10}
@@ -574,7 +573,7 @@ const UpdateUser = ({ navigation, route }) => {
                         </Box>
                     </Box> */}
                     {form.phone_number && isValidPhoneNumber(form.phone_number, "VN") ? <Button onPress={alertsaveUserInfor}
-                        className=" bottom-0  w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 px-4 py-[10px] text-white bg-[#FF6100] rounded-[10px] " style={styles.btn_button}>
+                        className=" bottom-0  w-[90%] ml-[5%]  mr-[5%] mt-2 mb-2 px-4 py-[10px] lg:w-[94%] lg:mx-[3%] text-white bg-[#FF6100] rounded-[10px] " style={styles.btn_button}>
                         <Text className="text-white items-center text-center">Lưu</Text>
                     </Button> : null
                     }
