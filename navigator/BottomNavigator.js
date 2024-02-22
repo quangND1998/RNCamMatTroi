@@ -56,7 +56,9 @@ const BottomNavigator = () => {
                     margin: 0,
                     padding: 0,
                     paddingBottom: 20,
-                    fontWeight: '500'
+                    fontWeight: '500',
+                    fontFamily: 'Inter-Medium',
+                    fontSize: 12
 
                 },
                 tabBarItemStyle: {

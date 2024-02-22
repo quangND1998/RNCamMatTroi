@@ -78,7 +78,7 @@ const ProductItem = ({ item, index, navigation }) => {
           ]}
         >
         </Image>
-        <Box style={{ marginTop: -288 }} className="  bg-white rounded-[20px]  mx-4  border-solid border-[1px] border-[#2C5524]">
+        <Box  className=" mt-[-340px]  bg-white rounded-[20px]  mx-4  border-solid border-[1px] border-[#2C5524]">
           <Box className="flex flex-row px-3 py-3 w-full justify-between">
             <Box style={styles.content} className="text-left mr-2 ">
               <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
