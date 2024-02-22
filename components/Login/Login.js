@@ -72,17 +72,17 @@ const Login = ({ navigation }) => {
                 textContent={'Vui lòng đợi...'}
                 textStyle={styles.spinnerTextStyle}
             />
-            <Box className="bottom-0 h-full ">
+            <Box className="bottom-0 h-full absolute ">
                 <Image source={require('../../assets/images/banner3_login.png')} className="h-[100%] w-[100%] bottom-0 absolute " alt="" />
             </Box>
 
 
-            <Box className=" mt-[120px] absolute top-0 left-0 w-full h-full px-4 py-4 ">
-                <Box className="mb-5 pb-4 "  >
+            <Box className=" mt-[120px] w-full lg:w-2/3 mx-auto    h-full px-4 py-4 ">
+                <Box className="mb-5 pb-4 w-full"  >
                     <Image source={require('../../assets/images/logo2.png')} className="m-auto  h-[29px] w-auto" resizeMode="contain" alt="logo2" />
                 </Box>
 
-                <TextInput onChangeText={changeCode} className=" border border-white text-gray-900 text-sm rounded-[10px] px-4 py-1.6" placeholder="Mã HĐ/SĐT" />
+                <TextInput onChangeText={changeCode} className=" h-[44px] border border-white text-gray-900 text-sm rounded-[10px] px-4 justify-center " placeholder="Mã HĐ/SĐT" />
 
                 {/* <View className="my-3 relative flex items-center" >
                     <TextInput secureTextEntry={show} className="bg-gray-50 border border-[#FF6100] text-gray-900 text-sm rounded-lg p-2.5  " onChangeText={changePassword} placeholder="Password" />
@@ -91,14 +91,17 @@ const Login = ({ navigation }) => {
                         <Text className="text-[#FF6100] ">{show}</Text>
                     </View>
                 </View> */}
-                <FormControl className="my-3 relative flex ">
-
-                    <TextInput secureTextEntry={show} className=" border  border-white text-gray-900 text-sm rounded-[10px] px-4 py-1.6" onChangeText={changePassword} placeholder="******" />
-                    <Box className="absolute py-4 right-0 px-2.5  items-center">
-                        {show == false ? <Eye color="gray" className="text-xs items-center" variant="Outline" size={16} onPress={() => setShow(true)} /> : <EyeSlash color="gray" variant="Outline" className="text-xs" size={16} onPress={() => setShow(false)} />}
-                        <Text className="text-[#FF6100] ">{show}</Text>
+                <FormControl className="my-3 relative flex  ">
+                    <Box className="flex items-center justify-center h-[44px]">
+                        <TextInput secureTextEntry={show} className="w-full border border-white text-gray-900 text-sm rounded-[10px] px-4 justify-center  " onChangeText={changePassword} placeholder="******" />
+                        <Box className="absolute py-6  right-0 px-2.5  items-center h-full justify-center">
+                            {show == false ? <Eye color="gray" className="text-xs items-center" variant="Outline" size={16} onPress={() => setShow(true)} /> : <EyeSlash color="gray" variant="Outline" className="text-xs" size={16} onPress={() => setShow(false)} />}
+                            <Text className="text-[#FF6100] ">{show}</Text>
+                        </Box>
                     </Box>
+                    
                 </FormControl>
+                {/* <TextInput secureTextEntry={show} className="my-2 border border-white text-gray-900 text-sm rounded-[10px] px-4 justify-center  " onChangeText={changePassword} placeholder="******" /> */}
                 <Flex direction='row' className=" justify-end mt-1">
                     <PressableOpacity onPress={() => navigation.navigate('LoginOtp')}>
                         <Text className="text-[#FF6100] text-[13px]" style={{ fontFamily: 'Inter-Regular', fontWeight: 400 }}>Đăng nhập bằng OTP</Text>
@@ -131,7 +134,7 @@ const Login = ({ navigation }) => {
                             .catch(err => console.log(err));
                     }
                     }>
-                        <Text className="text-[#FF6100] ">Hotline</Text>
+                        <Text className="text-[#FF6100] "> Hotline</Text>
                     </PressableOpacity>
                 </Box>
             </Box>

@@ -20,7 +20,7 @@ import { selectProductOwnersActive } from '../../store/reducers/productService';
 import ErorrValidator from '../ErorrValidator';
 import FileUpload from '../Svg/FileUpload';
 import Star from '../Svg/Star';
-
+import Arrow from '../Svg/Arrow';
 const Complaint = ({ navigation, route }) => {
     const dispatch = useDispatch();
     var { width, height } = Dimensions.get("window");
@@ -204,9 +204,9 @@ const Complaint = ({ navigation, route }) => {
                 textContent={'Vui lòng đợi...'}
                 textStyle={styles.spinnerTextStyle}
             />
-            <ScrollView>
-
-                <Center>
+            <ScrollView >
+                <Box className="lg:w-[70%] lg:mx-[15%]">
+                    <Center>
 
                     <Center direction='row' className="  items-center w-full mb-3">
                         {/* {star && star <= 2 ? <Text className="font-bold text-[17px]" > Quá tệ</Text> : null}
@@ -236,13 +236,13 @@ const Complaint = ({ navigation, route }) => {
                     </Center>
 
 
-                </Center>
-                <Box className="mb-[177px]">
-                    <Box className="text-[#AEAEAE] text-[13px]   mx-5 w-full">
+                    </Center>
+                    <Box className="mb-[177px]">
+                    <Box className="text-[#AEAEAE] text-[13px]   mx-5 lg:mx-0 w-full">
                         <Text className="text-[#AEAEAE]">Chúng tôi cần cải thiện điều gì? </Text>
                     </Box>
 
-                    <Box className="my-5 mx-5">
+                    <Box className="my-5 mx-5 lg:mx-0">
 
                         {star && star <= 2 ? <Flex direction='row' className="flex flex-wrap" >
                             <PressableOpacity onPress={() => Add('Chất lượng')}>
@@ -254,13 +254,13 @@ const Complaint = ({ navigation, route }) => {
                                 <Box className={` px-2 py-1 rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Quá lâu') ? 'border border-amber-600' : ''}`}
                                 ><Text className="text-[10px]">Quá lâu</Text></Box>
                             </PressableOpacity>
-                            <PressableOpacity onPress={() => Add('Đội Giá')}>
-                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Đội Giá') ? 'border border-amber-600' : ''}`}
-                                ><Text className="text-[10px]">Đội Giá</Text></Box>
+                            <PressableOpacity onPress={() => Add('Đội giá')}>
+                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1  ${isInclued('Đội giá') ? 'border border-amber-600' : ''}`}
+                                ><Text className="text-[10px]">Đội giá</Text></Box>
                             </PressableOpacity>
-                            <PressableOpacity onPress={() => Add('Thái độ nhận viên')}>
-                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Thái độ nhận viên') ? 'border border-amber-600' : ''}`}
-                                ><Text className="text-[10px]">Thái độ nhận viên</Text></Box>
+                            <PressableOpacity onPress={() => Add('Thái độ nhân viên')}>
+                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Thái độ nhân viên') ? 'border border-amber-600' : ''}`}
+                                ><Text className="text-[10px]">Thái độ nhân viên</Text></Box>
                             </PressableOpacity>
 
 
@@ -279,13 +279,13 @@ const Complaint = ({ navigation, route }) => {
                                 <Box className={`px-2 py-1  rounded-lg bg-white text-back  mx-1 my-1 ${isInclued('Quá lâu') ? 'border border-amber-600' : ''}`}
                                 ><Text className="text-[10px]">Quá lâu</Text></Box>
                             </PressableOpacity>
-                            <PressableOpacity onPress={() => Add('Đội Giá')}>
-                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Đội Giá') ? 'border border-amber-600' : ''}`}
-                                ><Text className="text-[10px]">Đội Giá</Text></Box>
+                            <PressableOpacity onPress={() => Add('Đội giá')}>
+                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Đội giá') ? 'border border-amber-600' : ''}`}
+                                ><Text className="text-[10px]">Đội giá</Text></Box>
                             </PressableOpacity>
-                            <PressableOpacity onPress={() => Add('Thái độ nhận viên')}>
-                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Thái độ nhận viên') ? ' border border-amber-600' : ''}`}
-                                ><Text className="text-[10px]">Thái độ nhận viên</Text></Box>
+                            <PressableOpacity onPress={() => Add('Thái độ nhân viên')}>
+                                <Box className={`px-2 py-1  rounded-lg bg-white text-back mx-1 my-1 ${isInclued('Thái độ nhân viên') ? ' border border-amber-600' : ''}`}
+                                ><Text className="text-[10px]">Thái độ nhân viên</Text></Box>
                             </PressableOpacity>
 
 
@@ -343,13 +343,16 @@ const Complaint = ({ navigation, route }) => {
 
                         {productOwnersActive ? <Box className="mt-1 mb-3" >
                             <Heading size="sm" className="color-[#FF6100]">Hoạt động theo gói </Heading>
-                            <Box maxW="500">
+                            <Box >
                                 <Select selectedValue={form.productOwner} minWidth="100" accessibilityLabel="Chọn gói dịch vụ"
-                                 backgroundColor={'white'}
-                                 borderRadius={10}
-                                 borderColor={'white'}
-                                 placeholder="Chọn gói dịch vụ " 
-                                 _selectedItem={{
+                                backgroundColor={'white'}
+                                borderRadius={10}
+                                borderColor={'white'}
+                                placeholder="Chọn gói dịch vụ " 
+                                dropdownIcon={<Box className="mr-2">
+                                                    <Arrow color="#184E17" width={20} height={6} />
+                                                </Box>}
+                                _selectedItem={{
                                     bg: "orange.600",
                                     endIcon: <CheckIcon size="1" />
                                 }} mt={1} onValueChange={itemValue => setForm(prevState => {
@@ -394,15 +397,22 @@ const Complaint = ({ navigation, route }) => {
                         >Gửi</Button> */}
                     </Box >
 
+                    </Box>
                 </Box>
+                
             </ScrollView >
-            <Box className="mx-5 w-[90%] absolute bottom-[80px]">
+            {/* <Box className="mx-5 w-[90%] absolute bottom-[80px] lg:w-2/3 lg:mx-auto">
                 <Button onPress={() => saveComplaint()} className=" w-full  text-white bg-[#FF6100] rounded-[10px] btn_button"
                 >Gửi</Button>
-            </Box>
+            </Box> */}
+
+            <Button onPress={() => saveComplaint()} className="absolute mx-5 w-[90%] my-[87px] bottom-0 px-2 py-3 lg:w-[70%] lg:mx-[15%] text-white  bg-[#FF6100] rounded-[10px] btn_button"
+                        ><Text className="text-white text-[16px]">Gửi</Text>
+            </Button>
 
 
         </SafeAreaView >
+        
     );
 }
 

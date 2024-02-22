@@ -51,7 +51,7 @@ const CustomerService = ({ navigation, route }) => {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
-                <Box className="mb-4 pb-4">
+                <Box className="mb-4 mx-3 pb-4">
                     <Box className=" h-full px-3 pt-4 bg-[#F0F0F0]">
                         <TouchableOpacity onPress={() => navigation.navigate('Schedule')}  >
                             <Flex className="w-full py-2 ">

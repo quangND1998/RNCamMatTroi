@@ -50,9 +50,9 @@ const OrderItem = ({ navigation, route }) => {
                 <Box style={styles.container} className="mx-3 mt-3 ">
                     {productService ? productService.map((product, index) =>
                         <Box key={product.id} className="mb-3 mx-1">
-                            <Box className=" flex flex-row">
+                            <Box className=" flex flex-row items-center">
                                 <Image source={require('../../assets/images/icon_package.png')} alt={`anh${index}`} className="h-8 w-8 mr-3" ></Image>
-                                <Text className="font-bold text-xl text-[#FF6100] flex flex-row flex-wrap ">{product.name}</Text>
+                                <Text className="font-bold text-[20px] text-[#FF6100] flex flex-row flex-wrap ">{product.name}</Text>
                             </Box>
                             <Box className="ml-1 mt-2 flex flex-row items-center">
                                 <Text className="font-bold text-[30px] text-[#000000] px-3">.</Text>
@@ -100,7 +100,7 @@ const OrderItem = ({ navigation, route }) => {
                     </PressableOpacity>
                 </Button>
                 <Box className="bg-white rounded-t-[30px] mt-3 mb-[77px] px-3">
-                    <Text className="text-center font-bold my-6 text-[22px] text-[#FF6100] ">Lịch sử nhận quà nông sản</Text>
+                    <Text className="text-center font-bold my-6 p-2 text-[20px] text-[#FF6100] ">Lịch sử nhận quà nông sản</Text>
                     <Box >
                         {orderGilfs ? orderGilfs.map((order, index) =>
                             <TouchableOpacity key={index} className="mb-3 w-full " onPress={
@@ -109,19 +109,19 @@ const OrderItem = ({ navigation, route }) => {
                                     name: order.order_number
                                 })}
                             >
-                                <Box className=" flex flex-row items-center justify-between">
-                                    <Box className="flex flex-row">
-                                        <Image source={require('../../assets/images/cam.jpg')} className="h-12 w-12 " alt={`anh1${index}`} ></Image>
+                                <Box className=" flex flex-row items-center justify-between mr-2 w-full">
+                                    <Box className="flex flex-row w-1/2">
+                                        <Image source={require('../../assets/images/cam.jpg')} className="h-12 w-12 my-2 " alt={`anh1${index}`} ></Image>
                                         <Box className="flex">
                                             {order?.order_items ? order?.order_items.map((item, index2) =>
                                                 <Box key={index2} className="flex flex-row">
-                                                    <Text className="font-bold text-base text-[#184E17] px-3">{item.product.name}</Text>
+                                                    <Text className="font-bold text-base text-[#184E17] px-3 mt-1 truncate w-full">{item.product.name}</Text>
                                                 </Box>
                                             ) : null}
                                             <Text className="text-[12px] text-[#AEAEAE] px-3">{formatDate(order.created_at)}</Text>
                                         </Box>
                                     </Box>
-                                    <Text className="text-[14px]  font-bold text-[#080808]">#{order.order_number}</Text>
+                                    <Text className="flex items-end text-left justify-end text-[12px]  font-bold text-[#080808]">#{order.order_number}</Text>
                                 </Box>
                             </TouchableOpacity>
                         ) : null}

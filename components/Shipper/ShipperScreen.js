@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Text } from 'react-native-svg';
@@ -138,14 +138,14 @@ const ShipperScreen = () => {
 
                 headerTitleAlign: 'left',
                 headerLeft: (props) => (
-                    <HeaderBackButton labelStyle={{ marginLeft: 0, color: 'white' }}
+                    <Image className="absolute w-6 h-6" resizeMode='contain' alt='back' source={require('../../assets/icon/fi-rr-arrow-small-left.png')} 
                         {...props}
                         onPress={() => {
                             if (navigation.canGoBack()) {
                                 navigation.goBack();
                             }
                             else {
-                                navigation.navigate('HomeShipper')
+                                navigation.navigate('Home')
                             }
                         }}
                     />

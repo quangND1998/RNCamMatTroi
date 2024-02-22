@@ -107,7 +107,7 @@ const PackageBenefits = ({ navigation, route }) => {
                                         {productDetail?.history_gift?.length}/{
                                             productDetail?.product?.number_deliveries
                                         }
-                                        lần
+                                         lần
                                     </Text>
                                 </Flex>
                             </Box>

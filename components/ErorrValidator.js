@@ -9,7 +9,7 @@ const ErorrValidator = ({ errors, key_error }) => {
         <SafeAreaView style={styles.container}>
 
             {errors && Object.hasOwn(errors, key_error) ? errors[key_error].map((error, key) =>
-                <Text key={key} className="text-red-500"  >
+                <Text key={key} className="text-red-500 text-[11px] px-2"  >
                     {error}</Text>
             ) : null}
 

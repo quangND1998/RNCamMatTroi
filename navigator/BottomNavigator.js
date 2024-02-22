@@ -26,53 +26,53 @@ const BottomNavigator = () => {
             backBehavior="history"
 
             screenOptions={({ navigation, route }) => ({
+                tabBarHideOnKeyboard: true,
                 tabBarActiveTintColor: '#FF6100',
                 tabBarInactiveTintColor: "#184E17",
-                headerLeftLabelVisible: false,
-                headerShadowVisible: false,
                 tabBarStyle: {
-
                     borderTopLeftRadius: 20,
                     borderTopRightRadius: 20,
                     overflow: 'hidden',
                     height: 74,
                     bordercolor: 'transparent',
                     position: 'absolute',
-                    shadowColor: 'rgba(0, 0, 0, 0.2)',
-                    shadowOffset: {
-                        width: 0,
-                        height: -2,
-                        },
                     shadowOpacity: 1,
                     shadowRadius: 2,
                     elevation: 2,
+                    alignItems:'center',
+                    justifyContent:'center',
+                    display:'flex'
                 },
-                headerTitleStyle: {
-                    fontWeight: 'bold',
-                    color: '#FF6100',
-                },
-                headerTitleAlign: 'center',
                 tabBarLabelStyle: {
                     margin: 0,
                     padding: 0,
-                    paddingBottom: 14,
+
                     fontWeight: '500',
                     fontFamily: 'Inter-Medium',
-                    fontSize: 12
+                    fontSize: 12,
+                    alignItems:'center',
+                    justifyContent:'center'
 
                 },
                 tabBarItemStyle: {
                     padding: 0,
                     paddingTop: 14,
+                    paddingBottom: 14,
                 },
+                headerLeftLabelVisible: false,
+                headerShadowVisible: false,
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                    color: '#FF6100',
+                },
+                headerTitleAlign: 'center',
                 headerStyle: {
                     borderBottomLeftRadius: 20,
                     borderBottomRightRadius: 20,
-                    height: 60,
+                    height: 55,
                 },
-                paddingTop: 12,
                 headerLeft: (props) => (
-                    <HeaderBackButton
+                    <Image className="absolute w-6 h-6 ml-4" alt='back' resizeMode='contain' source={require('../assets/icon/fi-rr-arrow-small-left.png')} 
                         {...props}
                         onPress={() => {
                             if (navigation.canGoBack()) {
@@ -83,7 +83,20 @@ const BottomNavigator = () => {
                             }
                         }}
                     />
-                )
+                ),
+                // headerLeft: (props) => (
+                //     <Image source={require('../assets/icon/fi-rr-arrow-small-right.png')} labelStyle={{ marginLeft: 0 }} labelVisible={false}
+                //         {...props}
+                //         onPress={() => {
+                //             if (navigation.canGoBack()) {
+                //                 navigation.goBack();
+                //             }
+                //             else {
+                //                 navigation.navigate('Home')
+                //             }
+                //         }}
+                //     />
+                // ),
             })}
 
         >
@@ -130,7 +143,7 @@ const BottomNavigator = () => {
                     tabBarLabel: '',
                     // headerTransparent: true,
                     tabBarIcon: ({ color, size }) => (
-                        <Image source={require('../assets/icon/icon_orange.png')} className="w-14 h-14 m-auto" alt='box' ></Image>
+                        <Image source={require('../assets/icon/icon_orange.png')} resizeMode='contain' className="absolute w-14 h-14 lg:w-[60px] lg:h-18 m-auto" alt='box' ></Image>
                     ),
                     tabBarLabelStyle: { marginBottom: -10 },
                 }}

@@ -44,6 +44,7 @@ const StackNavigator = () => {
                 color: '#FF6100',
             },
             paddingTop: 12,
+            
         }}>
             <Stack.Screen initialRouteName="LogoLogin" name="LogoLogin"
                 options={{
