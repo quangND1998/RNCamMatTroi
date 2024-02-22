@@ -191,8 +191,8 @@ const ScheduleTour = ({ navigation, route }) => {
 
                                     <Flex className="py-1.5 rounded-lg flex relative">
                                         <PressableOpacity onPress={showDatepicker}>
-                                            <Flex direction='row' className="justify-between bg-white p-[16px] rounded-[5px] mb-2" >
-                                                <Text className="text-[#184E17] text-[16px] font-medium"> {formatOnlyDate(date)}</Text>
+                                            <Flex direction='row' className="justify-between bg-white p-[14px] rounded-[5px] mb-2" >
+                                                <Text className="text-[#184E17] text-[14px] font-bold"> {formatOnlyDate(date)}</Text>
                                                 {/* <Calendar
                                                     size="24"
                                                     color="#FF8A65"
@@ -202,8 +202,8 @@ const ScheduleTour = ({ navigation, route }) => {
                                         </PressableOpacity>
                                         <PressableOpacity onPress={showTimepicker}>
 
-                                            <Flex direction='row' className="justify-between mt-2 bg-white p-[16px] rounded-[5px]" >
-                                                <Text className="text-[#184E17] text-[16px] font-medium"> {formatTime(date)}</Text>
+                                            <Flex direction='row' className="justify-between mt-2 bg-white p-[14px] rounded-[5px] " >
+                                                <Text className="text-[#184E17] text-[14px] font-bold"> {formatTime(date)}</Text>
                                                 {/* <Timer1
                                                     size="24"
                                                     color="#FF8A65"
@@ -248,7 +248,7 @@ const ScheduleTour = ({ navigation, route }) => {
 
                                     {productOwnersActive.length > 0 ?
                                         <Box className=" bg-white border-[#AEAEAE] rounded-[5px] font-bold" >
-                                            <Picker
+                                            {/* <Picker
                                                 itemStyle={{
                                                     fontSize: 15,
                                                     fontFamily: 'Inter-Bold',
@@ -261,9 +261,32 @@ const ScheduleTour = ({ navigation, route }) => {
 
                                                 {productOwnersActive.map((item, key) =>
                                                     <Picker.Item key={item.id} color="#184E17" style={styles.dropdownStyle} label={item?.product?.name} value={item.id} />)}
+                                            </Picker> */}
+                                            <Select selectedValue={productOwner} minWidth="100" accessibilityLabel="Chọn gói dịch vụ"
+                                                backgroundColor={'white'}
+                                                borderRadius={10}
+                                                borderColor={'white'}
+                                                padding={2}
+                                                fontSize={14}
+                                                fontWeight={'bold'}
+                                                color={'#184E17'}
+                                                placeholder="Chọn gói dịch vụ " 
+                                                _selectedItem={{
+                                                    bg: "orange.600",
+                                                    
+                                                }}
+                                                dropdownIcon={<Box className="mr-2">
+                                                    <Arrow color="#184E17" width={16} height={6} />
+                                                </Box>
+                                                } 
+                                                mt={1} 
+                                                onValueChange={(itemValue, itemIndex) =>
+                                                    setProductOwner(itemValue)
+                                                }>
 
-
-                                            </Picker>
+                                                    {productOwnersActive.map((item, key) =>
+                                                        <Select.Item key={item.id}  label={item?.product?.name} value={item.id} />)}
+                                            </Select>
                                         </Box>
                                         : <Text className="text-red-600 font-bold">Chưa có gói được kích hoạt</Text>}
                                     <ErorrValidator errors={errors} key_error={'product_service_owner_id'} />
@@ -300,7 +323,6 @@ const ScheduleTour = ({ navigation, route }) => {
                                                 leftButtonBackgroundColor='transparent' />
 
                                         </Flex>
-
                                     </Flex>
                                     <ErorrValidator errors={errors} key_error={'number_adult'} />
                                     <Flex direction='row' className=" justify-between">
@@ -342,8 +364,6 @@ const ScheduleTour = ({ navigation, route }) => {
 
                             </Box>
                         </Box>
-
-                        
 
                     </Box >
                 </Box >

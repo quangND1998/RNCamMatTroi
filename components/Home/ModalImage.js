@@ -17,37 +17,21 @@ import { PressableOpacity } from 'react-native-pressable-opacity';
 import { CONTENT_SPACING, CONTROL_BUTTON_SIZE, SAFE_AREA_PADDING } from '../QrCode/Constants'
 import * as VideoThumbnails from 'expo-video-thumbnails';
 
-const ModalVideo = ({ url }) => {
+const ModalImage = ({ url, alt }) => {
     const [isVisible, setVisible] = useState(false);
 
     const [image, setImage] = useState(null);
     useEffect(() => {
-        generateThumbnail()
+
     }, [])
-    const generateThumbnail = async () => {
-        try {
-            const { uri } = await VideoThumbnails.getThumbnailAsync(
-                url,
-                {
-                    time: 15000,
-                }
-            );
-            setImage(uri);
 
-        } catch (e) {
-            console.warn(e);
-        }
-    };
     return (
-        <View style={styles.container} className="w-full h-full">
+        <View style={styles.container} className="w-full">
 
-            <View className="flex items-center align-center w-full h-full">
-                {image && <Image source={{ uri: image }} resizeMode='cover' className=" mx-auto object-cover w-full h-full " />}
-
-                <PressableOpacity onPress={() => setVisible(true)} className="absolute w-full h-full flex items-center " style={styles.bg_color} >
-                    <Image className=" m-auto object-cover w-[25px] h-[25px] z-25" source={require('../../assets/icon/play.png')}></Image>
+            <View className=" flex items-center align-center w-full">
+                <PressableOpacity onPress={() => setVisible(true)}  className="w-full h-full">
+                    {url && <Image source={{ uri: url }} className=" mx-auto object-cover w-full h-full " />}
                 </PressableOpacity>
-
 
             </View>
 
@@ -83,7 +67,7 @@ const ModalVideo = ({ url }) => {
     );
 };
 
-export default ModalVideo;
+export default ModalImage;
 
 const styles = StyleSheet.create({
     container: {

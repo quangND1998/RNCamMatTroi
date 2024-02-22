@@ -55,7 +55,7 @@ const BottomNavigator = () => {
                 tabBarLabelStyle: {
                     margin: 0,
                     padding: 0,
-                    paddingBottom: 20,
+                    paddingBottom: 14,
                     fontWeight: '500',
                     fontFamily: 'Inter-Medium',
                     fontSize: 12
