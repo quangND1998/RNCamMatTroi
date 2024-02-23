@@ -260,8 +260,8 @@ const UpdateUser = ({ navigation, route }) => {
 
                                 <Box className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
                                     <Box className="m-[12px] ">
-                                        <PressableOpacity onPress={() => dispatch({ type: 'openCamera', payload: true })} className="bg-white w-10 h-10  absolute  rounded-full shadow-[rgba(0,0,0,0.25)_-2px_-1px_0px_1px]">
-                                            <Image source={require("../../assets/icon/camera.png")} resizeMode="contain" className=" m-auto w-[17] h-[18] " alt="avt"></Image>
+                                        <PressableOpacity onPress={() => dispatch({ type: 'openCamera', payload: true })} className="bg-white w-10 h-10  absolute  rounded-full shadow-xl" style={styles.shadowLogin}> 
+                                            <Image source={require("../../assets/icon/camera.png")} resizeMode="contain" className=" m-auto w-[17] h-[18] z-50 " alt="avt"></Image>
                                         </PressableOpacity>
                                     </Box>
                                 </Box>
@@ -293,7 +293,7 @@ const UpdateUser = ({ navigation, route }) => {
                                 <TextInput type="text" isInvalid={checkInValid(errors, 'name') ? true : false} value={form.name} onChangeText={(value) => setForm(prevState => {
                                     return { ...prevState, name: value }
                                 })}
-                                    className=" border border-[#AEAEAE] text-gray-900 text-sm rounded-[10px] px-3 py-1.5 block w-full "
+                                    className=" border border-[#AEAEAE] text-gray-900 text-sm  rounded-[10px] px-3 py-1.5 block w-full "
                                     placeholder="" required></TextInput>
                                 <Box className="text-red-500 text-[11px]" >
                                     <ErorrValidator errors={errors} key_error={'name'} />
@@ -662,6 +662,13 @@ const styles = StyleSheet.create({
         left: SAFE_AREA_PADDING.paddingLeft,
         bottom: SAFE_AREA_PADDING.paddingBottom,
     },
+    shadowLogin: {
+
+        shadowColor: '#000000',
+        shadowOffset: { width: -2, height: -1 },
+        shadowOpacity: 0.25,
+        shadowRadius: 0,
+    }
 })
 
 

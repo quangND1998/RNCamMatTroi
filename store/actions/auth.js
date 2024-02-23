@@ -2,6 +2,7 @@ import { AuthService } from '../../common/auth/authService';
 import { setToken, destroyToken, setUser, getToken, getUser, savePhone } from '../../common/asynStorage';
 import ApiService from '../../common/apiService';
 import { setTokenStorage, setUserStorage, savePhoneStorage, destroyTokenStorage, destroyUserStorage } from '../../common/managerStorage';
+import { err } from 'react-native-svg';
 export const loginAction = (code, password, onSuccess = () => {}, onError = () => {}) => (dispatch) => {
     return AuthService.login({ code, password }).then(response => {
         // console.log(response.data)
@@ -75,7 +76,7 @@ export const loadStorageToken = async(dispatch) => {
 }
 
 export const loginOtp = (phone, onSuccess = () => {}, onError = () => {}) => (dispatch) => {
-    console.log(phone)
+    console.log('loginOtp',phone)
     return ApiService.post('api/v1/loginOtp', { phone_number: phone }).then(response => {
         console.log('loginOtp', response.data)
         dispatch({
@@ -87,7 +88,8 @@ export const loginOtp = (phone, onSuccess = () => {}, onError = () => {}) => (di
         savePhoneStorage(phone)
         onSuccess(response.data);
     }).catch(error => {
-        console.log(error.response.data.data)
+        console.log(error.response.data.data);
+       
         if (error.response.status == 422) {
             var errors = ''
             Object.keys(error.response.data.data).map(key =>
@@ -96,6 +98,13 @@ export const loginOtp = (phone, onSuccess = () => {}, onError = () => {}) => (di
             onError(errors)
         }
         if (error.response.status == 404) {
+            dispatch({
+                type: 'loginOTPError',
+                payload: error.response.data
+            });
+            onError(error.response.data)
+        }
+        if (error.response.status == 400) {
             dispatch({
                 type: 'loginOTPError',
                 payload: error.response.data

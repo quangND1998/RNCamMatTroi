@@ -12,6 +12,10 @@
   // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
   bool didFinish=[super application:application didFinishLaunchingWithOptions:launchOptions];
+  if (didFinish) {
+    // Modify as needed to match the main color of your splash.
+    self.window.rootViewController.view.backgroundColor = [UIColor colorNamed:@"primary"];
+  }
   [FIRApp configure];
   [RNSplashScreen show];  // here
   return didFinish;

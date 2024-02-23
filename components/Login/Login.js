@@ -93,7 +93,7 @@ const Login = ({ navigation }) => {
                 </View> */}
                 <FormControl className="my-3 relative flex  ">
                     <Box className="flex items-center justify-center h-[44px]">
-                        <TextInput secureTextEntry={show} className="w-full border border-white text-gray-900 text-sm rounded-[10px] px-4 justify-center  " onChangeText={changePassword} placeholder="******" />
+                        <TextInput secureTextEntry={show} className=" h-full w-full border border-white text-gray-900 text-sm rounded-[10px] px-4 justify-center  " onChangeText={changePassword} placeholder="******" />
                         <Box className="absolute py-6  right-0 px-2.5  items-center h-full justify-center">
                             {show == false ? <Eye color="gray" className="text-xs items-center" variant="Outline" size={16} onPress={() => setShow(true)} /> : <EyeSlash color="gray" variant="Outline" className="text-xs" size={16} onPress={() => setShow(false)} />}
                             <Text className="text-[#FF6100] ">{show}</Text>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image , TouchableOpacity} from 'react-native';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import OrderItem from './Index';
@@ -7,6 +7,7 @@ import OrderDetail from './detail';
 import OrderReview from './OrderReview';
 import { HeaderBackButton, HeaderTitle, HeaderBackground } from '@react-navigation/elements';
 import { PressableOpacity } from 'react-native-pressable-opacity';
+
 const Stack = createNativeStackNavigator();
 const OrderScreen = () => {
     return (
@@ -22,7 +23,7 @@ const OrderScreen = () => {
                 },
                 headerTitleAlign: 'center',
                 headerLeft: (props) => (
-                    <PressableOpacity onPress={() => {
+                    <TouchableOpacity onPress={() => {
                         if (navigation.canGoBack()) {
                             navigation.goBack();
                         }
@@ -34,7 +35,7 @@ const OrderScreen = () => {
                             {...props}
 
                         />
-                    </PressableOpacity>
+                    </TouchableOpacity>
                 ),
                 headerTransparent: false,
                 headerBackground: () => (

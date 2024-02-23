@@ -34,7 +34,7 @@ const BottomNavigator = () => {
                     borderTopLeftRadius: 20,
                     borderTopRightRadius: 20,
                     overflow: 'hidden',
-                    height: 74,
+                    height: 94,
                     bordercolor: 'transparent',
                     position: 'absolute',
                     shadowOpacity: 1,
@@ -57,8 +57,8 @@ const BottomNavigator = () => {
                 },
                 tabBarItemStyle: {
                     padding: 0,
-                    paddingTop: 14,
-                    paddingBottom: 14,
+                    paddingBottom: 4,
+                    paddingTop: 10
                 },
                 headerLeftLabelVisible: false,
                 headerShadowVisible: false,
@@ -70,7 +70,7 @@ const BottomNavigator = () => {
                 headerStyle: {
                     borderBottomLeftRadius: 20,
                     borderBottomRightRadius: 20,
-                    height: 55,
+                    height: 100,
                 },
                 headerLeft: (props) => (
                     <PressableOpacity onPress={() => {
@@ -146,7 +146,7 @@ const BottomNavigator = () => {
                     tabBarLabel: '',
                     // headerTransparent: true,
                     tabBarIcon: ({ color, size }) => (
-                        <Image source={require('../assets/icon/icon_orange.png')} resizeMode='contain' className="absolute w-14 h-14 lg:w-[60px] lg:h-18 m-auto" alt='box' ></Image>
+                        <Image source={require('../assets/icon/icon_orange.png')} resizeMode='contain' className="absolute w-12 h-12 lg:w-[60px] lg:h-18 m-auto" alt='box' ></Image>
                     ),
                     tabBarLabelStyle: { marginBottom: -10 },
                 }}
