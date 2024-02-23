@@ -130,9 +130,9 @@ const Home = ({ navigation, route }) => {
 
                             }} >
                                 <Image source={require('../../assets/icon/icon_bell.png')} alt="icon_bell" className="ml-2 w-[24px] h-[24px]" resizeMode="contain"></Image>
-                                <Box className="absolute left-5 top-[-6] shadow rounded-md ">
-                                    <Text className="min-w-min w-[20px] h-[20px] text-center text-white bg-[#FF6100] text-[10px] rounded-xl">{
-                                        totalUnRead
+                                <Box className="absolute left-5 top-[-6] shadow bg-[#FF6100] rounded-full ">
+                                    <Text className="min-w-min w-[20px] h-[20px] text-center text-white  text-[10px] rounded-xl">{
+                                        totalUnRead > 0 ? "+1" : "0"
                                     }
                                     </Text>
                                 </Box>
