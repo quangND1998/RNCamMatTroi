@@ -138,17 +138,19 @@ const ShipperScreen = () => {
 
                 headerTitleAlign: 'left',
                 headerLeft: (props) => (
-                    <Image className="absolute w-6 h-6" resizeMode='contain' alt='back' source={require('../../assets/icon/fi-rr-arrow-small-left.png')} 
-                        {...props}
-                        onPress={() => {
-                            if (navigation.canGoBack()) {
-                                navigation.goBack();
-                            }
-                            else {
-                                navigation.navigate('Home')
-                            }
-                        }}
-                    />
+                     <PressableOpacity onPress={() => {
+                        if (navigation.canGoBack()) {
+                            navigation.goBack();
+                        }
+                        else {
+                            navigation.navigate('Home')
+                        }
+                    }}>
+                        <Image className=" w-6 h-6" resizeMode='contain' alt='back' source={require('../../assets/icon/fi-rr-arrow-small-left.png')}
+                            {...props}
+
+                        />
+                    </PressableOpacity>
                 ),
             })} component={OrderShipperDetail} />
             {/* <Stack.Screen name="HomeShipper" options={{

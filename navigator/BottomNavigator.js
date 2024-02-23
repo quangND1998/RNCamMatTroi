@@ -16,6 +16,7 @@ import OrderTab from '../components/Svg/OrderTab';
 import CalenderTab from '../components/Svg/CalenderTab';
 import UserTab from '../components/Svg/UserTab';
 import MoreTab from '../components/Svg/MoreTab';
+import { PressableOpacity } from 'react-native-pressable-opacity';
 const Tab = createBottomTabNavigator();
 enableScreens(true)
 const BottomNavigator = () => {
@@ -39,9 +40,9 @@ const BottomNavigator = () => {
                     shadowOpacity: 1,
                     shadowRadius: 2,
                     elevation: 2,
-                    alignItems:'center',
-                    justifyContent:'center',
-                    display:'flex'
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    display: 'flex'
                 },
                 tabBarLabelStyle: {
                     margin: 0,
@@ -50,8 +51,8 @@ const BottomNavigator = () => {
                     fontWeight: '500',
                     fontFamily: 'Inter-Medium',
                     fontSize: 12,
-                    alignItems:'center',
-                    justifyContent:'center'
+                    alignItems: 'center',
+                    justifyContent: 'center'
 
                 },
                 tabBarItemStyle: {
@@ -72,17 +73,19 @@ const BottomNavigator = () => {
                     height: 55,
                 },
                 headerLeft: (props) => (
-                    <Image className="absolute w-6 h-6 ml-4" alt='back' resizeMode='contain' source={require('../assets/icon/fi-rr-arrow-small-left.png')} 
-                        {...props}
-                        onPress={() => {
-                            if (navigation.canGoBack()) {
-                                navigation.goBack();
-                            }
-                            else {
-                                navigation.navigate('Home')
-                            }
-                        }}
-                    />
+                    <PressableOpacity onPress={() => {
+                        if (navigation.canGoBack()) {
+                            navigation.goBack();
+                        }
+                        else {
+                            navigation.navigate('Home')
+                        }
+                    }}>
+                        <Image className="ml-4 w-6 h-6" resizeMode='contain' alt='back' source={require('../assets/icon/fi-rr-arrow-small-left.png')}
+                            {...props}
+
+                        />
+                    </PressableOpacity>
                 ),
                 // headerLeft: (props) => (
                 //     <Image source={require('../assets/icon/fi-rr-arrow-small-right.png')} labelStyle={{ marginLeft: 0 }} labelVisible={false}
@@ -156,7 +159,7 @@ const BottomNavigator = () => {
                     tabBarLabel: 'Tài khoản',
                     tabBarIcon: ({ color, size }) => (
                         // <User color="#184E17" variant="Outline" size={20} />
-                        <UserTab width={24} height={25}  />
+                        <UserTab width={24} height={25} />
                     ),
                 }}
             />
@@ -170,7 +173,7 @@ const BottomNavigator = () => {
                     tabBarIcon: ({ color, size }) => (
                         // <More color="#184E17" variant="Outline" size={20} />
                         // <Image source={require('../assets/icon/more2.png')} className="w-6 h-6 " alt='box' ></Image>
-                        <MoreTab width={24} height={25}/>
+                        <MoreTab width={24} height={25} />
                     ),
                 }}
             />

@@ -5,7 +5,8 @@ import {
     StyleSheet,
     TouchableOpacity,
     Modal,
-    Image
+    Image,
+    ScrollView, RefreshControl,
 } from 'react-native';
 
 import { Center, Container, Heading, Button, Box, Flex, Stack, Input, SearchBar, Icon, Spacer, ZStack, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
@@ -24,13 +25,15 @@ const ModalImage = ({ url, alt }) => {
     useEffect(() => {
 
     }, [])
-
+    const onRefresh = React.useCallback(() => {
+        setVisible(false)
+    }, []);
     return (
         <View style={styles.container} className="w-full">
 
             <View className=" flex items-center align-center w-full">
-                <PressableOpacity onPress={() => setVisible(true)}  className="w-full h-full">
-                    {url && <Image source={{ uri: url }} className=" mx-auto object-cover w-full h-full " />}
+                <PressableOpacity onPress={() => setVisible(true)} className="w-full h-full">
+                    {url && <Image source={{ uri: url }} alt={alt} className=" mx-auto object-cover w-full h-full " />}
                 </PressableOpacity>
 
             </View>
@@ -63,6 +66,7 @@ const ModalImage = ({ url, alt }) => {
                 </View>
 
             </Modal>
+
         </View>
     );
 };

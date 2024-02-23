@@ -6,6 +6,7 @@ import OrderItem from './Index';
 import OrderDetail from './detail';
 import OrderReview from './OrderReview';
 import { HeaderBackButton, HeaderTitle, HeaderBackground } from '@react-navigation/elements';
+import { PressableOpacity } from 'react-native-pressable-opacity';
 const Stack = createNativeStackNavigator();
 const OrderScreen = () => {
     return (
@@ -21,17 +22,19 @@ const OrderScreen = () => {
                 },
                 headerTitleAlign: 'center',
                 headerLeft: (props) => (
-                    <Image className="absolute w-6 h-6" resizeMode='contain' alt='back' source={require('../../assets/icon/fi-rr-arrow-small-left.png')} 
-                        {...props}
-                        onPress={() => {
-                            if (navigation.canGoBack()) {
-                                navigation.goBack();
-                            }
-                            else {
-                                navigation.navigate('Home')
-                            }
-                        }}
-                    />
+                    <PressableOpacity onPress={() => {
+                        if (navigation.canGoBack()) {
+                            navigation.goBack();
+                        }
+                        else {
+                            navigation.navigate('Home')
+                        }
+                    }}>
+                        <Image className=" w-6 h-6" resizeMode='contain' alt='back' source={require('../../assets/icon/fi-rr-arrow-small-left.png')}
+                            {...props}
+
+                        />
+                    </PressableOpacity>
                 ),
                 headerTransparent: false,
                 headerBackground: () => (

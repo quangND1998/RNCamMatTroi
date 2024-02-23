@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { LogBox, Touchable } from 'react-native';
-import { StyleSheet,Animated, TouchableOpacity, Linking, Keyboard, View, ScrollView, RefreshControl, ImageBackground, SectionList, YellowBox } from 'react-native';
+import { StyleSheet, Animated, TouchableOpacity, Linking, Keyboard, View, ScrollView, RefreshControl, ImageBackground, SectionList, YellowBox } from 'react-native';
 import { Center, Container, Heading, Button, Text, Box, Flex, Stack, Input, SearchBar, Icon, Spacer, ZStack, Image, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
 import { useDispatch, useSelector } from 'react-redux'
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
@@ -165,13 +165,13 @@ const Home = ({ navigation, route }) => {
                                 showsHorizontalScrollIndicator={false}
 
                             /> : <View></View>}
-                            {currentIndex > 0 ? 
+                        {currentIndex > 0 ?
                             <TouchableOpacity activeOpacity={0.7} className="absolute top-1/4 rounded-full bg-white h-8 w-8 z-50 m-auto left-4" title="Previous" onPress={handlePrevious} disabled={currentIndex === 0} >
                                 <Image className="h-6 w-6 z-50 m-auto" source={require('../../assets/icon/fi-rr-arrow-small-left.png')} alt="icon_next" resizeMode="contain"></Image>
                             </TouchableOpacity>
                             : null}
 
-                            {currentIndex != productOwner?.length - 1 ? 
+                        {currentIndex != productOwner?.length - 1 ?
                             <TouchableOpacity activeOpacity={0.7} className="absolute top-1/4 rounded-full bg-white h-8 w-8 z-50 m-auto right-4" title="Next" onPress={handleNext} disabled={currentIndex === productOwner?.length - 1} >
                                 <Image className="h-6 w-6 z-50 m-auto" source={require('../../assets/icon/fi-rr-arrow-small-right.png')} alt="icon_pre" resizeMode="contain"></Image>
                             </TouchableOpacity>

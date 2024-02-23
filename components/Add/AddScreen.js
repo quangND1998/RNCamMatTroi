@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CustomerService from './CustomerService';
 import Complaint from './Complaint';
 import { HeaderBackButton, HeaderTitle, HeaderBackground } from '@react-navigation/elements';
+import { PressableOpacity } from 'react-native-pressable-opacity';
 const Stack = createNativeStackNavigator();
 const AddScreen = () => {
     return (
@@ -21,17 +22,20 @@ const AddScreen = () => {
                 headerTitleAlign: 'center',
                 paddingTop: 12,
                 headerLeft: (props) => (
-                    <Image className="absolute w-6 h-6" resizeMode='contain' alt='back' source={require('../../assets/icon/fi-rr-arrow-small-left.png')} 
-                        {...props}
-                        onPress={() => {
-                            if (navigation.canGoBack()) {
-                                navigation.goBack();
-                            }
-                            else {
-                                navigation.navigate('Home')
-                            }
-                        }}
-                    />
+
+                    <PressableOpacity onPress={() => {
+                        if (navigation.canGoBack()) {
+                            navigation.goBack();
+                        }
+                        else {
+                            navigation.navigate('Home')
+                        }
+                    }}>
+                        <Image className=" w-6 h-6" resizeMode='contain' alt='back' source={require('../../assets/icon/fi-rr-arrow-small-left.png')}
+                            {...props}
+
+                        />
+                    </PressableOpacity>
                 ),
                 headerTransparent: false,
                 headerBackground: () => (
