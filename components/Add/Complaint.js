@@ -28,6 +28,15 @@ const Complaint = ({ navigation, route }) => {
     const productOwnersActive = useSelector(selectProductOwnersActive)
     const [spinner, setSpinner] = useState(false)
     const errors = useSelector(state => state.add.errors)
+    const [isShowButotn, setShowButton] = useState(true);
+    const handleFocus = (event) => {
+        console.log('Input field is focused');
+        setShowButton(false);
+      };
+      const handleBlur = (event) => {
+        console.log('Input field lost focus');
+        setShowButton(true);
+      };
     const [form, setForm] = useState({
         star: null,
         evaluate: null,
@@ -85,8 +94,6 @@ const Complaint = ({ navigation, route }) => {
     }
 
     const pickImages = async () => {
-
-
 
         try {
             const { status } = await RNImagePicker.requestMediaLibraryPermissionsAsync()
@@ -324,7 +331,8 @@ const Complaint = ({ navigation, route }) => {
                         <Box className="my-5 bg-[#F0F0F0]  border-0">
 
                             <TextInput underlineColorAndroid="transparent"
-
+                                onFocus={handleFocus}
+                                onBlur={handleBlur}
                                 placeholderTextColor="grey"
                                 numberOfLines={100}
                                 multiline={true} style={{
@@ -406,10 +414,11 @@ const Complaint = ({ navigation, route }) => {
                 >Gửi</Button>
             </Box> */}
 
-            <Button onPress={() => saveComplaint()} className="absolute mx-5 w-[90%] my-[87px] bottom-0 px-2 py-3 lg:w-[70%] lg:mx-[15%] text-white  bg-[#FF6100] rounded-[10px] btn_button"
-                        ><Text className="text-white text-[16px]">Gửi</Text>
-            </Button>
-
+            {isShowButotn == true ?
+                <Button onPress={() => saveComplaint()} className="absolute mx-5 w-[90%] my-[87px] bottom-0 px-2 py-3 lg:w-[70%] lg:mx-[15%] text-white  bg-[#FF6100] rounded-[10px] btn_button"
+                            ><Text className="text-white text-[16px]">Gửi</Text>
+                </Button>
+            : null}
 
         </SafeAreaView >
         
