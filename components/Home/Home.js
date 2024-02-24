@@ -101,8 +101,8 @@ const Home = ({ navigation, route }) => {
     };
     return (
         <SafeAreaView style={styles.container}>
-            <Box className='absolute z-50 w-full  bg-white rounded-b-[20px]'>
-                {/* <Image source={require('../../assets/images/banner.png')} className="m-auto h-24 w-full object-cover" alt='banner'></Image> */}
+            {/* <Box className='absolute z-50 w-full  bg-white rounded-b-[20px]'>
+           
                 <Box className="px-4 py-4 w-full  ">
                     <Flex direction='row' className="flex items-center justify-between">
                         <Flex direction='row' className="">
@@ -141,7 +141,7 @@ const Home = ({ navigation, route }) => {
                     </Flex>
 
                 </Box>
-            </Box>
+            </Box> */}
             <ScrollView
                 contentContainerStyle={styles.scrollView}
                 refreshControl={
