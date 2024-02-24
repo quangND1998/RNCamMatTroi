@@ -13,9 +13,13 @@ import {
 import { Linking, Keyboard, ScrollView, RefreshControl, ImageBackground, SectionList, YellowBox } from 'react-native';
 import { Center, Container, Heading, Button, Box, Flex, Stack, Input, SearchBar, Icon, Spacer, ZStack, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
 import { useHelper } from '../../helpers/helper';
-const { width, height } = Dimensions.get('screen');
+// const { width, height } = Dimensions.get('screen');
+var width = Dimensions.get('window').width; //full width
+var height = Dimensions.get('window').height; //full height
 const imageHeight = height;
 const heightScreen = height - 77;
+
+
 import QRCode from 'react-native-qrcode-svg';
 import { ArrowRight } from 'iconsax-react-native';
 import Video from 'react-native-video';
@@ -24,7 +28,8 @@ import { PressableOpacity } from 'react-native-pressable-opacity';
 import ModalVideo from './ModalVideo';
 import ModalImage from './ModalImage';
 const ProductItem = ({ item, index, navigation }) => {
-
+  const [screenWidth, setScreenWidth] = useState(width);
+  const [screenHeight, setScreenHeight] = useState(height);
   const translateYImage = new Animated.Value(40);
   const { formatDateShort, formatDateUse } = useHelper();
   const handlerDetail = () => {
@@ -32,7 +37,6 @@ const ProductItem = ({ item, index, navigation }) => {
       itemId: item.id
     })
   }
-
   const listImage = useMemo(() => {
     const array = [];
     if (item?.tree && item.tree?.images) {
@@ -50,6 +54,20 @@ const ProductItem = ({ item, index, navigation }) => {
     }
     return array
   })
+
+  useEffect(() => {
+    const updateDimensions = () => {
+      setScreenWidth(Dimensions.get('window').width);
+      setScreenHeight(Dimensions.get('window').height);
+      console.log('update screen');
+    };
+
+    Dimensions.addEventListener('change', updateDimensions);
+
+    return () => {
+      Dimensions.removeEventListener('change', updateDimensions);
+    };
+  }, []);
   const images = [
     {
       url: require('../../assets/images/anhcam.png')
@@ -68,8 +86,8 @@ const ProductItem = ({ item, index, navigation }) => {
     easing: Easing.bounce,
   }).start();
   return (
-    <View style={styles.container}>
-      <View style={styles.content} className="relative">
+    <View style={{ flex: 1,width: screenWidth }} className="w-full">
+      <View style={styles.content} className="relative w-full">
         <Image
           className=" w-full object-cover"
           source={images[index].url}
@@ -113,7 +131,7 @@ const ProductItem = ({ item, index, navigation }) => {
           </TouchableOpacity>
         </Box>
       </View>
-      <Box className="bg-white  rounded-t-[20px] mt-4 py-2 mb-[77px]">
+      <Box className="bg-white  rounded-t-[20px] mt-4 py-2 mb-[77px] w-full">
         <Box className="mx-4">
           <Text className="text-[20px] text-[#FF6100]  px-1 py-3 font-bold" >Lịch sử chăm sóc cây</Text>
           <Box className="" >
@@ -190,7 +208,7 @@ export default ProductItem;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: width,
+  
   },
   content: {
     // flex: 1,
