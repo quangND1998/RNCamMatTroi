@@ -69,11 +69,11 @@ const CheckOrder = ({ navigation, route }) => {
                 <Box className=" mx-3 my-3 mt-12 ">
                     <Box className={`  bg-white  rounded-md  `} >
                         <Box className=" mx-3 my-3 ">
-                            <Text>Nhập đơn hàng</Text>
+                            <Text className="text-[#000000]">Nhập đơn hàng</Text>
                             <Flex direction='row' className="mt-3 items-center justify-between">
-                                <TextInput className="py-1.5 border border-0.5 ml-2 rounded-md  w-2/3  border-0.5" value={search} onChangeText={value => setSearch(value)} ></TextInput>
+                                <TextInput className="py-1 border  ml-1 rounded-md border-[#AEAEAE] w-2/3  border-0.5" value={search} onChangeText={value => setSearch(value)} ></TextInput>
                                 <PressableOpacity onPress={CheckOrder}>
-                                    <Box className="  px-5 py-2.5 bg-[#FF6100] rounded-md items-center">
+                                    <Box className="  px-5 py-2 bg-[#FF6100] rounded-md items-center">
                                         <Text className="text-white">Check </Text>
                                     </Box>
                                 </PressableOpacity>

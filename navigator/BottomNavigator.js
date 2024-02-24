@@ -144,7 +144,7 @@ const BottomNavigator = () => {
                 options={{
                     headerShown: false,
                     tabBarLabel: '',
-                    // headerTransparent: true,
+                    headerTransparent: true,
                     tabBarIcon: ({ color, size }) => (
                         <Image source={require('../assets/icon/icon_orange.png')} resizeMode='contain' className="absolute w-12 h-12 lg:w-[60px] lg:h-18 m-auto" alt='box' ></Image>
                     ),

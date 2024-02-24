@@ -1,16 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { Text } from 'react-native-svg';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { PressableOpacity } from 'react-native-pressable-opacity';
 import HomeShipper from './HomeShipper';
-import { Modal, Button, Select, Input, FormControl, Flex, CheckIcon, HStack, Center, Box, Radio } from "native-base";
+import { Modal, Button, Select, Input, FormControl, Text, Flex, CheckIcon, HStack, Center, Box, Radio } from "native-base";
 import { fetchOrders } from '../../store/actions/shipper';
 import Icon from 'react-native-vector-icons/Ionicons';
 import OrderShipperDetail from './OrderShipperDetail';
 import { HeaderBackButton, HeaderTitle, HeaderBackground } from '@react-navigation/elements';
+import Close from '../Svg/Close';
 const Stack = createNativeStackNavigator();
 const ShipperScreen = () => {
     const dispatch = useDispatch();
@@ -19,10 +20,10 @@ const ShipperScreen = () => {
     const [day, setDay] = React.useState(null);
 
     useEffect(() => {
-      
+
     }, [])
 
-    const getOrders = () => {
+    const getOrders = useCallback(() => {
         let params = {
             date: date,
             day: day
@@ -38,7 +39,7 @@ const ShipperScreen = () => {
 
         dispatch(fetchOrders(params))
         setModalVisible(false)
-    }
+    }, [])
     return (
         <Stack.Navigator  screenOptions={({ navigation, route }) => ({
             tabBarActiveTintColor: '#FF6100',
@@ -55,18 +56,17 @@ const ShipperScreen = () => {
          
         })}>
             <Stack.Screen name="HomeShipper" options={{
-                headerShown: true, title: 'Quản lý vận đơn', tabBarActiveTintColor: '#FF6100',
-                tabBarInactiveTintColor: "#184E17",
-
+                headerShown: true, title: 'Quản lý vận đơn', tabBarActiveTintColor: '#F78F43',
+                tabBarInactiveTintColor: "##000000",
+                headerShadowVisible: false,
                 headerTitleStyle: {
                     fontWeight: 'bold',
                     color: '#FFFFFF',
                 },
                 headerStyle: {
-                    backgroundColor: '#FF6100',
+                    backgroundColor: '#F78F43',
 
                 },
-
                 headerTitleAlign: 'left',
                 headerRight: (props) => (
                     <Box>
@@ -86,24 +86,24 @@ const ShipperScreen = () => {
                         </Flex>
                         <Modal isOpen={modalVisible} onClose={() => setModalVisible(false)} justifyContent="flex-end" className="h-full" bottom="0" size="full">
                             <Modal.Content>
-                                <Modal.CloseButton />
+                                <Modal.CloseButton _icon={<Close />} className="mr-9 left-2 py-3 " />
                                 {/* className="mr-9 left-0  py-3 " */}
-                                <Modal.Header className="bg-[#D9D9D9] items-center py-6">Bộ lọc thời gian </Modal.Header>
+                                <Modal.Header className="bg-[#D9D9D9] font-bold   items-center py-6" ><Text className="font-bold text-[16px]">Bộ lọc thời gian</Text></Modal.Header>
                                 <Modal.Body>
                                     <Radio.Group name="dateRadio" accessibilityLabel="favorite number" value={date} onChange={nextValue => {
                                         setDate(nextValue);
                                         setDay(null);
                                     }}>
-                                        <Radio value="now" my={1}>
+                                        <Radio colorScheme="orange" value="now" my={1} size="sm">
                                             Hôm nay
                                         </Radio>
-                                        <Radio value="yesterday" my={1}>
+                                        <Radio colorScheme="orange" value="yesterday" my={1} size="sm">
                                             Hôm qua
                                         </Radio>
-                                        <Radio value="month" my={1}>
+                                        <Radio colorScheme="orange" value="month" my={1} size="sm">
                                             Thàng này
                                         </Radio>
-                                        <Radio value="beforMonth" my={1}>
+                                        <Radio colorScheme="orange" value="beforMonth" my={1} size="sm">
                                             Thàng trước
                                         </Radio>
                                     </Radio.Group>
@@ -112,18 +112,18 @@ const ShipperScreen = () => {
                                         setDay(nextValue);
                                         setDate(null)
                                     }}>
-                                        <Radio value={7} my={1}>
+                                        <Radio colorScheme="orange" value={7} my={1} size="sm">
                                             7 ngày trước
                                         </Radio>
-                                        <Radio value={30} my={1}>
+                                        <Radio colorScheme="orange" value={30} my={1} size="sm">
                                             30 ngày trước
                                         </Radio>
 
                                     </Radio.Group>
                                 </Modal.Body>
                                 <Modal.Footer>
-                                    <Button flex="1" onPress={getOrders} className="bg-[#FF0000]" >
-                                        Áp dụng bộ lọc
+                                    <Button flex="1" onPress={getOrders} className="bg-[#FF0000] rounded-md font-bold" size='lg'  >
+                                        <Text className="text-white font-bold text-[15px]">Áp dụng bộ lọc</Text>
                                     </Button>
 
                                 </Modal.Footer>
@@ -135,9 +135,8 @@ const ShipperScreen = () => {
             }} component={HomeShipper} />
             <Stack.Screen name="OrderShipperDetail" options={({ navigation, route }) => ({
                 title: route.params.title,
-                tabBarActiveTintColor: '#FF6100',
-                tabBarInactiveTintColor: "#184E17",
-
+                tabBarActiveTintColor: '#F78F43',
+                tabBarInactiveTintColor: "#000000",
                 headerTitleStyle: {
                     fontWeight: 'bold',
                     color: '#FFFFFF',
@@ -146,11 +145,9 @@ const ShipperScreen = () => {
                     backgroundColor: '#FF6100',
 
                 },
-
-
                 headerTitleAlign: 'left',
                 headerLeft: (props) => (
-                     <PressableOpacity onPress={() => {
+                    <PressableOpacity onPress={() => {
                         if (navigation.canGoBack()) {
                             navigation.goBack();
                         }

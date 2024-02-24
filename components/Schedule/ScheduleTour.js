@@ -40,7 +40,7 @@ const ScheduleTour = ({ navigation, route }) => {
     const errors = useSelector(state => state.schedule.errors)
     const itemId = route.params?.itemId ? route.params?.itemId : null;
     const productDetail = useSelector(state => state.productService.productDetail)
-
+    const [isShowButotn, setShowButton] = useState(true);
 
     useEffect(() => {
 
@@ -155,6 +155,14 @@ const ScheduleTour = ({ navigation, route }) => {
 
         });
     };
+    const handleFocus = (event) => {
+        console.log('Input field is focused');
+        setShowButton(false);
+      };
+      const handleBlur = (event) => {
+        console.log('Input field lost focus');
+        setShowButton(true);
+      };
     return (
 
         <SafeAreaView style={styles.container}>
@@ -355,7 +363,8 @@ const ScheduleTour = ({ navigation, route }) => {
                                     {/* <Heading size="sm" className="color-[#FF6100]">Ghi chú</Heading> */}
                                     <TextArea value={textAreaValue} w="100%" h="110" placeholder="Ghi chú"
                                         borderRadius={10}
-                                        
+                                        onFocus={handleFocus}
+                                        onBlur={handleBlur}
                                         onChangeText={text => setTextAreaValue(text)} // for android and ios
                                     />
                                 </Box>
@@ -367,8 +376,11 @@ const ScheduleTour = ({ navigation, route }) => {
                 </Box >
 
             </ScrollView>
+
+            {isShowButotn == true ?
             <Button onPress={() => saveSchedule()} className="absolute mx-5 w-[90%] my-[87px] bottom-0 px-2 py-3 lg:w-[70%] lg:mx-[15%] text-white  bg-[#FF6100] rounded-[10px] btn_button"
                         ><Text className="text-white text-[16px]">Xác nhận đặt chỗ</Text></Button>
+            : null}
         </SafeAreaView>
     );
 }

@@ -19,7 +19,7 @@ const BottomShipperNavigator = () => {
             backBehavior="history"
             screenOptions={({ navigation, route }) => ({
                 tabBarActiveTintColor: '#FF6100',
-                tabBarInactiveTintColor: "#184E17",
+                tabBarInactiveTintColor: "#000000",
                 tabBarStyle: {
                     borderTopLeftRadius: 20,
                     borderTopRightRadius: 20,
@@ -34,21 +34,20 @@ const BottomShipperNavigator = () => {
                 },
                 headerTitleAlign: 'center',
                 tabBarLabelStyle: {
-                    margin: 0,
-                    padding: 0,
-                    paddingBottom: 12,
+                    alignContent: 'center',
+
 
                 },
                 tabBarItemStyle: {
                     padding: 0,
-                    paddingTop: 8,
+                    paddingBottom: 12,
+                    alignContent: 'center',
                 },
                 headerStyle: {
                     borderBottomLeftRadius: 20,
                     borderBottomRightRadius: 20,
                     height: 60,
                 },
-                headerTransparent:true,
                 paddingTop: 12,
                 headerLeft: (props) => (
                     <PressableOpacity onPress={() => {
@@ -73,6 +72,7 @@ const BottomShipperNavigator = () => {
                 name="ShipperScreen"
                 component={ShipperScreen}
                 options={{
+                   
                     headerShown: false,
                     tabBarLabel: 'Quản lý vận đơn',
                     tabBarIcon: ({ color, size }) => (

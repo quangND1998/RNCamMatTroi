@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { LogBox, Dimensions } from 'react-native';
-import { StyleSheet, TextInput,TouchableOpacity, Linking, Keyboard, View, Alert, SafeAreaView, ScrollView, Platform, RefreshControl } from 'react-native';
+import { StyleSheet, TextInput, TouchableOpacity, Linking, Keyboard, View, Alert, SafeAreaView, ScrollView, Platform, RefreshControl } from 'react-native';
 import { Center, Container, Heading, Button, Text, Flex, Box, Radio, TextArea, Stack, Select, CheckIcon, Input, SearchBar, Image, Icon, Spacer, ZStack, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUserData, logoutAction, saveInforChange } from '../../store/actions/auth';
@@ -92,7 +92,7 @@ const UpdateUser = ({ navigation, route }) => {
             return []
 
         }
-    })
+    }, [form.city])
 
     const wards = useMemo(() => {
 
@@ -260,8 +260,8 @@ const UpdateUser = ({ navigation, route }) => {
 
                                 <Box className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
                                     <Box className="m-[12px] ">
-                                        <PressableOpacity onPress={() => dispatch({ type: 'openCamera', payload: true })} className="bg-white w-10 h-10  absolute  rounded-full shadow-xl" style={styles.shadowLogin}> 
-                                            <Image source={require("../../assets/icon/camera.png")} resizeMode="contain" className=" m-auto w-[17] h-[18] z-50 " alt="avt"></Image>
+                                        <PressableOpacity onPress={() => dispatch({ type: 'openCamera', payload: true })} className="bg-white w-10 h-10  absolute  rounded-full shadow-xl" style={styles.shadowLogin}>
+                                            <Image source={require("../../assets/icon/camera.png")} resizeMode="contain" className=" m-auto w-[17] h-[18] " alt="avt"></Image>
                                         </PressableOpacity>
                                     </Box>
                                 </Box>
@@ -375,33 +375,33 @@ const UpdateUser = ({ navigation, route }) => {
                             <Box className="mt-2">
                                 {provinces ? <Box >
                                     <Text className="text-[#184E17] my-1 text-[13px] w-full">Tỉnh/ Thành phố</Text>
-                                    <Box  className="">
+                                    <Box className="">
                                         <Select size="16" className="rounded-xl"
-                                        dropdownIcon={<Box className="mr-2">
-                                            <Arrow color="#FF6100" width={13} height={6} />
-                                        </Box>
-                                        } isInvalid={checkInValid(errors, 'city') ? true : false} selectedValue={form.city} minWidth="100" accessibilityLabel="Chọn Tính/ Thành phố" placeholder="Chọn Tính/ Thành phố" 
-                                        _selectedItem={{
-                                            bg: "#FF6100",
-                                            color: 'white',
-                                            rightIcon: <CheckIcon size="5" color="white" />
-                                        }} 
-                                        mt={1} 
-                                        borderRadius={10}
-                                        borderColor={'#AEAEAE'}
-                                        color={'#184E17'}
-                                        padding={1.5}
-                                        onValueChange={itemValue => {
-                                            setForm(prevState => {
-                                                return { ...prevState, city: itemValue }
-                                            });
-                                            setForm(prevState => {
-                                                return { ...prevState, district: null }
-                                            });
-                                            setForm(prevState => {
-                                                return { ...prevState, wards: null }
-                                            })
-                                        }}>
+                                            dropdownIcon={<Box className="mr-2">
+                                                <Arrow color="#FF6100" width={13} height={6} />
+                                            </Box>
+                                            } isInvalid={checkInValid(errors, 'city') ? true : false} selectedValue={form.city} minWidth="100" accessibilityLabel="Chọn Tính/ Thành phố" placeholder="Chọn Tính/ Thành phố"
+                                            _selectedItem={{
+                                                bg: "#FF6100",
+                                                color: 'white',
+                                                rightIcon: <CheckIcon size="5" color="white" />
+                                            }}
+                                            mt={1}
+                                            borderRadius={10}
+                                            borderColor={'#AEAEAE'}
+                                            color={'#184E17'}
+                                            padding={1.5}
+                                            onValueChange={itemValue => {
+                                                setForm(prevState => {
+                                                    return { ...prevState, city: itemValue }
+                                                });
+                                                setForm(prevState => {
+                                                    return { ...prevState, district: null }
+                                                });
+                                                setForm(prevState => {
+                                                    return { ...prevState, wards: null }
+                                                })
+                                            }}>
 
                                             {provinces.map((item, index) =>
                                                 <Select.Item key={index} label={item.Name} value={item.Name} />)}
@@ -414,26 +414,26 @@ const UpdateUser = ({ navigation, route }) => {
                                 <Box >
                                     <Text className="text-[#184E17] my-1 text-[13px]">Quận/ Huyện</Text>
                                     <Box m>
-                                        <Select size="16" 
+                                        <Select size="16"
                                             dropdownIcon={<Box className="mr-2">
                                                 <Arrow color="#FF6100" width={13} height={6} />
                                             </Box>
-                                            } isInvalid={checkInValid(errors, 'district') ? true : false} selectedValue={form.district} minWidth="100" accessibilityLabel="Chọn Quận/ Huyện" placeholder="Chọn Quận/ Huyện" 
+                                            } isInvalid={checkInValid(errors, 'district') ? true : false} selectedValue={form.district} minWidth="100" accessibilityLabel="Chọn Quận/ Huyện" placeholder="Chọn Quận/ Huyện"
                                             _selectedItem={{
                                                 bg: "#FF6100",
                                                 rightIcon: <CheckIcon size="5" color="white" />
                                             }}
-                                            mt={1} 
+                                            mt={1}
                                             borderRadius={10}
                                             borderColor={'#AEAEAE'}
                                             color={'#184E17'}
                                             padding={1.5}
                                             onValueChange={itemValue => setForm(prevState => {
-                                                            return { ...prevState, district: itemValue }
-                                                        })}>
+                                                return { ...prevState, district: itemValue }
+                                            })}>
                                             {districts.Districts ? districts.Districts.map((item, index) =>
-                                                    <Select.Item key={index} label={item.Name} value={item.Name} />)
-                                                    : null}
+                                                <Select.Item key={index} label={item.Name} value={item.Name} />)
+                                                : null}
                                         </Select>
                                     </Box>
 
@@ -448,20 +448,20 @@ const UpdateUser = ({ navigation, route }) => {
                                         <Select size="16" dropdownIcon={<Box className="mr-2">
                                             <Arrow color="#FF6100" width={13} height={6} />
                                         </Box>
-                                        } isInvalid={checkInValid(errors, 'wards') ? true : false} selectedValue={form.wards} minWidth="200" 
-                                        accessibilityLabel="Chọn Xã/ Phường" 
-                                        placeholder="Chọn Xã/ Phường" 
-                                        _selectedItem={{
-                                            bg: "#FF6100",
-                                            rightIcon: <CheckIcon size="5" color="white" />
-                                        }} 
-                                        borderRadius={10}
-                                        borderColor={'#AEAEAE'}
-                                        color={'#184E17'}
-                                        padding={1.5}
-                                        onValueChange={itemValue => setForm(prevState => {
-                                            return { ...prevState, wards: itemValue }
-                                        })}>
+                                        } isInvalid={checkInValid(errors, 'wards') ? true : false} selectedValue={form.wards} minWidth="200"
+                                            accessibilityLabel="Chọn Xã/ Phường"
+                                            placeholder="Chọn Xã/ Phường"
+                                            _selectedItem={{
+                                                bg: "#FF6100",
+                                                rightIcon: <CheckIcon size="5" color="white" />
+                                            }}
+                                            borderRadius={10}
+                                            borderColor={'#AEAEAE'}
+                                            color={'#184E17'}
+                                            padding={1.5}
+                                            onValueChange={itemValue => setForm(prevState => {
+                                                return { ...prevState, wards: itemValue }
+                                            })}>
                                             {wards?.Wards ? wards.Wards.map((item, index) =>
                                                 <Select.Item key={index} label={item.Name} value={item.Name} />)
                                                 : null}
@@ -663,9 +663,8 @@ const styles = StyleSheet.create({
         bottom: SAFE_AREA_PADDING.paddingBottom,
     },
     shadowLogin: {
-
         shadowColor: '#000000',
-        shadowOffset: { width: -2, height: -1 },
+        shadowOffset: { width: 0, height: 10 },
         shadowOpacity: 0.25,
         shadowRadius: 0,
     }

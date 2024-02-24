@@ -101,8 +101,8 @@ const Home = ({ navigation, route }) => {
     };
     return (
         <SafeAreaView style={styles.container}>
-            <Box className='absolute z-50 w-full lg:mt-[50px] bg-white rounded-b-[20px]'>
-                {/* <Image source={require('../../assets/images/banner.png')} className="m-auto h-24 w-full object-cover" alt='banner'></Image> */}
+            <Box className='absolute z-50 w-full  bg-white rounded-b-[20px]'>
+           
                 <Box className="px-4 py-4 w-full  ">
                     <Flex direction='row' className="flex items-center justify-between">
                         <Flex direction='row' className="">
@@ -130,9 +130,9 @@ const Home = ({ navigation, route }) => {
 
                             }} >
                                 <Image source={require('../../assets/icon/icon_bell.png')} alt="icon_bell" className="ml-2 w-[24px] h-[24px]" resizeMode="contain"></Image>
-                                <Box className="absolute left-5 top-[-6] shadow rounded-[20px] bg-[#FF6100] ">
-                                    <Text className=" w-[20px] h-[20px] text-center text-white  text-[10px] rounded-[10px]">{
-                                        totalUnRead > 0 ? "1+" : "0" 
+                                <Box className="absolute left-5 top-[-6] shadow bg-[#FF6100] rounded-full ">
+                                    <Text className="min-w-min w-[20px] h-[20px] text-center text-white  text-[10px] rounded-xl">{
+                                        totalUnRead > 0 ? "+1" : "0"
                                     }
                                     </Text>
                                 </Box>
