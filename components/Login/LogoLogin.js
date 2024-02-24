@@ -23,7 +23,7 @@ const LogoLogin = ({ navigation }) => {
                     {/* <!-- <img src="/public/assets/images/banner_login.png" class="m-auto" alt=""> --> */}
                     <Box className="m-auto  w-full p-0">
                         <Box className="w-[36%] h-[120px] m-auto">
-                            <Image source={require('../../assets/images/logo_qcam.png')} resizeMode="contain" className="m-auto md:max-w-[130px] lg:max-w-[160px] " alt="logo_qcam"></Image>
+                            <Image source={require('../../assets/images/logo_qcam.png')} resizeMode="contain" className="m-auto md:max-w-[120px] lg:max-w-[160px] " alt="logo_qcam"></Image>
                         </Box>
                         <Box className="mt-5 lg:mt-12">
                             <Image source={require('../../assets/images/cammattroi.png')} resizeMode="contain"  className="w-[205px] h-[37px]  m-auto items-center shadow-xl" alt="cammattroi" ></Image>

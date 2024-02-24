@@ -42,42 +42,54 @@ const HomeScreen = () => {
                 tabBarLabel: '',
                 title: '',
                 headerShown: true,
-                headerLeft: (props) => (
-                    <Flex direction='row' className="">
-                        <Avatar source={{
-                            uri: user?.profile_photo_url
-                        }}>
-                        </Avatar>
+                header: (props) => (
+                    <Box className='absolute m-0 w-full  bg-white rounded-b-[20px]'>
 
-                        <Flex className="ml-4">
-                            <Text className="font-bold text-xl text-gray-800">{user?.name}</Text>
-                            <Text className="text-[#FF6100] text-[12px]">#{user?.cic_number}</Text>
-                        </Flex>
+                        <Box className="px-6  py-4 w-full  ">
+                            <Flex direction='row' className="flex items-center justify-between">
+                                <Flex direction='row' className="flex items-center">
+                                    <Avatar className="w-14 h-14" source={{
+                                        uri: user?.profile_photo_url
+                                    }}>
+                                    </Avatar>
 
-                    </Flex>
-                ),
-                headerRight: (props) => (
-                    <Box className="flex flex-row">
-                        <PressableOpacity onPress={() => {
-                            navigation.navigate('ScanExpo');
+                                    <Flex className="ml-4">
+                                        <Text className="font-bold  text-[16px] text-gray-800">{user?.name}</Text>
+                                        <Text className="text-[#FF6100] text-[12px]">#{user?.cic_number}</Text>
+                                    </Flex>
 
-                        }} >
-                            <Image source={require('../../assets/icon/scan.png')} alt="scan" className="w-[24px] h-[24px]" resizeMode="contain" ></Image>
-                        </PressableOpacity>
-                        <PressableOpacity onPress={() => {
-                            navigation.navigate('Notification');
+                                </Flex>
 
-                        }} >
-                            <Image source={require('../../assets/icon/icon_bell.png')} alt="icon_bell" className="ml-2 w-[24px] h-[24px]" resizeMode="contain"></Image>
-                            <Box className="absolute left-5 top-[-6] shadow bg-[#FF6100] rounded-full ">
-                                <Text className="min-w-min w-[20px] h-[20px] text-center text-white  text-[10px] rounded-xl">{
-                                    totalUnRead > 0 ? "+1" : "0"
-                                }
-                                </Text>
-                            </Box>
-                        </PressableOpacity>
+                                <Box className="flex flex-row">
+                                    <PressableOpacity onPress={() => {
+                                        navigation.navigate('ScanExpo');
+
+                                    }} >
+                                        <Image source={require('../../assets/icon/scan.png')} alt="scan" className="w-[24px] h-[24px]" resizeMode="contain" ></Image>
+                                    </PressableOpacity>
+                                    <PressableOpacity onPress={() => {
+                                        navigation.navigate('Notification');
+
+                                    }} >
+                                        <Image source={require('../../assets/icon/icon_bell.png')} alt="icon_bell" className="ml-2 w-[24px] h-[24px]" resizeMode="contain"></Image>
+                                        {/* <Box className="absolute left-5 top-[-6] shadow bg-[#FF6100] w-[20px] h-[20px] rounded-full flex items-center justify-center ">
+                                            <Text className=" text-center text-white  text-[10px] ">{
+                                                totalUnRead > 0 ? "+1" : "0"
+                                            }
+                                            </Text>
+                                        </Box> */}
+
+                                        {totalUnRead > 0 ?
+                                            <Image className="absolute left-5 top-[-5] shadow w-[20px] h-[20px] rounded-full flex items-center justify-center "
+                                                source={require('../../assets/icon/notification.png')}></Image>
+                                            : null}
+                                    </PressableOpacity>
+                                </Box>
+                            </Flex>
+
+                        </Box>
                     </Box>
-                ),
+                )
 
             })}
 

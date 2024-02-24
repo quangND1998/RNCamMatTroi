@@ -174,7 +174,7 @@ const ProductItem = ({ item, index, navigation }) => {
           <Text className="text-[20px] text-[#FF6100]  px-1 py-3 font-bold" >Hình ảnh và video</Text>
           <Box className="px-3 py-3 bg-[#F9EDD5] w-full flex flex-row flex-wrap">
             {item?.tree ? item.tree?.images.map((image, index_m) =>
-              <Box key={index_m} className="w-1/3 lg:w-1/6 border border-[#F9EDD5]" >
+              <Box key={index_m} className="w-1/3 lg:w-1/6  border-[1px] border-[#F9EDD5]" >
                 {image.mime_type.includes("image") ?
                   // <ImageModal resizeMode="cover" modalImageResizeMode="contain"
                   //   source={{ uri: image.original_url }} alt={`imageslide${image.id}`} style={[styles.imageGallary]}></ImageModal>
