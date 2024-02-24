@@ -52,9 +52,9 @@ const CustomerService = ({ navigation, route }) => {
         <SafeAreaView style={styles.container}>
             <ScrollView>
                 <Box className="mb-4 mx-3 pb-4">
-                    <Box className=" h-full px-3 pt-4 bg-[#F0F0F0]">
+                    <Box className=" h-full px-3  bg-[#F0F0F0]">
                         <TouchableOpacity onPress={() => navigation.navigate('Schedule')}  >
-                            <Flex className="w-full py-2 ">
+                            <Flex className="w-full pt-3 pb-2 ">
                                 <Flex direction='row' className="flex items-center">
                                     <Calender width={24} height={25} />
                                     {/* <MaterialCommunityIcons name='calendar-range-outline' size={24} className="text-[#070707]" color="#070707" /> */}
@@ -62,11 +62,10 @@ const CustomerService = ({ navigation, route }) => {
                                 </Flex>
                             </Flex>
                         </TouchableOpacity>
-
                         <HrTag mr="1" ml="1" opacity={0.3}> </HrTag>
                         <TouchableOpacity onPress={() => navigation.navigate('Complaint')}  >
-                            <Flex className="w-full py-2 ">
-                                <Flex direction='row' className="mt-4 flex items-center">
+                            <Flex className="w-full pt-3 pb-2 ">
+                                <Flex direction='row' className=" flex items-center">
                                     <Message width={24} height={24} />
 
                                     <Text className="  text-[#000000] ml-3 text-[20px] ">Khiếu nại, phản hồi</Text>
@@ -74,11 +73,13 @@ const CustomerService = ({ navigation, route }) => {
                             </Flex>
                         </TouchableOpacity>
                         <HrTag mr="1" ml="1" opacity={0.3}> </HrTag>
-                        <Flex className="w-full py-2  ">
+                        <Flex className="w-full pt-3 pb-2 ">
                             <TouchableOpacity onPress={handlerLogout}  >
-                                <Flex direction='row' className="mt-4 flex items-center">
+                                <Flex direction='row' className=" flex items-center">
                                     <Logout
-                                        size="28"
+                                        width={24}
+                                        height={25}
+                                        size={26}
                                         color="#000000"
                                         variant="Outline"
                                     />
