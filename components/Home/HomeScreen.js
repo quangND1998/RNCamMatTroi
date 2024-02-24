@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { PressableOpacity } from 'react-native-pressable-opacity';
 import { deleteAllNotification } from '../../store/actions/notification';
 import { getUnReadNotification } from '../../store/actions/notification';
-import { HeaderBackButton, HeaderTitle, HeaderBackground } from '@react-navigation/elements';
+import { HeaderBackground } from '@react-navigation/elements';
 import HistoryCare from './HistoryCare';
 const Stack = createNativeStackNavigator();
 const HomeScreen = () => {
