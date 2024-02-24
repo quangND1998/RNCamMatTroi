@@ -24,7 +24,7 @@ const BottomShipperNavigator = () => {
                     borderTopLeftRadius: 20,
                     borderTopRightRadius: 20,
                     overflow: 'hidden',
-                    height: 78,
+                    height: 100,
                     bordercolor: 'transparent',
 
                 },
@@ -48,6 +48,7 @@ const BottomShipperNavigator = () => {
                     borderBottomRightRadius: 20,
                     height: 60,
                 },
+                headerTransparent:true,
                 paddingTop: 12,
                 headerLeft: (props) => (
                     <PressableOpacity onPress={() => {

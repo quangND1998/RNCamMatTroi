@@ -40,7 +40,20 @@ const ShipperScreen = () => {
         setModalVisible(false)
     }
     return (
-        <Stack.Navigator>
+        <Stack.Navigator  screenOptions={({ navigation, route }) => ({
+            tabBarActiveTintColor: '#FF6100',
+            tabBarInactiveTintColor: "#184E17",
+            headerLeftLabelVisible: false,
+            headerTitleStyle: {
+                fontWeight: 'bold',
+                color: '#FF6100',
+            },
+            headerTitleAlign: 'center',
+            paddingTop: 12,
+         
+            headerTransparent: true,
+         
+        })}>
             <Stack.Screen name="HomeShipper" options={{
                 headerShown: true, title: 'Quản lý vận đơn', tabBarActiveTintColor: '#FF6100',
                 tabBarInactiveTintColor: "#184E17",
@@ -53,7 +66,6 @@ const ShipperScreen = () => {
                     backgroundColor: '#FF6100',
 
                 },
-
 
                 headerTitleAlign: 'left',
                 headerRight: (props) => (
@@ -178,6 +190,16 @@ const ShipperScreen = () => {
 
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    background: {
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
+        height: 80,
+        paddingBottom: 10,
 
+        elevation: 0, // remove shadow on Android
+        shadowOpacity: 0, // remove shadow on iOS
+
+    }
+})
 export default ShipperScreen;

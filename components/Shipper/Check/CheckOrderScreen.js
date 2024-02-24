@@ -27,7 +27,7 @@ const CheckOrderScreen = () => {
                     backgroundColor: '#FF6100',
 
                 },
-
+                headerTransparent: true,
 
                 headerTitleAlign: 'left',
 

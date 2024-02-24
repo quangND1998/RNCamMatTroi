@@ -66,7 +66,7 @@ const CheckOrder = ({ navigation, route }) => {
                 refreshControl={
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                 }>
-                <Box className=" mx-3 my-3 ">
+                <Box className=" mx-3 my-3 mt-12 ">
                     <Box className={`  bg-white  rounded-md  `} >
                         <Box className=" mx-3 my-3 ">
                             <Text>Nhập đơn hàng</Text>
