@@ -48,7 +48,7 @@ const BottomShipperNavigator = () => {
                     borderBottomRightRadius: 20,
                     height: 60,
                 },
-             
+
                 paddingTop: 12,
                 headerLeft: (props) => (
                     <PressableOpacity onPress={() => {
@@ -73,7 +73,7 @@ const BottomShipperNavigator = () => {
                 name="ShipperScreen"
                 component={ShipperScreen}
                 options={{
-                   
+
                     headerShown: false,
                     tabBarLabel: 'Quản lý vận đơn',
                     tabBarIcon: ({ color, size }) => (
@@ -112,7 +112,7 @@ const ShipperNavigator = () => {
                 color: '#FF6100',
 
             },
-            headerTitleAlign: 'center',
+
 
         }}
         >

@@ -411,9 +411,9 @@ const OrderReview = ({ navigation, route }) => {
 
                 </Box>
             </ScrollView >
-            <Box className="mx-5 w-[90%] lg:w-[96%] absolute bottom-[80px]">
+            <Box className="absolute mx-5 w-[90%] my-[87px] bottom-0 px-2 py-3 lg:w-[70%] lg:mx-[15%] text-white  bg-[#FF6100] rounded-[10px] btn_button">
                 <Button onPress={() => saveComplaint()} className=" w-full  text-white bg-[#FF6100] rounded-[10px] btn_button"
-                >Gửi</Button>
+                >Gửissss</Button>
             </Box>
 
         </SafeAreaView >
