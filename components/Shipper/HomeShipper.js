@@ -108,7 +108,7 @@ const HomeShipper = ({ navigation, route }) => {
                 <Box className=" mx-3 my-3 ">
                     <Box className={`  bg-white  rounded-md  `} >
                         {orders_transport_status ? orders_transport_status.map((order_transport_status, index) =>
-                            <Box key={index} className={`${order_transport_status.status == status ? 'bg-[#FF6100]' : ''}`}>
+                            <Box key={index} className={` ${order_transport_status.status == status ? 'bg-[#F78F43]' : ''}`}>
                                 <TouchableOpacity onPress={() =>
                                     dispatch({
                                         type: 'changeShipperStatus',
@@ -118,7 +118,7 @@ const HomeShipper = ({ navigation, route }) => {
                                 } >
                                     <Flex className=" px-2 py-2">
                                         <Flex direction='row' className="justify-between">
-                                            <Text className=" text-[#686868] ml-3 text-[12px]">
+                                            <Text className=" text-[#000000] ml-3 text-[12px]">
 
                                                 {order_transport_status.status == 'not_shipping' ? SHIPPER_STATUS.not_shipping :
                                                     order_transport_status.status == 'not_delivered' ? SHIPPER_STATUS.not_delivered :
@@ -133,17 +133,20 @@ const HomeShipper = ({ navigation, route }) => {
 
 
                                             {/* <MaterialCommunityIcons name='calendar-range-outline' size={24} className="text-[#070707]" color="#070707" /> */}
-                                            <Flex direction='row' className=" text-[#686868] ml-3 text-[12px] items-center">{order_transport_status.total}
+                                            <Flex direction='row' className=" text-[#000000] ml-3 text-[12px] items-center">{order_transport_status.total}
                                                 <Icon name="chevron-forward" size={16} color="#AEAEAE" className="items-center" />
                                             </Flex>
                                         </Flex>
                                     </Flex>
                                 </TouchableOpacity>
-                                <HrTag mr="1" ml="1" opacity={0.3}> </HrTag>
+                                {index !== orders_transport_status.length - 1 ? <HrTag opacity={0.3} mr={8} ml={8}> </HrTag> : null}
+
                             </Box>
 
                         ) : null}
                     </Box>
+
+
                     <Box className="mt-2">
 
                         {order_transports && order_transports?.data.length > 0 ? <Box class="ion-padding mb-5" >

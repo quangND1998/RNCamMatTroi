@@ -18,13 +18,13 @@ const CheckOrderScreen = () => {
             <Stack.Screen name="CheckOrder" options={{
                 headerShown: true, title: 'Quản lý vận đơn', tabBarActiveTintColor: '#FF6100',
                 tabBarInactiveTintColor: "#184E17",
-
+                headerShadowVisible: false,
                 headerTitleStyle: {
                     fontWeight: 'bold',
                     color: '#FFFFFF',
                 },
                 headerStyle: {
-                    backgroundColor: '#FF6100',
+                    backgroundColor: '#F78F43',
 
                 },
 

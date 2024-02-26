@@ -115,7 +115,7 @@ const OrderItem = ({ navigation, route }) => {
                                         <Box className="flex">
                                             {order?.order_items ? order?.order_items.map((item, index2) =>
                                                 <Box key={index2} className="flex flex-row">
-                                                    <Text className="font-bold text-base text-[#184E17] px-3 mt-1 truncate w-full">{item.product.name}</Text>
+                                                    <Text className="font-bold text-base text-[#184E17] pl-3 pr-5 mt-1 truncate w-full">{item.product.name}</Text>
                                                 </Box>
                                             ) : null}
                                             <Text className="text-[12px] text-[#AEAEAE] px-3">{formatDate(order.created_at)}</Text>

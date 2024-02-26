@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
     leftButtonRow: {
         position: 'absolute',
         left: SAFE_AREA_PADDING.paddingLeft,
-        bottom: SAFE_AREA_PADDING.paddingBottom,
+        bottom: 77
     },
 })
 
