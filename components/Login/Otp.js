@@ -178,7 +178,7 @@ const OTP = ({ navigation }) => {
                     {counter == 0 ? <Box className="mt-20 flex flex-row">
 
                         <Text>Bạn chưa nhận được mã?</Text>
-                        <Text className="ml-1 text-[#FF6100] border-b-2 border-[#FF6100]" onPress={loginWithOTP}>Gửi lại mã</Text>
+                        <Text className="ml-1 text-[#F78F43] border-b-2 border-[#F78F43]" onPress={loginWithOTP}>Gửi lại mã</Text>
 
                     </Box> : null}
                     {/* <Box>

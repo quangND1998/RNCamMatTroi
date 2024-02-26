@@ -13,7 +13,7 @@ import { SHIPPER_STATUS } from '../constants';
 const StatusDetail = ({ order_transport }) => {
 
     const status_color = {
-        not_shipping: ' text-[#4F8D06]',
+        not_shipping: ' text-[#FF0000]',
         not_delivered: 'text-[#FF6100]',
         delivered: 'text-[#4F8D06]',
         wait_refund: 'text-[#1D75FA]',

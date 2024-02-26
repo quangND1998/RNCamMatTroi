@@ -108,7 +108,7 @@ const HomeShipper = ({ navigation, route }) => {
                 <Box className=" mx-3 my-3 ">
                     <Box className={`  bg-white  rounded-md  `} >
                         {orders_transport_status ? orders_transport_status.map((order_transport_status, index) =>
-                            <Box key={index} className={` ${order_transport_status.status == status ? 'bg-[#F78F43] rounded-md ' : ''}`}>
+                            <Box key={index} >
                                 <TouchableOpacity onPress={() =>
                                     dispatch({
                                         type: 'changeShipperStatus',
@@ -116,9 +116,9 @@ const HomeShipper = ({ navigation, route }) => {
                                     }
                                     )
                                 } >
-                                    <Flex className=" px-2 py-2">
-                                        <Flex direction='row' className="justify-between">
-                                            <Text className=" text-[#000000] ml-3 text-[12px]">
+                                    <Flex className=" px-2 py-2 ">
+                                        <Flex direction='row' className={ index == orders_transport_status.length - 1 ? 'justify-between' : 'justify-between border-b border-[#AEAEAE] '}>
+                                            <Text  className={` ${order_transport_status.status == status ? 'ml-3 text-[#F78F43] rounded-[5px]' : 'text-[#000000] ml-3 text-[12px]'}`} >
 
                                                 {order_transport_status.status == 'not_shipping' ? SHIPPER_STATUS.not_shipping :
                                                     order_transport_status.status == 'not_delivered' ? SHIPPER_STATUS.not_delivered :
@@ -130,16 +130,13 @@ const HomeShipper = ({ navigation, route }) => {
                                                                             order_transport_status.status == 'decline' ? SHIPPER_STATUS.decline :
                                                                                 order_transport_status.status == 'addition_document' ? SHIPPER_STATUS.addition_document : null}
                                             </Text>
-
-
-                                            {/* <MaterialCommunityIcons name='calendar-range-outline' size={24} className="text-[#070707]" color="#070707" /> */}
                                             <Flex direction='row' className=" text-[#000000] ml-3 text-[12px] items-center">{order_transport_status.total}
                                                 <Icon name="chevron-forward" size={16} color="#AEAEAE" className="items-center" />
                                             </Flex>
                                         </Flex>
                                     </Flex>
                                 </TouchableOpacity>
-                                {index !== orders_transport_status.length - 1 ? <HrTag opacity={0.3} mr={8} ml={8}> </HrTag> : null}
+                                {/* {index !== orders_transport_status.length - 1 ? <HrTag opacity={0.3} mr={8} ml={8}> </HrTag> : null} */}
 
                             </Box>
 
@@ -157,9 +154,9 @@ const HomeShipper = ({ navigation, route }) => {
                             : null}
                         {(order_transports && isLoading == false) ? order_transports.data.map((order_transport, index) =>
                             <PressableOpacity key={index} onPress={() => navigation.navigate('OrderShipperDetail', { title: formatUpdatedAt(order_transport.updated_at), orderId: order_transport.id, })}>
-                                <Box className=" bg-white  rounded-md px-1 mt-1 py-2">
+                                <Box className=" bg-white  rounded-[10px] px-1 mt-1 py-2">
                                     <Flex direction='row' className="justify-between px-2">
-                                        <Text className="text-[14px]  font-bold">{index + 1}.{order_transport.order.type == 'retail' ? 'Đơn lẻ' : 'Đơn quà'}<Text className="font-inter">({order_transport.order_transport_number})</Text></Text>
+                                        <Text className="text-[14px]  font-bold">{index + 1}. {order_transport.order.type == 'retail' ? 'Đơn mua lẻ' : 'Đơn quà'}<Text className="font-inter"> ({order_transport.order_transport_number})</Text></Text>
 
                                         {order_transport ? <Status order_transport={order_transport} /> : null}
 
@@ -194,7 +191,7 @@ const HomeShipper = ({ navigation, route }) => {
                                         <Text className="mr-2 text-[#686868]">{formatOnlyDate(order_transport.order.delivery_appointment)}</Text>
                                     </Flex>
                                     <Flex direction='row' className="px-4 flex-wrap">
-                                        <Text className="mr-2 text-[#686868]">Địa chỉ: {order_transport.order.customer?.address}({order_transport.order.customer?.wards}, {order_transport.order.customer?.district} , {order_transport.order.customer?.city})</Text>
+                                        <Text className="mr-2 text-[#686868] mt-[2px]">Địa chỉ: {order_transport.order.customer?.address}({order_transport.order.customer?.wards}, {order_transport.order.customer?.district} , {order_transport.order.customer?.city})</Text>
                                     </Flex>
                                     {order_transport.order.state_document ? <Flex direction='row' className="px-4 flex-wrap">
                                         <Text className="mr-2 text-[#fd6459]">Trạng thái hồ sơ: {order_transport.order.state_document == 'not_push' ? 'Chưa up' : order_transport.order.state_document == 'not_approved' ? 'Chưa duyệt' : order_transport.order.state_document == 'approved' ? 'Đã duyệt' : null}</Text>

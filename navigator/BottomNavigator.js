@@ -28,7 +28,7 @@ const BottomNavigator = () => {
 
             screenOptions={({ navigation, route }) => ({
                 tabBarHideOnKeyboard: true,
-                tabBarActiveTintColor: '#FF6100',
+                tabBarActiveTintColor: '#F78F43',
                 tabBarInactiveTintColor: "#184E17",
                 tabBarStyle: {
                     borderTopLeftRadius: 20,
@@ -64,7 +64,7 @@ const BottomNavigator = () => {
                 headerShadowVisible: false,
                 headerTitleStyle: {
                     fontWeight: 'bold',
-                    color: '#FF6100',
+                    color: '#F78F43',
                 },
                 headerTitleAlign: 'center',
                 headerStyle: {
@@ -114,7 +114,7 @@ const BottomNavigator = () => {
                     title: 'Đơn hàng',
 
                     tabBarIcon: ({ color, size }) => (
-                        // <DocumentText color="#FF6100" variant="Outline" size={25} />
+                        // <DocumentText color="#F78F43" variant="Outline" size={25} />
                         <Image source={require('../assets/icon/fi-rr-box.png')} className="w-6 h-6 " alt='box' ></Image>
                         // <OrderTab width={24} height={25} />
                         // <CalenderTab width={24} height={25} />
@@ -132,7 +132,7 @@ const BottomNavigator = () => {
                     title: 'Đặt lịch thăm vườn',
                     tabBarLabel: 'Thăm vườn',
                     tabBarIcon: ({ color, size }) => (
-                        // <Card color="#FF6100" variant="Outline" size={25} />
+                        // <Card color="#F78F43" variant="Outline" size={25} />
                         // <Image source={require('../assets/icon/fi-rr-calendar.png')} className="w-6 h-6 " alt='calendar' ></Image>
                         <CalenderTab width={24} height={25} />
                     ),

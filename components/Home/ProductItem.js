@@ -103,7 +103,7 @@ const ProductItem = ({ item, index, navigation }) => {
               <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
                 style={styles.description}>Mã cây: <Text className="text-[#184E17] font-bold">{item.tree?.address}</Text></Text>
               <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
-                style={styles.description}>Tên cây: <Text className="text-[#FF6100] font-bold">{item.tree?.name}</Text></Text>
+                style={styles.description}>Tên cây: <Text className="text-[#F78F43] font-bold">{item.tree?.name}</Text></Text>
               <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
                 style={styles.description}>Ngày nhận nuôi: <Text className="text-[#184E17] font-bold" >{formatDateShort(item.time_approve)}</Text></Text>
               <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
@@ -120,7 +120,7 @@ const ProductItem = ({ item, index, navigation }) => {
               />
             </Box>
           </Box>
-          <TouchableOpacity onPress={handlerDetail} className="bg-[#FF6100]  flex flex-row rounded-b-[18px] items-center justify-center text-white" >
+          <TouchableOpacity onPress={handlerDetail} className="bg-[#F78F43]  flex flex-row rounded-b-[18px] items-center justify-center text-white" >
             <Text numberOfLines={3} className="text-[15px] text-[#F0F0F0] uppercase px-1 py-2.5 font-bold"
             >Đặt lịch thăm vườn ngay</Text>
             {/* <ArrowRight className="text-[#ffffff] "
@@ -133,7 +133,7 @@ const ProductItem = ({ item, index, navigation }) => {
       </View>
       <Box className="bg-white  rounded-t-[20px] mt-4 py-2 mb-[77px] w-full">
         <Box className="mx-4">
-          <Text className="text-[20px] text-[#FF6100]  px-1 py-3 font-bold" >Lịch sử chăm sóc cây</Text>
+          <Text className="text-[20px] text-[#F78F43]  px-1 py-3 font-bold" >Lịch sử chăm sóc cây</Text>
           <Box className="" >
             {item.tree?.history_care ? Object.keys(item.tree?.history_care).map((history, key) =>
               <Box key={key} >
@@ -171,7 +171,7 @@ const ProductItem = ({ item, index, navigation }) => {
 
             ) : null}
           </Box>
-          <Text className="text-[20px] text-[#FF6100]  px-1 py-3 font-bold" >Hình ảnh và video</Text>
+          <Text className="text-[20px] text-[#F78F43]  px-1 py-3 font-bold" >Hình ảnh và video</Text>
           <Box className="px-3 py-3 bg-[#F9EDD5] w-full flex flex-row flex-wrap">
             {item?.tree ? item.tree?.images.map((image, index_m) =>
               <Box key={index_m} className="w-1/3 lg:w-1/6  border-[1px] border-[#F9EDD5]" >

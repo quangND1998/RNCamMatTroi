@@ -18,7 +18,7 @@ const BottomShipperNavigator = () => {
             initialRouteName="HomeShipper"
             backBehavior="history"
             screenOptions={({ navigation, route }) => ({
-                tabBarActiveTintColor: '#FF6100',
+                tabBarActiveTintColor: '#F78F43',
                 tabBarInactiveTintColor: "#000000",
                 tabBarStyle: {
                     borderTopLeftRadius: 20,
@@ -29,8 +29,8 @@ const BottomShipperNavigator = () => {
 
                 },
                 headerTitleStyle: {
-                    fontWeight: 'bold',
-                    color: '#FF6100',
+                    fontWeight: 'semibold',
+                    color: '#F78F43',
                 },
                 headerTitleAlign: 'center',
                 tabBarLabelStyle: {
@@ -78,7 +78,7 @@ const BottomShipperNavigator = () => {
                     tabBarLabel: 'Quản lý vận đơn',
                     tabBarIcon: ({ color, size }) => (
                         // <Home source={require('../assets/icon/home.png')} className="w-14 h-14 " alt='box' ></Home>
-                        <Home color="#FF6100" size={26} />
+                        <Home color="#F78F43" size={26} />
 
                     ),
                 }}
@@ -91,7 +91,7 @@ const BottomShipperNavigator = () => {
                     tabBarLabel: 'Thêm',
                     title: 'Quản lý vận đơn',
                     tabBarIcon: ({ color, size }) => (
-                        <Chevron color="#FF6100" size={26} />
+                        <Chevron color="#F78F43" size={26} />
                     ),
                 }}
             />
@@ -109,7 +109,7 @@ const ShipperNavigator = () => {
 
             headerTitleStyle: {
                 fontWeight: 'bold',
-                color: '#FF6100',
+                color: '#F78F43',
 
             },
 

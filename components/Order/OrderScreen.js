@@ -13,12 +13,12 @@ const OrderScreen = () => {
         <Stack.Navigator
             initialRouteName="OrderItem"
             screenOptions={({ navigation, route }) => ({
-                tabBarActiveTintColor: '#FF6100',
+                tabBarActiveTintColor: '#F78F43',
                 tabBarInactiveTintColor: "#184E17",
 
                 headerTitleStyle: {
                     fontWeight: 'bold',
-                    color: '#FF6100',
+                    color: '#F78F43',
                 },
                 headerTitleAlign: 'center',
                 headerLeft: (props) => (

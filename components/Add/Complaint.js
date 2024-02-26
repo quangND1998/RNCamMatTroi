@@ -243,7 +243,7 @@ const Complaint = ({ navigation, route }) => {
                                         <Box className="text-3xl mx-1 text-[#AEAEAE]" >
 
 
-                                            <Star width={28} height={28} color={i <= star ? '#FF6100' : '#AEAEAE'} />
+                                            <Star width={28} height={28} color={i <= star ? '#F78F43' : '#AEAEAE'} />
                                         </Box>
                                     </PressableOpacity>
 
@@ -364,7 +364,7 @@ const Complaint = ({ navigation, route }) => {
                             </Box>
 
                             <Box className="mt-1 mb-3" >
-                                <Heading size="sm" className="color-[#FF6100]">Hoạt động theo gói </Heading>
+                                <Heading size="sm" className="color-[#F78F43]">Hoạt động theo gói </Heading>
                                 {productOwnersActive.length > 0 ?
                                     <Box >
                                         <Select selectedValue={form.productOwner} minWidth="100" accessibilityLabel="Chọn gói dịch vụ"
@@ -417,7 +417,7 @@ const Complaint = ({ navigation, route }) => {
                                 )}
                             </Flex>
 
-                            {/* <Button onPress={() => saveComplaint()} className=" mb-[77px] bottom-0  w-full  text-white bg-[#FF6100] rounded-xl btn_button"
+                            {/* <Button onPress={() => saveComplaint()} className=" mb-[77px] bottom-0  w-full  text-white bg-[#F78F43] rounded-xl btn_button"
                             >Gửi</Button> */}
                         </Box >
 
@@ -427,12 +427,12 @@ const Complaint = ({ navigation, route }) => {
 
             </ScrollView >
             {/* <Box className="mx-5 w-[90%] absolute bottom-[80px] lg:w-2/3 lg:mx-auto">
-                <Button onPress={() => saveComplaint()} className=" w-full  text-white bg-[#FF6100] rounded-[10px] btn_button"
+                <Button onPress={() => saveComplaint()} className=" w-full  text-white bg-[#F78F43] rounded-[10px] btn_button"
                 >Gửi</Button>
             </Box> */}
 
             {isShowButotn == true ?
-                <Button onPress={() => saveComplaint()} className="absolute mx-5 w-[90%] my-[87px] bottom-0 px-2 py-3 lg:w-[70%] lg:mx-[15%] text-white  bg-[#FF6100] rounded-[10px] btn_button"
+                <Button onPress={() => saveComplaint()} className="absolute mx-5 w-[90%] my-[87px] bottom-0 px-2 py-3 lg:w-[70%] lg:mx-[15%] text-white  bg-[#F78F43] rounded-[10px] btn_button"
                 ><Text className="text-white text-[16px]">Gửi</Text>
                 </Button>
                 : null}

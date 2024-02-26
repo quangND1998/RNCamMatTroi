@@ -13,15 +13,15 @@ import { SHIPPER_STATUS } from '../constants';
 const Status = ({ order_transport }) => {
 
     const text_color = {
-        not_shipping: ' text-[#4F8D06]',
-        not_delivered: 'text-[#FF6100]',
-        delivered: 'text-[#4F8D06]',
-        wait_refund: 'text-[#1D75FA]',
-        refund: 'text-[#1D75FA]',
-        wait_decline: 'text-[#FF0000]',
-        decline: 'text-[#F00]',
-        addition_document: 'text-[#f8c717]',
-        wait_warehouse: "text-[#FF0000]",
+        not_shipping: 'font-semibold	 text-[#4F8D06]',
+        not_delivered: 'font-semibold	text-[#F78F43]',
+        delivered: 'font-semibold	text-[#4F8D06]',
+        wait_refund: 'font-semibold	text-[#1D75FA]',
+        refund: 'font-semibold	text-[#1D75FA]',
+        wait_decline: 'font-semibold	text-[#FF0000]',
+        decline: 'font-semibold	text-[#F00]',
+        addition_document: 'font-semibold	text-[#f8c717]',
+        wait_warehouse: "font-semibold	text-[#FF0000]",
     }
     const color = useMemo(() => {
         if (order_transport.order.state_document == 'not_push' && order_transport.status == 'delivered') {
@@ -39,15 +39,8 @@ const Status = ({ order_transport }) => {
 
     return ( <
         SafeAreaView >
-
-        <
-        Text className = { `${color}` } > { text } <
-        /Text>
-
-
-
-        <
-        /SafeAreaView >
+            <Text className = { `${color}` } > { text } </Text>
+        </SafeAreaView >
     );
 }
 

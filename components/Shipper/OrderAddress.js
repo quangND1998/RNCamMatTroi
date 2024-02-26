@@ -37,16 +37,16 @@ const OrderAddress = ({ order_detail }) => {
                     <Point size={24} />
                     <Text bold className="font-inter text-[12px] text-[#686868] ">Trang trại Cam Mặt Trời </Text>
                 </Flex>
-                <Box className="mx-1 ">
+                <Box className="mx-[5px] ">
                     <Image source={require('../../assets/icon/location.png')} className="h-1 w-1 " alt="location1" ></Image>
                 </Box>
-                <Box className="mx-1 mt-1">
+                <Box className="mx-[5px] my-1">
                     <Image source={require('../../assets/icon/location.png')} className="h-1 w-1 " alt="location2"></Image>
                 </Box>
 
                 <Flex direction='row' className="items-center ">
                     <Image source={require('../../assets/icon/end.png')} className="h-4 w-4 " alt="end"></Image>
-                    <Text bold className="font-inter text-[12px] text-[#686868] ">{order_detail?.address}, {order_detail?.wards}, {order_detail?.district}, {order_detail?.city}  </Text>
+                    <Text bold className="font-inter px-3 text-[12px] text-[#686868] ">{order_detail?.address}, {order_detail?.wards}, {order_detail?.district}, {order_detail?.city}  </Text>
                 </Flex>
             </Box>
 
@@ -59,12 +59,12 @@ const OrderAddress = ({ order_detail }) => {
 
                         <Flex key={index} direction='row' className=" justify-between  py-2 w-full">
                             <Flex direction='row' className=" items-center">
-                                <Text className="py-0.5 px-1 border border-0.5 rounded-lg text-[#FF6100]">{item.quantity}x</Text>
+                                <Text className="py-0.5 px-1 border border-0.5 rounded-lg text-[#F78F43]">{item.quantity}x</Text>
                                 <Box className="ml-3">
                                     <Text className="text-[12px] ">{item.product?.name}</Text>
                                 </Box>
                             </Flex>
-                            <Text className="text-[#FF6100] font-roboto font-bold text-[12px]">{formatPrice(item.total_price)} đ
+                            <Text className="text-[#F78F43] font-roboto font-bold text-[12px]">{formatPrice(item.total_price)} đ
                             </Text>
                         </Flex>
 
@@ -76,12 +76,12 @@ const OrderAddress = ({ order_detail }) => {
 
                         <Flex key="index" direction='row' className=" justify-between  py-2 w-full">
                             <Flex direction='row' className=" items-center">
-                                <Text className="py-0.5 px-1 border border-0.5 rounded-lg text-[#FF6100]">{item.quantity}x</Text>
+                                <Text className="py-0.5 px-1 border border-0.5 rounded-lg text-[#F78F43]">{item.quantity}x</Text>
                                 <Box className="ml-3">
                                     <Text className="text-[12px] ">{item.product?.name}</Text>
                                 </Box>
                             </Flex>
-                            <Text className="text-[#FF6100] font-roboto font-bold text-[12px]">{formatPrice(item.total_price)} đ
+                            <Text className="text-[#F78F43] font-roboto font-bold text-[12px]">{formatPrice(item.total_price)} đ
                             </Text>
                         </Flex>
 
