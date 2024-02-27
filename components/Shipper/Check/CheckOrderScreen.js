@@ -16,19 +16,17 @@ const CheckOrderScreen = () => {
     return (
         <Stack.Navigator>
             <Stack.Screen name="CheckOrder" options={{
-                headerShown: true, title: 'Quản lý vận đơn', tabBarActiveTintColor: '#FF6100',
+                headerShown: true, title: 'Quản lý vận đơn', tabBarActiveTintColor: '#F78F43',
                 tabBarInactiveTintColor: "#184E17",
                 headerShadowVisible: false,
                 headerTitleStyle: {
-                    fontWeight: 'bold',
+                    fontWeight: '600',
                     color: '#FFFFFF',
                 },
                 headerStyle: {
                     backgroundColor: '#F78F43',
 
                 },
-
-
                 headerTitleAlign: 'left',
 
             }} component={CheckOrder} />

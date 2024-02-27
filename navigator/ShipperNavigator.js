@@ -9,8 +9,10 @@ import ShipperScreen from '../components/Shipper/ShipperScreen';
 import CheckOrderScreen from '../components/Shipper/Check/CheckOrderScreen';
 import Home from '../components/Svg/Home';
 import Chevron from '../components/Svg/Chevron';
+import SettingShipper from '../components/Shipper/Setting/Index'
 const Tab = createBottomTabNavigator();
-
+import { PressableOpacity } from 'react-native-pressable-opacity';
+import MoreTab from '../components/Svg/MoreTab';
 const BottomShipperNavigator = () => {
     return (
         <Tab.Navigator
@@ -18,7 +20,7 @@ const BottomShipperNavigator = () => {
             initialRouteName="HomeShipper"
             backBehavior="history"
             screenOptions={({ navigation, route }) => ({
-                tabBarActiveTintColor: '#FF6100',
+                tabBarActiveTintColor: '#F78F43',
                 tabBarInactiveTintColor: "#000000",
                 tabBarStyle: {
                     borderTopLeftRadius: 20,
@@ -26,11 +28,13 @@ const BottomShipperNavigator = () => {
                     overflow: 'hidden',
                     height: 78,
                     bordercolor: 'transparent',
-
+                    position: 'absolute',
+                    marginTop: '77px',
                 },
+
                 headerTitleStyle: {
-                    fontWeight: 'bold',
-                    color: '#FF6100',
+                    fontWeight: 'semibold',
+                    color: 'white',
                 },
                 headerTitleAlign: 'center',
                 tabBarLabelStyle: {
@@ -43,12 +47,11 @@ const BottomShipperNavigator = () => {
                     paddingBottom: 12,
                     alignContent: 'center',
                 },
+                headerShadowVisible: false,
                 headerStyle: {
-                    borderBottomLeftRadius: 20,
-                    borderBottomRightRadius: 20,
-                    height: 60,
-                },
+                    backgroundColor: '#F78F43',
 
+                },
                 paddingTop: 12,
                 headerLeft: (props) => (
                     <PressableOpacity onPress={() => {
@@ -59,7 +62,7 @@ const BottomShipperNavigator = () => {
                             navigation.navigate('Home')
                         }
                     }}>
-                        <Image className=" w-6 h-6" resizeMode='contain' alt='back' source={require('../assets/icon/fi-rr-arrow-small-left.png')}
+                        <Image className=" w-6 h-6 ml-2" resizeMode='contain' alt='back' source={require('../assets/icon/fi-rr-arrow-small-left.png')}
                             {...props}
 
                         />
@@ -78,7 +81,7 @@ const BottomShipperNavigator = () => {
                     tabBarLabel: 'Quản lý vận đơn',
                     tabBarIcon: ({ color, size }) => (
                         // <Home source={require('../assets/icon/home.png')} className="w-14 h-14 " alt='box' ></Home>
-                        <Home color="#FF6100" size={26} />
+                        <Home color="#F78F43" size={26} />
 
                     ),
                 }}
@@ -88,10 +91,24 @@ const BottomShipperNavigator = () => {
                 component={CheckOrderScreen}
                 options={{
                     headerShown: false,
-                    tabBarLabel: 'Thêm',
+                    tabBarLabel: 'Check đơn',
                     title: 'Quản lý vận đơn',
                     tabBarIcon: ({ color, size }) => (
-                        <Chevron color="#FF6100" size={26} />
+                        <Chevron color="#F78F43" size={26} />
+                    ),
+                }}
+            />
+
+
+            <Tab.Screen
+                name="Setting"
+                component={SettingShipper}
+                options={{
+                    headerShown: true,
+                    tabBarLabel: 'Thêm',
+                    title: 'Xem thêm',
+                    tabBarIcon: ({ color, size }) => (
+                        <MoreTab width={24} height={25} />
                     ),
                 }}
             />
@@ -109,7 +126,7 @@ const ShipperNavigator = () => {
 
             headerTitleStyle: {
                 fontWeight: 'bold',
-                color: '#FF6100',
+                color: '#F78F43',
 
             },
 

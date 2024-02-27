@@ -18,7 +18,7 @@ const ScheduleSuccess = ({ navigation, route }) => {
             >
                 <Box className="my-5 mx-5 pb-5 mt-36 ion-padding">
                     <Center class=" text-center  ">
-                        <Heading className=" text-[18px] text-center text-[#FF6100] ">Cảm ơn quý khách đã đặt lịch tới thăm
+                        <Heading className=" text-[18px] text-center text-[#F78F43] ">Cảm ơn quý khách đã đặt lịch tới thăm
                             vườn Cam Mặt Trời.</Heading>
                         <Text className="text-center text-[18px] mt-4" >Chúng tôi sẽ liên hệ để hỗ trợ quý khách trong thời gian sớm nhất.</Text>
                         <Image source={require('../../assets/images/check.png')} className="w-[102.3px] h-[97.2px] mt-8" alt='check'></Image>
@@ -27,7 +27,7 @@ const ScheduleSuccess = ({ navigation, route }) => {
                 </Box >
 
             </ScrollView>
-            <Button onPress={() => navigation.navigate('Home')} className="absolute bottom-[-200]    w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 px-4 py-4 text-white bg-[#FF6100] rounded-xl"
+            <Button onPress={() => navigation.navigate('Home')} className="absolute bottom-[-200]    w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 px-4 py-4 text-white bg-[#F78F43] rounded-xl"
             >Trở về Trang chủ</Button>
         </SafeAreaView>
     );

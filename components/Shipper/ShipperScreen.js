@@ -39,7 +39,7 @@ const ShipperScreen = () => {
 
         dispatch(fetchOrders(params))
         setModalVisible(false)
-    }, [date, day])
+    }, [date,day])
     return (
         <Stack.Navigator>
             <Stack.Screen name="HomeShipper" options={{
@@ -47,7 +47,7 @@ const ShipperScreen = () => {
                 tabBarInactiveTintColor: "##000000",
                 headerShadowVisible: false,
                 headerTitleStyle: {
-                    fontWeight: 'bold',
+                    fontWeight: '600',
                     color: '#FFFFFF',
                 },
                 headerStyle: {
@@ -125,12 +125,11 @@ const ShipperScreen = () => {
                 tabBarActiveTintColor: '#F78F43',
                 tabBarInactiveTintColor: "#000000",
                 headerTitleStyle: {
-                    fontWeight: 'bold',
                     color: '#FFFFFF',
+                    alignItems:'center'
                 },
                 headerStyle: {
-                    backgroundColor: '#FF6100',
-
+                    backgroundColor: '#F78F43',
                 },
                 headerTitleAlign: 'left',
                 headerLeft: (props) => (
@@ -142,15 +141,20 @@ const ShipperScreen = () => {
                             navigation.navigate('Home')
                         }
                     }}>
-                        <Image className=" w-6 h-6" resizeMode='contain' alt='back' source={require('../../assets/icon/fi-rr-arrow-small-left.png')}
-                            {...props}
+                        {/* <Image className=" w-6 h-6" resizeMode='contain' alt='back' source={require('../../assets/icon/fi-rr-arrow-small-left.png')} */}
+                            {/* {...props} */}
 
-                        />
+                        {/* /> */}
+                        <Icon
+                            name="chevron-back"
+                            color="rgba(255, 255, 255, .9)"
+                            size={28}
+                            />
                     </PressableOpacity>
                 ),
             })} component={OrderShipperDetail} />
             {/* <Stack.Screen name="HomeShipper" options={{
-                headerShown: true, title: 'Quản lý vận đơn', tabBarActiveTintColor: '#FF6100',
+                headerShown: true, title: 'Quản lý vận đơn', tabBarActiveTintColor: '#F78F43',
                 tabBarInactiveTintColor: "#184E17",
 
                 headerTitleStyle: {
@@ -158,7 +162,7 @@ const ShipperScreen = () => {
                     color: '#FFFFFF',
                 },
                 headerStyle: {
-                    backgroundColor: '#FF6100',
+                    backgroundColor: '#F78F43',
 
                 },
 

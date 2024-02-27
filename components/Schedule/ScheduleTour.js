@@ -183,7 +183,7 @@ const ScheduleTour = ({ navigation, route }) => {
                         <Box className="my-2">
                             <Box className="w-full">
                                 <Flex direction='row' className="flex justify-between">
-                                    <Heading size="sm" className="color-[#FF6100] font-bold my-1">Mã đặt lịch tham quan</Heading>
+                                    <Heading size="sm" className="color-[#F78F43] font-bold my-1">Mã đặt lịch tham quan</Heading>
 
                                     <Flex direction='row' className=" items-center">
                                         <Text className=" font-inter mr-2 text-[13px] text-[#AEAEAE] leading-4" >{code}</Text>
@@ -242,7 +242,7 @@ const ScheduleTour = ({ navigation, route }) => {
 
                                 </Box>
                                 <Box className="" >
-                                    <Heading size="sm" className="color-[#FF6100] font-bold mt-2 mb-4">Hoạt động theo gói </Heading>
+                                    <Heading size="sm" className="color-[#F78F43] font-bold mt-2 mb-4">Hoạt động theo gói </Heading>
                                     {/* <Box maxW="500" class="bg-white">
                                         <Select class="bg-white" selectedValue={productOwner} minWidth="100" accessibilityLabel="Chọn gói dịch vụ" placeholder="Chọn gói dịch vụ " _selectedItem={{
                                             bg: "teal.600",
@@ -301,7 +301,7 @@ const ScheduleTour = ({ navigation, route }) => {
 
 
                                 <Box className="my-5">
-                                    <Heading size="sm" className="color-[#FF6100] my-1 font-bold">Số lượng </Heading>
+                                    <Heading size="sm" className="color-[#F78F43] my-1 font-bold">Số lượng </Heading>
                                     <Flex direction='row' className=" justify-between ">
                                         <Flex direction='row' className=" items-center">
                                             <User
@@ -323,7 +323,7 @@ const ScheduleTour = ({ navigation, route }) => {
                                                 valueType='real'
                                                 rounded
                                                 textColor='#184E17'
-                                                iconStyle={{ color: '#FF6100' }}
+                                                iconStyle={{ color: '#F78F43' }}
                                                 borderColor='#F0F0F0'
                                                 rightButtonBackgroundColor='transparent'
                                                 leftButtonBackgroundColor='transparent' />
@@ -352,7 +352,7 @@ const ScheduleTour = ({ navigation, route }) => {
                                                 rounded
                                                 minValue={1}
                                                 textColor='#184E17'
-                                                iconStyle={{ color: '#FF6100' }}
+                                                iconStyle={{ color: '#F78F43' }}
                                                 borderColor='#F0F0F0'
                                                 rightButtonBackgroundColor='transparent'
                                                 leftButtonBackgroundColor='transparent' />
@@ -360,7 +360,7 @@ const ScheduleTour = ({ navigation, route }) => {
                                     </Flex>
                                 </Box>
                                 <Box className="my-0 bg-[#F0F0F0] w-full">
-                                    {/* <Heading size="sm" className="color-[#FF6100]">Ghi chú</Heading> */}
+                                    {/* <Heading size="sm" className="color-[#F78F43]">Ghi chú</Heading> */}
                                     <TextArea value={textAreaValue} w="100%" h="110" placeholder="Ghi chú"
                                         borderRadius={10}
                                         onFocus={handleFocus}
@@ -378,7 +378,7 @@ const ScheduleTour = ({ navigation, route }) => {
             </ScrollView>
 
             {isShowButotn == true ?
-            <Button onPress={() => saveSchedule()} className="absolute mx-5 w-[90%] my-[87px] bottom-0 px-2 py-3 lg:w-[70%] lg:mx-[15%] text-white  bg-[#FF6100] rounded-[10px] btn_button"
+            <Button onPress={() => saveSchedule()} className="absolute mx-5 w-[90%] my-[87px] bottom-0 px-2 py-3 lg:w-[70%] lg:mx-[15%] text-white  bg-[#F78F43] rounded-[10px] btn_button"
                         ><Text className="text-white text-[16px]">Xác nhận đặt chỗ</Text></Button>
             : null}
         </SafeAreaView>

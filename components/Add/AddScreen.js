@@ -12,12 +12,12 @@ const AddScreen = () => {
         <Stack.Navigator
             initialRouteName='CustomerService'
             screenOptions={({ navigation, route }) => ({
-                tabBarActiveTintColor: '#FF6100',
+                tabBarActiveTintColor: '#F78F43',
                 tabBarInactiveTintColor: "#184E17",
                 headerLeftLabelVisible: false,
                 headerTitleStyle: {
                     fontWeight: 'bold',
-                    color: '#FF6100',
+                    color: '#F78F43',
                 },
                 headerTitleAlign: 'center',
                 paddingTop: 12,

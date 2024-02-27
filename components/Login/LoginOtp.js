@@ -103,7 +103,7 @@ const LoginOtp = ({ navigation }) => {
                 </TouchableWithoutFeedback>
             </Box>
             {value && isValidPhoneNumber(value) ? <Button onPress={loginWithOTP}
-                className="absolute bottom-0  w-[90%] ml-[5%] mr-[5%]  mb-16 px-4 py-2.5 text-white bg-[#FF6100] rounded-xl " style={styles.btn_button}>
+                className="absolute bottom-0  w-[90%] ml-[5%] mr-[5%]  mb-16 px-4 py-2.5 text-white bg-[#F78F43] rounded-xl " style={styles.btn_button}>
                 <Text className="text-white items-center text-center">Tiếp tục</Text>
             </Button> : null
             }

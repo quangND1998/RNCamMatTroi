@@ -66,7 +66,7 @@ const PackageBenefits = ({ navigation, route }) => {
                                                 : "Tạm ngưng"
                                         }
                                     </Text>
-                                    <Text className="text-xs text-[#FF6100]">
+                                    <Text className="text-xs text-[#F78F43]">
                                         đến {formatOnlyDate(productDetail?.time_end)}
                                     </Text>
                                 </Flex>

@@ -224,11 +224,11 @@ const OrderReview = ({ navigation, route }) => {
 
                 <Box>
                     <Flex direction='row' className="justify-between items-center w-full  mt-5 mb-2 px-5 ">
-                        {star && star < 2 ? <Text className="font-bold text-[17px] text-[#FF6100]" > Rất tệ</Text> : null}
-                        {star && star == 2 ? <Text className="font-bold text-[17px] text-[#FF6100]" > Kém</Text> : null}
-                        {star && star == 3 ? <Text className="font-bold text-[17px] text-[#FF6100]" >Trung Bình</Text> : null}
-                        {star && star == 4 ? <Text className="font-bold text-[17px] text-[#FF6100]" >Tốt</Text> : null}
-                        {star && star == 5 ? <Text className="font-bold text-[17px] text-[#FF6100]" >Hoàn hảo</Text> : null}
+                        {star && star < 2 ? <Text className="font-bold text-[17px] text-[#F78F43]" > Rất tệ</Text> : null}
+                        {star && star == 2 ? <Text className="font-bold text-[17px] text-[#F78F43]" > Kém</Text> : null}
+                        {star && star == 3 ? <Text className="font-bold text-[17px] text-[#F78F43]" >Trung Bình</Text> : null}
+                        {star && star == 4 ? <Text className="font-bold text-[17px] text-[#F78F43]" >Tốt</Text> : null}
+                        {star && star == 5 ? <Text className="font-bold text-[17px] text-[#F78F43]" >Hoàn hảo</Text> : null}
 
 
                         <Flex direction='row' className=" items-center ">
@@ -243,7 +243,7 @@ const OrderReview = ({ navigation, route }) => {
 
                                 }}>
                                     <Box className="text-3xl mx-1 text-[#AEAEAE]" >
-                                        <Star width={28} height={28} color={i <= star ? '#FF6100' : '#AEAEAE'} />
+                                        <Star width={28} height={28} color={i <= star ? '#F78F43' : '#AEAEAE'} />
                                     </Box>
                                 </PressableOpacity>
 
@@ -411,8 +411,8 @@ const OrderReview = ({ navigation, route }) => {
 
                 </Box>
             </ScrollView >
-            <Box className="absolute mx-5 w-[90%] my-[87px] bottom-0 px-2 py-3 lg:w-[70%] lg:mx-[15%] text-white  bg-[#FF6100] rounded-[10px] btn_button">
-                <Button onPress={() => saveComplaint()} className=" w-full  text-white bg-[#FF6100] rounded-[10px] btn_button"
+            <Box className="absolute mx-5 w-[90%] my-[87px] bottom-0 px-2 py-3 lg:w-[70%] lg:mx-[15%] text-white  bg-[#F78F43] rounded-[10px] btn_button">
+                <Button onPress={() => saveComplaint()} className=" w-full  text-white bg-[#F78F43] rounded-[10px] btn_button"
                 >Gửissss</Button>
             </Box>
 

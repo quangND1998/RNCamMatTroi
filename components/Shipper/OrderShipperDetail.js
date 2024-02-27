@@ -424,23 +424,25 @@ const OrderShipperDetail = ({ navigation, route }) => {
 
                                     {order_transport_detail?.status == 'not_shipping' ?
 
-                                        <TextInput className=" px-8 py-2.5 border border-0.5 mt-2 ml-2 rounded-md " value={text} maxLength={1} onChangeText={text => setText(text)} />
+                                        <TextInput className=" px-8 py-2.5 border-[1px] border-[#F2F2F2] mt-2 ml-2 rounded-md " value={text} maxLength={1} onChangeText={text => setText(text)} />
 
                                         : null}
 
                                     {order_transport_detail?.status == 'not_delivered' ?
 
-                                        <TextInput className=" px-8 py-2 border border-0.5 ml-2 mt-2 rounded-md " value={text} maxLength={1} onChangeText={text => setText(text)} />
+                                        <TextInput className=" px-8 py-2 border-[1px] border-[#F2F2F2] ml-2 mt-2 rounded-md " value={text} maxLength={1} onChangeText={text => setText(text)} />
 
                                         : null}
                                     {order_transport_detail.status == 'not_shipping' ?
-                                        <PressableOpacity onPress={alertShipping} disabled={(text && text.toUpperCase() == 'Y') ? false : true} className="flex-grow px-8 py-3 bg-[#FF0000] rounded-md ml-3  mt-2 mr-1 items-center text-white" >
+                                        <PressableOpacity onPress={alertShipping} disabled={(text && text.toUpperCase() == 'Y') ? false : true} 
+                                        className="flex-grow px-8 py-3 bg-[#FF0000] rounded-[5px] ml-3  mt-2 mr-1 items-center text-white" >
 
                                             <Text className="text-white">Lấy hàng</Text>
 
                                         </PressableOpacity>
                                         : order_transport_detail.status == 'not_delivered' ?
-                                            <PressableOpacity onPress={alertCustomerRecive} disabled={(text && text.toUpperCase() == 'Y') ? false : true} className="flex-grow px-8 py-3 bg-[#4F8D06] rounded-md ml-3  mt-2 mr-1 items-center text-white" >
+                                            <PressableOpacity onPress={alertCustomerRecive} disabled={(text && text.toUpperCase() == 'Y') ? false : true} 
+                                            className="flex-grow px-8 py-3 bg-[#4F8D06] rounded-[5px] ml-3  mt-2 mr-1 items-center text-white" >
                                                 <Text className="text-white" >
                                                     Khách đã nhận
                                                 </Text></PressableOpacity> : null}
@@ -454,18 +456,18 @@ const OrderShipperDetail = ({ navigation, route }) => {
                             <Box className="mt-2 bg-white px-5 py-5">
                                 <Flex direction='row'  >
                                     {
-                                        order_transport_detail.status == 'not_shipping' ? <Text bold className="text-[16px]  ml-4">Tải ảnh</Text>
-                                            : order_transport_detail.status == 'not_delivered' ? <Text bold className="text-[16px]  ml-4">Tải ảnh</Text>
+                                        order_transport_detail.status == 'not_shipping' ? <Text bold className="text-[16px] ">Tải ảnh</Text>
+                                            : order_transport_detail.status == 'not_delivered' ? <Text bold className="text-[16px] ">Tải ảnh</Text>
                                                 : <Text bold className="text-[16px]">Hồ sơ nhận hàng</Text>}
 
                                     {
-                                        order_transport_detail.order.state_document == 'not_push' ? <Text bold className="text-[16px] text-[#FF6100] ml-4">Chưa up</Text>
-                                            : order_transport_detail.order.state_document == 'not_approved' ? <Text bold className="text-[16px] text-[#FF6100] ml-4">Chưa duyệt</Text>
+                                        order_transport_detail.order.state_document == 'not_push' ? <Text bold className="text-[16px] text-[#F78F43] ml-4">Chưa up</Text>
+                                            : order_transport_detail.order.state_document == 'not_approved' ? <Text bold className="text-[16px] text-[#F78F43] ml-4">Chưa duyệt</Text>
                                                 : order_transport_detail.order.state_document == 'approved' ? <Text bold className="text-[16px] text-[#27AE60] ml-4">Đã duyệt</Text> : null}
 
 
                                 </Flex>
-                                {order_transport_detail ? <Flex className="flex-wrap my-3">
+                                {order_transport_detail ? <Flex className="flex-wrap ">
                                     <Flex direction='row' className="flex flex-wrap" >
                                         {order_transport_detail.order?.order_shipper_images?.length > 0 && order_transport_detail.order?.order_shipper_images.map((image, index) =>
                                             <Flex key={`image${index}`} direction='row' className=" flex flex-wrap mx-1 my-1" >
@@ -547,8 +549,6 @@ const OrderShipperDetail = ({ navigation, route }) => {
 
                         </Box>
                     </Box>}
-
-
 
             </ScrollView >
         </SafeAreaView >

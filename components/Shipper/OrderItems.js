@@ -26,12 +26,12 @@ const OrderItems = ({ order_detail }) => {
 
                     <Flex key={index} direction='row' className=" justify-between  py-2 w-full">
                         <Flex direction='row' className=" items-center">
-                            <Text className="py-0.5 px-1 border border-0.5 rounded-lg text-[#FF6100]">{item.quantity}x</Text>
+                            <Text className="py-0.5 px-1 border-[1px] border-[#D9D9D9] rounded-[5px] text-[#F78F43]">{item.quantity}x</Text>
                             <Box className="ml-3">
                                 <Text className="text-[12px] ">{item.product?.name}</Text>
                             </Box>
                         </Flex>
-                        <Text className="text-[#FF6100] font-roboto font-bold text-[12px]">{formatPrice(item.total_price)} đ
+                        <Text className="text-[#F78F43] font-roboto font-bold text-[12px]">{formatPrice(item.total_price)} đ
                         </Text>
                     </Flex>
 
@@ -43,12 +43,12 @@ const OrderItems = ({ order_detail }) => {
 
                     <Flex key="index" direction='row' className=" justify-between  py-2 w-full">
                         <Flex direction='row' className=" items-center">
-                            <Text className="py-0.5 px-1 border border-0.5 rounded-lg text-[#FF6100]">{item.quantity}x</Text>
+                            <Text className="py-0.5 px-1 border border-0.5 rounded-lg text-[#F78F43]">{item.quantity}x</Text>
                             <Box className="ml-3">
                                 <Text className="text-[12px] ">{item.product?.name}</Text>
                             </Box>
                         </Flex>
-                        <Text className="text-[#FF6100] font-roboto font-bold text-[12px]">{formatPrice(item.total_price)} đ
+                        <Text className="text-[#F78F43] font-roboto font-bold text-[12px]">{formatPrice(item.total_price)} đ
                         </Text>
                     </Flex>
 

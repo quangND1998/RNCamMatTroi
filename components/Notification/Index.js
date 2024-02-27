@@ -53,7 +53,7 @@ const Notification = ({ navigation, route }) => {
                                 {notification}
                             </Text>
                             {notifications[notification].map((notify, index) =>
-                                <Flex key={index} direction='row' className=" flex-wrap bg-white px-2 py-2 rounded-md mb-2 border border-[#FF6100]" >
+                                <Flex key={index} direction='row' className=" flex-wrap bg-white px-2 py-2 rounded-md mb-2 border border-[#F78F43]" >
                                     <Text className='text-[13px]' >{notify.data.title} {notify.data.body}</Text>
                                 </Flex>
                             )}

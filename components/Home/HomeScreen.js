@@ -55,7 +55,7 @@ const HomeScreen = () => {
 
                                     <Flex className="ml-4">
                                         <Text className="font-bold  text-[16px] text-gray-800">{user?.name}</Text>
-                                        <Text className="text-[#FF6100] text-[12px]">#{user?.cic_number}</Text>
+                                        <Text className="text-[#F78F43] text-[12px]">#{user?.cic_number}</Text>
                                     </Flex>
 
                                 </Flex>
@@ -72,7 +72,7 @@ const HomeScreen = () => {
 
                                     }} >
                                         <Image source={require('../../assets/icon/icon_bell.png')} alt="icon_bell" className="ml-2 w-[24px] h-[24px]" resizeMode="contain"></Image>
-                                        {/* <Box className="absolute left-5 top-[-6] shadow bg-[#FF6100] w-[20px] h-[20px] rounded-full flex items-center justify-center ">
+                                        {/* <Box className="absolute left-5 top-[-6] shadow bg-[#F78F43] w-[20px] h-[20px] rounded-full flex items-center justify-center ">
                                             <Text className=" text-center text-white  text-[10px] ">{
                                                 totalUnRead > 0 ? "+1" : "0"
                                             }
@@ -96,12 +96,12 @@ const HomeScreen = () => {
                 component={Home} />
             <Stack.Screen name="ProductHome" options={{ headerShown: false }} component={ProductHome} />
             <Stack.Screen name="Notification" options={{
-                headerShown: true, title: 'Thông báo', tabBarActiveTintColor: '#FF6100',
+                headerShown: true, title: 'Thông báo', tabBarActiveTintColor: '#F78F43',
                 tabBarInactiveTintColor: "#184E17",
 
                 headerTitleStyle: {
                     fontWeight: '700',
-                    color: '#FF6100',
+                    color: '#F78F43',
                     lineHeight: 20
                 },
                 headerShadowVisible: false,
@@ -114,12 +114,12 @@ const HomeScreen = () => {
             }} component={Notification} />
 
             <Stack.Screen name="HistoryCare" options={{
-                headerShown: true, title: 'Lịch sử chăm sóc cây', tabBarActiveTintColor: '#FF6100',
+                headerShown: true, title: 'Lịch sử chăm sóc cây', tabBarActiveTintColor: '#F78F43',
                 tabBarInactiveTintColor: "#184E17",
 
                 headerTitleStyle: {
                     fontWeight: 'bold',
-                    color: '#FF6100',
+                    color: '#F78F43',
                 },
                 headerShadowVisible: false,
                 headerTitleAlign: 'center',

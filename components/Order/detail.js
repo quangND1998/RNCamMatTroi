@@ -87,7 +87,7 @@ const OrderDetail = ({ navigation, route }) => {
                             {orderDetail.order_items ? orderDetail.order_items.map((item, index) =>
                                 <Box key={index} className="flex flex-row items-center">
                                     <Image source={{ uri: item.product?.images[0].original_url }} className="h-20 w-20 " alt={`ordergift${index}`} ></Image>
-                                    <Text className="font-bold text-[16px] text-[#FF6100] px-3">{item.product?.name}</Text>
+                                    <Text className="font-bold text-[16px] text-[#F78F43] px-3">{item.product?.name}</Text>
                                 </Box>
                             ) : null}
                             <Box className="my-6 ">
@@ -115,7 +115,7 @@ const OrderDetail = ({ navigation, route }) => {
                             </Box>
                             <Box className="flex flex-row my-3">
                                 <Text className="font-bold text-[16px] text-[#080808]">Trạng thái:</Text>
-                                <Text className="font-bold text-[16px] text-[#FF6100] px-2">{orderDetail.status == "pending" ? "Đang giao hàng" : "Hoàn thành"}</Text>
+                                <Text className="font-bold text-[16px] text-[#F78F43] px-2">{orderDetail.status == "pending" ? "Đang giao hàng" : "Hoàn thành"}</Text>
                             </Box>
                             <Box className="flex flex-row my-3">
                                 <Text className="font-bold text-[16px] text-[#080808]">Giá trị đơn hàng:</Text>
@@ -126,7 +126,7 @@ const OrderDetail = ({ navigation, route }) => {
                         : null}
                 </Box>
             </ScrollView>
-            <Button className="fixed bottom-[87px] mx-3 rounded-[10px] bg-[#FF6100] text-white my-8  mb-0 p-3 font-bold"
+            <Button className="fixed bottom-[87px] mx-3 rounded-[10px] bg-[#F78F43] text-white my-8  mb-0 p-3 font-bold"
                                 onPress={alertOrderCofirm}>
                 <Text className="font-base text-[18px]  text-white ">Xác nhận đã nhận hàng</Text>
             </Button>

@@ -30,9 +30,6 @@ const CheckOrder = ({ navigation, route }) => {
     const [search, setSearch] = useState(null)
     const { formatOnlyDate, formatUpdatedAt } = useHelper();
 
-
-
-
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
         setTimeout(() => {
@@ -71,7 +68,7 @@ const CheckOrder = ({ navigation, route }) => {
                         <Box className=" mx-3 my-3 ">
                             <Text className="text-[#000000]">Nhập đơn hàng</Text>
                             <Flex direction='row' className="mt-3 items-center justify-between">
-                                <TextInput className="py-1 border  ml-1 rounded-md border-[#AEAEAE] w-2/3  border-0.5" value={search} onChangeText={value => setSearch(value)} ></TextInput>
+                                <TextInput className="py-1 px-2 border-[1px]  ml-1 rounded-[5px] border-[#AEAEAE] w-2/3 " value={search} onChangeText={value => setSearch(value)} ></TextInput>
                                 <PressableOpacity onPress={CheckOrder}>
                                     <Box className="  px-5 py-2 bg-[#FF6100] rounded-md items-center">
                                         <Text className="text-white">Check </Text>
@@ -95,10 +92,17 @@ const CheckOrder = ({ navigation, route }) => {
                         {(find_order_transports && isLoading == false) ? find_order_transports.data.map((order_transport, index) =>
                             <PressableOpacity key={index} onPress={() => navigation.navigate('OrderShipperDetail', { title: formatUpdatedAt(order_transport.updated_at), orderId: order_transport.id, })}>
                                 <Box className=" bg-white  rounded-md px-1 mt-1 py-2">
-                                    <Flex direction='row' className="justify-between px-2">
-                                        <Text className="text-[14px]  font-bold">{index + 1}.{order_transport.order.type == 'retail' ? 'Đơn lẻ' : 'Đơn quà'}<Text className="font-inter">({order_transport.order_transport_number})</Text></Text>
+                                    <Flex direction='row' className="justify-between px-2 ">
+                                        <Box className="flex flex-row">
+                                            <Text className="text-[14px]  font-bold"> {order_transport.order.type == 'retail' ? 'Đơn lẻ' : 'Giao quà'}
+                                            </Text>
+                                            <Text className="font-inter px-1 md:px-2"> ({order_transport.order_transport_number})</Text>
+                                        </Box>
 
-                                        {order_transport ? <Status order_transport={order_transport} /> : null}
+                                        <Box className="absolute w-[80px] right-0 text-right ">
+                                            {order_transport ? <Status order_transport={order_transport} /> : null}
+                                        </Box>
+                                       
 
                                     </Flex>
                                     <Flex direction='row' className="px-4">

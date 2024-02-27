@@ -173,7 +173,7 @@ const CartConfirmation = ({ navigation, route }) => {
                                 <Box className="flex border-b w-full ">
                                     <Box className=" ml-3">
                                         <Heading class="font-semibold text-[#000000] block">{product.name}</Heading>
-                                        <Text className="text-xs text-[#FF6100] my-1 ">{product.price} vnđ</Text>
+                                        <Text className="text-xs text-[#F78F43] my-1 ">{product.price} vnđ</Text>
                                         <Box className="flex my-2">
                                             <NumericInput value={quantity} minValue={0} onChange={value => setQuantity(value)} />
                                         </Box>
@@ -211,15 +211,15 @@ const CartConfirmation = ({ navigation, route }) => {
                             {cart.items.slice(0, 3).map((item, key) =>
                                 <Flex direction="row" key={item.id} className="flex items-center justify-between  my-3">
                                     <Flex direction="row" className="flex  items-center  ">
-                                        <Text className="py-1 px-2  text-sm rounded-lg shadow-sm text-[#FF6100]">{item.quantity}x</Text>
+                                        <Text className="py-1 px-2  text-sm rounded-lg shadow-sm text-[#F78F43]">{item.quantity}x</Text>
                                         <Box className="ml-3 block">
                                             <Heading size="xs" className="block">{item.name}</Heading>
                                             <PressableOpacity onPress={() => openModal(item)}>
-                                                <Text fontSize="xs" className=" text-[#FF6100]"  >Chỉnh sửa</Text></PressableOpacity>
+                                                <Text fontSize="xs" className=" text-[#F78F43]"  >Chỉnh sửa</Text></PressableOpacity>
                                         </Box>
                                     </Flex>
                                     <Flex direction="row" className=" items-center">
-                                        <Text fontSize="xs" className="text-[#FF6100]">{formatPrice(item.price)} đ</Text>
+                                        <Text fontSize="xs" className="text-[#F78F43]">{formatPrice(item.price)} đ</Text>
                                         <PressableOpacity onPress={() => removeItemOnCart(item)}>
                                             <Box className="ml-4" >
                                                 <MaterialCommunityIcons name='trash-can-outline' size={16} className="text-xl text-[#fc5050]" color="#fc5050" />
@@ -231,15 +231,15 @@ const CartConfirmation = ({ navigation, route }) => {
                             {collapseProduct ? cart.items.slice(3, cart.items.length).map((item, key) =>
                                 <Flex direction="row" key={item.id} className="flex justify-between  my-3">
                                     <Flex direction="row" className=" items-center  ">
-                                        <Text className="py-1 px-2  text-sm rounded-lg shadow-sm text-[#FF6100]">{item.quantity}x</Text>
+                                        <Text className="py-1 px-2  text-sm rounded-lg shadow-sm text-[#F78F43]">{item.quantity}x</Text>
                                         <Box className="ml-3 block">
                                             <Heading size="xs" className="block">{item.name}</Heading>
                                             <PressableOpacity onPress={() => openModal(item)}>
-                                                <Text fontSize="xs" className=" text-[#FF6100]" >Chỉnh sửa</Text></PressableOpacity>
+                                                <Text fontSize="xs" className=" text-[#F78F43]" >Chỉnh sửa</Text></PressableOpacity>
                                         </Box>
                                     </Flex>
                                     <Flex direction="row" className=" items-center">
-                                        <Text fontSize="xs" className="text-[#FF6100] mt-[-12]">{formatPrice(item.price)} đ</Text>
+                                        <Text fontSize="xs" className="text-[#F78F43] mt-[-12]">{formatPrice(item.price)} đ</Text>
                                         <PressableOpacity onPress={() => removeItemOnCart(item)}>
                                             <Box className="ml-5" >
                                                 <MaterialCommunityIcons name='trash-can-outline' size={16} className="text-xl text-[#fc5050]" color="#fc5050" />
@@ -266,7 +266,7 @@ const CartConfirmation = ({ navigation, route }) => {
                                 </Flex>
                                 <Flex direction='row' className="flex justify-between my-5 bg-[#F0F0F0] py-3 px-2 rounded-xl items-center">
                                     <Flex direction='row'>
-                                        <MaterialCommunityIcons name="tag-outline" size={20} color="#FF6100" className="-rotation-90 text-[#FF6100]"></MaterialCommunityIcons>
+                                        <MaterialCommunityIcons name="tag-outline" size={20} color="#F78F43" className="-rotation-90 text-[#F78F43]"></MaterialCommunityIcons>
                                         <Text className="text-xs ml-2">Ưu đãi</Text>
                                     </Flex>
                                     <PressableOpacity onPress={() => openModalSale()}><Text expand="block">Chọn mã giảm giá</Text></PressableOpacity>
@@ -424,10 +424,10 @@ const CartConfirmation = ({ navigation, route }) => {
                             </Flex>
                             <Flex direction='row' className="w-full   justify-between">
                                 <Heading size="sm">Tổng cộng:</Heading>
-                                <Text className="text-[#FF6100]">{formatPrice(lastPrice)}đ</Text>
+                                <Text className="text-[#F78F43]">{formatPrice(lastPrice)}đ</Text>
                             </Flex>
                         </Box>
-                        <Button className="fixed   w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 px-4 py-4 text-white bg-[#FF6100] rounded-xl" onPress={() => alertSaveOrder()}>Mua
+                        <Button className="fixed   w-[90%] ml-[5%] mr-[5%] mt-2 mb-2 px-4 py-4 text-white bg-[#F78F43] rounded-xl" onPress={() => alertSaveOrder()}>Mua
                             ngay</Button>
                     </Box> : null
 
