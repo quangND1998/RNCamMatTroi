@@ -26,8 +26,10 @@ const BottomShipperNavigator = () => {
                     overflow: 'hidden',
                     height: 78,
                     bordercolor: 'transparent',
-
+                    position: 'absolute',
+                    marginTop: '77px',
                 },
+                
                 headerTitleStyle: {
                     fontWeight: 'semibold',
                     color: '#F78F43',

@@ -39,7 +39,7 @@ const ShipperScreen = () => {
 
         dispatch(fetchOrders(params))
         setModalVisible(false)
-    }, [])
+    }, [date,day])
     return (
         <Stack.Navigator>
             <Stack.Screen name="HomeShipper" options={{

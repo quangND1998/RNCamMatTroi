@@ -27,8 +27,6 @@ const CheckOrderScreen = () => {
                     backgroundColor: '#F78F43',
 
                 },
-
-
                 headerTitleAlign: 'left',
 
             }} component={CheckOrder} />

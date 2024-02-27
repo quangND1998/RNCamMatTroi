@@ -105,7 +105,7 @@ const HomeShipper = ({ navigation, route }) => {
                 refreshControl={
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                 }>
-                <Box className=" mx-3 my-3 ">
+                <Box className=" mx-3 my-3 mb-[80px]">
                     <Box className={`  bg-white  rounded-md  `} >
                         {orders_transport_status ? orders_transport_status.map((order_transport_status, index) =>
                             <Box key={index} >
@@ -201,8 +201,6 @@ const HomeShipper = ({ navigation, route }) => {
 
                     </Box>
                 </Box>
-
-
             </ScrollView>
         </SafeAreaView >
     );
