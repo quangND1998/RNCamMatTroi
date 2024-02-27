@@ -116,8 +116,8 @@ const HomeShipper = ({ navigation, route }) => {
                                     }
                                     )
                                 } >
-                                    <Flex className=" px-2 py-2 ">
-                                        <Flex direction='row' className={ index == orders_transport_status.length - 1 ? 'justify-between' : 'justify-between border-b border-[#AEAEAE] '}>
+                                    <Box className=" px-3 py-2   ">
+                                        <Box  className= 'justify-between flex-row'>
                                             <Text  className={` ${order_transport_status.status == status ? 'ml-3 text-[#F78F43] rounded-[5px]' : 'text-[#000000] ml-3 text-[12px]'}`} >
 
                                                 {order_transport_status.status == 'not_shipping' ? SHIPPER_STATUS.not_shipping :
@@ -130,13 +130,13 @@ const HomeShipper = ({ navigation, route }) => {
                                                                             order_transport_status.status == 'decline' ? SHIPPER_STATUS.decline :
                                                                                 order_transport_status.status == 'addition_document' ? SHIPPER_STATUS.addition_document : null}
                                             </Text>
-                                            <Flex direction='row' className=" text-[#000000] ml-3 text-[12px] items-center">{order_transport_status.total}
+                                            <Box direction='row' className=" text-[#000000] ml-3 text-[12px] items-center flex-row">{order_transport_status.total}
                                                 <Icon name="chevron-forward" size={16} color="#AEAEAE" className="items-center" />
-                                            </Flex>
-                                        </Flex>
-                                    </Flex>
+                                            </Box>
+                                        </Box>
+                                    </Box>
                                 </TouchableOpacity>
-                                {/* {index !== orders_transport_status.length - 1 ? <HrTag opacity={0.3} mr={8} ml={8}> </HrTag> : null} */}
+                                {index !== orders_transport_status.length - 1 ? <HrTag opacity={0.3} mr={8} ml={8}> </HrTag> : null}
 
                             </Box>
 
