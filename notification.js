@@ -1,6 +1,8 @@
 import messaging from '@react-native-firebase/messaging';
 import { Alert } from 'react-native';
 import { getFCMToken, saveFCMToken } from './common/asynStorage';
+import { useDispatch } from 'react-redux';
+import { getUnReadNotification } from './store/actions/notification';
 const requestUserPermission = async() => {
     const authStatus = await messaging().requestPermission();
     const enabled =
@@ -36,6 +38,7 @@ const getFcmToken = async() => {
     }
 };
 const notificationListener = () => {
+
     // Assume a message-notification contains a "type" property in the data payload of the screen to open
 
     messaging().onNotificationOpenedApp(remoteMessage => {
@@ -59,7 +62,9 @@ const notificationListener = () => {
         .catch(error => console.log('failed', error));
 
     messaging().onMessage(async remoteMessage => {
-        Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+
+
+        // Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
     });
 };
 

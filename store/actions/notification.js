@@ -2,7 +2,7 @@ import ApiService from "../../common/apiService";
 export const getAllNotification = () => (dispatch) => {
 
     ApiService.query('api/v1/notification/all').then(response => {
-        // console.log(response.data)
+        // console.log('getAllNotification', response.data)
         dispatch({
             type: "getAllNotifications",
             payload: response.data
@@ -45,7 +45,7 @@ export const deleteAllNotification = () => (dispatch) => {
 export const getUnReadNotification = () => (dispatch) => {
 
     ApiService.query('api/v1/notification/unreadNotifications').then(response => {
-        console.log(response.data)
+        // console.log('getUnReadNotification', response.data)
         dispatch({
             type: "getUnReadNotifications",
             payload: response.data
