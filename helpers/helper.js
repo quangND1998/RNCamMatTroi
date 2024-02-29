@@ -66,7 +66,21 @@ export const useHelper = () => {
     }
     const formatUpdatedAt = (updatedAt) => {
         if (updatedAt) {
-            return Moment(String(updatedAt)).locale('vi').format(' h:mm A,DD ,MMMM ,YYYY,')
+            // return Moment(String(updatedAt)).locale('vi').format(' hh:mm, DD MMMM ,YYYY')
+            const date = new Date(updatedAt);
+            const options = {
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: false,
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              };
+
+              const formattedDate = date.toLocaleDateString('vi-VN', options);
+              const formattedTime = date.toLocaleTimeString('vi-VN', options);
+              console.log(`${formattedTime}, ${formattedDate}`); // Kết quả: "29 tháng 2, 2024"
+              return `${formattedTime}`;
         }
 
     }

@@ -88,10 +88,10 @@ const ShipperScreen = () => {
                                             Hôm qua
                                         </Radio>
                                         <Radio colorScheme="orange" value="month" my={1} size="sm">
-                                            Thàng này
+                                            Tháng này
                                         </Radio>
                                         <Radio colorScheme="orange" value="beforMonth" my={1} size="sm">
-                                            Thàng trước
+                                            Tháng trước
                                         </Radio>
                                     </Radio.Group>
 

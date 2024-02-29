@@ -33,10 +33,11 @@ const OrderAddress = ({ order_detail }) => {
         <Box className="">
 
             <Box className="w-full bg-white px-5 py-2 mt-2 rounded-sm">
-                <Flex direction='row' className=" items-center">
-                    <Point size={24} />
-                    <Text bold className="font-inter text-[12px] text-[#686868] ">Trang trại Cam Mặt Trời </Text>
-                </Flex>
+                <Box direction='row' className="flex flex-row items-center my-1">
+                    {/* <Point size={24} /> */}
+                    <Image source={require('../../assets/icon/location_start.png')} resizeMode='contain' className="h-4 w-4 " alt="end"></Image>
+                    <Text bold className="font-inter px-3 text-[12px] text-[#686868] ">Trang trại Cam Mặt Trời </Text>
+                </Box>
                 <Box className="mx-[5px] ">
                     <Image source={require('../../assets/icon/location.png')} className="h-1 w-1 " alt="location1" ></Image>
                 </Box>
@@ -44,8 +45,8 @@ const OrderAddress = ({ order_detail }) => {
                     <Image source={require('../../assets/icon/location.png')} className="h-1 w-1 " alt="location2"></Image>
                 </Box>
 
-                <Flex direction='row' className="items-center ">
-                    <Image source={require('../../assets/icon/end.png')} className="h-4 w-4 " alt="end"></Image>
+                <Flex direction='row' className="items-start my-1 ">
+                    <Image source={require('../../assets/icon/end.png')} resizeMode='contain' className="h-4 w-4 " alt="end"></Image>
                     <Text bold className="font-inter px-3 text-[12px] text-[#686868] ">{order_detail?.address}, {order_detail?.wards}, {order_detail?.district}, {order_detail?.city}  </Text>
                 </Flex>
             </Box>

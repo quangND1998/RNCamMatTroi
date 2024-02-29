@@ -139,14 +139,15 @@ import Toast from 'react-native-toast-message';
 import SplashScreen from 'react-native-splash-screen';
 import { useDispatch, useSelector } from 'react-redux';
 import { PermissionsAndroid } from 'react-native';
+import messaging from '@react-native-firebase/messaging';
 LogBox.ignoreLogs(['In React 18, SSRProvider is not necessary and is a noop. You can remove it from your app.']);
 import {
   getFcmToken,
   getFcmTokenFromLocalStorage,
   requestUserPermission,
-  notificationListener,
 } from './notification'
 import { getTokenFirebase } from './store/actions/auth';
+import { getUnReadNotification } from './store/actions/notification';
 export default function App() {
   const dispatch = useDispatch();
   const [generatedToken, setGeneratedToken] = useState();
@@ -167,7 +168,43 @@ export default function App() {
     fetchTokenByLocal();
     requestUserPermission();
     notificationListener();
+
+
+
   }, []);
+
+
+  const notificationListener = () => {
+
+    // Assume a message-notification contains a "type" property in the data payload of the screen to open
+
+    messaging().onNotificationOpenedApp(remoteMessage => {
+      console.log(
+        'Notification caused app to open from background state:',
+        remoteMessage.notification,
+      );
+    });
+
+    // Check whether an initial notification is available
+    messaging()
+      .getInitialNotification()
+      .then(remoteMessage => {
+        if (remoteMessage) {
+          console.log(
+            'Notification caused app to open from quit state:',
+            remoteMessage.notification,
+          );
+        }
+      })
+      .catch(error => console.log('failed', error));
+
+    messaging().onMessage(async remoteMessage => {
+
+      dispatch(getUnReadNotification())
+      // Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+    });
+  };
+
   return (
     <LoginProvider>
       <NativeBaseProvider>

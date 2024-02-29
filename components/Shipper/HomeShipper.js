@@ -158,7 +158,11 @@ const HomeShipper = ({ navigation, route }) => {
                                     <Flex direction='row' className="justify-between px-2">
                                         <Text className="text-[14px]  font-bold">{index + 1}. {order_transport.order.type == 'retail' ? 'Đơn mua lẻ' : 'Đơn quà'}<Text className="font-inter"> ({order_transport.order_transport_number})</Text></Text>
 
-                                        {order_transport ? <Status order_transport={order_transport} /> : null}
+                                        <Box className="absolute w-[80px] right-0 text-right ">
+                                            {order_transport ? <Status  order_transport={order_transport} /> : null}
+                                        </Box>
+
+
 
                                     </Flex>
                                     <Flex direction='row' className="px-4">

@@ -479,7 +479,6 @@ const OrderShipperDetail = ({ navigation, route }) => {
                                                 <Box className="relative ">
                                                     <Image source={{ uri: image.original_url }} alt={`image${index}`} size="md" className="rounded-md" />
                                                 </Box>
-
                                             </Flex>
 
                                         )}
@@ -491,13 +490,11 @@ const OrderShipperDetail = ({ navigation, route }) => {
                                         {images.length > 0 && images.map((image, index) =>
                                             <Flex key={`image${index}`} direction='row' className=" flex flex-wrap mx-1 my-1" >
                                                 <Box className="relative ">
-
                                                     <Box className="absolute right-0 top-0 z-10 ">
                                                         <PressableOpacity onPress={() => DeleteImage(image)}>
                                                             <MaterialCommunityIcons name='trash-can-outline' size={16} color='#fc5050' />
                                                         </PressableOpacity>
                                                     </Box>
-
                                                     <Image source={{ uri: image.uri }} alt={`image${index}`} size="md" className="rounded-md" />
 
                                                 </Box>
@@ -506,7 +503,7 @@ const OrderShipperDetail = ({ navigation, route }) => {
 
                                         )}
                                         <PressableOpacity onPress={() => pickImages()}>
-                                            <Box className="w-16 h-16  items-center justify-center flex  rounded-lg" style={{
+                                            <Box className="mx-1 w-20 h-20  items-center justify-center flex  rounded-lg" style={{
                                                 borderRadius: 1,
                                                 borderWidth: 1,
                                                 borderStyle: 'dashed',
