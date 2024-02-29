@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { LogBox } from 'react-native';
 import { StyleSheet, Animated, TouchableOpacity, Linking, Keyboard, View, TextInput, ScrollView, RefreshControl, ImageBackground, SectionList, YellowBox } from 'react-native';
 import { Center, Container, Heading, Button, Text, Box, Flex, Stack, SearchBar, Spacer, ZStack, Image, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base';
@@ -26,6 +26,7 @@ const CheckOrder = ({ navigation, route }) => {
 
     const [refreshing, setRefreshing] = React.useState(false);
     const find_order_transports = useSelector(state => state.shipper.find_order_transports)
+    const page = useSelector(state => state.shipper.page)
     const isLoading = useSelector(state => state.shipper.isLoading)
     const [search, setSearch] = useState(null)
     const { formatOnlyDate, formatUpdatedAt } = useHelper();
@@ -33,7 +34,10 @@ const CheckOrder = ({ navigation, route }) => {
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
         setTimeout(() => {
-
+            dispatch({
+                type: 'changePage',
+                page: 1
+            })
             setRefreshing(false);
         }, 2000);
 
@@ -47,15 +51,19 @@ const CheckOrder = ({ navigation, route }) => {
         console.log(params)
         dispatch(findOrderTransport(params))
     }, [search]);
-    const changePageURL = (page) => {
+    const changePageURL = useCallback((page) => {
 
+        dispatch({
+            type: 'changePage',
+            page: page
+        })
         let params = {
             search: search,
             page: page
         }
         dispatch(findOrderTransport(params))
 
-    }
+    }, [search, page])
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView
@@ -63,7 +71,7 @@ const CheckOrder = ({ navigation, route }) => {
                 refreshControl={
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                 }>
-                <Box className=" mx-3 my-3 ">
+                <Box className=" mx-3 my-3 mb-[88px]">
                     <Box className={`  bg-white  rounded-md  `} >
                         <Box className=" mx-3 my-3 ">
                             <Text className="text-[#000000]">Nhập đơn hàng</Text>
@@ -102,7 +110,7 @@ const CheckOrder = ({ navigation, route }) => {
                                         <Box className="absolute w-[80px] right-0 text-right ">
                                             {order_transport ? <Status order_transport={order_transport} /> : null}
                                         </Box>
-                                       
+
 
                                     </Flex>
                                     <Flex direction='row' className="px-4">

@@ -44,8 +44,9 @@ const HomeShipper = ({ navigation, route }) => {
         let params = {
             date: date,
             day: day,
-
+            status: status,
         }
+        console.log('fetchOrderStatus', params)
         dispatch(orderStatus(params))
 
     }
@@ -57,16 +58,15 @@ const HomeShipper = ({ navigation, route }) => {
             setRefreshing(false);
         }, 2000);
 
-    }, []);
+    }, [date, day]);
     const getOrders = () => {
-
         let params = {
             date: date,
             day: day,
             status: status,
 
         }
-        console.log('getOrders', params)
+        // console.log('getOrders', params)
         dispatch(fetchOrders(params))
     }
     const changePageURL = (page) => {
@@ -81,22 +81,22 @@ const HomeShipper = ({ navigation, route }) => {
         dispatch(fetchOrders(params))
 
     }
-    useEffect(() => {
+    // useEffect(() => {
 
-        const unsubscribe = navigation.addListener('focus', () => {
-            (async () => {
-                let params = {
-                    date: date,
-                    day: day,
+    //     const unsubscribe = navigation.addListener('focus', () => {
+    //         (async () => {
+    //             let params = {
+    //                 date: date,
+    //                 day: day,
 
-                }
-                dispatch(orderStatus(params))
-            })();
-        });
+    //             }
+    //             dispatch(orderStatus(params))
+    //         })();
+    //     });
 
-        // Return the function to unsubscribe from the event so it gets removed on unmount
-        return unsubscribe;
-    }, [navigation]);
+    //     // Return the function to unsubscribe from the event so it gets removed on unmount
+    //     return unsubscribe;
+    // }, [navigation]);
 
     return (
         <SafeAreaView style={styles.container}>
@@ -117,8 +117,8 @@ const HomeShipper = ({ navigation, route }) => {
                                     )
                                 } >
                                     <Box className=" px-3 py-2   ">
-                                        <Box  className= 'justify-between flex-row'>
-                                            <Text  className={` ${order_transport_status.status == status ? 'ml-3 text-[#F78F43] rounded-[5px]' : 'text-[#000000] ml-3 text-[12px]'}`} >
+                                        <Box className='justify-between flex-row'>
+                                            <Text className={` ${order_transport_status.status == status ? 'ml-3 text-[#F78F43] rounded-[5px]' : 'text-[#000000] ml-3 text-[12px]'}`} >
 
                                                 {order_transport_status.status == 'not_shipping' ? SHIPPER_STATUS.not_shipping :
                                                     order_transport_status.status == 'not_delivered' ? SHIPPER_STATUS.not_delivered :
@@ -159,7 +159,7 @@ const HomeShipper = ({ navigation, route }) => {
                                         <Text className="text-[14px]  font-bold">{index + 1}. {order_transport.order.type == 'retail' ? 'Đơn mua lẻ' : 'Đơn quà'}<Text className="font-inter"> ({order_transport.order_transport_number})</Text></Text>
 
                                         <Box className="absolute w-[80px] right-0 text-right ">
-                                            {order_transport ? <Status  order_transport={order_transport} /> : null}
+                                            {order_transport ? <Status order_transport={order_transport} /> : null}
                                         </Box>
 
 

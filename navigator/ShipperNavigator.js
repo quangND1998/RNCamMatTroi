@@ -137,7 +137,7 @@ const BottomShipperNavigator = () => {
                     tabBarLabel: 'Thêm',
                     title: 'Xem thêm',
                     tabBarIcon: ({ color, size }) => (
-                        <MoreTab width={24} height={25} />
+                        <MoreTab width={24} height={25} color='#F78F43' />
                     ),
 
                 }}

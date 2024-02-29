@@ -8,7 +8,7 @@ export const fetchOrders = (params) => (dispatch) => {
         payload: true,
     })
     return ApiService.queryData('api/v1/fetchOrders', params).then(response => {
-        console.log('fetchOrders', response.data);
+        // console.log('fetchOrders', response.data);
         dispatch({
             type: 'fetchOrders',
             payload: response.data,
@@ -31,7 +31,7 @@ export const fetchOrders = (params) => (dispatch) => {
 export const orderStatus = (params) => (dispatch) => {
 
     return ApiService.queryData('api/v1/orderStatus', params).then(response => {
-        console.log(response.data)
+        // console.log(response.data)
         dispatch({
             type: 'orderStatus',
             payload: response.data,

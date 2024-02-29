@@ -16,18 +16,13 @@ const Stack = createNativeStackNavigator();
 const ShipperScreen = () => {
     const dispatch = useDispatch();
     const [modalVisible, setModalVisible] = React.useState(false);
-    const [date, setDate] = React.useState('now');
-    const [day, setDay] = React.useState(null);
 
-    useEffect(() => {
-
-    }, [])
+    const date = useSelector(state => state.shipper.date)
+    const day = useSelector(state => state.shipper.day)
+    const status = useSelector(state => state.shipper.status)
 
     const getOrders = useCallback(() => {
-        let params = {
-            date: date,
-            day: day
-        }
+
         dispatch({
             type: 'setDate',
             payload: date
@@ -36,10 +31,14 @@ const ShipperScreen = () => {
             type: 'setDay',
             payload: day
         })
-
+        let params = {
+            date: date,
+            day: day,
+            status: status
+        }
         dispatch(fetchOrders(params))
         setModalVisible(false)
-    }, [date,day])
+    }, [date, day, status])
     return (
         <Stack.Navigator>
             <Stack.Screen name="HomeShipper" options={{
@@ -78,8 +77,15 @@ const ShipperScreen = () => {
                                 <Modal.Header className="bg-[#D9D9D9] font-bold   items-center py-6" ><Text className="font-bold text-[16px]">Bộ lọc thời gian</Text></Modal.Header>
                                 <Modal.Body>
                                     <Radio.Group name="dateRadio" accessibilityLabel="favorite number" value={date} onChange={nextValue => {
-                                        setDate(nextValue);
-                                        setDay(null);
+                                        dispatch({
+                                            type: 'setDate',
+                                            payload: nextValue
+                                        });
+                                        dispatch({
+                                            type: 'setDay',
+                                            payload: null
+                                        });
+
                                     }}>
                                         <Radio colorScheme="orange" value="now" my={1} size="sm">
                                             Hôm nay
@@ -96,8 +102,14 @@ const ShipperScreen = () => {
                                     </Radio.Group>
 
                                     <Radio.Group name="dayRadio" accessibilityLabel="favorite number" value={day} onChange={nextValue => {
-                                        setDay(nextValue);
-                                        setDate(null)
+                                        dispatch({
+                                            type: 'setDay',
+                                            payload: nextValue
+                                        })
+                                        dispatch({
+                                            type: 'setDate',
+                                            payload: null
+                                        })
                                     }}>
                                         <Radio colorScheme="orange" value={7} my={1} size="sm">
                                             7 ngày trước
@@ -126,7 +138,7 @@ const ShipperScreen = () => {
                 tabBarInactiveTintColor: "#000000",
                 headerTitleStyle: {
                     color: '#FFFFFF',
-                    alignItems:'center'
+                    alignItems: 'center'
                 },
                 headerStyle: {
                     backgroundColor: '#F78F43',
@@ -142,14 +154,14 @@ const ShipperScreen = () => {
                         }
                     }}>
                         {/* <Image className=" w-6 h-6" resizeMode='contain' alt='back' source={require('../../assets/icon/fi-rr-arrow-small-left.png')} */}
-                            {/* {...props} */}
+                        {/* {...props} */}
 
                         {/* /> */}
                         <Icon
                             name="chevron-back"
                             color="rgba(255, 255, 255, .9)"
                             size={28}
-                            />
+                        />
                     </PressableOpacity>
                 ),
             })} component={OrderShipperDetail} />

@@ -56,7 +56,7 @@ const OrderShipperDetail = ({ navigation, route }) => {
             type: 'info',
             text1: 'Đã lưu vào bộ nhớ tạm!',
             position: 'bottom',
-         
+
 
         });
     };
@@ -85,27 +85,27 @@ const OrderShipperDetail = ({ navigation, route }) => {
                         selectionLimit: 4
                     }
                 })
-                if (images.length < 4) {
 
-                    console.log('result', result.assets);
-                    if (result && result.assets.length == 1) {
-                        setImages([
-                            ...images,
-                            result.assets[0]
-                        ])
-                        // setImages(result.assets[0])
-                        // console.log(images)
-                    }
 
-                    if (result && result.assets.length > 1) {
-                        let newImages = images;
-                        result.assets.forEach(image => {
-                            newImages.push(image)
-                        })
-                        setImages(newImages)
-
-                    }
+                console.log('result', result.assets);
+                if (result && result.assets.length == 1) {
+                    setImages([
+                        ...images,
+                        result.assets[0]
+                    ])
+                    // setImages(result.assets[0])
+                    // console.log(images)
                 }
+
+                if (result && result.assets.length > 1) {
+                    let newImages = images;
+                    result.assets.forEach(image => {
+                        newImages.push(image)
+                    })
+                    setImages(newImages)
+
+                }
+
             }
 
         } catch (error) {
@@ -434,15 +434,15 @@ const OrderShipperDetail = ({ navigation, route }) => {
 
                                         : null}
                                     {order_transport_detail.status == 'not_shipping' ?
-                                        <PressableOpacity onPress={alertShipping} disabled={(text && text.toUpperCase() == 'Y') ? false : true} 
-                                        className="flex-grow px-8 py-3 bg-[#FF0000] rounded-[5px] ml-3  mt-2 mr-1 items-center text-white" >
+                                        <PressableOpacity onPress={alertShipping} disabled={(text && text.toUpperCase() == 'Y') ? false : true}
+                                            className="flex-grow px-8 py-3 bg-[#FF0000] rounded-[5px] ml-3  mt-2 mr-1 items-center text-white" >
 
                                             <Text className="text-white">Lấy hàng</Text>
 
                                         </PressableOpacity>
                                         : order_transport_detail.status == 'not_delivered' ?
-                                            <PressableOpacity onPress={alertCustomerRecive} disabled={(text && text.toUpperCase() == 'Y') ? false : true} 
-                                            className="flex-grow px-8 py-3 bg-[#4F8D06] rounded-[5px] ml-3  mt-2 mr-1 items-center text-white" >
+                                            <PressableOpacity onPress={alertCustomerRecive} disabled={(text && text.toUpperCase() == 'Y') ? false : true}
+                                                className="flex-grow px-8 py-3 bg-[#4F8D06] rounded-[5px] ml-3  mt-2 mr-1 items-center text-white" >
                                                 <Text className="text-white" >
                                                     Khách đã nhận
                                                 </Text></PressableOpacity> : null}
@@ -521,7 +521,7 @@ const OrderShipperDetail = ({ navigation, route }) => {
 
                                 </Flex>
                                 {
-                                    (order_transport_detail.state == 'delivered' && order_transport_detail?.order?.state_document == 'not_push') ? <PressableOpacity onPress={alertUpload}>
+                                    (order_transport_detail.state == 'delivered' ) ? <PressableOpacity onPress={alertUpload}>
                                         <Center className="text-white px-1 py-2  px-3s bg-[#FF0000] rounded-md ml-3  mt-2 mr-1 items-center">
                                             <Text className='text-white'> Up hồ sơ</Text>
                                         </Center>

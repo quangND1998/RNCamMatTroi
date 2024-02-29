@@ -315,6 +315,8 @@ const ScheduleTour = ({ navigation, route }) => {
                                                 value={quantity}
                                                 onChange={value => setQuantity(value)}
                                                 onLimitReached={(isMax, msg) => console.log(isMax, msg)}
+                                                onFocus={handleFocus}
+                                                onBlur={handleBlur}
                                                 totalWidth={80}
                                                 totalHeight={40}
                                                 iconSize={40}
@@ -344,6 +346,8 @@ const ScheduleTour = ({ navigation, route }) => {
                                                 value={quantityChildren}
                                                 onChange={value => setQuantityChildren(value)}
                                                 onLimitReached={(isMax, msg) => console.log(isMax, msg)}
+                                                onFocus={handleFocus}
+                                                onBlur={handleBlur}
                                                 totalWidth={80}
                                                 totalHeight={40}
                                                 iconSize={16}
