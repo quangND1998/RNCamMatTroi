@@ -105,14 +105,14 @@ const Home = ({ navigation, route }) => {
            
                 <Box className="px-4 py-4 w-full  ">
                     <Flex direction='row' className="flex items-center justify-between">
-                        <Flex direction='row' className="">
-                            <Avatar source={{
+                        <Flex direction='row' className="flex items-center">
+                            <Avatar className="w-14 h-14" source={{
                                 uri: user?.profile_photo_url
                             }}>
                             </Avatar>
 
                             <Flex className="ml-4">
-                                <Text className="font-bold text-xl text-gray-800">{user?.name}</Text>
+                                <Text className="font-bold text-[16px] text-gray-800">{user?.name}</Text>
                                 <Text className="text-[#FF6100] text-[12px]">#{user?.cic_number}</Text>
                             </Flex>
 
@@ -151,8 +151,8 @@ const Home = ({ navigation, route }) => {
                 {/* <Box className="bg">
                     <SlideBG></SlideBG>
                 </Box> */}
-                <Box className="" style={styles.container}>
-                    <View style={styles.container}>
+                <Box className="w-full" style={styles.container}>
+                    <View style={styles.container} className="w-full">
                         {productOwner ?
                             <FlatList
                                 data={productOwner}
@@ -187,6 +187,7 @@ const Home = ({ navigation, route }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        width :'100%'
     },
     scrollView: {
 

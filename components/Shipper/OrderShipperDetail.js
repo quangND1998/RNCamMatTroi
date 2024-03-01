@@ -56,7 +56,7 @@ const OrderShipperDetail = ({ navigation, route }) => {
             type: 'info',
             text1: 'Đã lưu vào bộ nhớ tạm!',
             position: 'bottom',
-         
+
 
         });
     };
@@ -382,7 +382,7 @@ const OrderShipperDetail = ({ navigation, route }) => {
                 }>
 
                 {isLoading == true ?
-                    <Pending /> : <Box className="">
+                    <Pending /> : <Box className=" mt-11">
                         {order_transport_detail ?
                             <Box className=" w-full bg-white px-5 py-4 rounded-sm">
                                 <Flex direction='row' className=" justify-between">
@@ -397,20 +397,32 @@ const OrderShipperDetail = ({ navigation, route }) => {
                                         {/* <Icon name="copy-outline" size={16} color="#686868" /> */}
                                     </Flex>
                                 </Flex>
-                                <Flex direction='row' className=" w-full items-center mt-1 ml-2">
+                                <Flex direction='row' className=" w-full items-center  ml-2">
                                     <Box className="mt-2">
                                         {/* <Image src="/public/assets/images/goi1.png" class="w-12 h-12 " alt=""> */}
-                                        <Image source={require('../../assets/images/goi1.png')} class="w-12 h-12 " alt=""></Image>
+                                        <Image source={require('../../assets/images/goi1.png')} class="w-12 h-12 " alt="goi1"></Image>
                                     </Box>
-                                    <Box className="ml-4">
-                                        {order_transport_detail.order?.type == 'retail' ? <Text bold className="font-inter">Đơn mua lẻ
-                                        </Text> : null}
-                                        {order_transport_detail.order?.type == 'gift_delivery' ? <Text bold className="font-inter">Giao
-                                            quà
-                                        </Text> : null}
-                                        <StatusDetail order_transport={order_transport_detail} />
+
+
+                                    <Box className="flex flex-wrap ">
+                                        <Box>
+                                            {order_transport_detail.order?.type == 'retail' ? <Text bold className="font-inter ml-4">Đơn mua lẻ
+                                            </Text> : null}
+                                            {order_transport_detail.order?.type == 'gift_delivery' ? <Text bold className="font-inter ml-4">Giao
+                                                quà
+                                            </Text> : null}
+                                        </Box>
+
+
+                                        <Box className=" ml-4 ">
+                                            <StatusDetail order_transport={order_transport_detail} />
+                                        </Box>
 
                                     </Box>
+
+
+
+
 
                                 </Flex>
                                 {(order_transport_detail.state == 'refunding' || order_transport_detail.state == 'refund' || order_transport_detail.state == 'decline') ? <Text className="font-inter ml-3 mt-1">Lý do: {order_transport_detail.reason}
@@ -424,13 +436,13 @@ const OrderShipperDetail = ({ navigation, route }) => {
 
                                     {order_transport_detail?.status == 'not_shipping' ?
 
-                                        <TextInput className=" px-8 py-2.5 border border-0.5 mt-2 ml-2 rounded-md " value={text} maxLength={1} onChangeText={text => setText(text)} />
+                                        <TextInput className=" px-8 py-3 border border-0.5 mt-2 ml-2 rounded-md " value={text} maxLength={1} onChangeText={text => setText(text)} />
 
                                         : null}
 
                                     {order_transport_detail?.status == 'not_delivered' ?
 
-                                        <TextInput className=" px-8 py-2 border border-0.5 ml-2 mt-2 rounded-md " value={text} maxLength={1} onChangeText={text => setText(text)} />
+                                        <TextInput className=" px-8 py-3 border border-0.5 ml-2 mt-2 rounded-md " value={text} maxLength={1} onChangeText={text => setText(text)} />
 
                                         : null}
                                     {order_transport_detail.status == 'not_shipping' ?

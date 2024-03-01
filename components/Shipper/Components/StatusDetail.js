@@ -46,26 +46,21 @@ const StatusDetail = ({ order_transport }) => {
     }
     const color = useMemo(() => {
         return status_color[order_transport.status]
-    })
+    }, [])
 
     const text = useMemo(() => {
         if (order_transport.order.state_document && order_transport.status == 'delivered') {
             return `${status_text[order_transport.status]}, ${docuemnt_text[order_transport.order.state_document]}`
         }
         return status_text[order_transport.status]
-    })
+    }, [])
 
     return (
-        <SafeAreaView >
-
             <Text
                 className={`${color}`}>
                 {text}
             </Text>
-
-
-
-        </SafeAreaView >
+     
     );
 }
 

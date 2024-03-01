@@ -61,7 +61,7 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* CamMatTroiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CamMatTroiTests.m; sourceTree = "<group>"; };
 		0419F3FD1117411EBF486303 /* RobotoCondensed-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-Italic.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-Italic.ttf"; sourceTree = "<group>"; };
-		076785F107474B05A94CE0CE /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraLight.ttf"; path = "../assets/fonts/Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
+		076785F107474B05A94CE0CE /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraLight.ttf"; path = "../assets/fonts/Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
 		0B9525A009254C4C9D56BC9D /* RobotoCondensed-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-Medium.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-Medium.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* CamMatTroi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CamMatTroi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CamMatTroi/AppDelegate.h; sourceTree = "<group>"; };
@@ -71,7 +71,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CamMatTroi/main.m; sourceTree = "<group>"; };
 		1DAE39B7B6FB33B1FDCDDCAC /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-CamMatTroi/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		1F30B74867474ED1B8639AAB /* RobotoCondensed-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-BoldItalic.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-BoldItalic.ttf"; sourceTree = "<group>"; };
-		295DB1E189FF48CABC83019F /* Inter-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Thin.ttf"; path = "../assets/fonts/Inter-Thin.ttf"; sourceTree = "<group>"; };
+		295DB1E189FF48CABC83019F /* Inter-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Thin.ttf"; path = "../assets/fonts/Inter-Thin.ttf"; sourceTree = "<group>"; };
 		2BF4E43052E9419BAB623CE6 /* RobotoCondensed-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-SemiBold.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-SemiBold.ttf"; sourceTree = "<group>"; };
 		344E3DC2401D47FB8A715371 /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-Light.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-CamMatTroi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CamMatTroi.debug.xcconfig"; path = "Target Support Files/Pods-CamMatTroi/Pods-CamMatTroi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -80,11 +80,11 @@
 		5B7EB9410499542E8C5724F5 /* Pods-CamMatTroi-CamMatTroiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CamMatTroi-CamMatTroiTests.debug.xcconfig"; path = "Target Support Files/Pods-CamMatTroi-CamMatTroiTests/Pods-CamMatTroi-CamMatTroiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6093A1B956B04EB1B55A9A2A /* RobotoCondensed-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-LightItalic.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-LightItalic.ttf"; sourceTree = "<group>"; };
 		6DC704130C164BD78E0F3C83 /* RobotoCondensed-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-SemiBoldItalic.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		74ABFC61D96C40E0B677D8ED /* Inter-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Regular.ttf"; path = "../assets/fonts/Inter-Regular.ttf"; sourceTree = "<group>"; };
+		74ABFC61D96C40E0B677D8ED /* Inter-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Regular.ttf"; path = "../assets/fonts/Inter-Regular.ttf"; sourceTree = "<group>"; };
 		7A5644892B6CE9D20098E8D5 /* CamMatTroi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = CamMatTroi.entitlements; path = CamMatTroi/CamMatTroi.entitlements; sourceTree = "<group>"; };
 		7A5644902B6D01D60098E8D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		7E9A7355E7FE4A8EBEECFCB6 /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraBold.ttf"; path = "../assets/fonts/Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
-		80630294C55C490B91CF0637 /* Inter-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Bold.ttf"; path = "../assets/fonts/Inter-Bold.ttf"; sourceTree = "<group>"; };
+		7E9A7355E7FE4A8EBEECFCB6 /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraBold.ttf"; path = "../assets/fonts/Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
+		80630294C55C490B91CF0637 /* Inter-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Bold.ttf"; path = "../assets/fonts/Inter-Bold.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CamMatTroi/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84B3CD0E9D9941449141E254 /* RobotoCondensed-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-ThinItalic.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-ThinItalic.ttf"; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-CamMatTroi-CamMatTroiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CamMatTroi-CamMatTroiTests.release.xcconfig"; path = "Target Support Files/Pods-CamMatTroi-CamMatTroiTests/Pods-CamMatTroi-CamMatTroiTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -92,15 +92,15 @@
 		94CC74A479394640BAA3D327 /* RobotoCondensed-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-ExtraBoldItalic.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		9BA4981284C44D4C869AF762 /* RobotoCondensed-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-BlackItalic.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-BlackItalic.ttf"; sourceTree = "<group>"; };
 		9CE6459945CC4A319043D601 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-Regular.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
-		A2916FCC13694F49B40CDC72 /* Inter-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Medium.ttf"; path = "../assets/fonts/Inter-Medium.ttf"; sourceTree = "<group>"; };
-		A5DC595C73894BA6B3A77275 /* Inter-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Light.ttf"; path = "../assets/fonts/Inter-Light.ttf"; sourceTree = "<group>"; };
+		A2916FCC13694F49B40CDC72 /* Inter-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Medium.ttf"; path = "../assets/fonts/Inter-Medium.ttf"; sourceTree = "<group>"; };
+		A5DC595C73894BA6B3A77275 /* Inter-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Light.ttf"; path = "../assets/fonts/Inter-Light.ttf"; sourceTree = "<group>"; };
 		A7DCC8ECFDF848C4A6068C3B /* RobotoCondensed-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-Black.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-Black.ttf"; sourceTree = "<group>"; };
 		AB6E47DB17A64610BF5DD01E /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-Bold.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		B05F303C3310FDC6D8FA80E3 /* libPods-CamMatTroi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CamMatTroi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA73E11E8B9F432485CE287D /* RobotoCondensed-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-ExtraBold.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-ExtraBold.ttf"; sourceTree = "<group>"; };
 		C636AA19984148E0B859F051 /* RobotoCondensed-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-MediumItalic.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-MediumItalic.ttf"; sourceTree = "<group>"; };
-		D45A173654D446C2A689547B /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-SemiBold.ttf"; path = "../assets/fonts/Inter-SemiBold.ttf"; sourceTree = "<group>"; };
-		DC41A8ED3F7F4AC28D84D3A4 /* Inter-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Black.ttf"; path = "../assets/fonts/Inter-Black.ttf"; sourceTree = "<group>"; };
+		D45A173654D446C2A689547B /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-SemiBold.ttf"; path = "../assets/fonts/Inter-SemiBold.ttf"; sourceTree = "<group>"; };
+		DC41A8ED3F7F4AC28D84D3A4 /* Inter-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Black.ttf"; path = "../assets/fonts/Inter-Black.ttf"; sourceTree = "<group>"; };
 		E0FFAF9583234796B39499B5 /* RobotoCondensed-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-ExtraLight.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-ExtraLight.ttf"; sourceTree = "<group>"; };
 		E1BB61A68EED4A178DB0E2B8 /* RobotoCondensed-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-Thin.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-Thin.ttf"; sourceTree = "<group>"; };
 		EA13ADA562354CEC96DC2DD2 /* RobotoCondensed-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-ExtraLightItalic.ttf"; path = "../assets/fonts/roboto/RobotoCondensed-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
@@ -698,6 +698,7 @@
 			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-CamMatTroi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CamMatTroi/CamMatTroi.entitlements;
 				CURRENT_PROJECT_VERSION = 4;
@@ -729,6 +730,7 @@
 			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-CamMatTroi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CamMatTroi/CamMatTroi.entitlements;
 				CURRENT_PROJECT_VERSION = 4;
@@ -830,10 +832,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 			};
@@ -911,10 +910,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

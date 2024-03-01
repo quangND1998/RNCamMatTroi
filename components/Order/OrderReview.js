@@ -27,12 +27,23 @@ const OrderReview = ({ navigation, route }) => {
     const [spinner, setSpinner] = useState(false)
     const [refreshing, setRefreshing] = React.useState(false);
     const orderDetail = useSelector(state => state.history.orderDetail);
+    const [isShowButotn, setShowButton] = useState(true);
     const [form, setForm] = useState({
         star: null,
         evaluate: null,
         data: [],
         description: null
     })
+
+
+    const handleFocus = (event) => {
+        console.log('Input field is focused');
+        setShowButton(false);
+    };
+    const handleBlur = (event) => {
+        console.log('Input field lost focus');
+        setShowButton(true);
+    };
     const [images, setImages] = useState([]);
 
     useEffect(() => {
@@ -255,7 +266,7 @@ const OrderReview = ({ navigation, route }) => {
 
 
                 </Box>
-                <Box className="mb-[277px]">
+                <Box className="mb-[177px]">
                     <Box className="text-[#AEAEAE] text-[13px] mx-5 my-2 ">
                         <Text className="text-[#AEAEAE] pr-3">Bạn hài lòng về dịch vụ chứ? Hãy cho chúng tôi biết ý kiến của bạn? </Text>
                     </Box>
@@ -411,10 +422,18 @@ const OrderReview = ({ navigation, route }) => {
 
                 </Box>
             </ScrollView >
-            <Box className="mx-5 w-[90%] lg:w-[96%] absolute bottom-[80px]">
-                <Button onPress={() => saveComplaint()} className=" w-full  text-white bg-[#FF6100] rounded-[10px] btn_button"
-                >Gửi</Button>
+
+            {/* {isShowButotn == true ?
+            <Box className="absolute mx-5 w-[90%] items-center my-[60px] bottom-0 px-1 py-2 lg:w-[70%] lg:mx-[15%] text-white  bg-[#FF6100] rounded-[10px] btn_button">
+                <Button onPress={() => saveComplaint()} className=" absolute mx-5 w-[90%] items-center my-[60px] bottom-0 px-1 py-2 lg:w-[70%] lg:mx-[15%] text-white  bg-[#FF6100] rounded-[10px] btn_button"
+                ><Text className="text-white text-[16px]">Gửi</Text></Button>
             </Box>
+            :null} */}
+             {isShowButotn == true ?
+                <Button onPress={() => saveComplaint()} className="absolute mx-5 items-center w-[90%] my-[87px] bottom-0 px-2 py-3 lg:w-[70%] lg:mx-[15%] text-white  bg-[#FF6100] rounded-[10px] btn_button"
+                ><Text className="text-white text-[16px]">Gửi</Text>
+                </Button>
+                : null}
 
         </SafeAreaView >
     );

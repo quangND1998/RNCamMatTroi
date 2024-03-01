@@ -29,7 +29,7 @@ export const fetchOrders = (params) => (dispatch) => {
     );
 };
 export const orderStatus = (params) => (dispatch) => {
-
+    console.log('orderStatus', params)
     return ApiService.queryData('api/v1/orderStatus', params).then(response => {
         console.log(response.data)
         dispatch({

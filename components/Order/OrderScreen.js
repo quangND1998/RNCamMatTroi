@@ -38,7 +38,7 @@ const OrderScreen = () => {
                     </TouchableOpacity>
                 ),
                 headerBackTitleVisible: false,
-                headerTransparent: true,
+                headerTransparent: false,
                 headerBackground: () => (
                     <HeaderBackground style={styles.background}  >
                     </HeaderBackground>

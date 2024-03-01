@@ -9,12 +9,26 @@ import ShipperScreen from '../components/Shipper/ShipperScreen';
 import CheckOrderScreen from '../components/Shipper/Check/CheckOrderScreen';
 import Home from '../components/Svg/Home';
 import Chevron from '../components/Svg/Chevron';
+import SettingShipper from '../components/Shipper/Setting/Index'
 const Tab = createBottomTabNavigator();
-
+import { PressableOpacity } from 'react-native-pressable-opacity';
+import MoreTab from '../components/Svg/MoreTab';
+import ShipperNofication from '../components/Notification/ShipperNofication';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteAllNotification, getAllNotification, getUnReadNotification, readNotifcation } from '../store/actions/notification';
+import { Notification } from 'iconsax-react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 const BottomShipperNavigator = () => {
+    const dispatch = useDispatch();
+    const totalUnRead = useSelector(state => state.notification.totalUnRead);
+
+    const clearNotification = () => {
+        dispatch(deleteAllNotification())
+    }
+
+
     return (
         <Tab.Navigator
-
             initialRouteName="HomeShipper"
             backBehavior="history"
             screenOptions={({ navigation, route }) => ({
@@ -26,11 +40,11 @@ const BottomShipperNavigator = () => {
                     overflow: 'hidden',
                     height: 100,
                     bordercolor: 'transparent',
-
+                    position: 'absolute',
                 },
                 headerTitleStyle: {
                     fontWeight: 'bold',
-                    color: '#FF6100',
+                    color: 'white',
                 },
                 headerTitleAlign: 'center',
                 tabBarLabelStyle: {
@@ -43,10 +57,10 @@ const BottomShipperNavigator = () => {
                     paddingBottom: 12,
                     alignContent: 'center',
                 },
+                headerShadowVisible: false,
                 headerStyle: {
-                    borderBottomLeftRadius: 20,
-                    borderBottomRightRadius: 20,
-                    height: 60,
+                    backgroundColor: '#F78F43',
+
                 },
                 paddingTop: 12,
                 headerLeft: (props) => (
@@ -58,7 +72,7 @@ const BottomShipperNavigator = () => {
                             navigation.navigate('Home')
                         }
                     }}>
-                        <Image className=" w-6 h-6" resizeMode='contain' alt='back' source={require('../assets/icon/fi-rr-arrow-small-left.png')}
+                        <Image className=" w-6 h-6 ml-2" resizeMode='contain' alt='back' source={require('../assets/icon/fi-rr-arrow-small-left.png')}
                             {...props}
 
                         />
@@ -72,7 +86,6 @@ const BottomShipperNavigator = () => {
                 name="ShipperScreen"
                 component={ShipperScreen}
                 options={{
-                   
                     headerShown: false,
                     tabBarLabel: 'Quản lý vận đơn',
                     tabBarIcon: ({ color, size }) => (
@@ -94,6 +107,35 @@ const BottomShipperNavigator = () => {
                     ),
                 }}
             />
+
+            <Tab.Screen name="Thông báo" component={ShipperNofication} options={({ navigation, route }) => ({
+                tabBarLabel: 'Thông báo',
+                tabBarBadge: totalUnRead, tabBarIcon: ({ color, size }) => (
+                    <Notification
+                        size="24"
+                        color="#FF8A65"
+                    />
+                ),
+                headerRight: (props) => (
+                    <PressableOpacity className="mr-4" onPress={clearNotification} >
+                        <MaterialCommunityIcons name='trash-can-outline' size={26} className="text-xl " color="#fdfdfe" />
+                    </PressableOpacity>
+                ),
+            })} />
+            <Tab.Screen
+                name="Setting"
+                component={SettingShipper}
+                options={{
+                    headerShown: true,
+                    tabBarLabel: 'Thêm',
+                    title: 'Xem thêm',
+                    tabBarIcon: ({ color, size }) => (
+                        <MoreTab width={24} height={25} />
+                    ),
+                }}
+            />
+
+
         </Tab.Navigator>
     );
 
@@ -111,7 +153,7 @@ const ShipperNavigator = () => {
                 color: '#FF6100',
 
             },
-            headerTitleAlign: 'center',
+            headerTitleAlign: 'left',
 
         }}
         >

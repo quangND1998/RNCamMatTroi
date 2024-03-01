@@ -4,15 +4,12 @@ import { StyleSheet, TouchableOpacity, Linking, Keyboard, View, Alert } from 're
 import { Center, Container, Heading, Button, Text, Flex, Box, Stack, Input, SearchBar, Icon, Spacer, ZStack, Image, HStack, VStack, Pressable, FlatList, Avatar, useToast } from 'native-base'
 import { useDispatch, useSelector } from 'react-redux'
 import { EmojiHappy, Logout } from 'iconsax-react-native';
-import { logoutAction } from '../../store/actions/auth';
-import { getToken } from '../../common/asynStorage';
-import { useLogin } from '../../context/LoginProvider';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Calender from '../Svg/Calender';
-import Message from '../Svg/Message';
+
+import { useLogin } from '../../../context/LoginProvider';
+import { logoutAction } from '../../../store/actions/auth';
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
-import HrTag from '../HrTag';
-const CustomerService = ({ navigation, route }) => {
+import HrTag from '../../HrTag';
+const SettingShipper = ({ navigation, route }) => {
     const dispatch = useDispatch();
     const { setIsLoggedIn } = useLogin();
     const toast = useToast();
@@ -53,26 +50,6 @@ const CustomerService = ({ navigation, route }) => {
             <ScrollView>
                 <Box className="mb-4 mx-3 pb-4">
                     <Box className=" h-full px-3  bg-[#F0F0F0]">
-                        <TouchableOpacity onPress={() => navigation.navigate('Schedule')}  >
-                            <Flex className="w-full pt-3 pb-2 ">
-                                <Flex direction='row' className="flex items-center">
-                                    <Calender width={24} height={25} />
-                                    {/* <MaterialCommunityIcons name='calendar-range-outline' size={24} className="text-[#070707]" color="#070707" /> */}
-                                    <Text className=" text-[#000000] ml-3 text-[20px]  ">Đặt lịch thăm vườn</Text>
-                                </Flex>
-                            </Flex>
-                        </TouchableOpacity>
-                        <HrTag mr="1" ml="1" opacity={0.3}> </HrTag>
-                        <TouchableOpacity onPress={() => navigation.navigate('Complaint')}  >
-                            <Flex className="w-full pt-3 pb-2 ">
-                                <Flex direction='row' className=" flex items-center">
-                                    <Message width={24} height={24} />
-
-                                    <Text className="  text-[#000000] ml-3 text-[20px] ">Khiếu nại, phản hồi</Text>
-                                </Flex>
-                            </Flex>
-                        </TouchableOpacity>
-                        <HrTag mr="1" ml="1" opacity={0.3}> </HrTag>
                         <Flex className="w-full pt-3 pb-2 ">
                             <TouchableOpacity onPress={handlerLogout}  >
                                 <Flex direction='row' className=" flex items-center">
@@ -88,8 +65,6 @@ const CustomerService = ({ navigation, route }) => {
                             </TouchableOpacity>
                         </Flex>
                         <HrTag mr="1" ml="1" opacity={0.3}> </HrTag>
-
-
                     </Box>
                 </Box>
             </ScrollView>
@@ -111,4 +86,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default CustomerService;
+export default SettingShipper;

@@ -28,26 +28,19 @@ const Status = ({ order_transport }) => {
             return text_color.addition_document
         }
         return text_color[order_transport.status]
-    })
+    },[])
 
     const text = useMemo(() => {
         if (order_transport.order.state_document == 'not_push' && order_transport.status == 'delivered') {
             return SHIPPER_STATUS.addition_document
         }
         return SHIPPER_STATUS[order_transport.status]
-    })
+    }, [])
 
-    return ( <
-        SafeAreaView >
+    return (
 
-        <
-        Text className = { `${color}` } > { text } <
-        /Text>
+        <Text className={`font-bold ${color}`} > {text} </Text>
 
-
-
-        <
-        /SafeAreaView >
     );
 }
 
@@ -64,7 +57,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     containt_service: {
-        margin: 20
+        margin: 0
     }
 })
 

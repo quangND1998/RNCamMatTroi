@@ -39,7 +39,7 @@ const ShipperScreen = () => {
 
         dispatch(fetchOrders(params))
         setModalVisible(false)
-    }, [])
+    }, [date, day])
     return (
         <Stack.Navigator  screenOptions={({ navigation, route }) => ({
             tabBarActiveTintColor: '#FF6100',
@@ -69,16 +69,18 @@ const ShipperScreen = () => {
                 },
                 headerTitleAlign: 'left',
                 headerRight: (props) => (
-                    <Box>
+                    <Box> 
 
                         <Flex direction='row' justifyContent="center" alignItems="center">
                             <PressableOpacity onPress={() => {
                                 setModalVisible(!modalVisible);
                             }}>
-                                <Flex direction='row' className="bg-white px-4 rounded-md py-2 justify-between ">
-
+                                <Flex direction='row' className="bg-white  px-4 py-2 md:px-1 md:py-1  rounded-md   text-[8px] justify-between ">
+                                    <Text className="lg:text-[10px]">
                                     {day ? day == 7 ? '7 ngày trước' : day == 30 ? '30 ngày trước' : null :
                                         date ? date == 'now' ? 'Hôm nay' : date == 'yesterday' ? 'Hôm qua' : date == 'month' ? 'Tháng này' : date == 'beforMonth' ? 'Tháng trước' : null : null}
+                                    </Text>
+                                  
                                     <Icon name="chevron-forward" size={20} color="#070707" className="text-[#070707] text-3xl" />
 
                                 </Flex>
@@ -101,10 +103,10 @@ const ShipperScreen = () => {
                                             Hôm qua
                                         </Radio>
                                         <Radio colorScheme="orange" value="month" my={1} size="sm">
-                                            Thàng này
+                                            Tháng này
                                         </Radio>
                                         <Radio colorScheme="orange" value="beforMonth" my={1} size="sm">
-                                            Thàng trước
+                                            Tháng trước
                                         </Radio>
                                     </Radio.Group>
 
