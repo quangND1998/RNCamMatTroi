@@ -22,7 +22,7 @@ export const loginAction = (code, password, onSuccess = () => {}, onError = () =
 
         onSuccess();
     }).catch(error => {
-        // console.log('aaaaaaaaaa', error.response.data)
+        console.log('aaaaaaaaaa', error)
         dispatch({
             type: 'LOGIN_FAIL',
         });

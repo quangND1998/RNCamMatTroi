@@ -63,13 +63,13 @@ const ShipperNofication = ({ navigation, route }) => {
 
                                 notify.data.data?.orderId ?
                                     <PressableOpacity key={index} onPress={() => navigation.navigate('OrderShipperDetail', { title: formatUpdatedAt(notify.data.data?.title), orderId: notify.data.data?.orderId })}>
-                                        <Flex direction='row' className=" flex-wrap bg-white px-2 py-2 rounded-md mb-2 border border-[#F78F43]" >
+                                        <Flex direction='row' className=" flex-wrap bg-white px-2 py-2 rounded-md mb-2 border border-[#FF6100]" >
                                             <Text className='text-[13px]' >{notify.data.title} {notify.data.body}</Text>
                                         </Flex>
                                     </PressableOpacity>
                                     :
 
-                                    <Flex key={index} direction='row' className=" flex-wrap bg-white px-2 py-2 rounded-md mb-2 border border-[#F78F43]" >
+                                    <Flex key={index} direction='row' className=" flex-wrap bg-white px-2 py-2 rounded-md mb-2 border border-[#FF6100]" >
                                         <Text className='text-[13px]' >{notify.data.title} {notify.data.body}</Text>
 
 

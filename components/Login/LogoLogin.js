@@ -28,8 +28,8 @@ const LogoLogin = ({ navigation }) => {
                         <Box className="mt-5 lg:mt-12">
                             <Image source={require('../../assets/images/cammattroi.png')} resizeMode="contain"  className="w-[205px] h-[37px]  m-auto items-center shadow-xl" alt="cammattroi" ></Image>
                         </Box>
-                        {/* <PressableOpacity className="hover:bg-[#F78F43]  "> */}
-                        <Button onPress={() => navigation.navigate('Login')} style={styles.shadowLogin} className="w-full lg:w-2/3 mx-auto px-3 shadow-xl py-2.5 items-center bg-white  mt-16 text-[#080808] ion-padding rounded-xl active:bg-[#F78F43] "><Text className="text-black">
+                        {/* <PressableOpacity className="hover:bg-[#FF6100]  "> */}
+                        <Button onPress={() => navigation.navigate('Login')} style={styles.shadowLogin} className="w-full lg:w-2/3 mx-auto px-3 shadow-xl py-2.5 items-center bg-white  mt-16 text-[#080808] ion-padding rounded-xl active:bg-[#FF6100] "><Text className="text-black">
                             Đăng nhập
                         </Text>
                         </Button>

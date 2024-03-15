@@ -52,7 +52,7 @@ const OrderItem = ({ navigation, route }) => {
                         <Box key={product.id} className="mb-3 mx-1">
                             <Box className=" flex flex-row items-center">
                                 <Image source={require('../../assets/images/icon_package.png')} alt={`anh${index}`} className="h-8 w-8 mr-3" ></Image>
-                                <Text className="font-bold text-[20px] text-[#F78F43] flex flex-row flex-wrap ">{product.name}</Text>
+                                <Text className="font-bold text-[20px] text-[#FF6100] flex flex-row flex-wrap ">{product.name}</Text>
                             </Box>
                             <Box className="ml-1 mt-2 flex flex-row items-center">
                                 <Text className="font-bold text-[30px] text-[#000000] px-3">.</Text>
@@ -74,7 +74,7 @@ const OrderItem = ({ navigation, route }) => {
                     ) : null}
                 </Box>
                 <Button
-                    className="rounded-2xl bg-[#F78F43] text-white mx-3 my-3 p-3 font-bold"
+                    className="rounded-2xl bg-[#FF6100] text-white mx-3 my-3 p-3 font-bold"
                     onPress={onPressLearnMore}
                 >
                     <PressableOpacity onPress={() => {
@@ -100,7 +100,7 @@ const OrderItem = ({ navigation, route }) => {
                     </PressableOpacity>
                 </Button>
                 <Box className="bg-white rounded-t-[30px] mt-3 mb-[77px] px-3">
-                    <Text className="text-center font-bold my-6 p-2 text-[20px] text-[#F78F43] ">Lịch sử nhận quà nông sản</Text>
+                    <Text className="text-center font-bold my-6 p-2 text-[20px] text-[#FF6100] ">Lịch sử nhận quà nông sản</Text>
                     <Box >
                         {orderGilfs ? orderGilfs.map((order, index) =>
                             <TouchableOpacity key={index} className="mb-3 w-full " onPress={

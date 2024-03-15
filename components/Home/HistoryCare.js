@@ -48,7 +48,7 @@ const HistoryCare = ({ navigation, route }) => {
                         {/* <Box className="p-4 text-left mr-2  ">
 
                             <Text>Mã cây: <Text className="text-[#184E17]">{tree?.address}</Text></Text>
-                            <Text>Tên cây: <Text bold className="text-[#F78F43] uppercase">{tree?.name}</Text></Text>
+                            <Text>Tên cây: <Text bold className="text-[#FF6100] uppercase">{tree?.name}</Text></Text>
                             <Text>Ngày nhận nuôi:<Text className="text-[#184E17]"> {formatDateShort(tree?.product_service_owner?.time_approve)} </Text></Text>
                             <Text>Số ngày nhận nuôi: <Text className="text-[#184E17]"> {formatDateUse(tree?.product_service_owner?.time_approve)}</Text></Text>
                         </Box>
@@ -65,7 +65,7 @@ const HistoryCare = ({ navigation, route }) => {
                             <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
                                 style={styles.description}>Mã cây: <Text className="text-[#184E17] font-bold">{tree?.address}</Text></Text>
                             <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
-                                style={styles.description}>Tên cây: <Text className="text-[#F78F43] font-bold">{tree?.name}</Text></Text>
+                                style={styles.description}>Tên cây: <Text className="text-[#FF6100] font-bold">{tree?.name}</Text></Text>
                             <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
                                 style={styles.description}>Ngày nhận nuôi: <Text className="text-[#184E17] font-bold" >{formatDateShort(tree?.product_service_owner?.time_approve)}</Text></Text>
                             <Text numberOfLines={3} className=" text-gray-700 px-1 my-0 "
@@ -91,7 +91,7 @@ const HistoryCare = ({ navigation, route }) => {
                                 {formatDateShort(history)}
                             </Text>
                             {history_care[history].map((item, index) =>
-                                <Flex key={index} direction='row' className="flex-wrap mx-1  bg-white px-2 py-2 rounded-md mb-2  border-[1px] border-[#F78F43] " >
+                                <Flex key={index} direction='row' className="flex-wrap mx-1  bg-white px-2 py-2 rounded-md mb-2  border-[1px] border-[#FF6100] " >
                                     {item.activity_care.map((activity, index) =>
                                         <Box key={index} >
                                             {item.activity_care.length - 1 == index ? <Text style={{ fontFamily: 'Inter-Regular' }} className='text-[16px] mr-1  items-center' >{activity.name}.</Text> :

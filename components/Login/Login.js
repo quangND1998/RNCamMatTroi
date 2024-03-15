@@ -85,10 +85,10 @@ const Login = ({ navigation }) => {
                 <TextInput onChangeText={changeCode} className=" h-[44px] border border-white text-gray-900 text-sm rounded-[10px] px-4 justify-center " placeholder="Mã HĐ/SĐT" />
 
                 {/* <View className="my-3 relative flex items-center" >
-                    <TextInput secureTextEntry={show} className="bg-gray-50 border border-[#F78F43] text-gray-900 text-sm rounded-lg p-2.5  " onChangeText={changePassword} placeholder="Password" />
+                    <TextInput secureTextEntry={show} className="bg-gray-50 border border-[#FF6100] text-gray-900 text-sm rounded-lg p-2.5  " onChangeText={changePassword} placeholder="Password" />
                     <View className="absolute bottom-0 right-2 px-2.5 py-1.5">
-                        {show == false ? <Eye color="#F78F43" className="text-lg" variant="Outline" size={25} onPress={() => setShow(true)} /> : <EyeSlash color="#F78F43" variant="Outline" className="text-lg" size={25} onPress={() => setShow(false)} />}
-                        <Text className="text-[#F78F43] ">{show}</Text>
+                        {show == false ? <Eye color="#FF6100" className="text-lg" variant="Outline" size={25} onPress={() => setShow(true)} /> : <EyeSlash color="#FF6100" variant="Outline" className="text-lg" size={25} onPress={() => setShow(false)} />}
+                        <Text className="text-[#FF6100] ">{show}</Text>
                     </View>
                 </View> */}
                 <FormControl className="my-3 relative flex  ">
@@ -96,7 +96,7 @@ const Login = ({ navigation }) => {
                         <TextInput secureTextEntry={show} className="w-full border border-white text-gray-900 text-sm rounded-[10px] px-4 justify-center  " onChangeText={changePassword} placeholder="******" />
                         <Box className="absolute py-6  right-0 px-2.5  items-center h-full justify-center">
                             {show == false ? <Eye color="gray" className="text-xs items-center" variant="Outline" size={16} onPress={() => setShow(true)} /> : <EyeSlash color="gray" variant="Outline" className="text-xs" size={16} onPress={() => setShow(false)} />}
-                            <Text className="text-[#F78F43] ">{show}</Text>
+                            <Text className="text-[#FF6100] ">{show}</Text>
                         </Box>
                     </Box>
                     
@@ -104,13 +104,13 @@ const Login = ({ navigation }) => {
                 {/* <TextInput secureTextEntry={show} className="my-2 border border-white text-gray-900 text-sm rounded-[10px] px-4 justify-center  " onChangeText={changePassword} placeholder="******" /> */}
                 <Flex direction='row' className=" justify-end mt-1">
                     <PressableOpacity onPress={() => navigation.navigate('LoginOtp')}>
-                        <Text className="text-[#F78F43] text-[13px]" style={{ fontFamily: 'Inter-Regular', fontWeight: 400 }}>Đăng nhập bằng OTP</Text>
+                        <Text className="text-[#FF6100] text-[13px]" style={{ fontFamily: 'Inter-Regular', fontWeight: 400 }}>Đăng nhập bằng OTP</Text>
                     </PressableOpacity>
-                    {/* <router-link to='/otp-phone' class="text-[#F78F43]  ">Đăng nhập bằng OTP</router-link> */}
+                    {/* <router-link to='/otp-phone' class="text-[#FF6100]  ">Đăng nhập bằng OTP</router-link> */}
                 </Flex>
 
 
-                <Button className="w-full mt-3 text-[14px] text-white bg-[#F78F43] focus:text-[#F78F43] rounded-[10px]"  text="submit" onPress={submitHandler}>Đăng nhập</Button>
+                <Button className="w-full mt-3 text-[14px] text-white bg-[#FF6100] focus:text-[#FF6100] rounded-[10px]"  text="submit" onPress={submitHandler}>Đăng nhập</Button>
 
                 <Box className="mt-7 text-center flex items-center flex-row justify-center">
                     <Text className="text-[#080808] text-[13px] ">Bạn chưa có tài khoản?</Text>
@@ -134,7 +134,7 @@ const Login = ({ navigation }) => {
                             .catch(err => console.log(err));
                     }
                     }>
-                        <Text className="text-[#F78F43] "> Hotline</Text>
+                        <Text className="text-[#FF6100] "> Hotline</Text>
                     </PressableOpacity>
                 </Box>
             </Box>

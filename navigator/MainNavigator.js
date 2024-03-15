@@ -35,13 +35,13 @@ const StackNavigator = () => {
             headerTitleAlign: 'center',
             headerBackTitleVisible: false,
             headerTransparent: true,
-            tabBarActiveTintColor: '#F78F43',
+            tabBarActiveTintColor: '#FF6100',
             tabBarInactiveTintColor: "#184E17",
             headerLeftLabelVisible: false,
             borderBottomWidth: 0,
             headerTitleStyle: {
                 fontWeight: 'bold',
-                color: '#F78F43',
+                color: '#FF6100',
             },
             paddingTop: 12,
             
@@ -54,7 +54,7 @@ const StackNavigator = () => {
             <Stack.Screen name="Login" options={{
                 headerShown: true, title: 'Đăng nhập', headerTitleStyle: {
                     fontWeight: '700',
-                    color: '#F78F43',
+                    color: '#FF6100',
                     fontFamily: "Inter-Regular"
 
                 },
@@ -70,7 +70,7 @@ const StackNavigator = () => {
 
                 headerTitleStyle: {
                     fontWeight: '650',
-                    color: '#F78F43',
+                    color: '#FF6100',
                     fontFamily: "Inter-Regular"
 
                 },
@@ -88,7 +88,7 @@ const StackNavigator = () => {
 
                 headerTitleStyle: {
                     fontWeight: 'bold',
-                    color: '#F78F43',
+                    color: '#FF6100',
                     fontFamily: "Inter-Regular"
 
                 },
@@ -119,7 +119,7 @@ const MainNavigator = () => {
                     headerLeftLabelVisible: false,
                     headerTitleStyle: {
                         fontWeight: 'bold',
-                        color: '#F78F43',
+                        color: '#FF6100',
 
                     },
                     headerTitleAlign: 'center',
@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
         paddingBottom: 0,
         elevation: 0, // remove shadow on Android
         shadowOpacity: 0, // remove shadow on iOS
-        // backgroundColor: '#F78F43'
+        // backgroundColor: '#FF6100'
         fontFamily:'Inter-Bold'
     }
 })

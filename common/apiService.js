@@ -2,18 +2,25 @@ import { API_URL } from "@env"
 import axios from "axios";
 import { getToken, destroyToken } from "./asynStorage";
 import { destroyTokenStorage } from "./managerStorage";
+
 axios.defaults.headers[
     "Accept"
 ] = `application/json`;
+
 axios.interceptors.request.use(async(request) => {
 
     const access_token = await getToken();
 
     const newHeaders = {
         ...request.headers,
+
+
         Authorization: `Bearer ${access_token}`,
     };
 
+    // axios.defaults.httpsAgent = new https.Agent({
+    //     rejectUnauthorized: false
+    // });
     if (access_token) {
 
         request = {
@@ -57,6 +64,7 @@ const ApiService = {
         axios.defaults.headers[
             "Accept"
         ] = `application/json`;
+
 
     },
     queryData(resource, params) {

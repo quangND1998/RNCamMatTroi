@@ -33,7 +33,7 @@ const BottomShipperNavigator = () => {
             initialRouteName="HomeShipper"
             backBehavior="history"
             screenOptions={({ navigation, route }) => ({
-                tabBarActiveTintColor: '#F78F43',
+                tabBarActiveTintColor: '#FF6100',
                 tabBarInactiveTintColor: "#000000",
                 tabBarStyle: {
                     borderTopLeftRadius: 20,
@@ -62,7 +62,7 @@ const BottomShipperNavigator = () => {
                 },
                 headerShadowVisible: false,
                 headerStyle: {
-                    backgroundColor: '#F78F43',
+                    backgroundColor: '#FF6100',
 
                 },
                 paddingTop: 12,
@@ -94,7 +94,7 @@ const BottomShipperNavigator = () => {
                     tabBarLabel: 'Quản lý vận đơn',
                     tabBarIcon: ({ color, size }) => (
                         // <Home source={require('../assets/icon/home.png')} className="w-14 h-14 " alt='box' ></Home>
-                        <Home color="#F78F43" size={26} />
+                        <Home color="#FF6100" size={26} />
 
                     ),
                 }}
@@ -107,7 +107,7 @@ const BottomShipperNavigator = () => {
                     tabBarLabel: 'Check đơn',
                     title: 'Quản lý vận đơn',
                     tabBarIcon: ({ color, size }) => (
-                        <Chevron color="#F78F43" size={26} />
+                        <Chevron color="#FF6100" size={26} />
                     ),
                 }}
             />
@@ -137,7 +137,7 @@ const BottomShipperNavigator = () => {
                     tabBarLabel: 'Thêm',
                     title: 'Xem thêm',
                     tabBarIcon: ({ color, size }) => (
-                        <MoreTab width={24} height={25} color='#F78F43' />
+                        <MoreTab width={24} height={25} color='#FF6100' />
                     ),
 
                 }}
@@ -159,7 +159,7 @@ const ShipperNavigator = () => {
 
             headerTitleStyle: {
                 fontWeight: 'bold',
-                color: '#F78F43',
+                color: '#FF6100',
 
             },
 

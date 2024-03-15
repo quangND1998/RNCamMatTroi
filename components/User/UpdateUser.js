@@ -92,7 +92,7 @@ const UpdateUser = ({ navigation, route }) => {
             return []
 
         }
-    }, [form.city])
+    }, [form.city, provinces])
 
     const wards = useMemo(() => {
 
@@ -269,7 +269,7 @@ const UpdateUser = ({ navigation, route }) => {
                             <Box className="mt-6">
                                 <Text className="text-[20px] font-bold text-center mt-5">{user?.name}</Text>
                                 <Text className="text-[13px] text-[#184E17] text-center my-1">{user?.email}</Text>
-                                {user?.infor?.status == 0 ? <Text className="text-[10px] text-[#F78F43] text-center">Đang chờ xét duyệt</Text> : null}
+                                {user?.infor?.status == 0 ? <Text className="text-[10px] text-[#FF6100] text-center">Đang chờ xét duyệt</Text> : null}
                             </Box>
 
                         </Box>
@@ -293,7 +293,7 @@ const UpdateUser = ({ navigation, route }) => {
                                 <TextInput type="text" isInvalid={checkInValid(errors, 'name') ? true : false} value={form.name} onChangeText={(value) => setForm(prevState => {
                                     return { ...prevState, name: value }
                                 })}
-                                    className=" border border-[#AEAEAE] text-gray-900 text-sm rounded-[10px] px-3 py-1.5 block w-full "
+                                    className=" border border-[#AEAEAE] text-[#184E17]  text-sm rounded-[10px] px-3 py-1.5 block w-full "
                                     placeholder="" required></TextInput>
                                 <Box className="text-red-500 text-[11px]" >
                                     <ErorrValidator errors={errors} key_error={'name'} />
@@ -336,7 +336,7 @@ const UpdateUser = ({ navigation, route }) => {
                                 <TextInput keyboardType="phone-pad" value={form.phone_number} isInvalid={checkInValid(errors, 'phone_number') ? true : false} onChangeText={(value) => setForm(prevState => {
                                     return { ...prevState, phone_number: value }
                                 })}
-                                    className="border border-[#AEAEAE] text-gray-900 text-sm rounded-[10px] px-3 py-1.5 block w-full"
+                                    className="border border-[#AEAEAE] text-[#184E17] text-sm rounded-[10px] px-3 py-1.5 block w-full"
                                     placeholder="" required></TextInput>
                                 {form.phone_number == null ?
                                     <Box>
@@ -354,7 +354,7 @@ const UpdateUser = ({ navigation, route }) => {
                                 <TextInput type="text" isInvalid={checkInValid(errors, 'email') ? true : false} value={form.email} onChangeText={(value) => setForm(prevState => {
                                     return { ...prevState, email: value }
                                 })}
-                                    className="border border-[#AEAEAE] text-gray-900 text-sm rounded-[10px] px-3 py-1.5 block w-full"
+                                    className="border border-[#AEAEAE] text-[#184E17]  text-sm rounded-[10px] px-3 py-1.5 block w-full"
                                     placeholder="" required></TextInput>
                                 <ErorrValidator errors={errors} key_error={'email'} />
                             </Box>
@@ -368,7 +368,7 @@ const UpdateUser = ({ navigation, route }) => {
 
                                 }}
                                     size="xl"
-                                    className="border border-[#AEAEAE] text-gray-900 text-sm rounded-[10px] px-3 py-1.5 block w-full"
+                                    className="border border-[#AEAEAE] text-[#184E17]  text-sm rounded-[10px] px-3 py-1.5 block w-full"
                                     placeholder="" required></TextInput>
                                 <ErorrValidator errors={errors} key_error={'address'} />
                             </Box>
@@ -378,11 +378,11 @@ const UpdateUser = ({ navigation, route }) => {
                                     <Box className="">
                                         <Select size="16" className="rounded-xl"
                                             dropdownIcon={<Box className="mr-2">
-                                                <Arrow color="#F78F43" width={13} height={6} />
+                                                <Arrow color="#FF6100" width={13} height={6} />
                                             </Box>
                                             } isInvalid={checkInValid(errors, 'city') ? true : false} selectedValue={form.city} minWidth="100" accessibilityLabel="Chọn Tính/ Thành phố" placeholder="Chọn Tính/ Thành phố"
                                             _selectedItem={{
-                                                bg: "#F78F43",
+                                                bg: "#FF6100",
                                                 color: 'white',
                                                 rightIcon: <CheckIcon size="5" color="white" />
                                             }}
@@ -416,11 +416,11 @@ const UpdateUser = ({ navigation, route }) => {
                                     <Box m>
                                         <Select size="16"
                                             dropdownIcon={<Box className="mr-2">
-                                                <Arrow color="#F78F43" width={13} height={6} />
+                                                <Arrow color="#FF6100" width={13} height={6} />
                                             </Box>
                                             } isInvalid={checkInValid(errors, 'district') ? true : false} selectedValue={form.district} minWidth="100" accessibilityLabel="Chọn Quận/ Huyện" placeholder="Chọn Quận/ Huyện"
                                             _selectedItem={{
-                                                bg: "#F78F43",
+                                                bg: "#FF6100",
                                                 rightIcon: <CheckIcon size="5" color="white" />
                                             }}
                                             mt={1}
@@ -446,13 +446,13 @@ const UpdateUser = ({ navigation, route }) => {
                                     <Text className="text-[#184E17] my-1 text-[13px]">Xã/ Phường</Text>
                                     <Box >
                                         <Select size="16" dropdownIcon={<Box className="mr-2">
-                                            <Arrow color="#F78F43" width={13} height={6} />
+                                            <Arrow color="#FF6100" width={13} height={6} />
                                         </Box>
                                         } isInvalid={checkInValid(errors, 'wards') ? true : false} selectedValue={form.wards} minWidth="200"
                                             accessibilityLabel="Chọn Xã/ Phường"
                                             placeholder="Chọn Xã/ Phường"
                                             _selectedItem={{
-                                                bg: "#F78F43",
+                                                bg: "#FF6100",
                                                 rightIcon: <CheckIcon size="5" color="white" />
                                             }}
                                             borderRadius={10}
@@ -573,7 +573,7 @@ const UpdateUser = ({ navigation, route }) => {
                         </Box>
                     </Box> */}
                     {form.phone_number && isValidPhoneNumber(form.phone_number, "VN") ? <Button onPress={alertsaveUserInfor}
-                        className=" bottom-0  w-[90%] ml-[5%]  mr-[5%] mt-2 mb-2 px-4 py-[10px] lg:w-[94%] lg:mx-[3%] text-white bg-[#F78F43] rounded-[10px] " style={styles.btn_button}>
+                        className=" bottom-0  w-[90%] ml-[5%]  mr-[5%] mt-2 mb-2 px-4 py-[10px] lg:w-[94%] lg:mx-[3%] text-white bg-[#FF6100] rounded-[10px] " style={styles.btn_button}>
                         <Text className="text-white items-center text-center">Lưu</Text>
                     </Button> : null
                     }

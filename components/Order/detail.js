@@ -15,7 +15,7 @@ const OrderDetail = ({ navigation, route }) => {
     const [refreshing, setRefreshing] = React.useState(false);
     const orderDetail = useSelector(state => state.history.orderDetail);
     const [spinner, setSpinner] = useState(false)
-    const { formatDate, formatDateUse } = useHelper();
+    const { formatDate, formatDateUse, formatPrice } = useHelper();
     useEffect(() => {
         console.log('item', route.params);
         fetchOrderDetail();
@@ -87,13 +87,13 @@ const OrderDetail = ({ navigation, route }) => {
                             {orderDetail.order_items ? orderDetail.order_items.map((item, index) =>
                                 <Box key={index} className="flex flex-row items-center">
                                     <Image source={{ uri: item.product?.images[0].original_url }} className="h-20 w-20 " alt={`ordergift${index}`} ></Image>
-                                    <Text className="font-bold text-[16px] text-[#F78F43] px-3">{item.product?.name}</Text>
+                                    <Text className="font-bold text-[16px] text-[#FF6100] px-3">{item.product?.name}</Text>
                                 </Box>
                             ) : null}
                             <Box className="my-6 ">
                                 <Box className="flex flex-row items-center my-1">
                                     <Image source={require('../../assets/icon/start.png')} className="h-4 w-4 " alt="start" ></Image>
-                                    <Text className="font-bold text-[12px] text-[#080808] px-3 " style={{ fontFamily:'Inter-SemiBold' }}>{orderDetail.address}, {orderDetail.wards}, {orderDetail.district}, {orderDetail.city}  </Text>
+                                    <Text className="font-bold text-[12px] text-[#080808] px-3 " style={{ fontFamily: 'Inter-SemiBold' }}>{orderDetail.address}, {orderDetail.wards}, {orderDetail.district}, {orderDetail.city}  </Text>
                                 </Box>
                                 <Box className="mx-1 ">
                                     <Image source={require('../../assets/icon/location.png')} className="h-2 w-2 " alt="location1" ></Image>
@@ -106,7 +106,7 @@ const OrderDetail = ({ navigation, route }) => {
                                 </Box>
                                 <Box className="flex flex-row items-center my-1">
                                     <Image source={require('../../assets/icon/end.png')} resizeMode='contain' className="h-4 w-4 " alt="end"></Image>
-                                    <Text className="font-bold text-[12px] text-[#080808] px-3" style={{ fontFamily:'Inter-SemiBold' }}>{orderDetail.address}, {orderDetail.wards}, {orderDetail.district}, {orderDetail.city}  </Text>
+                                    <Text className="font-bold text-[12px] text-[#080808] px-3" style={{ fontFamily: 'Inter-SemiBold' }}>{orderDetail.address}, {orderDetail.wards}, {orderDetail.district}, {orderDetail.city}  </Text>
                                 </Box>
                             </Box>
                             <Box className="flex flex-row my-3">
@@ -115,19 +115,19 @@ const OrderDetail = ({ navigation, route }) => {
                             </Box>
                             <Box className="flex flex-row my-3">
                                 <Text className="font-bold text-[16px] text-[#080808]">Trạng thái:</Text>
-                                <Text className="font-bold text-[16px] text-[#F78F43] px-2">{orderDetail.status == "pending" ? "Đang giao hàng" : "Hoàn thành"}</Text>
+                                <Text className="font-bold text-[16px] text-[#FF6100] px-2">{orderDetail.status == "completed" ? "Hoàn thành" : "Đang giao hàng"}</Text>
                             </Box>
                             <Box className="flex flex-row my-3">
                                 <Text className="font-bold text-[16px] text-[#080808]">Giá trị đơn hàng:</Text>
-                                <Text className="font-bold text-[16px] text-[#184E17] px-2">{orderDetail.grand_total} VNĐ</Text>
+                                <Text className="font-bold text-[16px] text-[#184E17] px-2">{formatPrice(orderDetail.grand_total)} VNĐ</Text>
                             </Box>
 
                         </Box>
                         : null}
                 </Box>
             </ScrollView>
-            <Button className="fixed bottom-[87px] mx-3 rounded-[10px] bg-[#F78F43] text-white my-8  mb-0 p-3 font-bold"
-                                onPress={alertOrderCofirm}>
+            <Button className="fixed bottom-[87px] mx-3 rounded-[10px] bg-[#FF6100] text-white my-8  mb-0 p-3 font-bold"
+                onPress={alertOrderCofirm}>
                 <Text className="font-base text-[18px]  text-white ">Xác nhận đã nhận hàng</Text>
             </Button>
         </SafeAreaView>
