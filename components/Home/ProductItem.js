@@ -56,17 +56,17 @@ const ProductItem = ({ item, index, navigation }) => {
   })
 
   useEffect(() => {
-    const updateDimensions = () => {
-      setScreenWidth(Dimensions.get('window').width);
-      setScreenHeight(Dimensions.get('window').height);
-      console.log('update screen');
-    };
+    // const updateDimensions = () => {
+    //   setScreenWidth(Dimensions.get('window').width);
+    //   setScreenHeight(Dimensions.get('window').height);
+    //   console.log('update screen');
+    // };
 
-    Dimensions.addEventListener('change', updateDimensions);
+    // Dimensions.addEventListener('change', updateDimensions);
 
-    return () => {
-      Dimensions.removeEventListener('change', updateDimensions);
-    };
+    // return () => {
+    //   Dimensions.removeEventListener('change', updateDimensions);
+    // };
   }, []);
   const images = [
     {

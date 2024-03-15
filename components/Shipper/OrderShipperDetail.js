@@ -434,18 +434,18 @@ const OrderShipperDetail = ({ navigation, route }) => {
 
                                         : null}
                                     {order_transport_detail.status == 'not_shipping' ?
-                                        <PressableOpacity onPress={alertShipping} disabled={(text && text.toUpperCase() == 'Y') ? false : true} 
+                                        <TouchableOpacity onPress={alertShipping} disabled={(text && text.toUpperCase() == 'Y') ? false : true} 
                                         className="flex-grow px-8 py-3 bg-[#FF0000] rounded-[5px] ml-3  mt-2 mr-1 items-center text-white" >
 
                                             <Text className="text-white">Lấy hàng</Text>
 
-                                        </PressableOpacity>
+                                        </TouchableOpacity>
                                         : order_transport_detail.status == 'not_delivered' ?
-                                            <PressableOpacity onPress={alertCustomerRecive} disabled={(text && text.toUpperCase() == 'Y') ? false : true} 
+                                            <TouchableOpacity onPress={alertCustomerRecive} disabled={(text && text.toUpperCase() == 'Y') ? false : true} 
                                             className="flex-grow px-8 py-3 bg-[#4F8D06] rounded-[5px] ml-3  mt-2 mr-1 items-center text-white" >
                                                 <Text className="text-white" >
                                                     Khách đã nhận
-                                                </Text></PressableOpacity> : null}
+                                                </Text></TouchableOpacity> : null}
                                 </Flex>
                             </Box> : null}
 

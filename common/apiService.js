@@ -2,16 +2,21 @@ import { API_URL } from "@env"
 import axios from "axios";
 import { getToken, destroyToken } from "./asynStorage";
 import { destroyTokenStorage } from "./managerStorage";
+
 axios.defaults.headers[
     "Accept"
+] = `application/json`;
+axios.defaults.headers[
+    "content-type"
 ] = `application/json`;
 axios.interceptors.request.use(async(request) => {
 
     const access_token = await getToken();
-
+    console.log("token",access_token);
     const newHeaders = {
         ...request.headers,
         Authorization: `Bearer ${access_token}`,
+
     };
 
     if (access_token) {
@@ -57,8 +62,12 @@ const ApiService = {
         axios.defaults.headers[
             "Accept"
         ] = `application/json`;
+        axios.defaults.headers[
+            "content-type"
+        ] = `application/json`;
 
     },
+
     queryData(resource, params) {
         // console.log(jwtToken.getToken())
         // console.log(params)

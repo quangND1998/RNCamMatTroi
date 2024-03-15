@@ -178,7 +178,6 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 20,
         height: 200,
         paddingBottom: 0,
-        elevation: 0, // remove shadow on Android
         shadowOpacity: 0, // remove shadow on iOS
         // backgroundColor: '#F78F43'
         fontFamily:'Inter-Bold'

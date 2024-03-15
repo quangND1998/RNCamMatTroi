@@ -14,7 +14,7 @@ const CustomButton = (props) => {
             style={({ pressed }) => [
                 { backgroundColor: pressed ? '#dddddd' : props.color },
                 styles.button,
-                { ...props.style }
+                
             ]}
         >
             <Text style={styles.text}>

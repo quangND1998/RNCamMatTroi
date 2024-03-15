@@ -101,7 +101,6 @@ const DrawerNavigator = () => {
                 headerShown: true,
                 headerStyle: {
                     backgroundColor: 'transparent',
-                    elevation: 0,
                     shadowOpacity: 0,
                 },
                 headerTitle: '',

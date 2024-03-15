@@ -7,7 +7,7 @@ LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 import Payoo from '../../payoo';
 import { PaymentService } from '../../common/payment/paymentService';
 import { getProductOwner } from '../../store/actions/productService';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import NewSwiper from '../News/NewSwiper';
 import NewActivity from '../News/NewActivity';
 import ProductItem from './ProductItem';
@@ -15,6 +15,7 @@ import SlideBG from './SlideBG';
 import { PressableOpacity } from 'react-native-pressable-opacity';
 import { getUnReadNotification } from '../../store/actions/notification';
 
+const HEADER_HEIGHT = 80; // Chiều cao của phần header
 LogBox.ignoreLogs([
     'VirtualizedLists should never be nested', // TODO: Remove when fixed
 ])
@@ -33,6 +34,7 @@ const Home = ({ navigation, route }) => {
     const scrollX = useRef(new Animated.Value(0)).current;
     const [currentIndex, setCurrentIndex] = useState(0);
     const flatListRef = useRef(null);
+
     useEffect(() => {
         fetchProductOwner();
         dispatch(getUnReadNotification())
@@ -100,87 +102,89 @@ const Home = ({ navigation, route }) => {
         )(event);
     };
     return (
-        <SafeAreaView style={styles.container}>
-            {/* <Box className='absolute z-50 w-full  bg-white rounded-b-[20px]'>
-           
-                <Box className="px-4 py-4 w-full  ">
-                    <Flex direction='row' className="flex items-center justify-between">
-                        <Flex direction='row' className="flex items-center">
-                            <Avatar className="w-14 h-14" source={{
-                                uri: user?.profile_photo_url
-                            }}>
-                            </Avatar>
+        <SafeAreaProvider>
+            <SafeAreaView style={styles.container}>
+                {/* <Box className='absolute z-50 w-full  bg-white rounded-b-[20px]'>
+            
+                    <Box className="px-4 py-4 w-full  ">
+                        <Flex direction='row' className="flex items-center justify-between">
+                            <Flex direction='row' className="flex items-center">
+                                <Avatar className="w-14 h-14" source={{
+                                    uri: user?.profile_photo_url
+                                }}>
+                                </Avatar>
 
-                            <Flex className="ml-4">
-                                <Text className="font-bold text-[16px] text-gray-800">{user?.name}</Text>
-                                <Text className="text-[#F78F43] text-[12px]">#{user?.cic_number}</Text>
+                                <Flex className="ml-4">
+                                    <Text className="font-bold text-[16px] text-gray-800">{user?.name}</Text>
+                                    <Text className="text-[#F78F43] text-[12px]">#{user?.cic_number}</Text>
+                                </Flex>
+
                             </Flex>
 
+                            <Box className="flex flex-row">
+                                <PressableOpacity onPress={() => {
+                                    navigation.navigate('ScanExpo');
+
+                                }} >
+                                    <Image source={require('../../assets/icon/scan.png')} alt="scan" className="w-[24px] h-[24px]" resizeMode="contain" ></Image>
+                                </PressableOpacity>
+                                <PressableOpacity onPress={() => {
+                                    navigation.navigate('Notification');
+
+                                }} >
+                                    <Image source={require('../../assets/icon/icon_bell.png')} alt="icon_bell" className="ml-2 w-[24px] h-[24px]" resizeMode="contain"></Image>
+                                    { totalUnRead > 0 ?
+                                        // <Box className="absolute left-5 top-[-6] shadow bg-[#F78F43] w-[10px] h-[10px] rounded-full flex items-center justify-center ">
+                                        // </Box>     
+                                        <Image className="absolute left-5 top-[-5] shadow w-[20px] h-[20px] rounded-full flex items-center justify-center "
+                                        source={require('../../assets/icon/notification.png')}></Image>                               
+                                    : null }
+                                </PressableOpacity>
+                            </Box>
                         </Flex>
 
-                        <Box className="flex flex-row">
-                            <PressableOpacity onPress={() => {
-                                navigation.navigate('ScanExpo');
-
-                            }} >
-                                <Image source={require('../../assets/icon/scan.png')} alt="scan" className="w-[24px] h-[24px]" resizeMode="contain" ></Image>
-                            </PressableOpacity>
-                            <PressableOpacity onPress={() => {
-                                navigation.navigate('Notification');
-
-                            }} >
-                                <Image source={require('../../assets/icon/icon_bell.png')} alt="icon_bell" className="ml-2 w-[24px] h-[24px]" resizeMode="contain"></Image>
-                                { totalUnRead > 0 ?
-                                    // <Box className="absolute left-5 top-[-6] shadow bg-[#F78F43] w-[10px] h-[10px] rounded-full flex items-center justify-center ">
-                                    // </Box>     
-                                    <Image className="absolute left-5 top-[-5] shadow w-[20px] h-[20px] rounded-full flex items-center justify-center "
-                                    source={require('../../assets/icon/notification.png')}></Image>                               
-                                : null }
-                            </PressableOpacity>
-                        </Box>
-                    </Flex>
-
-                </Box>
-            </Box> */}
-            <ScrollView
-                contentContainerStyle={styles.scrollView}
-                refreshControl={
-                    <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-                }>
-
-                {/* <Box className="bg">
-                    <SlideBG></SlideBG>
+                    </Box>
                 </Box> */}
-                <Box className="w-full" style={styles.container}>
-                    <View style={styles.container} className="w-full">
-                        {productOwner ?
-                            <FlatList
-                                data={productOwner}
-                                renderItem={({ item, index }) => <ProductItem item={item} index={index} navigation={navigation} />}
-                                horizontal
-                                scrollEnabled={false}
-                                keyExtractor={(item) => item.id.toString()}
-                                ref={flatListRef}
-                                initialNumToRender={1}
-                                showsHorizontalScrollIndicator={false}
+                <ScrollView
+                    contentContainerStyle={styles.scrollView}
+                    refreshControl={
+                        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+                    }>
 
-                            /> : <View></View>}
-                        {currentIndex > 0 ?
-                            <TouchableOpacity activeOpacity={0.7} className="absolute top-1/4 rounded-full bg-white h-8 w-8 z-50 m-auto left-4" title="Previous" onPress={handlePrevious} disabled={currentIndex === 0} >
-                                <Image className="h-6 w-6 z-50 m-auto" source={require('../../assets/icon/fi-rr-arrow-small-left.png')} alt="icon_next" resizeMode="contain"></Image>
-                            </TouchableOpacity>
-                            : null}
+                    {/* <Box className="bg">
+                        <SlideBG></SlideBG>
+                    </Box> */}
+                    <Box className="w-full" style={styles.container}>
+                        <View style={styles.container} className="w-full">
+                            {productOwner ?
+                                <FlatList
+                                    data={productOwner}
+                                    renderItem={({ item, index }) => <ProductItem item={item} index={index} navigation={navigation} />}
+                                    horizontal
+                                    scrollEnabled={false}
+                                    keyExtractor={(item) => item.id.toString()}
+                                    ref={flatListRef}
+                                    initialNumToRender={1}
+                                    showsHorizontalScrollIndicator={false}
 
-                        {currentIndex != productOwner?.length - 1 ?
-                            <TouchableOpacity activeOpacity={0.7} className="absolute top-1/4 rounded-full bg-white h-8 w-8 z-50 m-auto right-4" title="Next" onPress={handleNext} disabled={currentIndex === productOwner?.length - 1} >
-                                <Image className="h-6 w-6 z-50 m-auto" source={require('../../assets/icon/fi-rr-arrow-small-right.png')} alt="icon_pre" resizeMode="contain"></Image>
-                            </TouchableOpacity>
-                            : null}
+                                /> : <View></View>}
+                            {currentIndex > 0 ?
+                                <TouchableOpacity activeOpacity={0.7} className="absolute top-1/4 rounded-full bg-white h-8 w-8 z-50 m-auto left-4" title="Previous" onPress={handlePrevious} disabled={currentIndex === 0} >
+                                    <Image className="h-6 w-6 z-50 m-auto" source={require('../../assets/icon/fi-rr-arrow-small-left.png')} alt="icon_next" resizeMode="contain"></Image>
+                                </TouchableOpacity>
+                                : null}
 
-                    </View>
-                </Box>
-            </ScrollView>
-        </SafeAreaView>
+                            {currentIndex != productOwner?.length - 1 ?
+                                <TouchableOpacity activeOpacity={0.7} className="absolute top-1/4 rounded-full bg-white h-8 w-8 z-50 m-auto right-4" title="Next" onPress={handleNext} disabled={currentIndex === productOwner?.length - 1} >
+                                    <Image className="h-6 w-6 z-50 m-auto" source={require('../../assets/icon/fi-rr-arrow-small-right.png')} alt="icon_pre" resizeMode="contain"></Image>
+                                </TouchableOpacity>
+                                : null}
+
+                        </View>
+                    </Box>
+                </ScrollView>
+            </SafeAreaView>
+        </SafeAreaProvider>
     );
 }
 

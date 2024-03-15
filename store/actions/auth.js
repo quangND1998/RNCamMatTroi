@@ -4,7 +4,7 @@ import ApiService from '../../common/apiService';
 import { setTokenStorage, setUserStorage, savePhoneStorage, destroyTokenStorage, destroyUserStorage } from '../../common/managerStorage';
 export const loginAction = (code, password, onSuccess = () => {}, onError = () => {}) => (dispatch) => {
     return AuthService.login({ code, password }).then(response => {
-        // console.log(response.data)
+        console.log(response.data)
         setToken(response.data.data.token);
         setUser(response.data.data.user)
 
@@ -22,7 +22,7 @@ export const loginAction = (code, password, onSuccess = () => {}, onError = () =
 
         onSuccess();
     }).catch(error => {
-        // console.log('aaaaaaaaaa', error.response.data)
+        console.log('aaaaaaaaaa', error)
         dispatch({
             type: 'LOGIN_FAIL',
         });

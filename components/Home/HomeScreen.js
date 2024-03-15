@@ -52,6 +52,7 @@ const HomeScreen = () => {
                                         uri: user?.profile_photo_url
                                     }}>
                                     </Avatar>
+                                    {/* <Image source={{ uri: user?.profile_photo_url }} alt="avatar" className="w-[14px] h-[14px]" resizeMode="cover" ></Image> */}
 
                                     <Flex className="ml-4">
                                         <Text className="font-bold  text-[16px] text-gray-800">{user?.name}</Text>
@@ -136,8 +137,6 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 20,
         height: 60,
         paddingBottom: 0,
-
-        elevation: 0, // remove shadow on Android
         shadowOpacity: 0, // remove shadow on iOS
 
     }

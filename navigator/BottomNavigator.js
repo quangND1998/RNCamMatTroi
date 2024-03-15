@@ -39,7 +39,6 @@ const BottomNavigator = () => {
                     position: 'absolute',
                     shadowOpacity: 1,
                     shadowRadius: 2,
-                    elevation: 2,
                     alignItems: 'center',
                     justifyContent: 'center',
                     display: 'flex'

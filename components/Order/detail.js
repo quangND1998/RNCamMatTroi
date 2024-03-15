@@ -115,7 +115,7 @@ const OrderDetail = ({ navigation, route }) => {
                             </Box>
                             <Box className="flex flex-row my-3">
                                 <Text className="font-bold text-[16px] text-[#080808]">Trạng thái:</Text>
-                                <Text className="font-bold text-[16px] text-[#F78F43] px-2">{orderDetail.status == "pending" ? "Đang giao hàng" : "Hoàn thành"}</Text>
+                                <Text className="font-bold text-[16px] text-[#F78F43] px-2">{orderDetail.status == "pending" ? "Hoàn thành" : "Đang giao hàng "}</Text>
                             </Box>
                             <Box className="flex flex-row my-3">
                                 <Text className="font-bold text-[16px] text-[#080808]">Giá trị đơn hàng:</Text>

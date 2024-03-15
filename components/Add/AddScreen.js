@@ -59,8 +59,6 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 20,
         height: 60,
         paddingBottom: 0,
-
-        elevation: 0, // remove shadow on Android
         shadowOpacity: 0, // remove shadow on iOS
 
     }
